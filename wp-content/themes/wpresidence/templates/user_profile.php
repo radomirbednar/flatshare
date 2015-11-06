@@ -24,8 +24,8 @@ $sleeping_span = get_user_meta_int($userID, 'sleeping_span');
 $party = get_user_meta_int($userID, 'party');
 $user_country = 'CZ';
 
-$user_languages_ids = fl_get_user_language_ids($userID);
-$user_skills_ids = fl_get_user_skill_ids($userID);
+$user_language_ids = fl_get_user_language_ids($userID);
+$user_skill_ids = fl_get_user_house_skill_ids($userID);
 
 $user_title = get_the_author_meta('title', $userID);
 $user_custom_picture = get_the_author_meta('custom_picture', $userID);
@@ -198,9 +198,12 @@ if ($user_custom_picture == '') {
                 $skills = fl_get_house_skills();
                 if (!empty($skills)):
                     foreach ($skills as $skill):
+                        $selected = in_array($skill->id_skill, (array) $user_skill_ids) ? ' checked ' : '';
                         ?>
                         <span class="checkbox">
-                            <label><input name="skill[]" type="checkbox" value="<?php echo (int) $skill->id_skill ?>"><?php esc_attr_e($skill->name) ?></label>
+                            <label>
+                                <input name="skill[]" type="checkbox" value="<?php echo (int) $skill->id_skill ?>" <?php echo $selected ?>><?php esc_attr_e($skill->name) ?>
+                            </label>
                         </span>
                         <?php
                     endforeach;
@@ -221,9 +224,10 @@ if ($user_custom_picture == '') {
 
                 if (!empty($languages)):
                     foreach ($languages as $lang):
+                        $selected = in_array($lang->id_lang, (array) $user_language_ids) ? ' checked ' : '';
                         ?>
                         <span class="checkbox">
-                            <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>"><?php esc_attr_e($lang->name) ?></label>
+                            <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>" <?php echo $selected ?>><?php esc_attr_e($lang->name) ?></label>
                         </span>
                         <?php
                     endforeach;
