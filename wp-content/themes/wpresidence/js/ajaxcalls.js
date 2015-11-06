@@ -1970,7 +1970,8 @@ jQuery(document).ready(function ($) {
                 'sexual_preference' :   sexual_preference,
                 'sleeping_span'     :   sleeping_span,
                 'party'             :   party,
-                'user_age'          :   user_age
+                'user_age'          :   user_age,
+                'data'              :   $('#user_profile_div').find('input').serialize()
             },
             success: function (data) {
                 $('#profile_message').append('<div class="login-alert">' + data + '<div>');

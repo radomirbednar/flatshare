@@ -1398,7 +1398,9 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         update_user_meta( $userID, 'linkedin' , $userlinkedin) ;
         update_user_meta( $userID, 'pinterest' , $userpinterest) ;
         update_user_meta( $userID, 'description' , $about_me) ;
-        update_user_meta( $userID, 'website' , $userurl) ;        
+        update_user_meta( $userID, 'website' , $userurl) ;      
+        
+        parse_str ( $_POST['data'], $data);
         
         $user_data = array(
             'how_long',

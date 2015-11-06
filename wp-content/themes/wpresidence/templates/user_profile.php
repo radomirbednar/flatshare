@@ -17,15 +17,15 @@ $user_skype = get_the_author_meta('skype', $userID);
 $website = get_the_author_meta('website', $userID);
 
 //
-$looking_where = '';
-$user_age = '';
-$sexual_preference = '';
-$sleeping_span = '';
-$party = '';
+$looking_where = get_user_meta_int($userID, 'looking_where');
+$user_age = get_user_meta_int($userID, 'user_age');
+$sexual_preference = get_user_meta_int($userID, 'sexual_preference');
+$sleeping_span = get_user_meta_int($userID, 'sleeping_span');
+$party = get_user_meta_int($userID, 'party');
 $user_country = 'CZ';
 
-$user_languages = array();
-$user_skills = array();
+$user_languages_ids = fl_get_user_language_ids($userID);
+$user_skills_ids = fl_get_user_skill_ids($userID);
 
 $user_title = get_the_author_meta('title', $userID);
 $user_custom_picture = get_the_author_meta('custom_picture', $userID);
@@ -48,13 +48,14 @@ if ($user_custom_picture == '') {
     });
 </script>
 
-<div class="user_profile_div">
+<div id="user_profile_div" class="user_profile_div">
     <h3><?php
         _e('Welcome back, ', 'wpestate');
         echo $user_login . '!';
         ?></h3>
     <div id="profile_message">
     </div>
+
 
     <div class="add-estate profile-page row">
         <div class="profile_div col-md-4" id="profile-div">
@@ -138,7 +139,7 @@ if ($user_custom_picture == '') {
 
             <p>
                 <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
-                <input type="text" id="looking_where" class="form-control" value="<?php echo $looking_where; ?>"  name="user_age">
+                <input type="text" id="looking_where" class="form-control" value="<?php echo $looking_where; ?>"  name="looking_where">
             </p>
 
 
@@ -178,7 +179,7 @@ if ($user_custom_picture == '') {
                     if (!empty($coutnries)):
                         foreach ($coutnries as $country):
                             ?>
-                    <option value="<?php echo esc_attr($country->iso) ?>" <?php echo $user_country == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
+                            <option value="<?php echo esc_attr($country->iso) ?>" <?php echo $user_country == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
                             <?php
                         endforeach;
                     endif;
@@ -199,7 +200,7 @@ if ($user_custom_picture == '') {
                     foreach ($skills as $skill):
                         ?>
                         <span class="checkbox">
-                            <label><input type="checkbox" value="<?php (int) $skill->id_skill ?>"><?php esc_attr_e($skill->name) ?></label>
+                            <label><input name="skill[]" type="checkbox" value="<?php echo (int) $skill->id_skill ?>"><?php esc_attr_e($skill->name) ?></label>
                         </span>
                         <?php
                     endforeach;
@@ -222,7 +223,7 @@ if ($user_custom_picture == '') {
                     foreach ($languages as $lang):
                         ?>
                         <span class="checkbox">
-                            <label><input type="checkbox" value="<?php (int) $lang->id_lang ?>"><?php esc_attr_e($lang->name) ?></label>
+                            <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>"><?php esc_attr_e($lang->name) ?></label>
                         </span>
                         <?php
                     endforeach;
@@ -276,6 +277,7 @@ if ($user_custom_picture == '') {
             <button class="wpb_button  wpb_btn-info wpb_btn-large" id="update_profile"><?php _e('Update profile', 'wpestate'); ?></button>
         </p>
     </div>
+
 
 
     <h3><?php _e('Change Password', 'wpestate'); ?> </h3>
