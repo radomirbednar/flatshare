@@ -148,7 +148,10 @@ $logo_margin    =   intval( get_option('wp_estate_logo_margin','') );
                 ?>    
                 <nav id="access">
                     <?php 
-                    wp_nav_menu( array( 'theme_location' => 'primary' ) );
+                    wp_nav_menu( array( 
+                        'theme_location' => 'primary',
+                        'menu' => 'Main Menu',
+                    ));
                     ?>
                 </nav><!-- #access -->
             </div>

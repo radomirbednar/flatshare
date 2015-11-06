@@ -1,4 +1,5 @@
 <?php
+require_once 'libs/w4a_functions.php';
 require_once 'libs/css_js_include.php';
 require_once 'libs/metaboxes.php'; 
 require_once 'libs/plugins.php';

@@ -49,6 +49,7 @@ if( !wpestate_half_map_conditions ($post->ID) ){
                         wp_nav_menu( array(
                            // 'menu'              => 'footer_menu',
                             'theme_location'    => 'footer_menu',
+                            'menu' => 'Footer',
                           //  'depth'             => 1                           
                         ));  
                     ?>
