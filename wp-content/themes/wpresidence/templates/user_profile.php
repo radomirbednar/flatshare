@@ -16,6 +16,16 @@ $pinterest = get_the_author_meta('pinterest', $userID);
 $user_skype = get_the_author_meta('skype', $userID);
 $website = get_the_author_meta('website', $userID);
 
+//
+$looking_where = '';
+$user_age = '';
+$sexual_preference = '';
+$sleeping_span = '';
+$party = '';
+$user_country = 'CZ';
+
+$user_languages = array();
+$user_skills = array();
 
 $user_title = get_the_author_meta('title', $userID);
 $user_custom_picture = get_the_author_meta('custom_picture', $userID);
@@ -27,16 +37,26 @@ if ($user_custom_picture == '') {
 }
 ?>
 
+<script>
+    jQuery(document).ready(function ($) {
+        $(".switcher button").click(function () {
+            var value = $(this).data("value");
+            var target = $(this).data("target");
+            console.log(target + " " + value);
+            $(target).val(value);
+        });
+    });
+</script>
 
-<div class="user_profile_div"> 
+<div class="user_profile_div">
     <h3><?php
         _e('Welcome back, ', 'wpestate');
         echo $user_login . '!';
         ?></h3>
     <div id="profile_message">
-    </div>    
+    </div>
 
-    <div class="add-estate profile-page row">  
+    <div class="add-estate profile-page row">
         <div class="profile_div col-md-4" id="profile-div">
             <?php
             print '<img id="profile-image" src="' . $user_custom_picture . '" alt="user image" data-profileurl="' . $user_custom_picture . '" data-smallprofileurl="' . $image_id . '" >';
@@ -44,14 +64,14 @@ if ($user_custom_picture == '') {
             //print '/ '.$user_small_picture;
             ?>
 
-            <div id="upload-container">                 
-                <div id="aaiu-upload-container">                 
+            <div id="upload-container">
+                <div id="aaiu-upload-container">
 
                     <button id="aaiu-uploader" class="wpb_button  wpb_btn-success wpb_btn-large vc_button"><?php _e('Upload Profile Image', 'wpestate'); ?></button>
                     <div id="aaiu-upload-imagelist">
                         <ul id="aaiu-ul-list" class="aaiu-upload-list"></ul>
                     </div>
-                </div>  
+                </div>
             </div>
             <span class="upload_explain"><?php _e('*minimum 314px x 180px', 'wpestate'); ?></span>
         </div>
@@ -92,59 +112,128 @@ if ($user_custom_picture == '') {
                 <input type="text" id="userskype" class="form-control" value="<?php echo $user_skype; ?>"  name="userskype">
             </p>
 
-<?php wp_nonce_field('profile_ajax_nonce', 'security-profile'); ?>
+            <?php wp_nonce_field('profile_ajax_nonce', 'security-profile'); ?>
 
 
         </div>
     </div>
 
     <div class="add-user-personal profile-page row">
-        <div class="col-md-6">
-            <p>
-                <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
-                <button class=""><?php _e('Straight', 'wpestate'); ?></button>
-                <button class=""><?php _e('Bi / Gay', 'wpestate'); ?></button>
+
+        <div class="col-md-12">
+
+            <p class="switcher">
+                <input type="hidden" id="how_long" name="how_long" value="<?php echo (int) $how_long ?>">
+                <label><?php _e('For how long', 'wpestate'); ?></label>
+                <button class="" data-target="#how_long" data-value="1"><?php _e('Less than 6 months', 'wpestate'); ?></button>
+                <button class="" data-target="#how_long" data-value="2"><?php _e('+ 6 months', 'wpestate'); ?></button>
             </p>
-            <p>
-                <label><?php _e('Sleep during week', 'wpestate'); ?></label>
-                <button class=""><?php _e('Before 11PM', 'wpestate'); ?></button>
-                <button class=""><?php _e('After 11PM', 'wpestate'); ?></button>
+
+            <p class="switcher">
+                <input type="hidden" id="looking_for" name="looking_for" value="<?php echo (int) $looking_for ?>">
+                <label><?php _e('Looking for', 'wpestate'); ?></label>
+                <button class="" data-target="#looking_for" data-value="1"><?php _e('Room', 'wpestate'); ?></button>
+                <button class="" data-target="#looking_for" data-value="2"><?php _e('Flat', 'wpestate'); ?></button>
             </p>
+
             <p>
-                <label><?php _e('Party', 'wpestate'); ?></label>
-                <button class=""><?php _e('Often', 'wpestate'); ?></button>
-                <button class=""><?php _e('Not often', 'wpestate'); ?></button>
-            </p>                
+                <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
+                <input type="text" id="looking_where" class="form-control" value="<?php echo $looking_where; ?>"  name="user_age">
+            </p>
+
+
+
         </div>
 
         <div class="col-md-6">
+            <p class="switcher">
+                <input type="hidden" id="sexual_preference" name="sexual_preference" value="<?php echo (int) $sexual_preference ?>">
+                <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
+                <button class="" data-target="#sexual_preference" data-value="1"><?php _e('Straight', 'wpestate'); ?></button>
+                <button class="" data-target="#sexual_preference" data-value="2"><?php _e('Bi / Gay', 'wpestate'); ?></button>
+            </p>
+            <p class="switcher">
+                <input type="hidden" id="sleeping_span" name="sleeping_span" value="<?php echo (int) $sleeping_span ?>">
+                <label><?php _e('Sleep during week', 'wpestate'); ?></label>
+                <button class="" data-target="#sleeping_span" data-value="1"><?php _e('Before 11PM', 'wpestate'); ?></button>
+                <button class="" data-target="#sleeping_span" data-value="2"><?php _e('After 11PM', 'wpestate'); ?></button>
+            </p>
+            <p class="switcher">
+                <input type="hidden" id="party" name="party" value="<?php echo (int) $party ?>">
+                <label><?php _e('Party', 'wpestate'); ?></label>
+                <button class="" data-target="#party" data-value="1"><?php _e('Often', 'wpestate'); ?></button>
+                <button class="" data-target="#party" data-value="2"><?php _e('Not often', 'wpestate'); ?></button>
+            </p>
+        </div>
 
-        </div>                
+        <div class="col-md-6">
+            <?php
+            $coutnries = fl_get_countries();
+            ?>
+            <p>
+                <label for="user_country"><?php _e('Country', 'wpestate'); ?></label>
+                <select id="user_country" name="user_country" class="form-control">
+                    <option value=""><?php _e('Select country', 'wpestate'); ?></option>
+                    <?php
+                    if (!empty($coutnries)):
+                        foreach ($coutnries as $country):
+                            ?>
+                    <option value="<?php echo esc_attr($country->iso) ?>" <?php echo $user_country == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
+                            <?php
+                        endforeach;
+                    endif;
+                    ?>
+                </select>
+            </p>
+
+            <p>
+                <label for="user_age"><?php _e('Your age', 'wpestate'); ?></label>
+                <input type="text" id="user_age" class="form-control" value="<?php echo $user_age; ?>"  name="user_age">
+            </p>
+
+            <p>
+                <?php _e('House skills', 'wpestate'); ?>
+                <?php
+                $skills = fl_get_house_skills();
+                if (!empty($skills)):
+                    foreach ($skills as $skill):
+                        ?>
+                        <span class="checkbox">
+                            <label><input type="checkbox" value="<?php (int) $skill->id_skill ?>"><?php esc_attr_e($skill->name) ?></label>
+                        </span>
+                        <?php
+                    endforeach;
+                endif;
+                ?>
+            </p>
+
+        </div>
 
         <div class="col-md-12">
 
 
-            <h4><?php _e('Language skills', 'wpestate'); ?></h4>
+            <p>
+                <?php _e('Language skills', 'wpestate'); ?>
 
-            <?php
-            $languages = get_languages();
+                <?php
+                $languages = fl_get_languages();
 
-            if (!empty($languages)):
-                foreach ($languages as $lang):
-                    ?>
-                    <div class="checkbox">
-                        <label><input type="checkbox" value="<?php (int) $lang->id_lang ?>"><?php esc_attr_e($lang->name) ?></label>
-                    </div>
-                    <?php
-                endforeach;
-            endif;
-            ?>
+                if (!empty($languages)):
+                    foreach ($languages as $lang):
+                        ?>
+                        <span class="checkbox">
+                            <label><input type="checkbox" value="<?php (int) $lang->id_lang ?>"><?php esc_attr_e($lang->name) ?></label>
+                        </span>
+                        <?php
+                    endforeach;
+                endif;
+                ?>
+            </p>
+        </div>
 
-        </div>                        
+    </div>
 
-    </div>    
-
-    <div class="add-estate profile-page row">  
+    <div class="add-estate profile-page row">
         <div class="col-md-4">
             <p>
                 <label for="userfacebook"><?php _e('Facebook Url', 'wpestate'); ?></label>
@@ -164,7 +253,7 @@ if ($user_custom_picture == '') {
             <p>
                 <label for="userpinterest"><?php _e('Pinterest Url', 'wpestate'); ?></label>
                 <input type="text" id="userpinterest" class="form-control" value="<?php echo $pinterest; ?>"  name="userpinterest">
-            </p> 
+            </p>
             <p>
                 <label for="website"><?php _e('Website Url (without http)', 'wpestate'); ?></label>
                 <input type="text" id="website" class="form-control" value="<?php echo $website; ?>"  name="website">
@@ -186,22 +275,15 @@ if ($user_custom_picture == '') {
         <p class="fullp-button">
             <button class="wpb_button  wpb_btn-info wpb_btn-large" id="update_profile"><?php _e('Update profile', 'wpestate'); ?></button>
         </p>
-
     </div>
-
-
-
-
-
-
 
 
     <h3><?php _e('Change Password', 'wpestate'); ?> </h3>
 
-    <div class="profile-page row">  
+    <div class="profile-page row">
         <div class="pass_note"> <?php _e('*After you change the password you will have to login again.', 'wpestate') ?></div>
         <div id="profile_pass">
-        </div> 
+        </div>
 
         <p  class="col-md-4">
             <label for="oldpass"><?php _e('Old Password', 'wpestate'); ?></label>
@@ -217,19 +299,10 @@ if ($user_custom_picture == '') {
             <input id="renewpass" value=""  class="form-control" name="renewpass"type="password">
         </p>
 
-<?php wp_nonce_field('pass_ajax_nonce', 'security-pass'); ?>
+        <?php wp_nonce_field('pass_ajax_nonce', 'security-pass'); ?>
         <p class="fullp-button">
             <button class="wpb_button  wpb_btn-info wpb_btn-large vc_button" id="change_pass"><?php _e('Reset Password', 'wpestate'); ?></button>
 
         </p>
     </div>
-
-
-
-
-
-
-
-
-
 </div>

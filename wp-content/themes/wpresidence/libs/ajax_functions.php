@@ -1384,7 +1384,6 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         $userlinkedin   =   wp_kses( $_POST['userlinkedin'],$allowed_html);
         $userpinterest  =   wp_kses( $_POST['userpinterest'],$allowed_html);
         $userurl        =   wp_kses( $_POST['userurl'],$allowed_html);
-          
         
         update_user_meta( $userID, 'first_name', $firstname ) ;
         update_user_meta( $userID, 'last_name',  $secondname) ;
@@ -1402,6 +1401,22 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         update_user_meta( $userID, 'website' , $userurl) ;
         
         
+        $user_data = array(
+            'looking_where',
+            'user_age',
+            'sexual_preference',
+            'sleeping_span',
+            'party'
+        );
+        
+        foreach($user_data as $key){
+            if(!empty($_POST[$key])){
+                update_user_meta_int($userID, $key, $_POST[$key]);    
+            }
+            else {
+                delete_user_meta_int($userID, $key);    
+            }
+        }        
         
         $agent_id=get_user_meta( $userID, 'user_agent_id',true);
         if('yes' ==  esc_html ( get_option('wp_estate_user_agent','') )){
