@@ -1398,15 +1398,15 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         update_user_meta( $userID, 'linkedin' , $userlinkedin) ;
         update_user_meta( $userID, 'pinterest' , $userpinterest) ;
         update_user_meta( $userID, 'description' , $about_me) ;
-        update_user_meta( $userID, 'website' , $userurl) ;
-        
+        update_user_meta( $userID, 'website' , $userurl) ;        
         
         $user_data = array(
-            'looking_where',
-            'user_age',
+            'how_long',
+            'looking_for',
             'sexual_preference',
             'sleeping_span',
-            'party'
+            'party',
+            'user_age'
         );
         
         foreach($user_data as $key){

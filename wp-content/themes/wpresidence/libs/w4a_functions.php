@@ -25,7 +25,7 @@ function fl_get_house_skills(){
 function update_user_meta_int($user_id, $meta_key, $meta_value){
     global $wpdb;
     $sql = "REPLACE INTO fl_user_meta_int (id_user, meta_key, meta_value) VALUES ('" . (int) $user_id . "', '" . esc_sql($meta_key) . "', '" . esc_sql($meta_value) . "') ";
-    $result = $wpdb->get_results($sql);
+    $result = $wpdb->query($sql);
     return $result;        
 }
 

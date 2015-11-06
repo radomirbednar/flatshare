@@ -1914,20 +1914,27 @@ jQuery(document).ready(function ($) {
     ////////////////////////////////////////////////////////////////////////////////////////////   
 
     $('#update_profile').click(function () {
-        var  userurl,usermobile, userpinterest, userlinkedin, usertwitter, userfacebook, profile_image_url, profile_image_url_small, firstname, secondname, useremail, userphone, userskype, usertitle, description, ajaxurl, securityprofile, upload_picture;
-        firstname       =  $('#firstname').val();
-        secondname      =  $('#secondname').val();
-        useremail       =  $('#useremail').val();
-        userphone       =  $('#userphone').val();
-        usermobile      =  $('#usermobile').val();
-        userskype       =  $('#userskype').val();
-        usertitle       =  $('#usertitle').val();
-        description     =  $('#about_me').val();
-        userfacebook    =  $('#userfacebook').val();
-        usertwitter     =  $('#usertwitter').val();
-        userlinkedin    =  $('#userlinkedin').val();
-        userpinterest   =  $('#userpinterest').val();
-        userurl         =  $('#website').val();
+        var  userurl, usermobile, userpinterest, userlinkedin, usertwitter, userfacebook, profile_image_url, profile_image_url_small, firstname, secondname, useremail, userphone, userskype, usertitle, description, ajaxurl, securityprofile, upload_picture, how_long, looking_for, sexual_preference, sleeping_span, party, user_age;
+        firstname           = $('#firstname').val();
+        secondname          =  $('#secondname').val();
+        useremail           =  $('#useremail').val();
+        userphone           =  $('#userphone').val();
+        usermobile          =  $('#usermobile').val();
+        userskype           =  $('#userskype').val();
+        usertitle           =  $('#usertitle').val();
+        description         =  $('#about_me').val();
+        userfacebook        =  $('#userfacebook').val();
+        usertwitter         =  $('#usertwitter').val();
+        userlinkedin        =  $('#userlinkedin').val();
+        userpinterest       =  $('#userpinterest').val();
+        userurl             =  $('#website').val();
+        //
+        how_long            =  $('#how_long').val();
+        looking_for         =  $('#looking_for').val();
+        sexual_preference   =  $('#sexual_preference').val();
+        sleeping_span       =  $('#sleeping_span').val();
+        party               =  $('#party').val();
+        user_age            =  $('#user_age').val();
         
         ajaxurl         =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
         securityprofile =  $('#security-profile').val();
@@ -1957,7 +1964,13 @@ jQuery(document).ready(function ($) {
                 'usertwitter'       :   usertwitter,
                 'userlinkedin'      :   userlinkedin,
                 'userpinterest'     :   userpinterest,
-                'userurl'           :   userurl
+                'userurl'           :   userurl,
+                'how_long'          :   how_long,
+                'looking_for'       :   looking_for,
+                'sexual_preference' :   sexual_preference,
+                'sleeping_span'     :   sleeping_span,
+                'party'             :   party,
+                'user_age'          :   user_age
             },
             success: function (data) {
                 $('#profile_message').append('<div class="login-alert">' + data + '<div>');

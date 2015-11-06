@@ -42,7 +42,7 @@ if ($user_custom_picture == '') {
         $(".switcher button").click(function () {
             var value = $(this).data("value");
             var target = $(this).data("target");
-            console.log(target + " " + value);
+            //console.log(target + " " + value);
             $(target).val(value);
         });
     });
