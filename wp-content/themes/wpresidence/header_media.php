@@ -109,7 +109,7 @@ if($show_adv_search_general ==  'yes' && !is_404() && !is_page_template('propert
         if($header_type == 1){
           //nothing  
         }else if($header_type == 0){ 
-            if($global_header_type==4){
+            if($global_header_type==4 || $global_header_type==1){
                 $show_mobile=1;
                 get_template_part('templates/advanced_search');  
             }else if( $global_header_type==0){
