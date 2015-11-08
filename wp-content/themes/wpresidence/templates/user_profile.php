@@ -17,11 +17,13 @@ $user_skype = get_the_author_meta('skype', $userID);
 $website = get_the_author_meta('website', $userID);
 
 //
+$how_long = get_user_meta_int($userID, 'how_long');
 $looking_where = get_user_meta_int($userID, 'looking_where');
 $user_age = get_user_meta_int($userID, 'user_age');
 $sexual_preference = get_user_meta_int($userID, 'sexual_preference');
 $sleeping_span = get_user_meta_int($userID, 'sleeping_span');
 $party = get_user_meta_int($userID, 'party');
+$looking_for = get_user_meta_int($userID, 'looking_for');
 $user_country = 'CZ';
 
 $user_language_ids = fl_get_user_language_ids($userID);
@@ -44,6 +46,9 @@ if ($user_custom_picture == '') {
             var target = $(this).data("target");
             //console.log(target + " " + value);
             $(target).val(value);
+            
+            $(this).parents(".switcher").find('button').not(this).removeClass('wpb_btn-on').addClass('wpb_btn-off');
+            $(this).removeClass('wpb_btn-off').addClass('wpb_btn-on');
         });
     });
 </script>
@@ -126,15 +131,15 @@ if ($user_custom_picture == '') {
             <p class="switcher">
                 <input type="hidden" id="how_long" name="how_long" value="<?php echo (int) $how_long ?>">
                 <label><?php _e('For how long', 'wpestate'); ?></label>
-                <button class="" data-target="#how_long" data-value="1"><?php _e('Less than 6 months', 'wpestate'); ?></button>
-                <button class="" data-target="#how_long" data-value="2"><?php _e('+ 6 months', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $how_long == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#how_long" data-value="1"><?php _e('Less than 6 months', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $how_long == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#how_long" data-value="2"><?php _e('+ 6 months', 'wpestate'); ?></button>
             </p>
 
             <p class="switcher">
                 <input type="hidden" id="looking_for" name="looking_for" value="<?php echo (int) $looking_for ?>">
                 <label><?php _e('Looking for', 'wpestate'); ?></label>
-                <button class="" data-target="#looking_for" data-value="1"><?php _e('Room', 'wpestate'); ?></button>
-                <button class="" data-target="#looking_for" data-value="2"><?php _e('Flat', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $looking_for == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#looking_for" data-value="1"><?php _e('Room', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $looking_for == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#looking_for" data-value="2"><?php _e('Flat', 'wpestate'); ?></button>
             </p>
 
             <p>
@@ -150,20 +155,20 @@ if ($user_custom_picture == '') {
             <p class="switcher">
                 <input type="hidden" id="sexual_preference" name="sexual_preference" value="<?php echo (int) $sexual_preference ?>">
                 <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
-                <button class="" data-target="#sexual_preference" data-value="1"><?php _e('Straight', 'wpestate'); ?></button>
-                <button class="" data-target="#sexual_preference" data-value="2"><?php _e('Bi / Gay', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $sexual_preference == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sexual_preference" data-value="1"><?php _e('Straight', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $sexual_preference == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sexual_preference" data-value="2"><?php _e('Bi / Gay', 'wpestate'); ?></button>
             </p>
             <p class="switcher">
                 <input type="hidden" id="sleeping_span" name="sleeping_span" value="<?php echo (int) $sleeping_span ?>">
                 <label><?php _e('Sleep during week', 'wpestate'); ?></label>
-                <button class="" data-target="#sleeping_span" data-value="1"><?php _e('Before 11PM', 'wpestate'); ?></button>
-                <button class="" data-target="#sleeping_span" data-value="2"><?php _e('After 11PM', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $sleeping_span == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sleeping_span" data-value="1"><?php _e('Before 11PM', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $sleeping_span == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sleeping_span" data-value="2"><?php _e('After 11PM', 'wpestate'); ?></button>
             </p>
             <p class="switcher">
                 <input type="hidden" id="party" name="party" value="<?php echo (int) $party ?>">
                 <label><?php _e('Party', 'wpestate'); ?></label>
-                <button class="" data-target="#party" data-value="1"><?php _e('Often', 'wpestate'); ?></button>
-                <button class="" data-target="#party" data-value="2"><?php _e('Not often', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $party == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#party" data-value="1"><?php _e('Often', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $party == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#party" data-value="2"><?php _e('Not often', 'wpestate'); ?></button>
             </p>
         </div>
 

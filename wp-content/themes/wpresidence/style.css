@@ -11058,6 +11058,19 @@ button.wpb_btn-large, span.wpb_btn-large {
     border-bottom: 3px solid #347DA4!important;
 }
 
+.wpb_btn-on {
+    background-color: #3C90BE!important;
+    border-bottom: none;
+}
+
+.wpb_btn-off, 
+.wpb_btn-off:hover {
+    background-color: white;
+    border-bottom: none;
+    border: 1px solid #f0f0f0 !important;
+    color: #434a54 !important;
+}
+
 .wpb_btn-info:hover, 
 .wpb_btn-info:active, 
 .wpb_btn-info.active, 
