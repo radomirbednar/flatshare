@@ -1118,7 +1118,7 @@ jQuery(document).ready(function ($) {
     //////// advanced search filters
     ////////////////////////////////////////////////////////////////////////////////////////////    
  
-    var elems = ['#adv-search-3', '#adv-search-1', '#advanced_search_shortcode', '#adv-search-2', '#advanced_search_shortcode_2', '.adv-search-mobile','.advanced_search_sidebar'];
+    var elems = ['#adv-search-3', '#adv-search-1 .tab-content', '#advanced_search_shortcode', '#adv-search-2', '#advanced_search_shortcode_2', '.adv-search-mobile','.advanced_search_sidebar'];
  
     $.each( elems, function( i, elem ) {
       
@@ -1799,9 +1799,11 @@ function shortcode_google_map_load(containermap, lat, long, mapid){
 }
 
 function adv_search_click(){
+    /*
    jQuery('#adv-search-header-1').click(function(){
         jQuery('#search_wrapper').toggleClass('fullscreen_search_open');
    });
+   */
    
 }
 

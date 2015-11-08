@@ -18,13 +18,18 @@ $website = get_the_author_meta('website', $userID);
 
 //
 $how_long = get_user_meta_int($userID, 'how_long');
-$looking_where = get_user_meta_int($userID, 'looking_where');
 $user_age = get_user_meta_int($userID, 'user_age');
 $sexual_preference = get_user_meta_int($userID, 'sexual_preference');
 $sleeping_span = get_user_meta_int($userID, 'sleeping_span');
 $party = get_user_meta_int($userID, 'party');
 $looking_for = get_user_meta_int($userID, 'looking_for');
-$user_country = 'CZ';
+$couple = get_user_meta_int($userID, 'couple');
+$pets = get_user_meta_int($userID, 'pets');
+$smoker = get_user_meta_int($userID, 'smoker');
+$activity = get_user_meta_int($userID, 'activity');
+
+$user_origin = get_user_meta($userID, 'user_origin', true);
+$looking_where = get_user_meta($userID, 'looking_where', true);
 
 $user_language_ids = fl_get_user_language_ids($userID);
 $user_skill_ids = fl_get_user_house_skill_ids($userID);
@@ -46,7 +51,7 @@ if ($user_custom_picture == '') {
             var target = $(this).data("target");
             //console.log(target + " " + value);
             $(target).val(value);
-            
+
             $(this).parents(".switcher").find('button').not(this).removeClass('wpb_btn-on').addClass('wpb_btn-off');
             $(this).removeClass('wpb_btn-off').addClass('wpb_btn-on');
         });
@@ -126,7 +131,7 @@ if ($user_custom_picture == '') {
 
     <div class="add-user-personal profile-page row">
 
-        <div class="col-md-12">
+        <div class="col-md-6">
 
             <p class="switcher">
                 <input type="hidden" id="how_long" name="how_long" value="<?php echo (int) $how_long ?>">
@@ -142,49 +147,64 @@ if ($user_custom_picture == '') {
                 <button class="wpb_button wpb_btn-large <?php echo $looking_for == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#looking_for" data-value="2"><?php _e('Flat', 'wpestate'); ?></button>
             </p>
 
-            <p>
-                <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
-                <input type="text" id="looking_where" class="form-control" value="<?php echo $looking_where; ?>"  name="looking_where">
-            </p>
-
-
-
-        </div>
-
-        <div class="col-md-6">
             <p class="switcher">
                 <input type="hidden" id="sexual_preference" name="sexual_preference" value="<?php echo (int) $sexual_preference ?>">
                 <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
                 <button class="wpb_button wpb_btn-large <?php echo $sexual_preference == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sexual_preference" data-value="1"><?php _e('Straight', 'wpestate'); ?></button>
                 <button class="wpb_button wpb_btn-large <?php echo $sexual_preference == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sexual_preference" data-value="2"><?php _e('Bi / Gay', 'wpestate'); ?></button>
             </p>
+            
             <p class="switcher">
                 <input type="hidden" id="sleeping_span" name="sleeping_span" value="<?php echo (int) $sleeping_span ?>">
                 <label><?php _e('Sleep during week', 'wpestate'); ?></label>
                 <button class="wpb_button wpb_btn-large <?php echo $sleeping_span == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sleeping_span" data-value="1"><?php _e('Before 11PM', 'wpestate'); ?></button>
                 <button class="wpb_button wpb_btn-large <?php echo $sleeping_span == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sleeping_span" data-value="2"><?php _e('After 11PM', 'wpestate'); ?></button>
             </p>
+            
             <p class="switcher">
-                <input type="hidden" id="party" name="party" value="<?php echo (int) $party ?>">
-                <label><?php _e('Party', 'wpestate'); ?></label>
-                <button class="wpb_button wpb_btn-large <?php echo $party == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#party" data-value="1"><?php _e('Often', 'wpestate'); ?></button>
-                <button class="wpb_button wpb_btn-large <?php echo $party == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#party" data-value="2"><?php _e('Not often', 'wpestate'); ?></button>
+                <input type="hidden" id="couple" name="couple" value="<?php echo (int) $couple ?>">
+                <label><?php _e('Couple', 'wpestate'); ?></label>
+                <button class="wpb_button wpb_btn-large <?php echo $couple == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#couple" data-value="1"><?php _e('Alone', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $couple == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#couple" data-value="2"><?php _e('In couple', 'wpestate'); ?></button>
+            </p>            
+
+            <p class="switcher">
+                <input type="hidden" id="pets" name="pets" value="<?php echo (int) $pets ?>">
+                <label><?php _e('Pets', 'wpestate'); ?></label>
+                <button class="wpb_button wpb_btn-large <?php echo $pets == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#pets" data-value="1"><?php _e('No pets', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $pets == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#pets" data-value="2"><?php _e('Pets', 'wpestate'); ?></button>
             </p>
+            
+            <p class="switcher">
+                <input type="hidden" id="activity" name="activity" value="<?php echo (int) $activity ?>">
+                <label><?php _e('Activity', 'wpestate'); ?></label>
+                <button class="wpb_button wpb_btn-large <?php echo $activity == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="1"><?php _e('Student', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $activity == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="2"><?php _e('Professional', 'wpestate'); ?></button>
+            </p>            
+
+            <p>
+                <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
+                <input type="text" id="looking_where" class="form-control" value="<?php echo esc_attr($looking_where) ?>"  name="looking_where">
+            </p>
+
+
         </div>
+
+
 
         <div class="col-md-6">
             <?php
             $coutnries = fl_get_countries();
             ?>
             <p>
-                <label for="user_country"><?php _e('Country', 'wpestate'); ?></label>
-                <select id="user_country" name="user_country" class="form-control">
+                <label for="user_origin"><?php _e('Country of origin', 'wpestate'); ?></label>
+                <select id="user_origin" name="user_origin" class="form-control">
                     <option value=""><?php _e('Select country', 'wpestate'); ?></option>
                     <?php
                     if (!empty($coutnries)):
                         foreach ($coutnries as $country):
                             ?>
-                            <option value="<?php echo esc_attr($country->iso) ?>" <?php echo $user_country == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
+                            <option value="<?php echo esc_attr($country->iso) ?>" <?php echo $user_origin == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
                             <?php
                         endforeach;
                     endif;
@@ -194,7 +214,7 @@ if ($user_custom_picture == '') {
 
             <p>
                 <label for="user_age"><?php _e('Your age', 'wpestate'); ?></label>
-                <input type="text" id="user_age" class="form-control" value="<?php echo $user_age; ?>"  name="user_age">
+                <input type="text" id="user_age" class="form-control" value="<?php echo (int) $user_age; ?>"  name="user_age">
             </p>
 
             <p>
@@ -215,12 +235,7 @@ if ($user_custom_picture == '') {
                 endif;
                 ?>
             </p>
-
-        </div>
-
-        <div class="col-md-12">
-
-
+            
             <p>
                 <?php _e('Language skills', 'wpestate'); ?>
 
@@ -238,8 +253,10 @@ if ($user_custom_picture == '') {
                     endforeach;
                 endif;
                 ?>
-            </p>
+            </p>            
+
         </div>
+
 
     </div>
 

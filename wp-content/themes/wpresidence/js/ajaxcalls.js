@@ -1524,6 +1524,9 @@ jQuery(document).ready(function ($) {
     ////////////////////////////////////////////////////////////////////////////////////////////       
 
     $('.listing_filters_head li').click(function () {
+        
+        //console.log('xx');
+        
         var pick, value, parent;
         pick = $(this).text();
         value = $(this).attr('data-value');
@@ -1545,6 +1548,8 @@ jQuery(document).ready(function ($) {
     ////////////////////////////////////////////////////////////////////////////////////////////       
 
     $('.adv_listing_filters_head li').click(function () {
+        
+        //console.log('xx');
 
         var pick, value, parent, args,page_id,ajaxurl;
         ajaxurl         =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
@@ -1971,7 +1976,7 @@ jQuery(document).ready(function ($) {
                 'sleeping_span'     :   sleeping_span,
                 'party'             :   party,
                 'user_age'          :   user_age,
-                'data'              :   $('#user_profile_div').find('input').serialize()
+                'data'              :   $('#user_profile_div').find('input, select').serialize()
             },
             success: function (data) {
                 $('#profile_message').append('<div class="login-alert">' + data + '<div>');

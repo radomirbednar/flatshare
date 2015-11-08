@@ -34,7 +34,7 @@ function fl_get_user_languages($user_id){
 
 function fl_get_countries(){
     global $wpdb;
-    $sql = "SELECT * FROM fl_country ORDER BY name ASC";
+    $sql = "SELECT * FROM fl_country WHERE active = 1 ORDER BY name ASC";
     $result = $wpdb->get_results($sql);
     return $result;    
 }

@@ -1364,6 +1364,12 @@ add_action( 'wp_ajax_wpestate_ajax_update_profile', 'wpestate_ajax_update_profil
 if( !function_exists('wpestate_ajax_update_profile') ):
 
    function wpestate_ajax_update_profile(){
+    
+        /**
+         * serializovane inputy poslane ajaxem
+         */
+        parse_str ( $_POST['data'], $data);    
+    
         global $current_user;
         get_currentuserinfo();
         $userID         =   $current_user->ID;
@@ -1384,6 +1390,9 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         $userlinkedin   =   wp_kses( $_POST['userlinkedin'],$allowed_html);
         $userpinterest  =   wp_kses( $_POST['userpinterest'],$allowed_html);
         $userurl        =   wp_kses( $_POST['userurl'],$allowed_html);
+        
+        $looking_where  =   esc_attr(trim($data['looking_where']));
+        $user_origin    =   esc_attr( $data['user_origin'] );
 
         update_user_meta( $userID, 'first_name', $firstname ) ;
         update_user_meta( $userID, 'last_name',  $secondname) ;
@@ -1399,22 +1408,24 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         update_user_meta( $userID, 'pinterest' , $userpinterest) ;
         update_user_meta( $userID, 'description' , $about_me) ;
         update_user_meta( $userID, 'website' , $userurl) ;
-
-        /**
-         * tohle je tu kvuli checkboxum
-         */
-        parse_str ( $_POST['data'], $data);
-
+        update_user_meta( $userID, 'user_origin' , $user_origin) ;
+        update_user_meta( $userID, 'looking_where' , $looking_where) ;
+        
         /**
          * Update user integer values
          */
         $user_data = array(
             'how_long',
             'looking_for',
+            'user_age',
             'sexual_preference',
             'sleeping_span',
             'party',
-            'user_age'
+            'looking_for',
+            'couple',
+            'pets',
+            'smoker',
+            'activity'
         );
 
         foreach($user_data as $key){
