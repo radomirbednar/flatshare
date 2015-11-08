@@ -64,7 +64,8 @@ if( isset($post->ID) && !wpestate_half_map_conditions ($post->ID) ){
                 break;
             case 1://image
                 $global_header  =   get_option('wp_estate_global_header','');
-                print '<img src="'.$global_header.'"  class="img-responsive" class="headerimg" alt="header_image"/>';
+                //print '<img src="'.$global_header.'"  class="img-responsive headerimg" alt="header_image"/>';
+                print '<div class="header-image" style="background-image: url('.$global_header.')"></div>';
                 break;
             case 2://theme slider
                 wpestate_present_theme_slider();

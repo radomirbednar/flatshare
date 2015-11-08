@@ -799,6 +799,18 @@ input.form-control::-moz-placeholder {
 
 .has_top_bar .has_header_type1 .header_media{
     padding-top: 130px;
+    /*
+    padding-top: 130px;
+    min-height: 650px;
+    position: relative;
+    */
+}
+.has_top_bar .has_header_type1 .header_media img {
+    /*
+    position: absolute;
+    min-height: 650px;
+    width: auto;
+    */
 }
 
 .admin-bar .has_header_type1 .header_media{
@@ -806,9 +818,15 @@ input.form-control::-moz-placeholder {
 }
 
 .admin-bar.has_top_bar .has_header_type1 .header_media{
-    padding-top: 164px;
+    padding-top: 164px;    
 }
 
+
+.header-image {
+    min-height: 650px;
+    background-repeat: no-repeat;
+    background-position: center center; 
+}
 
 
 .header_wrapper_inside{
@@ -7051,7 +7069,7 @@ table tbody tr td {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
-    height: 121px;
+    /*height: 121px;*/
     bottom: 21px;
     left: 50%;
     margin-left: -555px;
@@ -7166,8 +7184,8 @@ table tbody tr td {
     width: 926px;
     float: left;
     padding: 13px 0px 13px 13px;
-    background-color: #fdfdfd;
-    height: 120px;
+    /*background-color: #fdfdfd;*/
+    /*height: 120px;*/
     border-bottom-left-radius: 4px;
     border-bottom: 1px solid #f0f0f0;
     border-left: 1px solid #f0f0f0;
@@ -7177,15 +7195,23 @@ table tbody tr td {
 .wpb_btn_adv_submit{
 
 }
-
-.adv-search-1 .form-control{
+.adv-search-1 .form-control-quarter,
+.adv-search-1 .form-control-half,
+.adv-search-1 .form-control {
     width: 215px;
     display: inline;
     float: left;
-    margin: 0px 13px 13px 0px;
+    margin: 0px 13px 0px 0px;
     padding:0px;
     font-size:13px;
     color: #434a54;
+}
+
+.adv-search-1 .form-control-half {
+    width: 443px;
+}
+.adv-search-1 .form-control-full {
+    width: 886px;
 }
 
 #google_map_prop_list_sidebar .adv-search-1 .form-control {
@@ -7210,7 +7236,7 @@ table tbody tr td {
 }
 
 .adv-search-1 input[type=text] {
-    width: 215px;
+    width: 100%;
     margin: 0px 13px 13px 0px;
     padding: 9px 0px 9px 13px;
     color: #434a54;
@@ -11040,6 +11066,11 @@ button.wpb_btn-large, span.wpb_btn-large {
     color: #ffffff;
 }
 
+.triple-switch .switcher button.wpb_btn-large, 
+.triple-switch .switcher span.wpb_btn-large {
+    min-width: 145px;
+}
+
 
 .wpb_btn-primary{
     background-color: #185271!important;
@@ -12301,9 +12332,39 @@ span.wpcf7-form-control-wrap {
 .search_wrapper .nav-tabs {
     border-bottom: none;
 }
+.full-label label {
+    width: 100%;
+}
+.inline-checkboxes .flcheckbox {
+    float: left;
+    margin-bottom: 5px;
+    margin-right: 20px;
+}
+.flcheckbox input {
+    margin-right: 5px;
+    float: left;
+    margin-top: 1px;
+}
+.adv-search-1 .no-label {
+    padding-top: 21px;
+}
+select.form-control {
+    height: 37px;
+}
 /*
 .search_wrapper .nav-tabs > li.active > a, 
 .search_wrapper .nav-tabs > li.active > a:hover, 
 .search_wrapper .nav-tabs > li.active > a:focus {
     border-bottom: none;
 }*/
+.add-user-searching {
+    background: #fdfdfd;
+    border: 1px solid #f0f0f0;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.border-radius {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;    
+}

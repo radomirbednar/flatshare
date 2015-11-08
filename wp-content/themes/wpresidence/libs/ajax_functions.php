@@ -1425,7 +1425,8 @@ if( !function_exists('wpestate_ajax_update_profile') ):
             'couple',
             'pets',
             'smoker',
-            'activity'
+            'activity',
+            'user_gender'
         );
 
         foreach($user_data as $key){

@@ -27,6 +27,7 @@ $couple = get_user_meta_int($userID, 'couple');
 $pets = get_user_meta_int($userID, 'pets');
 $smoker = get_user_meta_int($userID, 'smoker');
 $activity = get_user_meta_int($userID, 'activity');
+$user_gender = get_user_meta_int($userID, 'user_gender');
 
 $user_origin = get_user_meta($userID, 'user_origin', true);
 $looking_where = get_user_meta($userID, 'looking_where', true);
@@ -44,19 +45,7 @@ if ($user_custom_picture == '') {
 }
 ?>
 
-<script>
-    jQuery(document).ready(function ($) {
-        $(".switcher button").click(function () {
-            var value = $(this).data("value");
-            var target = $(this).data("target");
-            //console.log(target + " " + value);
-            $(target).val(value);
 
-            $(this).parents(".switcher").find('button').not(this).removeClass('wpb_btn-on').addClass('wpb_btn-off');
-            $(this).removeClass('wpb_btn-off').addClass('wpb_btn-on');
-        });
-    });
-</script>
 
 <div id="user_profile_div" class="user_profile_div">
     <h3><?php
@@ -129,7 +118,9 @@ if ($user_custom_picture == '') {
         </div>
     </div>
 
-    <div class="add-user-personal profile-page row">
+    <h3><?php _e('Personal information', 'wpestate'); ?></h3>
+    
+    <div class="add-user-searching profile-page row border-radius">
 
         <div class="col-md-6">
 
@@ -153,20 +144,27 @@ if ($user_custom_picture == '') {
                 <button class="wpb_button wpb_btn-large <?php echo $sexual_preference == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sexual_preference" data-value="1"><?php _e('Straight', 'wpestate'); ?></button>
                 <button class="wpb_button wpb_btn-large <?php echo $sexual_preference == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sexual_preference" data-value="2"><?php _e('Bi / Gay', 'wpestate'); ?></button>
             </p>
-            
+
+            <p class="switcher">
+                <input type="hidden" id="user_gender" name="user_gender" value="<?php echo (int) $user_gender ?>">
+                <label><?php _e('Gender', 'wpestate'); ?></label>
+                <button class="wpb_button wpb_btn-large <?php echo $user_gender == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#user_gender" data-value="1"><?php _e('Male', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $user_gender == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#user_gender" data-value="2"><?php _e('Female', 'wpestate'); ?></button>
+            </p>
+
             <p class="switcher">
                 <input type="hidden" id="sleeping_span" name="sleeping_span" value="<?php echo (int) $sleeping_span ?>">
                 <label><?php _e('Sleep during week', 'wpestate'); ?></label>
                 <button class="wpb_button wpb_btn-large <?php echo $sleeping_span == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sleeping_span" data-value="1"><?php _e('Before 11PM', 'wpestate'); ?></button>
                 <button class="wpb_button wpb_btn-large <?php echo $sleeping_span == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sleeping_span" data-value="2"><?php _e('After 11PM', 'wpestate'); ?></button>
             </p>
-            
+
             <p class="switcher">
                 <input type="hidden" id="couple" name="couple" value="<?php echo (int) $couple ?>">
                 <label><?php _e('Couple', 'wpestate'); ?></label>
                 <button class="wpb_button wpb_btn-large <?php echo $couple == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#couple" data-value="1"><?php _e('Alone', 'wpestate'); ?></button>
                 <button class="wpb_button wpb_btn-large <?php echo $couple == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#couple" data-value="2"><?php _e('In couple', 'wpestate'); ?></button>
-            </p>            
+            </p>
 
             <p class="switcher">
                 <input type="hidden" id="pets" name="pets" value="<?php echo (int) $pets ?>">
@@ -174,29 +172,33 @@ if ($user_custom_picture == '') {
                 <button class="wpb_button wpb_btn-large <?php echo $pets == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#pets" data-value="1"><?php _e('No pets', 'wpestate'); ?></button>
                 <button class="wpb_button wpb_btn-large <?php echo $pets == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#pets" data-value="2"><?php _e('Pets', 'wpestate'); ?></button>
             </p>
-            
-            <p class="switcher">
-                <input type="hidden" id="activity" name="activity" value="<?php echo (int) $activity ?>">
-                <label><?php _e('Activity', 'wpestate'); ?></label>
-                <button class="wpb_button wpb_btn-large <?php echo $activity == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="1"><?php _e('Student', 'wpestate'); ?></button>
-                <button class="wpb_button wpb_btn-large <?php echo $activity == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="2"><?php _e('Professional', 'wpestate'); ?></button>
-            </p>            
-
-            <p>
-                <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
-                <input type="text" id="looking_where" class="form-control" value="<?php echo esc_attr($looking_where) ?>"  name="looking_where">
-            </p>
-
 
         </div>
 
 
 
         <div class="col-md-6">
-            <?php
-            $coutnries = fl_get_countries();
-            ?>
+
             <p>
+                <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
+                <input type="text" id="looking_where" class="form-control" value="<?php echo esc_attr($looking_where) ?>"  name="looking_where">
+            </p>
+            <script>
+                jQuery(document).ready(function ($) {
+                    jQuery("#when_move").datepicker({
+                        dateFormat: "yy-mm-dd",
+                    }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
+                });
+            </script>
+            <p>
+                <label><?php _e('When you can move in', 'wpestate'); ?></label>
+                <input type="text" id="when_move" class="form-control" value="<?php echo esc_attr($when_move) ?>"  name="looking_where">
+            </p>
+
+            <p>
+                <?php
+                $coutnries = fl_get_countries();
+                ?>
                 <label for="user_origin"><?php _e('Country of origin', 'wpestate'); ?></label>
                 <select id="user_origin" name="user_origin" class="form-control">
                     <option value=""><?php _e('Select country', 'wpestate'); ?></option>
@@ -217,15 +219,26 @@ if ($user_custom_picture == '') {
                 <input type="text" id="user_age" class="form-control" value="<?php echo (int) $user_age; ?>"  name="user_age">
             </p>
 
-            <p>
-                <?php _e('House skills', 'wpestate'); ?>
+
+
+            <p class="switcher">
+                <input type="hidden" id="activity" name="activity" value="<?php echo (int) $activity ?>">
+                <label><?php _e('Activity', 'wpestate'); ?></label>
+                <button class="wpb_button wpb_btn-large <?php echo $activity == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="1"><?php _e('Student', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $activity == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="2"><?php _e('Professional', 'wpestate'); ?></button>
+            </p>
+
+
+
+            <p class="inline-checkboxes">
+                <label><?php _e('House skills', 'wpestate'); ?></label>
                 <?php
                 $skills = fl_get_house_skills();
                 if (!empty($skills)):
                     foreach ($skills as $skill):
                         $selected = in_array($skill->id_skill, (array) $user_skill_ids) ? ' checked ' : '';
                         ?>
-                        <span class="checkbox">
+                        <span class="flcheckbox">
                             <label>
                                 <input name="skill[]" type="checkbox" value="<?php echo (int) $skill->id_skill ?>" <?php echo $selected ?>><?php esc_attr_e($skill->name) ?>
                             </label>
@@ -235,9 +248,12 @@ if ($user_custom_picture == '') {
                 endif;
                 ?>
             </p>
-            
-            <p>
-                <?php _e('Language skills', 'wpestate'); ?>
+
+        </div>
+
+        <div class="col-xs-12">
+            <p class="inline-checkboxes">
+                <label><?php _e('Language skills', 'wpestate'); ?></label>
 
                 <?php
                 $languages = fl_get_languages();
@@ -246,15 +262,14 @@ if ($user_custom_picture == '') {
                     foreach ($languages as $lang):
                         $selected = in_array($lang->id_lang, (array) $user_language_ids) ? ' checked ' : '';
                         ?>
-                        <span class="checkbox">
+                        <span class="flcheckbox">
                             <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>" <?php echo $selected ?>><?php esc_attr_e($lang->name) ?></label>
                         </span>
                         <?php
                     endforeach;
                 endif;
                 ?>
-            </p>            
-
+            </p>
         </div>
 
 
