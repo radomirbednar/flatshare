@@ -1,12 +1,12 @@
 <?php
 // Template Name: Users list
 // Wp Estate Pack
- 
-get_header(); 
-wp_suspend_cache_addition(true); 
-$options = wpestate_page_details($post->ID); 
+
+get_header();
+wp_suspend_cache_addition(true);
+$options = wpestate_page_details($post->ID);
 $col_class = 4;
- 
+
 if ($options['content_class'] == 'col-md-12') {
     $col_class = 3;
 }
@@ -15,7 +15,7 @@ if ($options['content_class'] == 'col-md-12') {
     <?php get_template_part('templates/breadcrumbs'); ?>  
     <div class=" <?php print $options['content_class']; ?> "> 
         <?php get_template_part('templates/ajax_container'); ?>
- 
+
         <?php
         while (have_posts()) : the_post();
             if (esc_html(get_post_meta($post->ID, 'page_show_title', true)) != 'no') {
@@ -25,11 +25,7 @@ if ($options['content_class'] == 'col-md-12') {
             <div class="single-content"><?php the_content(); ?></div>
             <?php
         endwhile;
-        ?>                 
-
-
-
-
+        ?>                  
         <div id="listing_ajax_container_agent"> 
 
             <?php
@@ -42,62 +38,33 @@ if ($options['content_class'] == 'col-md-12') {
             $total_query = count($query);
             $total_pages = intval($total_users / $number) + 1;
 
-            
             //get_user_meta() vs. get_userdata() vs. get_the_author_meta() - place for improvement
-            
-            
+
+
             foreach ($query as $q) {
- 
+
                 $first_name = get_the_author_meta('first_name', $q->ID);
                 $last_name = get_the_author_meta('last_name', $q->ID);
-                $user_email = get_the_author_meta('user_email', $q->ID);
-                $user_mobile = get_the_author_meta('mobile', $q->ID);
-                $user_phone = get_the_author_meta('phone', $q->ID);
-                $description = get_the_author_meta('description', $q->ID);
-               
                 $user_facebook = get_the_author_meta('facebook', $q->ID);
                 $user_twitter = get_the_author_meta('twitter', $q->ID);
                 $user_linkedin = get_the_author_meta('linkedin', $q->ID);
                 $user_pinterest = get_the_author_meta('pinterest', $q->ID);
-                $user_skype = get_the_author_meta('skype', $q->ID); 
-                $user_website = get_the_author_meta('website', $q->ID); 
                 $photo_url = get_the_author_meta('custom_picture', $q->ID);
-                 
                 $user_gender = get_user_meta_int($q->ID, 'user_gender');
                 $user_age = get_user_meta_int($q->ID, 'user_age');
-                
                 $looking_where = get_user_meta($q->ID, 'looking_where', true);
-                
-                
-                
-                
-                //$user_age = get_the_
-                
-                
-                 
-                //echo get_avatar($q->ID, 80);   
-                /*
-                  $extra = array(
-                  'data-original' => $preview[0],
-                  'class' => 'lazyload img-responsive',
-                  );
-                  $thumb_prop = get_the_post_thumbnail($post->ID, 'property_listings', $extra);
-                 */ 
-                
-                
-                
-                $thumb_prop = '<img src="' . $photo_url . '" alt="agent-images">'; 
-                
-                 
+                $user_gender_array = array('1' => __('female', 'wpestate'), '2' => __('male', 'wpestate'));
+                $thumb_prop = '<img src="' . $photo_url . '" alt="agent-images">';
+
+
                 if ($photo_url == '') {
                     $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
                 }
-                
                 ?>
- 
+
                 <div class="col-md-3 listing_wrapper">
                     <div class="agent_unit" data-link="<?php print $link; ?>"> 
-                        
+
                         <div class="agent-unit-img-wrapper">
                             <?php
                             print $thumb_prop;
@@ -106,33 +73,19 @@ if ($options['content_class'] == 'col-md-12') {
                             ?>
                         </div>  
 
-                        <div class="">
-                            
+                        <div class="user_unit_info"> 
                             <?php
-                            
-                            print '<h4> <a href="' . $link . '">' . $first_name . ' '. $last_name.'</a></h4>
-                                
+                            print '<h4> <a href="' . $link . '">' . $first_name . ' ' . $last_name . '</a></h4>                                
                             <div class="agent_position">' . $looking_where . '</div>';
-
-                            if ($agent_phone) {
-                                print '<div class="agent_detail"><i class="fa fa-phone"></i>' . $agent_phone . '</div>';
+                            if ($user_age) {
+                                print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . $user_age . '</div>';
+                            } 
+                            if ($user_gender) { 
+                                print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
                             }
-                            if ($agent_mobile) {
-                                print '<div class="agent_detail"><i class="fa fa-mobile"></i>' . $agent_mobile . '</div>';
-                            }
-
-                            if ($agent_email) {
-                                print '<div class="agent_detail"><i class="fa fa-envelope-o"></i>' . $agent_email . '</div>';
-                            }
-
-                            if ($agent_skype) {
-                                print '<div class="agent_detail"><i class="fa fa-skype"></i>' . $agent_skype . '</div>';
-                            }
-                            
-                            ?>
-                            
+                            ?> 
                         </div>  
-                        
+
                         <div class="agent_unit_social">
                             <div class="social-wrapper"> 
 
@@ -164,7 +117,7 @@ if ($options['content_class'] == 'col-md-12') {
 
             <?php
             if ($total_users > $total_query) {
- 
+
                 $current_page = max(1, get_query_var('paged'));
                 $pages = paginate_links(array(
                     'base' => get_pagenum_link(1) . '%_%',
@@ -174,21 +127,15 @@ if ($options['content_class'] == 'col-md-12') {
                     'prev_next' => false,
                     'type' => 'array',
                 ));
-           
-                  if( is_array( $pages ) ) {
-        $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
-        echo '<div class="pagination-wrap"><ul class="pagination">';
-        foreach ( $pages as $page ) {
-                echo "<li>$page</li>";
-        }
-       echo '</ul></div>';
-        }
-                
-                
-                
-                
-                
-                
+
+                if (is_array($pages)) {
+                    $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+                    echo '<div class="pagination-wrap"><ul class="pagination">';
+                    foreach ($pages as $page) {
+                        echo "<li>$page</li>";
+                    }
+                    echo '</ul></div>';
+                }
             }
             ?>          
         </div>

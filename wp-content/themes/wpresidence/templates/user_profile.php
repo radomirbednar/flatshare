@@ -119,7 +119,7 @@ if ($user_custom_picture == '') {
     </div>
 
     <h3><?php _e('Personal information', 'wpestate'); ?></h3>
-    
+
     <div class="add-user-searching profile-page row border-radius">
 
         <div class="col-md-6">
@@ -172,7 +172,7 @@ if ($user_custom_picture == '') {
                 <button class="wpb_button wpb_btn-large <?php echo $pets == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#pets" data-value="1"><?php _e('No pets', 'wpestate'); ?></button>
                 <button class="wpb_button wpb_btn-large <?php echo $pets == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#pets" data-value="2"><?php _e('Pets', 'wpestate'); ?></button>
             </p>
-            
+
             <p class="switcher">
                 <input type="hidden" id="smoker" name="smoker" value="<?php echo (int) $smoker ?>">
                 <label><?php _e('Smoker', 'wpestate'); ?></label>
@@ -186,7 +186,7 @@ if ($user_custom_picture == '') {
                 <button class="wpb_button wpb_btn-large <?php echo $party == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#party" data-value="1"><?php _e('Often', 'wpestate'); ?></button>
                 <button class="wpb_button wpb_btn-large <?php echo $party == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#party" data-value="2"><?php _e('Not often', 'wpestate'); ?></button>
             </p>            
-            
+
         </div>
 
 
@@ -197,6 +197,36 @@ if ($user_custom_picture == '') {
                 <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
                 <input type="text" id="looking_where" class="form-control" value="<?php echo esc_attr($looking_where) ?>"  name="looking_where">
             </p>
+
+            <script>
+
+                function loadScript(src, callback) {
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    if (callback)
+                        script.onload = callback;
+                    document.getElementsByTagName("head")[0].appendChild(script);
+                    script.src = src;
+                }
+
+                loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&callback=initialize');
+ 
+                function initialize() {
+                    
+                    
+                    var options = {
+                        types: ['(cities)'],
+                        //componentRestrictions: {country: "cz"}
+                    };
+                    
+                    var input = document.getElementById('looking_where');
+                    var autocomplete = new google.maps.places.Autocomplete(input, options);
+                
+    
+                    }
+
+            </script>
+
             <script>
                 jQuery(document).ready(function ($) {
                     jQuery("#when_move").datepicker({
