@@ -12402,6 +12402,26 @@ select.form-control {
 .tpadding {
     padding-top: 5px;
 }
-.wpb_button {
-    cursor: pointer;
+
+
+.user_unit_info{
+    position: relative;
+    
+    
 }
+
+img.user_gender_image{
+    
+    border-bottom: none;
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 0;
+ 
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    
+    
+}
+
