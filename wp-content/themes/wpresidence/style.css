@@ -12389,3 +12389,15 @@ select.form-control {
 .btn-action {
     background: #fb6a5c;
 }*/
+.adv-search-1 a {
+    color: #3c90be;
+}
+.adv-search-1 a:hover {
+    text-decoration: underline;
+}
+#more-search-options {
+    
+}
+.tpadding {
+    padding-top: 5px;
+}
