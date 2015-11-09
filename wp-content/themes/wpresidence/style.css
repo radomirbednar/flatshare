@@ -11059,8 +11059,9 @@ ul.wpb_thumbnails-fluid > li,
 }
 
 button.wpb_btn-large, span.wpb_btn-large {
-    padding: 9px 26px!important;
-    font-size: 13px!important;
+    text-align: center;
+    padding: 9px 0px !important;
+    font-size: 13px !important;
     text-transform: uppercase;
     line-height: normal!important;
     -webkit-border-radius: 3px!important;
