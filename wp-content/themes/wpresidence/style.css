@@ -8648,7 +8648,7 @@ table tbody tr td {
 
 .profile-page label{
     margin: 0px 0px 6px 0px;
-    width:100%;
+    /*width:100%;*/
 }
 
 #profile-image{

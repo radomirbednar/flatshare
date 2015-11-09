@@ -1900,7 +1900,7 @@ function filter_invoices() {
 
 jQuery(document).ready(function ($) {
     $(".switcher .wpb_button").click(function (e) {
-        e.preventDefault();
+        //e.preventDefault();
         //var value = $(this).data("value");
         //var target = $(this).data("target");
         //console.log(target + " " + value);
