@@ -7278,30 +7278,34 @@ table tbody tr td {
 }
 
 #advanced_submit_2{
-    width: 184px;
+    width: 156px;
     position: absolute;
-    top: 0px;
-    right: 0px;
+    bottom: 5px;
+    right: 20px;
     padding: 37px 45px 37px 45px;
     height: 121px;
-    color: #99a3b1;
-    background-color: transparent;
+    color: white;
+    background-color: #fb6a5c;
     border: none;
     font-size: 16px;
     white-space: normal;
     line-height: 1.45em;
     font-weight: 600;
     margin-right: 0px;
+    /*
     margin-bottom: 1px!important;
     margin-top: -1px;
+    */
+    /*
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+    */
 }
 
 
 
 #advanced_submit_2:hover{
-    background-color: #3C90BE;
+    background-color: #ff5342;
     color: #fff;
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
@@ -12380,3 +12384,7 @@ select.form-control {
 .wauto {
     width: auto !important;
 }
+/*
+.btn-action {
+    background: #fb6a5c;
+}*/

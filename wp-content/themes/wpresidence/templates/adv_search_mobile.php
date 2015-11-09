@@ -112,7 +112,7 @@ $class_close                        =   '';
         }
         ?>
         
-        <button class="wpb_button  wpb_btn-info wpb_btn-large" id="advanced_submit_2_mobile"><?php _e('Search Properties','wpestate');?></button>
+        <button class="wpb_button  wpb_btn-info wpb_btn-large" btn-action id="advanced_submit_2_mobile"><?php _e('Search','wpestate');?></button>
         <button class="wpb_button  wpb_btn-info wpb_btn-large" id="showinpage_mobile"><?php _e('See first results here ','wpestate');?></button>
         
         

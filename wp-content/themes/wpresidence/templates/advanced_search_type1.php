@@ -266,7 +266,7 @@ if ($extended_search == 'yes') {
                     ?>
                 </div>
 
-                <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large" id="advanced_submit_2" value="<?php _e('SEARCH PROPERTIES', 'wpestate'); ?>">
+                <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large btn-action border-radius" id="advanced_submit_2" value="<?php _e('SEARCH', 'wpestate'); ?>">
                 <?php if ($adv_search_type != 2) { ?>
                     <div id="results">
                         <?php _e('We found ', 'wpestate'); ?> <span id="results_no">0</span> <?php _e('results.', 'wpestate'); ?>
@@ -296,7 +296,7 @@ if ($extended_search == 'yes') {
                     ?>
                 </div>
 
-                <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large" id="advanced_submit_2" value="<?php _e('SEARCH PROPERTIES', 'wpestate'); ?>">
+                <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large border-radius" id="advanced_submit_2" value="<?php _e('Search', 'wpestate'); ?>">
                 <?php if ($adv_search_type != 2) { ?>
                     <div id="results">
                         <?php _e('We found ', 'wpestate'); ?> <span id="results_no">0</span> <?php _e('results.', 'wpestate'); ?>
