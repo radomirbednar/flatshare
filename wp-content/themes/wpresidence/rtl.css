@@ -7435,8 +7435,9 @@ ul.wpb_thumbnails-fluid > li,
     border-left:none!important;
     text-shadow:none!important;
 }
-
-button.wpb_btn-large, span.wpb_btn-large {
+label.wpb_btn-large, 
+button.wpb_btn-large, 
+span.wpb_btn-large {
     padding: 9px 26px!important;
     font-size: 13px!important;
     text-transform: uppercase;
@@ -7789,10 +7790,11 @@ div.dsidx-results-widget .dsidx-controls {
     float: right;
     margin-right: 30px;
 }
-
+.adv_extended_close_adv,
 #adv_extended_close_adv {
 	left: 14px;
 	right: inherit;
+        z-index: 3666;
 }
 
 .extended_search_check_wrapper {
