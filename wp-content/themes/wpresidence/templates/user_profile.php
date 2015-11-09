@@ -390,6 +390,36 @@ if ($user_custom_picture == '') {
                     ?>
                 </p>
             </div>
+
+            <div class="fl-row adv_search_slider">
+                <script>
+                    jQuery(document).ready(function ($) {
+                        jQuery("#slider_rent").slider({
+                            //range: true,
+                            "value": 150,
+                            //min: parseInt($('#age_low').val()),
+                            //max: parseInt($('#age_max').val()),
+                            //values: [$('#age_low').val(), $('#age_max').val()], // defaultni hodnoty
+                            slide: function (event, ui) {
+                                //jQuery('#rent_label_text').val(ui.values[0]);
+                                //jQuery('#age_max').val(ui.values[1]);
+                                //jQuery("#rent_label_text").text(ui.values[0].format());
+                            }
+                        });
+                    });
+                </script>
+                <?php
+                $age_min = 0;
+                $age_max = 99;
+                ?>
+                <p>
+                    <label for="rent_amount" class="wauto"><?php _e('How much do you want to pay?:', 'wpestate'); ?></label>
+                    <span id="rent_label_text"><?php printf(__('%s', 'dokan'), (int) $age_min); ?></span>
+                </p>
+                <div id="slider_rent" class="fl-slider"></div>
+                <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $rent_amount; ?>">
+            </div>
+
         </div>
 
         <div class="col-xs-12">
