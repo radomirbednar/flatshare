@@ -12365,12 +12365,16 @@ select.form-control {
 .search_wrapper .nav-tabs > li.active > a:focus {
     border-bottom: none;
 }*/
-.add-user-searching {
+.add-user-personal {
     background: #fdfdfd;
     border: 1px solid #f0f0f0;
     padding-top: 25px;
     padding-bottom: 25px;
 }
+.add-user-personal input[type=text] {
+    margin-bottom: 13px;
+}
+
 .border-radius {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -12419,3 +12423,6 @@ img.user_gender_image{
 .wpb_button {
     cursor: pointer;
 } 
+.fl-row {
+    margin-bottom: 10px;
+}

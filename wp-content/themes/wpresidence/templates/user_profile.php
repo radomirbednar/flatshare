@@ -120,11 +120,11 @@ if ($user_custom_picture == '') {
 
     <h3><?php _e('Personal information', 'wpestate'); ?></h3>
 
-    <div class="add-user-searching profile-page row border-radius">
+    <div class="add-user-personal profile-page row border-radius">
 
         <div class="col-md-6">
 
-            <div class="switcher">
+            <div class="switcher fl-row">
                 <!--<input type="hidden" id="how_long" name="how_long" value="<?php echo (int) $how_long ?>">-->
                 <label><?php _e('For how long', 'wpestate'); ?></label>
 
@@ -140,7 +140,7 @@ if ($user_custom_picture == '') {
                 -->
             </div>
 
-            <div class="switcher">
+            <div class="switcher fl-row">
                 <!--<input type="hidden" id="looking_for" name="looking_for" value="<?php echo (int) $looking_for ?>">-->
                 <label><?php _e('Looking for', 'wpestate'); ?></label>
 
@@ -156,7 +156,7 @@ if ($user_custom_picture == '') {
                 -->
             </div>
 
-            <div class="switcher">
+            <div class="switcher fl-row">
                 <!--<input type="hidden" id="sexual_preference" name="sexual_preference" value="<?php echo (int) $sexual_preference ?>">-->
                 <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
 
@@ -172,7 +172,7 @@ if ($user_custom_picture == '') {
                 -->
             </div>
 
-            <div class="switcher">
+            <div class="switcher fl-row">
                 <!--<input type="hidden" id="user_gender" name="user_gender" value="<?php echo (int) $user_gender ?>">-->
                 <label><?php _e('Gender', 'wpestate'); ?></label>
 
@@ -188,7 +188,7 @@ if ($user_custom_picture == '') {
                 -->
             </div>
 
-            <div class="switcher">
+            <div class="switcher fl-row">
                 <!--<input type="hidden" id="sleeping_span" name="sleeping_span" value="<?php echo (int) $sleeping_span ?>">-->
                 <label><?php _e('Sleep during week', 'wpestate'); ?></label>
 
@@ -204,7 +204,7 @@ if ($user_custom_picture == '') {
                 -->
             </div>
 
-            <div class="switcher">
+            <div class="switcher fl-row">
                 <!--<input type="hidden" id="couple" name="couple" value="<?php echo (int) $couple ?>">-->
                 <label><?php _e('Couple', 'wpestate'); ?></label>
 
@@ -220,7 +220,7 @@ if ($user_custom_picture == '') {
                 -->
             </div>
 
-            <div class="switcher">
+            <div class="switcher fl-row">
                 <!--<input type="hidden" id="pets" name="pets" value="<?php echo (int) $pets ?>">-->
                 <label><?php _e('Pets', 'wpestate'); ?></label>
 
@@ -236,7 +236,7 @@ if ($user_custom_picture == '') {
                 -->
             </div>
 
-            <div class="switcher">
+            <div class="switcher fl-row">
                 <!--<input type="hidden" id="smoker" name="smoker" value="<?php echo (int) $smoker ?>">-->
                 <label><?php _e('Smoker', 'wpestate'); ?></label>
 
@@ -252,7 +252,7 @@ if ($user_custom_picture == '') {
                 -->
             </div>
 
-            <div class="switcher">
+            <div class="switcher fl-row">
                 <!--<input type="hidden" id="party" name="party" value="<?php echo (int) $party ?>">-->
                 <label><?php _e('Party', 'wpestate'); ?></label>
 
@@ -274,10 +274,12 @@ if ($user_custom_picture == '') {
 
         <div class="col-md-6">
 
-            <p>
+            <div class="fl-row">
                 <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
-                <input type="text" id="looking_where" class="form-control" value="<?php echo esc_attr($looking_where) ?>"  name="looking_where">
-            </p>
+                <div class="value-row">
+                    <input type="text" id="looking_where" class="form-control" value="<?php echo esc_attr($looking_where) ?>"  name="looking_where">
+                </div>
+            </div>
 
             <script>
 
@@ -315,96 +317,102 @@ if ($user_custom_picture == '') {
                     }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
                 });
             </script>
-            <p>
+            <div class="fl-row">
                 <label><?php _e('Disponibility', 'wpestate'); ?></label>
-                <input type="text" id="when_move" class="form-control" value="<?php echo esc_attr($when_move) ?>"  name="when_move">
-            </p>
+                <div class="value-row">
+                    <input type="text" id="when_move" class="form-control" value="<?php echo esc_attr($when_move) ?>"  name="when_move">
+                </div>
+            </div>
 
-            <p>
+            <div class="fl-row">
                 <?php
                 $coutnries = fl_get_countries();
                 ?>
                 <label for="user_origin"><?php _e('Country of origin', 'wpestate'); ?></label>
+                <div class="value-row">
+                    <select id="user_origin" name="user_origin" class="form-control">
+                        <option value=""><?php _e('Select country', 'wpestate'); ?></option>
+                        <?php
+                        if (!empty($coutnries)):
+                            foreach ($coutnries as $country):
+                                ?>
+                                <option value="<?php echo esc_attr($country->iso) ?>" <?php echo $user_origin == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
+                                <?php
+                            endforeach;
+                        endif;
+                        ?>
+                    </select>
+                </div>
+            </div>
 
-                <select id="user_origin" name="user_origin" class="form-control">
-                    <option value=""><?php _e('Select country', 'wpestate'); ?></option>
-                    <?php
-                    if (!empty($coutnries)):
-                        foreach ($coutnries as $country):
-                            ?>
-                            <option value="<?php echo esc_attr($country->iso) ?>" <?php echo $user_origin == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
-                            <?php
-                        endforeach;
-                    endif;
-                    ?>
-                </select>
-
-            </p>
-
-            <p>
+            <div class="fl-row">
                 <label for="user_age"><?php _e('Your age', 'wpestate'); ?></label>
-                <input type="text" id="user_age" class="form-control" value="<?php echo (int) $user_age; ?>"  name="user_age">
-            </p>
+                <div class="value-row">
+                    <input type="text" id="user_age" class="form-control" value="<?php echo (int) $user_age; ?>"  name="user_age">
+                </div>
+            </div>
 
-            <p class="switcher">
+            <div class="switcher fl-row">
                 <!--<input type="hidden" id="activity" name="activity" value="<?php echo (int) $activity ?>">-->
 
                 <label><?php _e('Activity', 'wpestate'); ?></label>
 
-            <div class="value-row">
-                <input id="activity-1" name="activity" type="radio" value="1" class="hidden" <?php echo isset($activity) && 1 == $activity ? ' checked="checked" ' : '' ?>>
-                <input id="activity-2" name="activity" type="radio" value="2" class="hidden" <?php echo isset($activity) && 2 == $activity ? ' checked="checked" ' : '' ?>>
-                <label for="activity-1" class="wpb_button wpb_btn-large <?php echo isset($activity) && 1 == $activity ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Student', 'wpestate'); ?></label>
-                <label for="activity-2" class="wpb_button wpb_btn-large <?php echo isset($activity) && 2 == $activity ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Professional', 'wpestate'); ?></label>
+                <div class="value-row">
+                    <input id="activity-1" name="activity" type="radio" value="1" class="hidden" <?php echo isset($activity) && 1 == $activity ? ' checked="checked" ' : '' ?>>
+                    <input id="activity-2" name="activity" type="radio" value="2" class="hidden" <?php echo isset($activity) && 2 == $activity ? ' checked="checked" ' : '' ?>>
+                    <label for="activity-1" class="wpb_button wpb_btn-large <?php echo isset($activity) && 1 == $activity ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Student', 'wpestate'); ?></label>
+                    <label for="activity-2" class="wpb_button wpb_btn-large <?php echo isset($activity) && 2 == $activity ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Professional', 'wpestate'); ?></label>
+                </div>
+                <!--
+                <button class="wpb_button wpb_btn-large <?php echo $activity == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="1"><?php _e('Student', 'wpestate'); ?></button>
+                <button class="wpb_button wpb_btn-large <?php echo $activity == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="2"><?php _e('Professional', 'wpestate'); ?></button>
+                -->
             </div>
-            <!--
-            <button class="wpb_button wpb_btn-large <?php echo $activity == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="1"><?php _e('Student', 'wpestate'); ?></button>
-            <button class="wpb_button wpb_btn-large <?php echo $activity == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="2"><?php _e('Professional', 'wpestate'); ?></button>
-            -->
-            </p>
 
 
-
-            <label><?php _e('House skills', 'wpestate'); ?></label>
-            <p class="inline-checkboxes">                
-                <?php
-                $skills = fl_get_house_skills();
-                if (!empty($skills)):
-                    foreach ($skills as $skill):
-                        $selected = in_array($skill->id_skill, (array) $user_skill_ids) ? ' checked ' : '';
-                        ?>
-                        <span class="flcheckbox">
-                            <label>
-                                <input name="skill[]" type="checkbox" value="<?php echo (int) $skill->id_skill ?>" <?php echo $selected ?>><?php esc_attr_e($skill->name) ?>
-                            </label>
-                        </span>
-                        <?php
-                    endforeach;
-                endif;
-                ?>
-            </p>
-
+            <div class="fl-row">
+                <label><?php _e('House skills', 'wpestate'); ?></label>
+                <p class="inline-checkboxes">                
+                    <?php
+                    $skills = fl_get_house_skills();
+                    if (!empty($skills)):
+                        foreach ($skills as $skill):
+                            $selected = in_array($skill->id_skill, (array) $user_skill_ids) ? ' checked ' : '';
+                            ?>
+                            <span class="flcheckbox">
+                                <label>
+                                    <input name="skill[]" type="checkbox" value="<?php echo (int) $skill->id_skill ?>" <?php echo $selected ?>><?php esc_attr_e($skill->name) ?>
+                                </label>
+                            </span>
+                            <?php
+                        endforeach;
+                    endif;
+                    ?>
+                </p>
+            </div>
         </div>
 
         <div class="col-xs-12">
-            <label><?php _e('Language skills', 'wpestate'); ?></label>
-            <p class="inline-checkboxes">                
+            <div class="fl-row">
+                <label><?php _e('Language skills', 'wpestate'); ?></label>
+                <p class="inline-checkboxes">                
 
-                <?php
-                $languages = fl_get_languages();
+                    <?php
+                    $languages = fl_get_languages();
 
-                if (!empty($languages)):
-                    foreach ($languages as $lang):
-                        $selected = in_array($lang->id_lang, (array) $user_language_ids) ? ' checked ' : '';
-                        ?>
-                        <span class="flcheckbox">
-                            <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>" <?php echo $selected ?>><?php esc_attr_e($lang->name) ?></label>
-                        </span>
-                        <?php
-                    endforeach;
-                endif;
-                ?>
-            </p>
+                    if (!empty($languages)):
+                        foreach ($languages as $lang):
+                            $selected = in_array($lang->id_lang, (array) $user_language_ids) ? ' checked ' : '';
+                            ?>
+                            <span class="flcheckbox">
+                                <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>" <?php echo $selected ?>><?php esc_attr_e($lang->name) ?></label>
+                            </span>
+                            <?php
+                        endforeach;
+                    endif;
+                    ?>
+                </p>
+            </div>
         </div>
 
 
