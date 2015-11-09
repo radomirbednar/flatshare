@@ -305,8 +305,6 @@ if ($user_custom_picture == '') {
                 <input type="text" id="user_age" class="form-control" value="<?php echo (int) $user_age; ?>"  name="user_age">
             </p>
 
-
-
             <p class="switcher">
                 <!--<input type="hidden" id="activity" name="activity" value="<?php echo (int) $activity ?>">-->
 
