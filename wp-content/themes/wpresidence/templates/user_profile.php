@@ -278,7 +278,7 @@ if ($user_custom_picture == '') {
             </script>
             <p>
                 <label><?php _e('Disponibility', 'wpestate'); ?></label>
-                <input type="text" id="when_move" class="form-control" value="<?php echo esc_attr($when_move) ?>"  name="looking_where">
+                <input type="text" id="when_move" class="form-control" value="<?php echo esc_attr($when_move) ?>"  name="when_move">
             </p>
 
             <p>
