@@ -7442,7 +7442,7 @@ table tbody tr td {
     float: left;
     margin-right: 6px;
 }
-
+.adv_extended_close_adv,
 #adv_extended_close_adv{
     position: absolute;
     top: 0px;
@@ -11057,8 +11057,9 @@ ul.wpb_thumbnails-fluid > li,
     border-right:none!important;
     text-shadow:none!important;
 }
-
-button.wpb_btn-large, span.wpb_btn-large {
+label.wpb_btn-large, 
+button.wpb_btn-large, 
+span.wpb_btn-large {
     text-align: center;
     padding: 9px 0px !important;
     font-size: 13px !important;
@@ -11070,7 +11071,7 @@ button.wpb_btn-large, span.wpb_btn-large {
     min-width:185px;
     color: #ffffff;
 }
-
+.triple-switch .switcher label.wpb_btn-large,
 .triple-switch .switcher button.wpb_btn-large, 
 .triple-switch .switcher span.wpb_btn-large {
     min-width: 145px;
@@ -12400,4 +12401,7 @@ select.form-control {
 }
 .tpadding {
     padding-top: 5px;
+}
+.wpb_button {
+    cursor: pointer;
 }

@@ -807,22 +807,24 @@ jQuery(document).ready(function ($) {
 
     ////////////////////////////////////////////////////////////////////////////
 
-
-    $('#adv_extended_options_text_adv ').click(function () {
+    $('#adv_extended_options_text_adv, #roommate-advance').click(function (e) {
+        e.preventDefault();
         $('.adv-search-1.adv_extended_class').css('height', 'auto');
         $('.adv_extended_class .adv1-holder').css('height', 'auto');
         $(this).parent().find('.adv_extended_options_text').hide();
         $(this).parent().find('.extended_search_check_wrapper').slideDown();
-        $(this).parent().find('#adv_extended_close_adv').show();
+        $(this).parent().find('#adv_extended_close_adv, .adv_extended_close_adv').show();
     });
 
-    $('#adv_extended_close_adv').click(function () {
+    $('#adv_extended_close_adv, #roommate_extended_close_adv').click(function () {
         $(this).parent().parent().find('.extended_search_check_wrapper').slideUp();
         $(this).hide();
         $(this).parent().parent().find('.adv_extended_options_text').show();
         $('.adv-search-1.adv_extended_class').removeAttr('style');
         $('.adv_extended_class .adv1-holder').removeAttr('style');
     });
+    
+    
 
 
     //////////////////////////////////////////////////////////////
@@ -1897,14 +1899,14 @@ function filter_invoices() {
 
 
 jQuery(document).ready(function ($) {
-    $(".switcher button").click(function (e) {
+    $(".switcher .wpb_button").click(function (e) {
         e.preventDefault();
-        var value = $(this).data("value");
-        var target = $(this).data("target");
+        //var value = $(this).data("value");
+        //var target = $(this).data("target");
         //console.log(target + " " + value);
-        $(target).val(value);
+        //$(target).val(value);
 
-        $(this).parents(".switcher").find('button').not(this).removeClass('wpb_btn-on').addClass('wpb_btn-off');
+        $(this).parents(".switcher").find('.wpb_button').not(this).removeClass('wpb_btn-on').addClass('wpb_btn-off');
         $(this).removeClass('wpb_btn-off').addClass('wpb_btn-on');
     });
 });
