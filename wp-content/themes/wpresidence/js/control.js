@@ -625,6 +625,9 @@ jQuery(document).ready(function ($) {
 
     wpestate_enable_slider('slider_price', 'price_low', 'price_max', 'amount', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
     
+    // price slider in roomamate listing tab filter
+    wpestate_enable_slider('slider_roommate_price', 'roommate_price_low', 'roommate_price_max', 'roommate_amount', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
+    
     $("#slider_price").slider({
         stop: function (event, ui) {
             if (typeof (show_pins) !== "undefined") {

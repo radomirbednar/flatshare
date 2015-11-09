@@ -50,7 +50,7 @@ if ($extended_search == 'yes') {
                         <p>
                             <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
                             <input type="text" id="looking_where" class="form-control w100" value="<?php echo esc_attr($looking_where) ?>"  name="looking_where">
-                        </p>    
+                        </p>
                     </div>
 
                     <div class="dropdown form-control-half">
@@ -61,12 +61,12 @@ if ($extended_search == 'yes') {
                             <button data-value="1" data-target="#user_gender" class="wpb_button wpb_btn-large <?php echo isset($_POST['user_gender']) && 1 == $_POST['user_gender'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Straight', 'wpestate'); ?></button>
                             <button data-value="2" data-target="#user_gender" class="wpb_button wpb_btn-large <?php echo isset($_POST['user_gender']) && 2 == $_POST['user_gender'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Bi / Gay', 'wpestate'); ?></button>
                         </div>
-                    </div>                    
+                    </div>
 
                     <div class="clearfix"></div>
                     <!-- sliders -->
 
-                    <div class="adv_search_slider">
+                    <div class="adv_search_slider"><!-- age slider -->
                         <script>
                             jQuery(document).ready(function ($) {
                                 jQuery("#slider_age").slider({
@@ -81,19 +81,34 @@ if ($extended_search == 'yes') {
                                     }
                                 });
                             });
-                        </script>                        
+                        </script>
                         <?php
                         $age_min = 0;
                         $age_max = 99;
                         ?>
                         <p>
                             <label for="age" class="wauto"><?php _e('Age range:', 'wpestate'); ?></label>
-                            <span id="age_label_text"  style="border:0; color:#f6931f; font-weight:bold;"><?php printf(__('%s to %s', 'dokan'), (int) $age_min, (int) $age_max); ?></span>
+                            <span id="age_label_text"><?php printf(__('%s to %s', 'dokan'), (int) $age_min, (int) $age_max); ?></span>
                         </p>
                         <div id="slider_age" class="fl-slider"></div>
                         <input type="hidden" id="age_low"  name="age_low"  value="<?php echo (int) $age_min; ?>" />
                         <input type="hidden" id="age_max"  name="age_max"  value="<?php echo (int) $age_max; ?>" />
-                    </div>                    
+                    </div><!-- /age slider -->
+
+
+                    <div class="adv_search_slider"><!-- price slider -->
+                        <?php
+                        $roommate_price_low = 0;
+                        $roommate_price_max = 1200000;
+                        ?>                        
+                        <p>
+                            <label for="roommate_amount" class="wauto"><?php _e('Price range:', 'wpestate'); ?></label>
+                            <span id="roommate_amount" class="slide-label">$ 0 to $ 1.500.000</span>
+                        </p>
+                        <div id="slider_roommate_price" class="fl-slider"></div>
+                        <input type="hidden" value="<?php echo (int) $roommate_price_low ?>" name="roommate_price_low" id="roommate_price_low">
+                        <input type="hidden" value="<?php echo (int) $roommate_price_max ?>" name="roommate_price_max" id="roommate_price_max">
+                    </div><!-- /price slider -->
 
 
                     <!-- /sliders -->
