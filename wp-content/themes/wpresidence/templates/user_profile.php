@@ -389,35 +389,36 @@ if ($user_custom_picture == '') {
                     endif;
                     ?>
                 </p>
+                <div class="clearfix"></div>
             </div>
 
             <div class="fl-row adv_search_slider">
+                <?php                
+                $default_rent = 200;
+                ?>                
                 <script>
                     jQuery(document).ready(function ($) {
                         jQuery("#slider_rent").slider({
                             //range: true,
-                            "value": 150,
-                            //min: parseInt($('#age_low').val()),
-                            //max: parseInt($('#age_max').val()),
+                            "value": <?php echo (int) $default_rent ?>,
+                            min: parseInt(0),
+                            max: parseInt(1200),
                             //values: [$('#age_low').val(), $('#age_max').val()], // defaultni hodnoty
                             slide: function (event, ui) {
+                                //console.log(ui);
                                 //jQuery('#rent_label_text').val(ui.values[0]);
                                 //jQuery('#age_max').val(ui.values[1]);
-                                //jQuery("#rent_label_text").text(ui.values[0].format());
+                                jQuery("#rent_label_text").text(ui.value.format());
                             }
                         });
                     });
                 </script>
-                <?php
-                $age_min = 0;
-                $age_max = 99;
-                ?>
                 <p>
                     <label for="rent_amount" class="wauto"><?php _e('How much do you want to pay?:', 'wpestate'); ?></label>
-                    <span id="rent_label_text"><?php printf(__('%s', 'dokan'), (int) $age_min); ?></span>
+                    <span id="rent_label_text" class="slide-label"><?php printf(__('%s', 'dokan'), (int) $default_rent); ?></span>
                 </p>
                 <div id="slider_rent" class="fl-slider"></div>
-                <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $rent_amount; ?>">
+                <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $default_rent; ?>">
             </div>
 
         </div>
