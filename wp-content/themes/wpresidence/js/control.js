@@ -616,9 +616,7 @@ jQuery(document).ready(function ($) {
                 return c.substring(name.length, c.length);
         }
         return "";
-    }
-
-
+    }    
 
     var my_custom_curr_symbol = decodeURI(getCookie('my_custom_curr_symbol'));
     var my_custom_curr_coef = parseFloat(getCookie('my_custom_curr_coef'));
@@ -626,6 +624,7 @@ jQuery(document).ready(function ($) {
     var my_custom_curr_cur_post = getCookie('my_custom_curr_cur_post');
 
     wpestate_enable_slider('slider_price', 'price_low', 'price_max', 'amount', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
+    
     $("#slider_price").slider({
         stop: function (event, ui) {
             if (typeof (show_pins) !== "undefined") {
@@ -638,6 +637,8 @@ jQuery(document).ready(function ($) {
     wpestate_enable_slider('slider_price_widget', 'price_low_widget', 'price_max_widget', 'amount_wd', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
     wpestate_enable_slider('slider_price_mobile', 'price_low_mobile', 'price_max_mobile', 'amount_mobile', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
 
+    // age slider
+   // wpestate_enable_slider('slider_age', 'age_low', 'age_max', 'amount', 1, 'x', 10, 2);
 
 
     function replace_plus(string) {

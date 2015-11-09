@@ -11876,7 +11876,7 @@ select.dsidx-resp-select {
 .slide_mobile{
     width:100%;
 }
-
+#age_label_text,
 #amount_wd,
 #amount{
     border: 0;
@@ -11894,13 +11894,14 @@ select.dsidx-resp-select {
     width: 150px;
 }
 
-.adv_search_slider #slider_price{
+.adv_search_slider .fl-slider,
+.adv_search_slider #slider_price {
     margin-left: 10px;
     margin-top: 7px;
     height: 5px;
 }
-
-#slider_price .ui-slider-handle{
+.fl-slider .ui-slider-handle,
+#slider_price .ui-slider-handle {
     margin-top: -2px;
     width: 17px;
     height: 17px;
@@ -11957,7 +11958,7 @@ select.dsidx-resp-select {
 
 #slider_price_sh .ui-slider-handle,
 #slider_price_mobile .ui-slider-handle,
-#slider_price_widget .ui-slider-handle{
+#slider_price_widget .ui-slider-handle {
     margin-top: -2px;
     width: 17px;
     height: 17px;
@@ -12374,4 +12375,7 @@ select.form-control {
 }
 .w100 {
     width: 100% !important;
+}
+.wauto {
+    width: auto !important;
 }

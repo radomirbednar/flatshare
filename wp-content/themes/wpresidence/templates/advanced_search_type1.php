@@ -64,7 +64,41 @@ if ($extended_search == 'yes') {
                     </div>                    
 
                     <div class="clearfix"></div>
-                    
+                    <!-- sliders -->
+
+                    <div class="adv_search_slider">
+                        <script>
+                            jQuery(document).ready(function ($) {
+                                jQuery("#slider_age").slider({
+                                    range: true,
+                                    min: parseInt($('#age_low').val()),
+                                    max: parseInt($('#age_max').val()),
+                                    values: [$('#age_low').val(), $('#age_max').val()], // defaultni hodnoty
+                                    slide: function (event, ui) {
+                                        jQuery('#age_low').val(ui.values[0]);
+                                        jQuery('#age_max').val(ui.values[1]);
+                                        jQuery("#age_label_text").text(ui.values[0].format() + " " + control_vars.to + " " + ui.values[1].format());
+                                    }
+                                });
+                            });
+                        </script>                        
+                        <?php
+                        $age_min = 0;
+                        $age_max = 99;
+                        ?>
+                        <p>
+                            <label for="age" class="wauto"><?php _e('Age range:', 'wpestate'); ?></label>
+                            <span id="age_label_text"  style="border:0; color:#f6931f; font-weight:bold;"><?php printf(__('%s to %s', 'dokan'), (int) $age_min, (int) $age_max); ?></span>
+                        </p>
+                        <div id="slider_age" class="fl-slider"></div>
+                        <input type="hidden" id="age_low"  name="age_low"  value="<?php echo (int) $age_min; ?>" />
+                        <input type="hidden" id="age_max"  name="age_max"  value="<?php echo (int) $age_max; ?>" />
+                    </div>                    
+
+
+                    <!-- /sliders -->
+                    <div class="clearfix"></div>
+
                     <div class="dropdown form-control-half">
                         <div class="switcher">
                             <input type="hidden" value="<?php echo isset($_POST['sexual_preference']) ? (int) $_POST['sexual_preference'] : '' ?>" name="sexual_preference" id="sexual_preference">
