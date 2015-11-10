@@ -43,7 +43,7 @@ if ($extended_search == 'yes') {
     <!-- Tab panes -->
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="roommate"><!-- search roommate panel -->
-            <form role="search" method="get"   action="<?php print $adv_submit; ?>" >
+            <form role="search" method="get"   action="<?php echo get_page_link(17745) ?>" >
                 <div class="adv1-holder triple-switch">
 
                     <div class="form-control-half">
