@@ -10,10 +10,10 @@ $col_class = 4;
 if ($options['content_class'] == 'col-md-12') {
     $col_class = 3;
 }
-?> 
-<div class="row">  
-    <?php get_template_part('templates/breadcrumbs'); ?>  
-    <div class=" <?php print $options['content_class']; ?> "> 
+?>
+<div class="row">
+    <?php get_template_part('templates/breadcrumbs'); ?>
+    <div class=" <?php print $options['content_class']; ?> ">
         <?php get_template_part('templates/ajax_container'); ?>
 
         <?php
@@ -25,8 +25,8 @@ if ($options['content_class'] == 'col-md-12') {
             <div class="single-content"><?php the_content(); ?></div>
             <?php
         endwhile;
-        ?>                  
-        <div id="listing_ajax_container_agent"> 
+        ?>
+        <div id="listing_ajax_container_agent">
 
             <?php
             $number = 10;
@@ -37,6 +37,27 @@ if ($options['content_class'] == 'col-md-12') {
             $total_users = count($users);
             $total_query = count($query);
             $total_pages = intval($total_users / $number) + 1;
+
+
+            //$how_long = get_user_meta_int($userID, 'how_long');
+
+            $user_status                    = isset($_POST['status']) ? $_POST['status'] : array(1, 2);
+            $how_long                       = isset($_POST['how_long']) ? $_POST['how_long'] : '';
+            $age_from                       = isset($_POST['age_low']) ? $_POST['age_low'] : '';
+            $age_to                         = isset($_POST['age_max']) ? $_POST['age_max'] : '';
+            $user_gender                    = isset($_POST['user_gender']) ? $_POST['user_gender'] : '';
+            $sexual_preference              = isset($_POST['sexual_preference']) ? $_POST['sexual_preference'] : '';
+            $sleeping_span                  = isset($_POST['sleeping_span']) ? $_POST['sleeping_span'] : '';
+            $couple                         = isset($_POST['couple']) ? $_POST['couple'] : '';
+            $smoker                         = isset($_POST['smoker']) ? $_POST['smoker'] : '';
+            $pets                           = isset($_POST['pets']) ? $_POST['pets'] : '';
+            $activity                       = isset($_POST['activity']) ? $_POST['activity'] : '';
+            $user_origin                    = isset($_POST['user_origin']) ? $_POST['user_origin'] : '';
+            $party                          = isset($_POST['party']) ? $_POST['party'] : '';
+            $looking_where                  = isset($_POST['looking_where']) ? $_POST['looking_where'] : '';
+
+            $user_language_ids              = isset($_POST['skill']) ? $_POST['skill'] : '';;
+            $user_skill_ids                 = isset($_POST['language']) ? $_POST['language'] : '';;
 
             //get_user_meta() vs. get_userdata() vs. get_the_author_meta() - place for improvement
  
@@ -66,7 +87,7 @@ if ($options['content_class'] == 'col-md-12') {
                 ?>
 
                 <div class="col-md-3 listing_wrapper">
-                    <div class="agent_unit" data-link="<?php print $link; ?>"> 
+                    <div class="agent_unit" data-link="<?php print $link; ?>">
 
                         <div class="agent-unit-img-wrapper">
                             <?php
@@ -78,19 +99,19 @@ if ($options['content_class'] == 'col-md-12') {
 
                         <div class="user_unit_info">  
                             <?php
-                            print '<h4> <a href="' . $link . '">' . $first_name . ' ' . $last_name . '</a></h4>                                
+                            print '<h4> <a href="' . $link . '">' . $first_name . ' ' . $last_name . '</a></h4>
                             <div class="agent_position">' . $looking_where . '</div>';
                             if ($user_age) {
                                 print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . $user_age . '</div>';
-                            } 
-                            if ($user_gender) { 
+                            }
+                            if ($user_gender) {
                                 print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
                             }
-                            ?> 
-                        </div>  
+                            ?>
+                        </div>
 
                         <div class="agent_unit_social">
-                            <div class="social-wrapper"> 
+                            <div class="social-wrapper">
 
                                 <?php
                                 if ($user_facebook != '') {
@@ -109,8 +130,8 @@ if ($options['content_class'] == 'col-md-12') {
 
                             </div>
                         </div>
-                    </div> 
-                </div> 
+                    </div>
+                </div>
                 <?php
             }
             ?>
@@ -137,11 +158,11 @@ if ($options['content_class'] == 'col-md-12') {
                     echo '</ul></div>';
                 }
             }
-            ?>          
+            ?>
         </div>
-    </div><!-- end 12 container--> 
+    </div><!-- end 12 container-->
     <?php
     wp_suspend_cache_addition(false);
     ?>
-</div>   
+</div>
 <?php get_footer(); ?>
