@@ -43,23 +43,23 @@ if ($options['content_class'] == 'col-md-12') {
 
             //$how_long = get_user_meta_int($userID, 'how_long');
 
-            $user_status                = isset($_GET['status']) ? $_GET['status'] : array(1, 2);
-            $how_long                   = isset($_GET['how_long']) ? $_GET['how_long'] : '';
-            $age_from                   = isset($_GET['age_low']) ? $_GET['age_low'] : '';
-            $age_to                     = isset($_GET['age_max']) ? $_GET['age_max'] : '';
-            $user_gender                = isset($_GET['user_gender']) ? $_GET['user_gender'] : '';
-            $sexual_preference          = isset($_GET['sexual_preference']) ? $_GET['sexual_preference'] : '';
-            $sleeping_span              = isset($_GET['sleeping_span']) ? $_GET['sleeping_span'] : '';
-            $couple                     = isset($_GET['couple']) ? $_GET['couple'] : '';
-            $smoker                     = isset($_GET['smoker']) ? $_GET['smoker'] : '';
-            $pets                       = isset($_GET['pets']) ? $_GET['pets'] : '';
-            $activity                   = isset($_GET['activity']) ? $_GET['activity'] : '';
-            $user_origin                = isset($_GET['user_origin']) ? $_GET['user_origin'] : '';
-            $party                      = isset($_GET['party']) ? $_GET['party'] : '';
-            $looking_where              = isset($_GET['looking_where']) ? $_GET['looking_where'] : '';
+            $user_status                = !empty($_GET['status']) ? (array) $_GET['status'] : array(1, 2);
+            $how_long                   = !empty($_GET['how_long']) ? $_GET['how_long'] : '';
+            $age_from                   = !empty($_GET['age_low']) ? $_GET['age_low'] : '';
+            $age_to                     = !empty($_GET['age_max']) ? $_GET['age_max'] : '';
+            $user_gender                = !empty($_GET['user_gender']) ? $_GET['user_gender'] : '';
+            $sexual_preference          = !empty($_GET['sexual_preference']) ? $_GET['sexual_preference'] : '';
+            $sleeping_span              = !empty($_GET['sleeping_span']) ? $_GET['sleeping_span'] : '';
+            $couple                     = !empty($_GET['couple']) ? $_GET['couple'] : '';
+            $smoker                     = !empty($_GET['smoker']) ? $_GET['smoker'] : '';
+            $pets                       = !empty($_GET['pets']) ? $_GET['pets'] : '';
+            $activity                   = !empty($_GET['activity']) ? $_GET['activity'] : '';
+            $user_origin                = !empty($_GET['user_origin']) ? $_GET['user_origin'] : '';
+            $party                      = !empty($_GET['party']) ? $_GET['party'] : '';
+            $looking_where              = !empty($_GET['looking_where']) ? $_GET['looking_where'] : '';
 
-            $user_language_ids          = isset($_GET['skill']) ? $_GET['skill'] : '';            
-            $user_skill_ids             = isset($_GET['language']) ? $_GET['language'] : '';
+            $user_language_ids          = !empty($_GET['skill']) ? $_GET['skill'] : '';            
+            $user_skill_ids             = !empty($_GET['language']) ? $_GET['language'] : '';
             
 
             /**
@@ -69,8 +69,13 @@ if ($options['content_class'] == 'col-md-12') {
                 SELECT 
                     * 
                 FROM
-                    " . $wpdb->prefix . "users AS u                        
-                        
+                    " . $wpdb->prefix . "users AS u 
+                JOIN
+                    fl_user_data as fud
+                ON
+                    fud.id_user = u.ID
+                WHERE
+                    fud.user_status IN (" . implode(',', $user_status) .  ")
             ";
 
             global $wpdb;
