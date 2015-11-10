@@ -32,12 +32,14 @@ if ($options['content_class'] == 'col-md-12') {
             $number = 10;
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $offset = ($paged - 1) * $number;
+            
+            /*
             $users = get_users();
             $query = get_users('&offset=' . $offset . '&number=' . $number);
             $total_users = count($users);
             $total_query = count($query);
             $total_pages = intval($total_users / $number) + 1;
-
+            */
 
             //$how_long = get_user_meta_int($userID, 'how_long');
 
@@ -59,7 +61,18 @@ if ($options['content_class'] == 'col-md-12') {
             $user_language_ids              = isset($_POST['skill']) ? $_POST['skill'] : '';;
             $user_skill_ids                 = isset($_POST['language']) ? $_POST['language'] : '';;
 
-            //get_user_meta() vs. get_userdata() vs. get_the_author_meta() - place for improvement
+            /**
+             * 
+             */
+            $sql = "
+                SELECT 
+                    * 
+                FROM
+                    " . $wpdb->prefix . "users AS u                        
+                        
+            ";
+            
+            $query = $wpdb->get_resutls($sql);            
 
 
             foreach ($query as $q) {
