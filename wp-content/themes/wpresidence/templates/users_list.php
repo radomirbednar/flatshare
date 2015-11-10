@@ -39,24 +39,27 @@ if ($options['content_class'] == 'col-md-12') {
             $total_pages = intval($total_users / $number) + 1;
 
             //get_user_meta() vs. get_userdata() vs. get_the_author_meta() - place for improvement
-
-
+ 
             foreach ($query as $q) {
 
-                $first_name = get_the_author_meta('first_name', $q->ID);
-                $last_name = get_the_author_meta('last_name', $q->ID);
+                $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
+                $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
                 $user_facebook = get_the_author_meta('facebook', $q->ID);
                 $user_twitter = get_the_author_meta('twitter', $q->ID);
                 $user_linkedin = get_the_author_meta('linkedin', $q->ID);
                 $user_pinterest = get_the_author_meta('pinterest', $q->ID);
                 $photo_url = get_the_author_meta('custom_picture', $q->ID);
-                $user_gender = get_user_meta_int($q->ID, 'user_gender');
-                $user_age = get_user_meta_int($q->ID, 'user_age');
-                $looking_where = get_user_meta($q->ID, 'looking_where', true);
+                $user_gender = esc_attr(get_user_meta_int($q->ID, 'user_gender'));
+                $user_age = esc_attr(get_user_meta_int($q->ID, 'user_age'));
+                $looking_where = esc_attr(get_user_meta($q->ID, 'looking_where', true));
+                
                 $user_gender_array = array('1' => __('female', 'wpestate'), '2' => __('male', 'wpestate'));
-                $thumb_prop = '<img src="' . $photo_url . '" alt="agent-images">';
-
-
+                
+                $rent_amount = 200; 
+                
+                $author_url =  esc_url(get_author_posts_url( $q->ID ));
+                 
+                $thumb_prop = '<img src="' . $photo_url . '" alt="agent-images">';  
                 if ($photo_url == '') {
                     $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
                 }
@@ -69,11 +72,11 @@ if ($options['content_class'] == 'col-md-12') {
                             <?php
                             print $thumb_prop;
                             print '<div class="listing-cover"></div>
-                   <a href="' . $link . '"> <span class="listing-cover-plus">+</span></a>';
-                            ?>
+                   <a href="' . $author_url . '"> <span class="listing-cover-plus">+</span></a>';
+                            ?> 
                         </div>  
 
-                        <div class="user_unit_info"> 
+                        <div class="user_unit_info">  
                             <?php
                             print '<h4> <a href="' . $link . '">' . $first_name . ' ' . $last_name . '</a></h4>                                
                             <div class="agent_position">' . $looking_where . '</div>';
@@ -91,19 +94,16 @@ if ($options['content_class'] == 'col-md-12') {
 
                                 <?php
                                 if ($user_facebook != '') {
-                                    print ' <a href="' . $user_facebook . '"><i class="fa fa-facebook"></i></a>';
-                                }
-
+                                    print ' <a href="' . esc_url($user_facebook) . '"><i class="fa fa-facebook"></i></a>';
+                                } 
                                 if ($user_twitter != '') {
-                                    print ' <a href="' . $user_twitter . '"><i class="fa fa-twitter"></i></a>';
-                                }
-
+                                    print ' <a href="' . esc_url($user_twitter) . '"><i class="fa fa-twitter"></i></a>';
+                                } 
                                 if ($user_linkedin != '') {
-                                    print ' <a href="' . $user_linkedin . '"><i class="fa fa-linkedin"></i></a>';
-                                }
-
+                                    print ' <a href="' . esc_url($user_linkedin) . '"><i class="fa fa-linkedin"></i></a>';
+                                } 
                                 if ($user_pinterest != '') {
-                                    print ' <a href="' . $user_pinterest . '"><i class="fa fa-pinterest"></i></a>';
+                                    print ' <a href="' . esc_url($user_pinterest) . '"><i class="fa fa-pinterest"></i></a>';
                                 }
                                 ?>
 
