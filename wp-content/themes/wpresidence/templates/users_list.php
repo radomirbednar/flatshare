@@ -41,7 +41,7 @@ if ($options['content_class'] == 'col-md-12') {
 
             //$how_long = get_user_meta_int($userID, 'how_long');
 
-            $user_status                    = isset($_POST['status']) ? $_POST['status'] : '';
+            $user_status                    = isset($_POST['status']) ? $_POST['status'] : array(1, 2);
             $how_long                       = isset($_POST['how_long']) ? $_POST['how_long'] : '';
             $age_from                       = isset($_POST['age_low']) ? $_POST['age_low'] : '';
             $age_to                         = isset($_POST['age_max']) ? $_POST['age_max'] : '';
