@@ -62,9 +62,7 @@ if ( basename( get_page_template() ) == 'user_dashboard.php' ){
         if( $dash_invoices!=$home_url ){ ?>
             <!--<a href="<?php print $dash_invoices;?>" class="<?php print $activeinvoices; ?>"><i class="fa fa-file-text-o"></i> <?php _e('My Invoices','wpestate');?></a>-->
         <?php } ?>
-            
-            
-            
+             
         <a href="<?php echo wp_logout_url();?>" title="Logout"><i class="fa fa-power-off"></i> <?php _e('Log Out','wpestate');?></a>
     </div>
       <?php  get_template_part('templates/user_memebership_profile');  ?>

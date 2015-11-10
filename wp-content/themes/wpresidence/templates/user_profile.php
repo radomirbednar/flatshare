@@ -133,8 +133,8 @@ if ($user_custom_picture == '') {
             $arr = array(
                 1 => __('Looking for a flat', 'wpestate'),
                 2 => __('Looking for a roommate', 'wpestate'),
-                3 => __('Real estate', 'wpestate'),
-                4 => __('Landlord', 'wpestate'),
+                3 => __('inactive', 'wpestate'),
+             //   4 => __('Landlord', 'wpestate'),
             );
             ?>
             <label for="user_status"><?php _e('Your status:', 'wpestate'); ?></label>
