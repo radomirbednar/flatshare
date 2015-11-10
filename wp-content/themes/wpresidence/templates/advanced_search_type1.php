@@ -47,12 +47,12 @@ if ($extended_search == 'yes') {
                 <div class="adv1-holder triple-switch">
 
                     <div class="form-control-half">
-                        <p>
-                            <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
+
+                        <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
                         <div class="value-row">
                             <input type="text" id="looking_where" class="form-control w100" value="<?php echo esc_attr($looking_where) ?>"  name="looking_where">
                         </div>
-                        </p>
+
                     </div>
 
                     <div class="form-control-half">
@@ -139,6 +139,40 @@ if ($extended_search == 'yes') {
                     <div id="more-search-options" class="extended_search_check_wrapper"><!-- advance search block -->
 
                         <span id="roommate_extended_close_adv" class="adv_extended_close_adv" style="display: none;"><i class="fa fa-times"></i></span>
+
+                        <div class="form-control-half">
+                            <?php
+                            $arr = array(
+                                1 => __('a flat', 'wpestate'),
+                                2 => __('a roommate', 'wpestate'),
+                                    //3 => __('Real estate', 'wpestate'),
+                                    //4 => __('Landlord', 'wpestate'),
+                            );
+                            ?>
+                            <label for="status"><?php _e('Looking for:', 'wpestate'); ?></label>
+                            <div class="value-row">
+                                <select id="status" class="form-control w100" name="status" class="w100">
+                                    <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option>
+                                    <?php foreach ($arr as $key => $val): ?>
+                                        <option value="<?php echo $key ?>" <?php echo $user_status == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-control-half switcher">
+                            <label><?php _e('For how long', 'wpestate'); ?></label>
+                            <div class="value-row">
+                                <input id="how_long-0" name="how_long" type="radio" value="" class="hidden">
+                                <input id="how_long-1" name="how_long" type="radio" value="1" class="hidden" >
+                                <input id="how_long-2" name="how_long" type="radio" value="2" class="hidden">
+
+                                <label for="how_long-0" class="wpb_button wpb_btn-large <?php echo empty($_POST['how_long']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
+                                <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo isset($_POST['how_long']) && 1 == $_POST['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Less than 6 months', 'wpestate'); ?></label>
+                                <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($_POST['how_long']) && 2 == $_POST['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('+ 6 months'); ?></label>
+                            </div>
+                        </div>
+
 
                         <div class="form-control-half">
                             <div class="switcher">
