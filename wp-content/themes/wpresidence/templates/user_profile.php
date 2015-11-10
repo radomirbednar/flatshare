@@ -41,6 +41,7 @@ $user_custom_picture = get_the_author_meta('custom_picture', $userID);
 $user_small_picture = get_the_author_meta('small_custom_picture', $userID);
 $image_id = get_the_author_meta('small_custom_picture', $userID);
 $about_me = get_the_author_meta('description', $userID);
+
 if ($user_custom_picture == '') {
     $user_custom_picture = get_template_directory_uri() . '/img/default_user.png';
 }
@@ -309,26 +310,53 @@ if ($user_custom_picture == '') {
                         script.onload = callback;
                     document.getElementsByTagName("head")[0].appendChild(script);
                     script.src = src;
-                }
-
-                loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&callback=initialize');
-
-                function initialize() {
-
-
+                } 
+                loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&callback=initialize'); 
+                
+                function initialize() { 
                     var options = {
                         types: ['(cities)'],
                         //componentRestrictions: {country: "cz"}
-                    };
-
+                    }; 
                     var input = document.getElementById('looking_where');
-                    var autocomplete = new google.maps.places.Autocomplete(input, options);
-
-
+                    var autocomplete = new google.maps.places.Autocomplete(input, options); 
                 }
 
             </script>
 
+            
+            
+               <div class="fl-row adv_search_slider">
+                <?php                
+                $default_rent = 200;
+                ?>                
+                <script>
+                    jQuery(document).ready(function ($) {
+                        jQuery("#slider_rent").slider({
+                            //range: true,
+                            "value": <?php echo (int) $default_rent ?>,
+                            min: parseInt(0),
+                            max: parseInt(1200),
+                            //values: [$('#age_low').val(), $('#age_max').val()], // defaultni hodnoty
+                            slide: function (event, ui) {
+                                //console.log(ui);
+                                //jQuery('#rent_label_text').val(ui.values[0]);
+                                //jQuery('#age_max').val(ui.values[1]);
+                                jQuery("#rent_label_text").text(ui.value.format());
+                            }
+                        });
+                    });
+                </script>
+                <p>
+                    <label for="rent_amount" class="wauto"><?php _e('How much do you want to pay?:', 'wpestate'); ?></label>
+                    <span id="rent_label_text" class="slide-label"><?php printf(__('%s', 'dokan'), (int) $default_rent); ?></span>
+                </p>
+                 
+                <div id="slider_rent" class="fl-slider"></div>
+                <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $default_rent; ?>">
+            </div>
+            
+            
             <script>
                 jQuery(document).ready(function ($) {
                     jQuery("#when_move").datepicker({
@@ -336,6 +364,9 @@ if ($user_custom_picture == '') {
                     }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
                 });
             </script>
+            
+            
+            
             <div class="fl-row">
                 <label><?php _e('Disponibility', 'wpestate'); ?></label>
                 <div class="value-row">
@@ -411,34 +442,7 @@ if ($user_custom_picture == '') {
                 <div class="clearfix"></div>
             </div>
 
-            <div class="fl-row adv_search_slider">
-                <?php
-                $default_rent = 200;
-                $rent_max = 1200;
-                $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
-                ?>                
-                <script>
-                    jQuery(document).ready(function ($) {
-                        jQuery("#slider_rent").slider({
-                            //range: true,
-                            value: <?php echo (int) $default_rent ?>,
-                            min: parseInt(0),
-                            max: parseInt(<?php echo (int) $rent_max; ?>),
-                            //values: [$('#age_low').val(), $('#age_max').val()], // defaultni hodnoty
-                            slide: function (event, ui) {
-                                jQuery("#rent_label_text").text(ui.value.format() + " " + decodeURIComponent(control_vars.curency));
-
-                            }
-                        });
-                    });
-                </script>
-                <p>
-                    <label for="rent_amount" class="wauto"><?php _e('How much do you want to pay?:', 'wpestate'); ?></label>
-                    <span id="rent_label_text" class="slide-label"><?php echo (int) $default_rent; ?> <?php echo esc_html($currency) ?></span>
-                </p>
-                <div id="slider_rent" class="fl-slider"></div>
-                <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $default_rent; ?>">
-            </div>
+         
 
         </div>
 

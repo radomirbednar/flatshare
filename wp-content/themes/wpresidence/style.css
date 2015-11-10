@@ -3504,7 +3504,7 @@ listing_actions a{
     border-radius: 4px;
     -webkit-box-shadow: 0px 2px 0px 0px rgba(227, 228, 231, 1);
     box-shadow: 0px 2px 0px 0px rgba(227, 228, 231, 1);
-    min-height: 371px;
+    min-height: 300px;
     position: relative;
     overflow: hidden;
     background-color: #fdfdfd;
@@ -3564,17 +3564,14 @@ listing_actions a{
 
 .agent_unit:hover .listing-cover-plus{
     opacity:0.9;
-}
-
-
+} 
 .property_location{
     font-size: 13px;
     margin: 0px 0px 10px 13px;
     color: #99a3b1; 
     line-height:13px;
     float:left;
-}
-
+} 
 .agent_position{
     font-size: 13px;
     margin: 0px 0px 9px 13px;
@@ -3583,14 +3580,12 @@ listing_actions a{
 }
 .agent_unit .agent_position{
     padding-right: 13px;
-}
-
+} 
 .agent_detail{
     line-height: 22px;
     margin: 0px 0px 2px 13px;
     font-size: 13px;
-}
-
+} 
 .agent_detail i{
     margin-right: 10px;
     min-width: 14px;    

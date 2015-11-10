@@ -2875,8 +2875,7 @@ function wpestate_ajax_agent_contact_form(){
         $headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
 
         $mail = @wp_mail($receiver_email, $subject, $message, $headers);
-
-
+                
         $duplicate_email_adr        =   esc_html ( get_option('wp_estate_duplicate_email_adr','') );
 
         if($duplicate_email_adr!=''){
@@ -2885,12 +2884,9 @@ function wpestate_ajax_agent_contact_form(){
         }
 
         echo json_encode(array('sent'=>true, 'response'=>__('The message was sent !','wpestate') ) );
-
-
-
+                
         die();
-
-
+                
 }
 
 endif; // end   wpestate_ajax_agent_contact_form
@@ -2938,9 +2934,7 @@ function wpestate_ajax_contact_form_footer(){
                     $email = wp_kses( trim($_POST['email']),$allowed_html );
               }
         }
-
-
-
+                
         $phone = wp_kses( trim($_POST['phone']),$allowed_html );
 
         //Check comments
@@ -2952,15 +2946,13 @@ function wpestate_ajax_contact_form_footer(){
                 $comment = wp_kses( trim ($_POST['contact_coment'] ) ,$allowed_html);
               }
         }
-
-
+                
         if(isset($_POST['agentemail'] )){
             if( is_email ( $_POST['agentemail'] ) ){
                 $receiver_email = wp_kses ( $_POST['agentemail'],$allowed_html) ;
             }
         }
-
-
+                
         $message='';
 
         $subject =__('Contact form from ','wpestate') . home_url() ;
@@ -2972,13 +2964,10 @@ function wpestate_ajax_contact_form_footer(){
         wp_mail($receiver_email, $subject, $message, $headers);
 
         echo json_encode(array('sent'=>true, 'response'=>__('The message was sent !','wpestate') ) );
-
-
-
+                
         die();
-
-
-}
+                
+    }
 
 endif; // end   ajax_agent_contact_form
 
