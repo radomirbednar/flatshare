@@ -57,7 +57,7 @@ if ($extended_search == 'yes') {
 
                     <div class="form-control-half">
                         <div class="switcher">
-                            <input type="hidden" value="<?php echo isset($_POST['user_gender']) ? (int) $_POST['user_gender'] : '' ?>" name="user_gender" id="user_gender">
+                            
                             <label><?php _e('Gender', 'wpestate'); ?></label>
                             <div class="value-row">
 
@@ -65,20 +65,10 @@ if ($extended_search == 'yes') {
                                 <input id="user-gender-male" name="user_gender" type="radio" value="1" class="hidden" >
                                 <input id="user-gender-female" name="user_gender" type="radio" value="2" class="hidden">
 
-                                <label for="user-gender-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_POST['user_gender']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
-                                <label for="user-gender-male" class="wpb_button wpb_btn-large <?php echo isset($_POST['user_gender']) && 1 == $_POST['user_gender'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Male', 'wpestate'); ?></label>
-                                <label for="user-gender-female" class="wpb_button wpb_btn-large <?php echo isset($_POST['user_gender']) && 2 == $_POST['user_gender'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Female', 'wpestate'); ?></label>
+                                <label for="user-gender-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['user_gender']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
+                                <label for="user-gender-male" class="wpb_button wpb_btn-large <?php echo isset($_GET['user_gender']) && 1 == $_GET['user_gender'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Male', 'wpestate'); ?></label>
+                                <label for="user-gender-female" class="wpb_button wpb_btn-large <?php echo isset($_GET['user_gender']) && 2 == $_GET['user_gender'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Female', 'wpestate'); ?></label>
 
-                                <!--
-                                <button data-value="" data-target="#user_gender" class="wpb_button wpb_btn-large <?php echo empty($_POST['user_gender']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                <button data-value="1" data-target="#user_gender" class="wpb_button wpb_btn-large <?php echo isset($_POST['user_gender']) && 1 == $_POST['user_gender'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Male', 'wpestate'); ?></button>
-                                <button data-value="2" data-target="#user_gender" class="wpb_button wpb_btn-large <?php echo isset($_POST['user_gender']) && 2 == $_POST['user_gender'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Female', 'wpestate'); ?></button>
-                                -->
-                                <!--
-                                <button data-value="" data-target="#user_gender" class="wpb_button wpb_btn-large <?php echo empty($_POST['user_gender']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                <button data-value="1" data-target="#user_gender" class="wpb_button wpb_btn-large <?php echo isset($_POST['user_gender']) && 1 == $_POST['user_gender'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Male', 'wpestate'); ?></button>
-                                <button data-value="2" data-target="#user_gender" class="wpb_button wpb_btn-large <?php echo isset($_POST['user_gender']) && 2 == $_POST['user_gender'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Female', 'wpestate'); ?></button>
-                                -->
                             </div>
                         </div>
                     </div>
@@ -87,13 +77,23 @@ if ($extended_search == 'yes') {
                     <!-- sliders -->
 
                     <div class="adv_search_slider"><!-- age slider -->
+                        
+                        <?php
+                        $age_min = 0;
+                        $age_max = 99;
+                        
+                        $age_min_val = isset($_GET['age_low']) ? $_GET['age_low'] : $age_min;
+                        $age_max_val = isset($_GET['age_max']) ? $_GET['age_max'] : $age_max;
+                        
+                        ?>                        
+                        
                         <script>
                             jQuery(document).ready(function ($) {
                                 jQuery("#slider_age").slider({
                                     range: true,
-                                    min: parseInt($('#age_low').val()),
-                                    max: parseInt($('#age_max').val()),
-                                    values: [$('#age_low').val(), $('#age_max').val()], // defaultni hodnoty
+                                    min: <?php echo (int) $age_min ?>,
+                                    max: <?php echo (int) $age_max ?>,
+                                    values: [<?php echo (int) $age_min_val ?>, <?php echo (int) $age_max_val ?>], // defaultni hodnoty
                                     slide: function (event, ui) {
                                         jQuery('#age_low').val(ui.values[0]);
                                         jQuery('#age_max').val(ui.values[1]);
@@ -102,17 +102,14 @@ if ($extended_search == 'yes') {
                                 });
                             });
                         </script>
-                        <?php
-                        $age_min = 0;
-                        $age_max = 99;
-                        ?>
+
                         <p>
                             <label for="age" class="wauto"><?php _e('Age range:', 'wpestate'); ?></label>
-                            <span id="age_label_text"><?php printf(__('%s to %s', 'dokan'), (int) $age_min, (int) $age_max); ?></span>
+                            <span id="age_label_text"><?php printf(__('%s to %s', 'wpestate'), (int) $age_min_val, (int) $age_max_val); ?></span>
                         </p>
                         <div id="slider_age" class="fl-slider"></div>
-                        <input type="hidden" id="age_low"  name="age_low"  value="<?php echo (int) $age_min; ?>" />
-                        <input type="hidden" id="age_max"  name="age_max"  value="<?php echo (int) $age_max; ?>" />
+                        <input type="hidden" id="age_low"  name="age_low"  value="<?php echo (int) $age_min_val; ?>" />
+                        <input type="hidden" id="age_max"  name="age_max"  value="<?php echo (int) $age_max_val; ?>" />
                     </div><!-- /age slider -->
 
 
@@ -134,7 +131,6 @@ if ($extended_search == 'yes') {
                     <!-- /sliders -->
                     <div class="clearfix"></div>
 
-test
 
                     <div id="more-search-options" class="extended_search_check_wrapper"><!-- advance search block -->
 
@@ -159,7 +155,7 @@ test
                                     <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option> 
                                     
                                     <?php foreach ($arr as $key => $val): ?>
-                                        <option value="<?php echo $key ?>" <?php echo $user_status == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
+                                        <option value="<?php echo $key ?>" <?php echo isset($_GET['status']) && $_GET['status'] == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
                                     <?php endforeach; ?>
                                 
                                 </select>
@@ -174,16 +170,16 @@ test
                                 <input id="how_long-1" name="how_long" type="radio" value="1" class="hidden" >
                                 <input id="how_long-2" name="how_long" type="radio" value="2" class="hidden">
 
-                                <label for="how_long-0" class="wpb_button wpb_btn-large <?php echo empty($_POST['how_long']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
-                                <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo isset($_POST['how_long']) && 1 == $_POST['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Less than 6 months', 'wpestate'); ?></label>
-                                <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($_POST['how_long']) && 2 == $_POST['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('+ 6 months'); ?></label>
+                                <label for="how_long-0" class="wpb_button wpb_btn-large <?php echo empty($_GET['how_long']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
+                                <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo isset($_GET['how_long']) && 1 == $_GET['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Less than 6 months', 'wpestate'); ?></label>
+                                <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($_GET['how_long']) && 2 == $_GET['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('+ 6 months'); ?></label>
                             </div>
                         </div>
 
 
                         <div class="form-control-half">
                             <div class="switcher">
-                                <!--<input type="hidden" value="<?php echo isset($_POST['sexual_preference']) ? (int) $_POST['sexual_preference'] : '' ?>" name="sexual_preference" id="sexual_preference">-->
+                                <!--<input type="hidden" value="<?php echo isset($_GET['sexual_preference']) ? (int) $_GET['sexual_preference'] : '' ?>" name="sexual_preference" id="sexual_preference">-->
                                 <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
 
                                 <div class="value-row">
@@ -191,15 +187,15 @@ test
                                     <input id="sexual_preference-straight" name="sexual_preference" type="radio" value="1" class="hidden" >
                                     <input id="sexual_preference-bi" name="sexual_preference" type="radio" value="2" class="hidden">
 
-                                    <label for="sexual_preference-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_POST['sexual_preference']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
-                                    <label for="sexual_preference-straight" class="wpb_button wpb_btn-large <?php echo isset($_POST['sexual_preference']) && 1 == $_POST['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Straight', 'wpestate'); ?></label>
-                                    <label for="sexual_preference-bi" class="wpb_button wpb_btn-large <?php echo isset($_POST['sexual_preference']) && 2 == $_POST['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Bi / Gay', 'wpestate'); ?></label>
+                                    <label for="sexual_preference-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['sexual_preference']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
+                                    <label for="sexual_preference-straight" class="wpb_button wpb_btn-large <?php echo isset($_GET['sexual_preference']) && 1 == $_GET['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Straight', 'wpestate'); ?></label>
+                                    <label for="sexual_preference-bi" class="wpb_button wpb_btn-large <?php echo isset($_GET['sexual_preference']) && 2 == $_GET['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Bi / Gay', 'wpestate'); ?></label>
                                 </div>
                                 <!--
                                 <div class="value-row">
-                                    <button data-value="" data-target="#sexual_preference" class="wpb_button wpb_btn-large <?php echo empty($_POST['sexual_preference']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                    <button data-value="1" data-target="#sexual_preference" class="wpb_button wpb_btn-large <?php echo isset($_POST['sexual_preference']) && 1 == $_POST['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Straight', 'wpestate'); ?></button>
-                                    <button data-value="2" data-target="#sexual_preference" class="wpb_button wpb_btn-large <?php echo isset($_POST['sexual_preference']) && 2 == $_POST['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Bi / Gay', 'wpestate'); ?></button>
+                                    <button data-value="" data-target="#sexual_preference" class="wpb_button wpb_btn-large <?php echo empty($_GET['sexual_preference']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
+                                    <button data-value="1" data-target="#sexual_preference" class="wpb_button wpb_btn-large <?php echo isset($_GET['sexual_preference']) && 1 == $_GET['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Straight', 'wpestate'); ?></button>
+                                    <button data-value="2" data-target="#sexual_preference" class="wpb_button wpb_btn-large <?php echo isset($_GET['sexual_preference']) && 2 == $_GET['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Bi / Gay', 'wpestate'); ?></button>
                                 </div>
                                 -->
                             </div>
@@ -207,7 +203,7 @@ test
 
                         <div class="form-control-half">
                             <div class="switcher">
-                                <!--<input type="hidden" value="<?php echo isset($_POST['sleeping_span']) ? (int) $_POST['sleeping_span'] : '' ?>" name="sleeping_span" id="sleeping_span">-->
+                                <!--<input type="hidden" value="<?php echo isset($_GET['sleeping_span']) ? (int) $_GET['sleeping_span'] : '' ?>" name="sleeping_span" id="sleeping_span">-->
                                 <label><?php _e('Sleep during week', 'wpestate'); ?></label>
 
                                 <div class="value-row">
@@ -216,14 +212,14 @@ test
                                     <input id="sleeping_span-before" name="sleeping_span" type="radio" value="1" class="hidden" >
                                     <input id="sleeping_span-after" name="sleeping_span" type="radio" value="2" class="hidden">
 
-                                    <label for="sleeping_span-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_POST['sleeping_span']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
-                                    <label for="sleeping_span-before" class="wpb_button wpb_btn-large <?php echo isset($_POST['sleeping_span']) && 1 == $_POST['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Before 11PM', 'wpestate'); ?></label>
-                                    <label for="sleeping_span-after" class="wpb_button wpb_btn-large <?php echo isset($_POST['sleeping_span']) && 2 == $_POST['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('After 11PM', 'wpestate'); ?></label>
+                                    <label for="sleeping_span-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['sleeping_span']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
+                                    <label for="sleeping_span-before" class="wpb_button wpb_btn-large <?php echo isset($_GET['sleeping_span']) && 1 == $_GET['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Before 11PM', 'wpestate'); ?></label>
+                                    <label for="sleeping_span-after" class="wpb_button wpb_btn-large <?php echo isset($_GET['sleeping_span']) && 2 == $_GET['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('After 11PM', 'wpestate'); ?></label>
 
                                     <!--
-                                    <button data-value="" data-target="#sleeping_span" class="wpb_button wpb_btn-large <?php echo empty($_POST['sleeping_span']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                    <button data-value="1" data-target="#sleeping_span" class="wpb_button wpb_btn-large <?php echo isset($_POST['sleeping_span']) && 1 == $_POST['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Before 11PM', 'wpestate'); ?></button>
-                                    <button data-value="2" data-target="#sleeping_span" class="wpb_button wpb_btn-large <?php echo isset($_POST['sleeping_span']) && 2 == $_POST['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('After 11PM', 'wpestate'); ?></button>
+                                    <button data-value="" data-target="#sleeping_span" class="wpb_button wpb_btn-large <?php echo empty($_GET['sleeping_span']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
+                                    <button data-value="1" data-target="#sleeping_span" class="wpb_button wpb_btn-large <?php echo isset($_GET['sleeping_span']) && 1 == $_GET['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Before 11PM', 'wpestate'); ?></button>
+                                    <button data-value="2" data-target="#sleeping_span" class="wpb_button wpb_btn-large <?php echo isset($_GET['sleeping_span']) && 2 == $_GET['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('After 11PM', 'wpestate'); ?></button>
                                     -->
                                 </div>
 
@@ -232,7 +228,7 @@ test
 
                         <div class="form-control-half">
                             <div class="switcher">
-                                <!--<input type="hidden" value="<?php echo isset($_POST['couple']) ? (int) $_POST['couple'] : '' ?>" name="couple" id="couple">-->
+                                <!--<input type="hidden" value="<?php echo isset($_GET['couple']) ? (int) $_GET['couple'] : '' ?>" name="couple" id="couple">-->
                                 <label><?php _e('Couple', 'wpestate'); ?></label>
                                 <div class="value-row">
 
@@ -240,14 +236,14 @@ test
                                     <input id="couple-alone" name="couple" type="radio" value="1" class="hidden" >
                                     <input id="couple-in" name="couple" type="radio" value="2" class="hidden">
 
-                                    <label for="couple-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_POST['couple']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
-                                    <label for="couple-alone" class="wpb_button wpb_btn-large <?php echo isset($_POST['couple']) && 1 == $_POST['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Alone', 'wpestate'); ?></label>
-                                    <label for="couple-in" class="wpb_button wpb_btn-large <?php echo isset($_POST['couple']) && 2 == $_POST['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('In couple', 'wpestate'); ?></label>
+                                    <label for="couple-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['couple']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
+                                    <label for="couple-alone" class="wpb_button wpb_btn-large <?php echo isset($_GET['couple']) && 1 == $_GET['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Alone', 'wpestate'); ?></label>
+                                    <label for="couple-in" class="wpb_button wpb_btn-large <?php echo isset($_GET['couple']) && 2 == $_GET['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('In couple', 'wpestate'); ?></label>
 
                                     <!--
-                                    <button data-value="" data-target="#couple" class="wpb_button wpb_btn-large <?php echo empty($_POST['couple']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                    <button data-value="1" data-target="#couple" class="wpb_button wpb_btn-large <?php echo isset($_POST['couple']) && 1 == $_POST['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Alone', 'wpestate'); ?></button>
-                                    <button data-value="2" data-target="#couple" class="wpb_button wpb_btn-large <?php echo isset($_POST['couple']) && 2 == $_POST['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('In couple', 'wpestate'); ?></button>
+                                    <button data-value="" data-target="#couple" class="wpb_button wpb_btn-large <?php echo empty($_GET['couple']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
+                                    <button data-value="1" data-target="#couple" class="wpb_button wpb_btn-large <?php echo isset($_GET['couple']) && 1 == $_GET['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Alone', 'wpestate'); ?></button>
+                                    <button data-value="2" data-target="#couple" class="wpb_button wpb_btn-large <?php echo isset($_GET['couple']) && 2 == $_GET['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('In couple', 'wpestate'); ?></button>
                                     -->
                                 </div>
 
@@ -256,7 +252,7 @@ test
 
                         <div class="form-control-half">
                             <div class="switcher">
-                                <!--<input type="hidden" value="<?php echo isset($_POST['smoker']) ? (int) $_POST['smoker'] : '' ?>" name="smoker" id="smoker">-->
+                                <!--<input type="hidden" value="<?php echo isset($_GET['smoker']) ? (int) $_GET['smoker'] : '' ?>" name="smoker" id="smoker">-->
                                 <label><?php _e('Smoker', 'wpestate'); ?></label>
                                 <div class="value-row">
 
@@ -264,14 +260,14 @@ test
                                     <input id="smoker-no" name="smoker" type="radio" value="1" class="hidden" >
                                     <input id="smoker-yes" name="smoker" type="radio" value="2" class="hidden">
 
-                                    <label for="smoker-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_POST['smoker']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
-                                    <label for="smoker-no" class="wpb_button wpb_btn-large <?php echo isset($_POST['smoker']) && 1 == $_POST['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Non-smoker', 'wpestate'); ?></label>
-                                    <label for="smoker-yes" class="wpb_button wpb_btn-large <?php echo isset($_POST['smoker']) && 2 == $_POST['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Smoker', 'wpestate'); ?></label>
+                                    <label for="smoker-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['smoker']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
+                                    <label for="smoker-no" class="wpb_button wpb_btn-large <?php echo isset($_GET['smoker']) && 1 == $_GET['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Non-smoker', 'wpestate'); ?></label>
+                                    <label for="smoker-yes" class="wpb_button wpb_btn-large <?php echo isset($_GET['smoker']) && 2 == $_GET['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Smoker', 'wpestate'); ?></label>
 
                                     <!--
-                                    <button data-value="" data-target="#smoker" class="wpb_button wpb_btn-large <?php echo empty($_POST['smoker']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                    <button data-value="1" data-target="#smoker" class="wpb_button wpb_btn-large <?php echo isset($_POST['smoker']) && 1 == $_POST['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Non-smoker', 'wpestate'); ?></button>
-                                    <button data-value="2" data-target="#smoker" class="wpb_button wpb_btn-large <?php echo isset($_POST['smoker']) && 2 == $_POST['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Smoker', 'wpestate'); ?></button>
+                                    <button data-value="" data-target="#smoker" class="wpb_button wpb_btn-large <?php echo empty($_GET['smoker']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
+                                    <button data-value="1" data-target="#smoker" class="wpb_button wpb_btn-large <?php echo isset($_GET['smoker']) && 1 == $_GET['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Non-smoker', 'wpestate'); ?></button>
+                                    <button data-value="2" data-target="#smoker" class="wpb_button wpb_btn-large <?php echo isset($_GET['smoker']) && 2 == $_GET['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Smoker', 'wpestate'); ?></button>
                                     -->
                                 </div>
                             </div>
@@ -279,7 +275,7 @@ test
 
                         <div class="form-control-half">
                             <div class="switcher">
-                                <!--<input type="hidden" value="<?php echo isset($_POST['pets']) ? (int) $_POST['pets'] : '' ?>" name="pets" id="pets">-->
+                                <!--<input type="hidden" value="<?php echo isset($_GET['pets']) ? (int) $_GET['pets'] : '' ?>" name="pets" id="pets">-->
                                 <label><?php _e('Pets', 'wpestate'); ?></label>
                                 <div class="value-row">
 
@@ -287,14 +283,14 @@ test
                                     <input id="pets-no" name="pets" type="radio" value="1" class="hidden" >
                                     <input id="pets-yes" name="pets" type="radio" value="2" class="hidden">
 
-                                    <label for="pets-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_POST['pets']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
-                                    <label for="pets-no" class="wpb_button wpb_btn-large <?php echo isset($_POST['pets']) && 1 == $_POST['pets'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('No pets', 'wpestate'); ?></label>
-                                    <label for="pets-yes" class="wpb_button wpb_btn-large <?php echo isset($_POST['pets']) && 2 == $_POST['pets'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Pets', 'wpestate'); ?></label>
+                                    <label for="pets-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['pets']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
+                                    <label for="pets-no" class="wpb_button wpb_btn-large <?php echo isset($_GET['pets']) && 1 == $_GET['pets'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('No pets', 'wpestate'); ?></label>
+                                    <label for="pets-yes" class="wpb_button wpb_btn-large <?php echo isset($_GET['pets']) && 2 == $_GET['pets'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Pets', 'wpestate'); ?></label>
 
                                     <!--
-                                    <button data-value="" data-target="#pets" class="wpb_button wpb_btn-large <?php echo empty($_POST['pets']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                    <button data-value="1" data-target="#pets" class="wpb_button wpb_btn-large <?php echo isset($_POST['pets']) && 1 == $_POST['pets'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('No pets', 'wpestate'); ?></button>
-                                    <button data-value="2" data-target="#pets" class="wpb_button wpb_btn-large <?php echo isset($_POST['pets']) && 2 == $_POST['pets'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Pets', 'wpestate'); ?></button>
+                                    <button data-value="" data-target="#pets" class="wpb_button wpb_btn-large <?php echo empty($_GET['pets']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
+                                    <button data-value="1" data-target="#pets" class="wpb_button wpb_btn-large <?php echo isset($_GET['pets']) && 1 == $_GET['pets'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('No pets', 'wpestate'); ?></button>
+                                    <button data-value="2" data-target="#pets" class="wpb_button wpb_btn-large <?php echo isset($_GET['pets']) && 2 == $_GET['pets'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Pets', 'wpestate'); ?></button>
                                     -->
                                 </div>
                             </div>
@@ -302,7 +298,7 @@ test
 
                         <div class="form-control-half">
                             <div class="switcher">
-                                <!--<input type="hidden" value="<?php echo isset($_POST['activity']) ? (int) $_POST['activity'] : '' ?>" name="activity" id="activity">-->
+                                <!--<input type="hidden" value="<?php echo isset($_GET['activity']) ? (int) $_GET['activity'] : '' ?>" name="activity" id="activity">-->
                                 <label><?php _e('Activity', 'wpestate'); ?></label>
                                 <div class="value-row">
 
@@ -310,14 +306,14 @@ test
                                     <input id="activity-student" name="activity" type="radio" value="1" class="hidden" >
                                     <input id="activity-professional" name="activity" type="radio" value="2" class="hidden">
 
-                                    <label for="activity-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_POST['activity']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
-                                    <label for="activity-student" class="wpb_button wpb_btn-large <?php echo isset($_POST['activity']) && 1 == $_POST['activity'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Student', 'wpestate'); ?></label>
-                                    <label for="activity-professional" class="wpb_button wpb_btn-large <?php echo isset($_POST['activity']) && 2 == $_POST['activity'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Professional', 'wpestate'); ?></label>
+                                    <label for="activity-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['activity']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
+                                    <label for="activity-student" class="wpb_button wpb_btn-large <?php echo isset($_GET['activity']) && 1 == $_GET['activity'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Student', 'wpestate'); ?></label>
+                                    <label for="activity-professional" class="wpb_button wpb_btn-large <?php echo isset($_GET['activity']) && 2 == $_GET['activity'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Professional', 'wpestate'); ?></label>
 
                                     <!--
-                                    <button data-value="" data-target="#activity" class="wpb_button wpb_btn-large <?php echo empty($_POST['activity']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                    <button data-value="1" data-target="#activity" class="wpb_button wpb_btn-large <?php echo isset($_POST['activity']) && 1 == $_POST['activity'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Student', 'wpestate'); ?></button>
-                                    <button data-value="2" data-target="#activity" class="wpb_button wpb_btn-large <?php echo isset($_POST['activity']) && 2 == $_POST['activity'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Professional', 'wpestate'); ?></button>
+                                    <button data-value="" data-target="#activity" class="wpb_button wpb_btn-large <?php echo empty($_GET['activity']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
+                                    <button data-value="1" data-target="#activity" class="wpb_button wpb_btn-large <?php echo isset($_GET['activity']) && 1 == $_GET['activity'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Student', 'wpestate'); ?></button>
+                                    <button data-value="2" data-target="#activity" class="wpb_button wpb_btn-large <?php echo isset($_GET['activity']) && 2 == $_GET['activity'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Professional', 'wpestate'); ?></button>
                                     -->
                                 </div>
                             </div>
@@ -367,7 +363,7 @@ test
 
                         <div class="form-control-half">
                             <div class="switcher">
-                                <!--<input type="hidden" value="<?php echo isset($_POST['party']) ? (int) $_POST['party'] : '' ?>" name="party" id="party">-->
+                                <!--<input type="hidden" value="<?php echo isset($_GET['party']) ? (int) $_GET['party'] : '' ?>" name="party" id="party">-->
                                 <label><?php _e('Party', 'wpestate'); ?></label>
 
                                 <div class="value-row">
@@ -376,14 +372,14 @@ test
                                     <input id="party-often" name="party" type="radio" value="1" class="hidden" >
                                     <input id="party-not-often" name="party" type="radio" value="2" class="hidden">
 
-                                    <label for="party-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_POST['party']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
-                                    <label for="party-often" class="wpb_button wpb_btn-large <?php echo isset($_POST['party']) && 1 == $_POST['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Often', 'wpestate'); ?></label>
-                                    <label for="party-not-often" class="wpb_button wpb_btn-large <?php echo isset($_POST['party']) && 2 == $_POST['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Not often', 'wpestate'); ?></label>
+                                    <label for="party-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['party']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
+                                    <label for="party-often" class="wpb_button wpb_btn-large <?php echo isset($_GET['party']) && 1 == $_GET['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Often', 'wpestate'); ?></label>
+                                    <label for="party-not-often" class="wpb_button wpb_btn-large <?php echo isset($_GET['party']) && 2 == $_GET['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Not often', 'wpestate'); ?></label>
 
                                     <!--
-                                    <button data-value="" data-target="#party" class="wpb_button wpb_btn-large <?php echo empty($_POST['party']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                    <button data-value="1" data-target="#party" class="wpb_button wpb_btn-large <?php echo isset($_POST['party']) && 1 == $_POST['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Often', 'wpestate'); ?></button>
-                                    <button data-value="2" data-target="#party" class="wpb_button wpb_btn-large <?php echo isset($_POST['party']) && 2 == $_POST['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Not often', 'wpestate'); ?></button>
+                                    <button data-value="" data-target="#party" class="wpb_button wpb_btn-large <?php echo empty($_GET['party']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
+                                    <button data-value="1" data-target="#party" class="wpb_button wpb_btn-large <?php echo isset($_GET['party']) && 1 == $_GET['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Often', 'wpestate'); ?></button>
+                                    <button data-value="2" data-target="#party" class="wpb_button wpb_btn-large <?php echo isset($_GET['party']) && 2 == $_GET['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Not often', 'wpestate'); ?></button>
                                     -->
                                 </div>
                             </div>

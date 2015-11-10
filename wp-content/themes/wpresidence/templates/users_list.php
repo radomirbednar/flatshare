@@ -45,7 +45,7 @@ if ($options['content_class'] == 'col-md-12') {
 
             $user_status                = !empty($_GET['status']) ? (array) $_GET['status'] : array(1, 2);
             $how_long                   = !empty($_GET['how_long']) ? $_GET['how_long'] : '';
-            $age_from                   = !empty($_GET['age_low']) ? $_GET['age_low'] : '';
+            $age_from                   = !empty($_GET['age_low']) ? $_GET['age_low'] : 0;
             $age_to                     = !empty($_GET['age_max']) ? $_GET['age_max'] : '';
             $user_gender                = !empty($_GET['user_gender']) ? $_GET['user_gender'] : '';
             $sexual_preference          = !empty($_GET['sexual_preference']) ? $_GET['sexual_preference'] : '';
@@ -79,6 +79,29 @@ if ($options['content_class'] == 'col-md-12') {
                 WHERE
                     fud.user_status IN (" . implode(',', $user_status) .  ")
             ";
+            
+            if(!empty($age_to)){
+                $sql .= "
+                    AND
+                        user_age BETWEEN " . (int) $age_from . " AND " . (int) $age_to . "
+                ";
+            }
+            
+            if(!empty($user_gender)){
+                $sql .= "
+                    AND
+                        user_gender = '" . (int) $user_gender . "'
+                ";
+            }            
+            
+            if(!empty($status)){
+                $sql .= "
+                    AND
+                        user_status = '" . (int) $user_status . "'
+                ";
+            }            
+            
+            
 
             global $wpdb;
             $query = $wpdb->get_results($sql);
