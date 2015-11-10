@@ -85,21 +85,29 @@ if ($options['content_class'] == 'col-md-12') {
 
 
             foreach ($query as $q) {
+                
+                $fl_user_data = get_fl_data($q->ID);
 
-                $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
-                $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
-                $user_facebook = get_the_author_meta('facebook', $q->ID);
-                $user_twitter = get_the_author_meta('twitter', $q->ID);
-                $user_linkedin = get_the_author_meta('linkedin', $q->ID);
-                $user_pinterest = get_the_author_meta('pinterest', $q->ID);
-                $photo_url = get_the_author_meta('custom_picture', $q->ID);
-                $user_gender = esc_attr(get_user_meta_int($q->ID, 'user_gender'));
-                $user_age = esc_attr(get_user_meta_int($q->ID, 'user_age'));
-                $looking_where = esc_attr(get_user_meta($q->ID, 'looking_where', true));
+                $first_name             = esc_attr(get_the_author_meta('first_name', $q->ID));
+                $last_name              = esc_attr(get_the_author_meta('last_name', $q->ID));
+                $user_facebook          = get_the_author_meta('facebook', $q->ID);
+                $user_twitter           = get_the_author_meta('twitter', $q->ID);
+                $user_linkedin          = get_the_author_meta('linkedin', $q->ID);
+                $user_pinterest         = get_the_author_meta('pinterest', $q->ID);
+                $photo_url              = get_the_author_meta('custom_picture', $q->ID);
+                
+                $user_gender            = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
+                $user_age               = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
+                $looking_where          = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
+                $rent_amount            = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
 
-                $user_gender_array = array('1' => __('female', 'wpestate'), '2' => __('male', 'wpestate'));
+                $user_gender_array = array(
+                    '2' => __('female', 'wpestate'), 
+                    '1' => __('male', 'wpestate')
+                );
+                
 
-                $rent_amount = 200;
+                
 
                 $author_url = esc_url(get_author_posts_url($q->ID));
 
@@ -122,10 +130,10 @@ if ($options['content_class'] == 'col-md-12') {
 
                         <div class="user_unit_info">  
                             <?php
-                            print '<h4> <a href="' . $link . '">' . $first_name . ' ' . $last_name . '</a></h4>
-                            <div class="agent_position">' . $looking_where . '</div>';
+                            print '<h4> <a href="' . $link . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
+                            <div class="agent_position">' . esc_attr($looking_where) . '</div>';
                             if ($user_age) {
-                                print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . $user_age . '</div>';
+                                print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . esc_attr($user_age) . '</div>';
                             }
                             if ($user_gender) {
                                 print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
