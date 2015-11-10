@@ -57,8 +57,10 @@ if ( basename( get_page_template() ) == 'user_dashboard.php' ){
         <?php if( $dash_searches!=$home_url ){ ?>
             <a href="<?php print $dash_searches;?>" class="<?php print $activesearch; ?>"><i class="fa fa-search"></i> <?php _e('Saved Searches','wpestate');?></a>
         <?php } 
+        
+        
         if( $dash_invoices!=$home_url ){ ?>
-            <a href="<?php print $dash_invoices;?>" class="<?php print $activeinvoices; ?>"><i class="fa fa-file-text-o"></i> <?php _e('My Invoices','wpestate');?></a>
+            <!--<a href="<?php print $dash_invoices;?>" class="<?php print $activeinvoices; ?>"><i class="fa fa-file-text-o"></i> <?php _e('My Invoices','wpestate');?></a>-->
         <?php } ?>
             
             
