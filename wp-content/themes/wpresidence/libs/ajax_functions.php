@@ -1466,7 +1466,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                     user_status
                 )
             VALUES (
-                " . $userID . ",
+                " . (int) $userID . ",
                 " . (empty($data['how_long']) ? '' : (int) $data['how_long']) . ",
                 " . (empty($data['user_age']) ? '' : (int) $data['user_age']) . ",
                 " . (empty($data['user_gender']) ? '' : (int) $data['user_gender']) . ",
@@ -1476,15 +1476,14 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                 " . (empty($data['smoker']) ? '' : (int) $data['smoker']) . ",    
                 " . (empty($data['pets']) ? '' : (int) $data['pets']) . ",    
                 " . (empty($data['activity']) ? '' : (int) $data['activity']) . ",    
-                " . (empty($data['user_origin']) ? '' : (int) $data['user_origin']) . ",    
+                " . (empty($data['user_origin']) ? '' : esc_sql($data['user_origin'])) . ",    
                 " . (empty($data['party']) ? '' : (int) $data['party']) . ",    
-                " . (empty($data['looking_when']) ? '' : (int) $data['looking_when']) . ",    
-                " . (empty($data['how_long']) ? '' : (int) $data['how_long']) . ",    
-                " . (empty($data['user_status']) ? '' : (int) $data['user_status']) . ",    
-                " . (empty($data['how_long']) ? '' : (int) $data['how_long']) . "                
+                " . (empty($data['looking_when']) ? '' : (int) $data['looking_when']) . ",                    
+                " . (empty($data['user_status']) ? '' : (int) $data['user_status']) . "                       
             )
         ";
         
+        $wpdb->query($sql);
 
         /**
          * Update user languages

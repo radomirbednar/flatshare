@@ -17,21 +17,25 @@ $user_skype = get_the_author_meta('skype', $userID);
 $website = get_the_author_meta('website', $userID);
 
 //
-$how_long = get_user_meta_int($userID, 'how_long');
-$user_age = get_user_meta_int($userID, 'user_age');
-$sexual_preference = get_user_meta_int($userID, 'sexual_preference');
-$sleeping_span = get_user_meta_int($userID, 'sleeping_span');
-$party = get_user_meta_int($userID, 'party');
-$looking_for = get_user_meta_int($userID, 'looking_for');
-$couple = get_user_meta_int($userID, 'couple');
-$pets = get_user_meta_int($userID, 'pets');
-$smoker = get_user_meta_int($userID, 'smoker');
-$activity = get_user_meta_int($userID, 'activity');
-$user_gender = get_user_meta_int($userID, 'user_gender');
-$user_status = get_user_meta_int($userID, 'user_status');
 
-$user_origin = get_user_meta($userID, 'user_origin', true);
-$looking_where = get_user_meta($userID, 'looking_where', true);
+$fl_user_data           = get_fl_data($userID);
+
+$how_long               = isset($fl_user_data->how_long) ? $fl_user_data->how_long : '';
+$user_age               = isset($fl_user_data->user_age) ? $fl_user_data->user_age : '';
+$sexual_preference      = isset($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
+$sleeping_span          = isset($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
+$party                  = isset($fl_user_data->party) ? $fl_user_data->party : '';
+$looking_for            = isset($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
+$couple                 = isset($fl_user_data->couple) ? $fl_user_data->couple : '';
+$pets                   = isset($fl_user_data->pets) ? $fl_user_data->pets : '';
+$smoker                 = isset($fl_user_data->smoker) ? $fl_user_data->smoker : '';
+$activity               = isset($fl_user_data->activity) ? $fl_user_data->activity : '';
+$user_gender            = isset($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
+$user_status            = isset($fl_user_data->user_status) ? $fl_user_data->user_status : '';
+$user_origin            = isset($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
+$looking_where          = isset($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
+
+
 
 $user_language_ids = fl_get_user_language_ids($userID);
 $user_skill_ids = fl_get_user_house_skill_ids($userID);
