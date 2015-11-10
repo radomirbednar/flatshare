@@ -354,8 +354,8 @@ if ($user_custom_picture == '') {
                 $currency = esc_html( get_option('wp_estate_currency_symbol', '') );
                 ?>
                 <p>
-                    <label for="rent_amount" class="wauto"><?php _e('How much do you want to pay?:', 'wpestate'); ?> <?php echo esc_html($currency) ?></label>
-                    <span id="rent_label_text" class="slide-label"><?php printf(__('%s', 'dokan'), (int) $user_rent); ?></span>
+                    <label for="rent_amount" class="wauto"><?php _e('How much do you want to pay?:', 'wpestate'); ?></label>
+                    <span id="rent_label_text" class="slide-label"><?php printf(__('%s', 'dokan'), (int) $user_rent); ?> <?php echo esc_html($currency) ?></span>
                 </p>
                  
                 <div id="slider_rent" class="fl-slider"></div>
