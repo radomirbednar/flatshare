@@ -1364,12 +1364,12 @@ add_action( 'wp_ajax_wpestate_ajax_update_profile', 'wpestate_ajax_update_profil
 if( !function_exists('wpestate_ajax_update_profile') ):
 
    function wpestate_ajax_update_profile(){
-    
+
         /**
          * serializovane inputy poslane ajaxem
          */
-        parse_str ( $_POST['data'], $data);    
-    
+        parse_str ( $_POST['data'], $data);
+
         global $current_user;
         get_currentuserinfo();
         $userID         =   $current_user->ID;
@@ -1390,7 +1390,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         $userlinkedin   =   wp_kses( $_POST['userlinkedin'],$allowed_html);
         $userpinterest  =   wp_kses( $_POST['userpinterest'],$allowed_html);
         $userurl        =   wp_kses( $_POST['userurl'],$allowed_html);
-        
+
         $looking_where  =   esc_attr(trim($data['looking_where']));
         $user_origin    =   esc_attr( $data['user_origin'] );
 
@@ -1410,7 +1410,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         update_user_meta( $userID, 'website' , $userurl) ;
         update_user_meta( $userID, 'user_origin' , $user_origin) ;
         update_user_meta( $userID, 'looking_where' , $looking_where) ;
-        
+
         /**
          * Update user integer values
          */
@@ -1439,50 +1439,52 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                 delete_user_meta_int($userID, $key);
             }
         }*/
-        
-        
+
+
         /**
          * update our new user data
          */
-        
+
         global $wpdb;
-        
+
         $sql = "
             REPLACE INTO
                 fl_user_data (
-                    id_user, 
-                    how_long, 
-                    user_age, 
-                    user_gender, 
-                    sexual_preference, 
-                    sleeping_span, 
-                    couple, 
-                    smoker, 
-                    pets, 
-                    activity, 
-                    user_origin, 
-                    party, 
-                    looking_when, 
-                    user_status
+                    id_user,
+                    how_long,
+                    user_age,
+                    user_gender,
+                    sexual_preference,
+                    sleeping_span,
+                    couple,
+                    smoker,
+                    pets,
+                    activity,
+                    user_origin,
+                    party,
+                    looking_when,
+                    user_status,
+                    looking_for
                 )
             VALUES (
-                " . (int) $userID . ",
-                " . (empty($data['how_long']) ? '' : (int) $data['how_long']) . ",
-                " . (empty($data['user_age']) ? '' : (int) $data['user_age']) . ",
-                " . (empty($data['user_gender']) ? '' : (int) $data['user_gender']) . ",
-                " . (empty($data['sexual_preference']) ? '' : (int) $data['sexual_preference']) . ",
-                " . (empty($data['sleeping_span']) ? '' : (int) $data['sleeping_span']) . ",
-                " . (empty($data['couple']) ? '' : (int) $data['couple']) . ",    
-                " . (empty($data['smoker']) ? '' : (int) $data['smoker']) . ",    
-                " . (empty($data['pets']) ? '' : (int) $data['pets']) . ",    
-                " . (empty($data['activity']) ? '' : (int) $data['activity']) . ",    
-                " . (empty($data['user_origin']) ? '' : esc_sql($data['user_origin'])) . ",    
-                " . (empty($data['party']) ? '' : (int) $data['party']) . ",    
-                " . (empty($data['looking_when']) ? '' : (int) $data['looking_when']) . ",                    
-                " . (empty($data['user_status']) ? '' : (int) $data['user_status']) . "                       
+                \"" . (int) $userID . "\",
+                \"" . (empty($data['how_long']) ? '' : (int) $data['how_long']) . "\",
+                \"" . (empty($data['user_age']) ? '' : (int) $data['user_age']) . "\",
+                \"" . (empty($data['user_gender']) ? '' : (int) $data['user_gender']) . "\",
+                \"" . (empty($data['sexual_preference']) ? "''" : (int) $data['sexual_preference']) . "\",
+                \"" . (empty($data['sleeping_span']) ? '' : (int) $data['sleeping_span']) . "\",
+                \"" . (empty($data['couple']) ? '' : (int) $data['couple']) . "\",
+                \"" . (empty($data['smoker']) ? '' : (int) $data['smoker']) . "\",
+                \"" . (empty($data['pets']) ? '' : (int) $data['pets']) . "\",
+                \"" . (empty($data['activity']) ? '' : (int) $data['activity']) . "\",
+                \"" . (empty($data['user_origin']) ? '' : esc_sql($data['user_origin'])) . "\",
+                \"" . (empty($data['party']) ? '' : (int) $data['party']) . "\",
+                \"" . (empty($data['looking_when']) ? '' : (int) $data['looking_when']) . "\",
+                \"" . (empty($data['user_status']) ? '' : (int) $data['user_status']) . "\",
+                \"" . (empty($data['looking_for']) ? '' : (int) $data['looking_for']) . "\"    
             )
         ";
-        
+
         $wpdb->query($sql);
 
         /**
@@ -2874,7 +2876,7 @@ function wpestate_ajax_agent_contact_form(){
         $headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
 
         $mail = @wp_mail($receiver_email, $subject, $message, $headers);
-                
+
         $duplicate_email_adr        =   esc_html ( get_option('wp_estate_duplicate_email_adr','') );
 
         if($duplicate_email_adr!=''){
@@ -2883,9 +2885,9 @@ function wpestate_ajax_agent_contact_form(){
         }
 
         echo json_encode(array('sent'=>true, 'response'=>__('The message was sent !','wpestate') ) );
-                
+
         die();
-                
+
 }
 
 endif; // end   wpestate_ajax_agent_contact_form
@@ -2933,7 +2935,7 @@ function wpestate_ajax_contact_form_footer(){
                     $email = wp_kses( trim($_POST['email']),$allowed_html );
               }
         }
-                
+
         $phone = wp_kses( trim($_POST['phone']),$allowed_html );
 
         //Check comments
@@ -2945,13 +2947,13 @@ function wpestate_ajax_contact_form_footer(){
                 $comment = wp_kses( trim ($_POST['contact_coment'] ) ,$allowed_html);
               }
         }
-                
+
         if(isset($_POST['agentemail'] )){
             if( is_email ( $_POST['agentemail'] ) ){
                 $receiver_email = wp_kses ( $_POST['agentemail'],$allowed_html) ;
             }
         }
-                
+
         $message='';
 
         $subject =__('Contact form from ','wpestate') . home_url() ;
@@ -2963,9 +2965,9 @@ function wpestate_ajax_contact_form_footer(){
         wp_mail($receiver_email, $subject, $message, $headers);
 
         echo json_encode(array('sent'=>true, 'response'=>__('The message was sent !','wpestate') ) );
-                
+
         die();
-                
+
     }
 
 endif; // end   ajax_agent_contact_form

@@ -123,7 +123,7 @@ function delete_user_meta_int($user_id, $meta_key){
 
 function get_fl_data($user_id){
     global $wpdb;
-    $sql = "SELECT * FROM fl_user_data WHERE id_user = '" . (int) $user_id;
+    $sql = "SELECT * FROM fl_user_data WHERE id_user = '" . (int) $user_id . "'";
     $result = $wpdb->get_row($sql);
     return $result;
 }
