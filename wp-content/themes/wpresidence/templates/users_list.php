@@ -72,7 +72,8 @@ if ($options['content_class'] == 'col-md-12') {
                         
             ";
             
-            $query = $wpdb->get_resutls($sql);            
+            global $wpdb;
+            $query = $wpdb->get_results($sql);            
 
 
             foreach ($query as $q) {
