@@ -29,6 +29,7 @@ if ($options['content_class'] == 'col-md-12') {
         <div id="listing_ajax_container_agent">
 
             <?php
+            
             $number = 10;
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $offset = ($paged - 1) * $number;
@@ -198,8 +199,8 @@ if ($options['content_class'] == 'col-md-12') {
                 if ($photo_url == '') {
                     $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
                 }
-                ?>
-
+                ?> 
+            
                 <div class="col-md-3 listing_wrapper">
                     <div class="agent_unit" data-link="<?php print $link; ?>">
 
@@ -207,11 +208,10 @@ if ($options['content_class'] == 'col-md-12') {
                             <?php
                             print $thumb_prop;
                             print '<div class="listing-cover"></div>
-                   <a href="' . $author_url . '"> <span class="listing-cover-plus">+</span></a>';
-                            ?>
-                        </div>
-
-                        <div class="user_unit_info">
+                            <a href="' . $author_url . '"> <span class="listing-cover-plus">+</span></a>';
+                            ?> 
+                        </div>   
+                        <div class="user_unit_info">  
                             <?php
                             print '<h4> <a href="' . $link . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
                             <div class="agent_position">' . esc_attr($looking_where) . '</div>';

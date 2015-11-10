@@ -308,7 +308,7 @@ if ($user_custom_picture == '') {
 
             <script>
 
-                function loadScript(src, callback) {
+                  function loadScript(src, callback) {
                     var script = document.createElement("script");
                     script.type = "text/javascript";
                     if (callback)
@@ -316,21 +316,28 @@ if ($user_custom_picture == '') {
                     document.getElementsByTagName("head")[0].appendChild(script);
                     script.src = src;
                 } 
-                loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&callback=initialize'); 
                 
+                loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&language=en&callback=initialize');
+ 
                 function initialize() { 
+                    
                     var options = {
                         types: ['(cities)'],
                         //componentRestrictions: {country: "cz"}
-                    }; 
+                    };
+                    
                     var input = document.getElementById('looking_where');
-                    var autocomplete = new google.maps.places.Autocomplete(input, options); 
-                }
+                    var autocomplete = new google.maps.places.Autocomplete(input, options);
+                     
+                        autocomplete.addListener('place_changed', function() {    
+                        var place = autocomplete.getPlace();
+  
+   
+                      }); 
+                    }
 
             </script>
-
-            
-            
+          
                <div class="fl-row adv_search_slider">
 
                 <script>
