@@ -326,7 +326,12 @@ if ($extended_search == 'yes') {
                                 $skills = fl_get_house_skills();
                                 if (!empty($skills)):
                                     foreach ($skills as $skill):
-                                        $selected = in_array($skill->id_skill, (array) $user_skill_ids) ? ' checked ' : '';
+                                        
+                                        $selected = '';
+                                        if(isset($_GET['skill']) && is_array($_GET['skill'])){
+                                            $selected = in_array($skill->id_skill, $_GET['skill']) ? ' checked ' : '';
+                                        }
+                                        
                                         ?>
                                         <span class="flcheckbox">
                                             <label>
@@ -393,7 +398,11 @@ if ($extended_search == 'yes') {
 
                                 if (!empty($languages)):
                                     foreach ($languages as $lang):
-                                        $selected = in_array($lang->id_lang, (array) $user_language_ids) ? ' checked ' : '';
+                                        
+                                        $selected = '';
+                                        if(isset($_GET['language']) && is_array($_GET['language'])){
+                                            $selected = in_array($lang->id_lang, $_GET['language']) ? ' checked ' : '';
+                                        }                                
                                         ?>
                                         <span class="flcheckbox">
                                             <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>" <?php echo $selected ?>><?php esc_attr_e($lang->name) ?></label>

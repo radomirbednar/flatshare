@@ -58,8 +58,8 @@ if ($options['content_class'] == 'col-md-12') {
             $party                      = !empty($_GET['party']) ? $_GET['party'] : '';
             $looking_where              = !empty($_GET['looking_where']) ? $_GET['looking_where'] : '';
 
-            $user_language_ids          = !empty($_GET['skill']) ? $_GET['skill'] : '';
-            $user_skill_ids             = !empty($_GET['language']) ? $_GET['language'] : '';
+            $user_skill_ids             = !empty($_GET['skill']) ? $_GET['skill'] : '';
+            $user_language_ids          = !empty($_GET['language']) ? $_GET['language'] : '';
 
 
             /**
@@ -75,10 +75,37 @@ if ($options['content_class'] == 'col-md-12') {
                 JOIN
                     fl_user_data as fud
                 ON
-                    fud.id_user = u.ID
-                WHERE
-                    fud.user_status IN (" . implode(',', $user_status) .  ")
-            ";
+                    fud.id_user = u.ID ";
+            
+            if(!empty($user_skill_ids)){
+                
+                array_walk($user_skill_ids, 'esc_sql');
+                
+                $sql .= "
+                    JOIN
+                        fl_skill2user AS f2u
+                    ON
+                        f2u.id_user = u.ID
+                    AND
+                        f2u.id_skill IN (" . implode(',', $user_skill_ids) . ")
+                ";
+            }
+            
+            if(!empty($user_language_ids)){
+                
+                array_walk($user_language_ids, 'esc_sql');
+                
+                $sql .= "
+                    JOIN
+                        fl_language2user AS l2u
+                    ON
+                        l2u.id_user = u.ID
+                    AND
+                        l2u.id_lang IN (" . implode(',', $user_language_ids) . ")
+                ";
+            }            
+            
+            $sql .= " WHERE fud.user_status IN (" . implode(',', $user_status) .  ") ";
 
             if(!empty($age_to)){
                 $sql .= " AND user_age BETWEEN " . (int) $age_from . " AND " . (int) $age_to . " ";
@@ -128,9 +155,12 @@ if ($options['content_class'] == 'col-md-12') {
                 $sql .= " AND party = '" . (int) $party . "' ";
             }  
             
+            $sql .= " GROUP BY u.ID ";
+            
+            /*
             if(!empty($looking_where)){
                 $sql .= " AND looking_where = '" . esc_sql($looking_where) . "' ";
-            }             
+            }   */          
 
 
             global $wpdb;
