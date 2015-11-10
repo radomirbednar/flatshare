@@ -28,6 +28,7 @@ $pets = get_user_meta_int($userID, 'pets');
 $smoker = get_user_meta_int($userID, 'smoker');
 $activity = get_user_meta_int($userID, 'activity');
 $user_gender = get_user_meta_int($userID, 'user_gender');
+$user_status = get_user_meta_int($userID, 'user_status');
 
 $user_origin = get_user_meta($userID, 'user_origin', true);
 $looking_where = get_user_meta($userID, 'looking_where', true);
@@ -121,6 +122,24 @@ if ($user_custom_picture == '') {
     <h3><?php _e('Personal information', 'wpestate'); ?></h3>
 
     <div class="add-user-personal profile-page row border-radius">
+
+        <div class="col-xs-12">
+            <?php
+            $arr = array(
+                1 => __('Looking for a flat', 'wpestate'),
+                2 => __('Looking for a roommate', 'wpestate'),
+                3 => __('Real estate', 'wpestate'),
+                4 => __('Landlord', 'wpestate'),
+            );
+            ?>
+            <label for="user_status"><?php _e('Your status:', 'wpestate'); ?></label>
+            <select id="user_status" name="user_status" class="w100">
+                <option value=""></option>
+                <?php foreach ($arr as $key => $val): ?>
+                    <option value="<?php echo $key ?>" <?php echo $user_status == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
+                <?php endforeach; ?>
+            </select>    
+        </div>
 
         <div class="col-md-6">
 
@@ -393,9 +412,10 @@ if ($user_custom_picture == '') {
             </div>
 
             <div class="fl-row adv_search_slider">
-                <?php                
+                <?php
                 $default_rent = 200;
                 $rent_max = 1200;
+                $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
                 ?>                
                 <script>
                     jQuery(document).ready(function ($) {
@@ -406,15 +426,15 @@ if ($user_custom_picture == '') {
                             max: parseInt(<?php echo (int) $rent_max; ?>),
                             //values: [$('#age_low').val(), $('#age_max').val()], // defaultni hodnoty
                             slide: function (event, ui) {
-                                jQuery("#rent_label_text").text(ui.value.format());
-                                
+                                jQuery("#rent_label_text").text(ui.value.format() + " " + decodeURIComponent(control_vars.curency));
+
                             }
                         });
                     });
                 </script>
                 <p>
                     <label for="rent_amount" class="wauto"><?php _e('How much do you want to pay?:', 'wpestate'); ?></label>
-                    <span id="rent_label_text" class="slide-label"><?php printf(__('%s', 'dokan'), (int) $default_rent); ?></span>
+                    <span id="rent_label_text" class="slide-label"><?php echo (int) $default_rent; ?> <?php echo esc_html($currency) ?></span>
                 </p>
                 <div id="slider_rent" class="fl-slider"></div>
                 <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $default_rent; ?>">
