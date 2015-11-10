@@ -22,19 +22,20 @@ if ( get_post_type($prop_id) == 'estate_property' ){
        $content_size='9';
     }   
 }
-$link =  get_permalink();
+$link = get_permalink();
  
 ?>
 
     <div class="col-md-<?php print $pict_size;?> agentpic-wrapper">
-        <div class="agent-listing-img-wrapper" data-link="<?php echo  $link; ?>">
-     
+        <div class="agent-listing-img-wrapper" data-link="<?php echo  $link; ?>"> 
+            
+            
             <a href="<?php print $link;?>">
                  <img src="<?php print $user_custom_picture;?>"  alt="agent picture" class="img-responsive agentpict"/>
-            </a>   
+            </a>
+            
             <div class="listing-cover"></div>
-            <div class="listing-cover-title"><a href="<?php echo $link;?>"><?php echo $name;?></a></div>
-
+            <div class="listing-cover-title"><a href="<?php echo $link;?>"><?php echo $name;?></a></div> 
         </div>
     
         <div class="agent_unit_social_single">

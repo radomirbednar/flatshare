@@ -61,13 +61,11 @@ if ($options['content_class'] == 'col-md-12') {
 
             $user_language_ids          = !empty($_GET['skill']) ? $_GET['skill'] : '';            
             $user_skill_ids             = !empty($_GET['language']) ? $_GET['language'] : '';
-            
-
+             
             /**
              * 
              */
-            
-            
+             
             $sql = " 
                 SELECT 
                     * 
@@ -91,36 +89,35 @@ if ($options['content_class'] == 'col-md-12') {
 
                 $first_name             = esc_attr(get_the_author_meta('first_name', $q->ID));
                 $last_name              = esc_attr(get_the_author_meta('last_name', $q->ID));
-                $user_facebook          = get_the_author_meta('facebook', $q->ID);
-                $user_twitter           = get_the_author_meta('twitter', $q->ID);
-                $user_linkedin          = get_the_author_meta('linkedin', $q->ID);
-                $user_pinterest         = get_the_author_meta('pinterest', $q->ID);
+                $user_facebook          = esc_url(get_the_author_meta('facebook', $q->ID));
+                $user_twitter           = esc_url(get_the_author_meta('twitter', $q->ID));
+                $user_linkedin          = esc_url(get_the_author_meta('linkedin', $q->ID));
+                $user_pinterest         = esc_url(get_the_author_meta('pinterest', $q->ID));
                 $photo_url              = get_the_author_meta('custom_picture', $q->ID);
                 
                 $user_gender            = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
                 $user_age               = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
                 $looking_where          = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
                 $rent_amount            = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
-
+                
+                  
                 $user_gender_array = array(
                     '2' => __('female', 'wpestate'), 
                     '1' => __('male', 'wpestate')
                 );
+  
                 
-
-                
-
                 $author_url = esc_url(get_author_posts_url($q->ID));
-
+  
                 $thumb_prop = '<img src="' . $photo_url . '" alt="agent-images">';
                 if ($photo_url == '') {
                     $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
                 }
+                 
                 ?> 
             
                 <div class="col-md-3 listing_wrapper">
-                    <div class="agent_unit" data-link="<?php print $link; ?>">
-
+                    <div class="agent_unit" data-link="<?php print $link; ?>"> 
                         <div class="agent-unit-img-wrapper">
                             <?php
                             print $thumb_prop;
@@ -129,21 +126,20 @@ if ($options['content_class'] == 'col-md-12') {
                             ?> 
                         </div>   
                         <div class="user_unit_info">  
-                            <?php
-                            print '<h4> <a href="' . $link . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
+                            <?php 
+                            print '<h4> <a href="' . $author_url . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
                             <div class="agent_position">' . esc_attr($looking_where) . '</div>';
                             if ($user_age) {
                                 print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . esc_attr($user_age) . '</div>';
                             }
                             if ($user_gender) {
                                 print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
-                            }
+                            } 
                             ?>
-                        </div>
-
+                        </div> 
                         <div class="agent_unit_social">
-                            <div class="social-wrapper">
-
+                            <div class="social-wrapper"> 
+                                
                                 <?php
                                 if ($user_facebook != '') {
                                     print ' <a href="' . esc_url($user_facebook) . '"><i class="fa fa-facebook"></i></a>';
@@ -157,16 +153,14 @@ if ($options['content_class'] == 'col-md-12') {
                                 if ($user_pinterest != '') {
                                     print ' <a href="' . esc_url($user_pinterest) . '"><i class="fa fa-pinterest"></i></a>';
                                 }
-                                ?>
-
+                                ?> 
                             </div>
                         </div>
                     </div>
                 </div>
                 <?php
             }
-            ?>
-
+            ?> 
             <?php
             if ($total_users > $total_query) {
 

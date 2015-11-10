@@ -33,11 +33,9 @@ if ( $favicon!='' ){
 } else {
     echo '<link rel="shortcut icon" href="'.get_template_directory_uri().'/img/favicon.gif" type="image/x-icon" />';
 }
-
-
+ 
 wp_head();
-
-
+ 
 if( is_tax() ) {
     echo '<meta name="description" content="'.strip_tags( term_description('', get_query_var( 'taxonomy' ) )).'" >';
 }
@@ -52,9 +50,7 @@ if (get_post_type()== 'estate_property'){
 } 
 ?>
 </head>
-
-
-
+ 
 <?php 
 
 $wide_class      =   '';
@@ -103,18 +99,16 @@ if(isset($post->ID) && !is_tax() && !is_category() ){
 $logo           =   get_option('wp_estate_logo_image','');   
 $logo_margin    =   intval( get_option('wp_estate_logo_margin','') );
 ?>
-
-
-
-
+ 
 <body <?php body_class($halfmap_body_class); ?>>  
-   
-
+ 
 <?php   get_template_part('templates/mobile_menu' ); ?> 
     
 <div class="website-wrapper" id="all_wrapper" >
 <div class="container main_wrapper <?php print $wide_class; print 'has_header_'.$logo_header_type.' '.$header_transparent_class; ?> ">
+ 
 
+    
     <div class="master_header <?php print $wide_class.' '.$header_transparent_class; ?>">
         
         <?php   
@@ -122,9 +116,7 @@ $logo_margin    =   intval( get_option('wp_estate_logo_margin','') );
                 get_template_part( 'templates/top_bar' ); 
             } 
             get_template_part('templates/mobile_menu_header' );
-        ?>
-       
-        
+        ?>  
         <div class="header_wrapper <?php echo 'header_'.$logo_header_type;?> ">
             <div class="header_wrapper_inside">
                 
@@ -155,10 +147,13 @@ $logo_margin    =   intval( get_option('wp_estate_logo_margin','') );
                     ?>
                 </nav><!-- #access -->
             </div>
-        </div>
-
-     </div> 
+        </div> 
+     </div>  
+       
+    <?php if(!is_author()): ?> 
+    <?php get_template_part( 'header_media' ); ?>    
+    <?php else:?> 
+    <div class="header_media with_search_1"> </div> 
+    <?php endif; ?>   
     
-    <?php get_template_part( 'header_media' ); ?>   
-    
-  <div class="container content_wrapper">
+<div class="container content_wrapper">

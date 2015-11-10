@@ -57,7 +57,8 @@ if (!current_user_can('manage_options') ) { show_admin_bar(false); }
 
 if( !function_exists('wpestate_image_size') ): 
     function wpestate_image_size(){
-        add_image_size('user_picture_profile', 255, 143, true);
+    
+        add_image_size('user_picture_profile', 380, 180, true);
         add_image_size('agent_picture_single_page', 320, 180, true);
         add_image_size('agent_picture_thumb' , 120, 120, true);
         add_image_size('blog_thumb'          , 272, 189, true);
