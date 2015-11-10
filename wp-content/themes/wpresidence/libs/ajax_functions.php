@@ -1464,7 +1464,9 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                     party,
                     looking_when,
                     user_status,
-                    looking_for
+                    looking_for,
+                    looking_where,
+                    rent_amount
                 )
             VALUES (
                 \"" . (int) $userID . "\",
@@ -1481,7 +1483,9 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                 \"" . (empty($data['party']) ? '' : (int) $data['party']) . "\",
                 \"" . (empty($data['looking_when']) ? '' : (int) $data['looking_when']) . "\",
                 \"" . (empty($data['user_status']) ? '' : (int) $data['user_status']) . "\",
-                \"" . (empty($data['looking_for']) ? '' : (int) $data['looking_for']) . "\"    
+                \"" . (empty($data['looking_for']) ? '' : (int) $data['looking_for']) . "\",
+                \"" . (empty($data['looking_where']) ? '' : esc_sql($data['looking_where'])) . "\",
+                \"" . (empty($data['rent_amount']) ? '' : esc_sql($data['rent_amount'])) . "\"            
             )
         ";
 

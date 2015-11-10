@@ -20,20 +20,21 @@ $website = get_the_author_meta('website', $userID);
 
 $fl_user_data           = get_fl_data($userID);
 
-$how_long               = isset($fl_user_data->how_long) ? $fl_user_data->how_long : '';
-$user_age               = isset($fl_user_data->user_age) ? $fl_user_data->user_age : '';
-$sexual_preference      = isset($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
-$sleeping_span          = isset($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
-$party                  = isset($fl_user_data->party) ? $fl_user_data->party : '';
-$looking_for            = isset($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
-$couple                 = isset($fl_user_data->couple) ? $fl_user_data->couple : '';
-$pets                   = isset($fl_user_data->pets) ? $fl_user_data->pets : '';
-$smoker                 = isset($fl_user_data->smoker) ? $fl_user_data->smoker : '';
-$activity               = isset($fl_user_data->activity) ? $fl_user_data->activity : '';
-$user_gender            = isset($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
-$user_status            = isset($fl_user_data->user_status) ? $fl_user_data->user_status : '';
-$user_origin            = isset($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
-$looking_where          = isset($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
+$how_long               = !empty($fl_user_data->how_long) ? $fl_user_data->how_long : '';
+$user_age               = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
+$sexual_preference      = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
+$sleeping_span          = !empty($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
+$party                  = !empty($fl_user_data->party) ? $fl_user_data->party : '';
+$looking_for            = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
+$couple                 = !empty($fl_user_data->couple) ? $fl_user_data->couple : '';
+$pets                   = !empty($fl_user_data->pets) ? $fl_user_data->pets : '';
+$smoker                 = !empty($fl_user_data->smoker) ? $fl_user_data->smoker : '';
+$activity               = !empty($fl_user_data->activity) ? $fl_user_data->activity : '';
+$user_gender            = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
+$user_status            = !empty($fl_user_data->user_status) ? $fl_user_data->user_status : '';
+$user_origin            = !empty($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
+$looking_where          = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
+$user_rent              = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : 200;
 
 
 
@@ -331,33 +332,34 @@ if ($user_custom_picture == '') {
             
             
                <div class="fl-row adv_search_slider">
-                <?php                
-                $default_rent = 200;
-                ?>                
+
                 <script>
                     jQuery(document).ready(function ($) {
                         jQuery("#slider_rent").slider({
                             //range: true,
-                            "value": <?php echo (int) $default_rent ?>,
+                            "value": <?php echo (int) $user_rent ?>,
                             min: parseInt(0),
                             max: parseInt(1200),
                             //values: [$('#age_low').val(), $('#age_max').val()], // defaultni hodnoty
                             slide: function (event, ui) {
                                 //console.log(ui);
                                 //jQuery('#rent_label_text').val(ui.values[0]);
-                                //jQuery('#age_max').val(ui.values[1]);
+                                jQuery('#rent_amount').val(ui.value);
                                 jQuery("#rent_label_text").text(ui.value.format());
                             }
                         });
                     });
                 </script>
+                <?php 
+                $currency = esc_html( get_option('wp_estate_currency_symbol', '') );
+                ?>
                 <p>
-                    <label for="rent_amount" class="wauto"><?php _e('How much do you want to pay?:', 'wpestate'); ?></label>
-                    <span id="rent_label_text" class="slide-label"><?php printf(__('%s', 'dokan'), (int) $default_rent); ?></span>
+                    <label for="rent_amount" class="wauto"><?php _e('How much do you want to pay?:', 'wpestate'); ?> <?php echo esc_html($currency) ?></label>
+                    <span id="rent_label_text" class="slide-label"><?php printf(__('%s', 'dokan'), (int) $user_rent); ?></span>
                 </p>
                  
                 <div id="slider_rent" class="fl-slider"></div>
-                <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $default_rent; ?>">
+                <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $user_rent; ?>">
             </div>
             
             
