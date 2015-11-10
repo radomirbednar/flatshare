@@ -65,7 +65,9 @@ if ($options['content_class'] == 'col-md-12') {
             /**
              * 
              */
-            $sql = "
+            
+            
+            $sql = " 
                 SELECT 
                     * 
                 FROM
