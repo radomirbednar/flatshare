@@ -46,7 +46,7 @@ if ($options['content_class'] == 'col-md-12') {
 
             $user_status                = !empty($_GET['status']) ? (array) $_GET['status'] : array(1, 2);
             $how_long                   = !empty($_GET['how_long']) ? $_GET['how_long'] : '';
-            $age_from                   = !empty($_GET['age_low']) ? $_GET['age_low'] : '';
+            $age_from                   = !empty($_GET['age_low']) ? $_GET['age_low'] : 0;
             $age_to                     = !empty($_GET['age_max']) ? $_GET['age_max'] : '';
             $user_gender                = !empty($_GET['user_gender']) ? $_GET['user_gender'] : '';
             $sexual_preference          = !empty($_GET['sexual_preference']) ? $_GET['sexual_preference'] : '';
@@ -59,65 +59,151 @@ if ($options['content_class'] == 'col-md-12') {
             $party                      = !empty($_GET['party']) ? $_GET['party'] : '';
             $looking_where              = !empty($_GET['looking_where']) ? $_GET['looking_where'] : '';
 
-            $user_language_ids          = !empty($_GET['skill']) ? $_GET['skill'] : '';            
-            $user_skill_ids             = !empty($_GET['language']) ? $_GET['language'] : '';
-             
+            $user_skill_ids             = !empty($_GET['skill']) ? $_GET['skill'] : '';
+            $user_language_ids          = !empty($_GET['language']) ? $_GET['language'] : '';
+
+
             /**
-             * 
+             *
              */
-             
-            $sql = " 
-                SELECT 
-                    * 
+
+
+            $sql = "
+                SELECT
+                    *
                 FROM
-                    " . $wpdb->prefix . "users AS u 
+                    " . $wpdb->prefix . "users AS u
                 JOIN
                     fl_user_data as fud
                 ON
-                    fud.id_user = u.ID
-                WHERE
-                    fud.user_status IN (" . implode(',', $user_status) .  ")
-            ";
+                    fud.id_user = u.ID ";
+            
+            if(!empty($user_skill_ids)){
+                
+                array_walk($user_skill_ids, 'esc_sql');
+                
+                $sql .= "
+                    JOIN
+                        fl_skill2user AS f2u
+                    ON
+                        f2u.id_user = u.ID
+                    AND
+                        f2u.id_skill IN (" . implode(',', $user_skill_ids) . ")
+                ";
+            }
+            
+            if(!empty($user_language_ids)){
+                
+                array_walk($user_language_ids, 'esc_sql');
+                
+                $sql .= "
+                    JOIN
+                        fl_language2user AS l2u
+                    ON
+                        l2u.id_user = u.ID
+                    AND
+                        l2u.id_lang IN (" . implode(',', $user_language_ids) . ")
+                ";
+            }            
+            
+            $sql .= " WHERE fud.user_status IN (" . implode(',', $user_status) .  ") ";
+
+            if(!empty($age_to)){
+                $sql .= " AND user_age BETWEEN " . (int) $age_from . " AND " . (int) $age_to . " ";
+            }
+
+            if(!empty($user_gender)){
+                $sql .= " AND user_gender = '" . (int) $user_gender . "' ";
+            }
+
+            if(!empty($status)){
+                $sql .= " AND user_status = '" . (int) $user_status . "' ";
+            }
+
+            if(!empty($how_long)){
+                $sql .= " AND how_long = '" . (int) $how_long . "' ";
+            }
+
+            if(!empty($sexual_preference)){
+                $sql .= " AND sexual_preference = '" . (int) $sexual_preference . "' ";
+            }
+
+            if(!empty($sleeping_span)){
+                $sql .= " AND sleeping_span = '" . (int) $sleeping_span . "' ";
+            }
+
+            if(!empty($couple)){
+                $sql .= " AND couple = '" . (int) $couple . "' ";
+            }
+
+            if(!empty($smoker)){
+                $sql .= " AND smoker = '" . (int) $smoker . "' ";
+            }
+
+            if(!empty($pets)){
+                $sql .= " AND pets = '" . (int) $pets . "' ";
+            }
+
+            if(!empty($activity)){
+                $sql .= " AND activity = '" . (int) $activity . "' ";
+            }
+            
+            if(!empty($user_origin)){
+                $sql .= " AND user_origin = '" . esc_sql($user_origin) . "' ";
+            }            
+            
+            if(!empty($party)){
+                $sql .= " AND party = '" . (int) $party . "' ";
+            }  
+            
+            $sql .= " GROUP BY u.ID ";
+            
+            /*
+            if(!empty($looking_where)){
+                $sql .= " AND looking_where = '" . esc_sql($looking_where) . "' ";
+            }   */          
+
 
             global $wpdb;
             $query = $wpdb->get_results($sql);
 
 
             foreach ($query as $q) {
-                
+
                 $fl_user_data = get_fl_data($q->ID);
 
                 $first_name             = esc_attr(get_the_author_meta('first_name', $q->ID));
                 $last_name              = esc_attr(get_the_author_meta('last_name', $q->ID));
-                $user_facebook          = esc_url(get_the_author_meta('facebook', $q->ID));
-                $user_twitter           = esc_url(get_the_author_meta('twitter', $q->ID));
-                $user_linkedin          = esc_url(get_the_author_meta('linkedin', $q->ID));
-                $user_pinterest         = esc_url(get_the_author_meta('pinterest', $q->ID));
+                $user_facebook          = get_the_author_meta('facebook', $q->ID);
+                $user_twitter           = get_the_author_meta('twitter', $q->ID);
+                $user_linkedin          = get_the_author_meta('linkedin', $q->ID);
+                $user_pinterest         = get_the_author_meta('pinterest', $q->ID);
                 $photo_url              = get_the_author_meta('custom_picture', $q->ID);
-                
+
                 $user_gender            = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
                 $user_age               = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
                 $looking_where          = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
                 $rent_amount            = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
-                
-                  
+
                 $user_gender_array = array(
-                    '2' => __('female', 'wpestate'), 
+                    '2' => __('female', 'wpestate'),
                     '1' => __('male', 'wpestate')
                 );
-  
-                
+
+
+
+
                 $author_url = esc_url(get_author_posts_url($q->ID));
-  
+
                 $thumb_prop = '<img src="' . $photo_url . '" alt="agent-images">';
                 if ($photo_url == '') {
                     $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
                 }
-                 
                 ?> 
             
                 <div class="col-md-3 listing_wrapper">
-                    <div class="agent_unit" data-link="<?php print $link; ?>"> 
+                    <div class="agent_unit" data-link="<?php print $link; ?>">
+
                         <div class="agent-unit-img-wrapper">
                             <?php
                             print $thumb_prop;
@@ -126,20 +212,21 @@ if ($options['content_class'] == 'col-md-12') {
                             ?> 
                         </div>   
                         <div class="user_unit_info">  
-                            <?php 
-                            print '<h4> <a href="' . $author_url . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
+                            <?php
+                            print '<h4> <a href="' . $link . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
                             <div class="agent_position">' . esc_attr($looking_where) . '</div>';
                             if ($user_age) {
                                 print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . esc_attr($user_age) . '</div>';
                             }
                             if ($user_gender) {
                                 print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
-                            } 
+                            }
                             ?>
-                        </div> 
+                        </div>
+
                         <div class="agent_unit_social">
-                            <div class="social-wrapper"> 
-                                
+                            <div class="social-wrapper">
+
                                 <?php
                                 if ($user_facebook != '') {
                                     print ' <a href="' . esc_url($user_facebook) . '"><i class="fa fa-facebook"></i></a>';
@@ -153,14 +240,16 @@ if ($options['content_class'] == 'col-md-12') {
                                 if ($user_pinterest != '') {
                                     print ' <a href="' . esc_url($user_pinterest) . '"><i class="fa fa-pinterest"></i></a>';
                                 }
-                                ?> 
+                                ?>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <?php
             }
-            ?> 
+            ?>
+
             <?php
             if ($total_users > $total_query) {
 
