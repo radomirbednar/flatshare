@@ -22,27 +22,27 @@ if($options['content_class']=='col-md-12'){
             <div class="single-content"><?php the_content();?></div>
             <?php
         endwhile; 
-        ?>                 
-        
+        ?>                  
         <div id="listing_ajax_container_agent"> 
         <?php
         $args = array(
+            
                 'cache_results'     => false,
                 'post_type'         => 'estate_agent',
                 'paged'             => $paged,
                 'posts_per_page'    => 10 );
 
-        $agent_selection = new WP_Query($args);
+                $agent_selection = new WP_Query($args);
+        
         while ($agent_selection->have_posts()): $agent_selection->the_post();
         print '<div class="col-md-'.$col_class.' listing_wrapper">';
             get_template_part('templates/agent_unit'); 
             print '</div>';
-        endwhile; 
+        endwhile;
         
         kriesi_pagination($agent_selection->max_num_pages, $range = 2); ?>         
         </div>
-    </div><!-- end 9col container-->
-    
+    </div><!-- end 9col container--> 
 <?php  include(locate_template('sidebar.php')); 
 wp_suspend_cache_addition(false);?>
 </div>   

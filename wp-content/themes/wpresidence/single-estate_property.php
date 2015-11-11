@@ -75,28 +75,30 @@ if($options['content_class']=='col-md-12'){
         <?php get_template_part('templates/ajax_container'); ?>
         <?php
         while (have_posts()) : the_post();
+            
+        
             $price          =   floatval   ( get_post_meta($post->ID, 'property_price', true) );
             $price_label    =   esc_html ( get_post_meta($post->ID, 'property_label', true) ); 
             $price_label_before    =   esc_html ( get_post_meta($post->ID, 'property_label_before', true) );  
+             
             $image_id       =   get_post_thumbnail_id();
             $image_url      =   wp_get_attachment_image_src($image_id, 'property_full_map');
             $full_img       =   wp_get_attachment_image_src($image_id, 'full');
             $image_url      =   $image_url[0];
             $full_img       =   $full_img [0];     
+           
             if ($price != 0) {
                $price = wpestate_show_price(get_the_ID(),$currency,$where_currency,1);  
            }else{
-               $price='<span class="price_label price_label_before">'.$price_label_before.'</span><span class="price_label ">'.$price_label.'</span>';
-               
+               $price='<span class="price_label price_label_before">'.$price_label_before.'</span><span class="price_label ">'.$price_label.'</span>';    
            }
         ?>
+        
         
         <h1 class="entry-title entry-prop"><?php the_title(); ?></h1>  
         <span class="price_area"><?php print $price; ?></span>
         <div class="single-content listing-content">
-            
-          
-             
+              
         <?php            
       
 
@@ -173,22 +175,15 @@ if($options['content_class']=='col-md-12'){
         }
          
         ?>    
-        
-            
-            
-            
-       
-    
-        <?php 
-        wp_reset_query();
-        ?>  
          
-        
-       
+        <?php 
+            wp_reset_query();
+        ?>  
+          
         <?php
         endwhile; // end of the loop
         $show_compare=1;
-        
+         
         $sidebar_agent_option_value=    get_post_meta($post->ID, 'sidebar_agent_option', true);
         $enable_global_property_page_agent_sidebar= esc_html ( get_option('wp_estate_global_property_page_agent_sidebar','') );
         if ( $sidebar_agent_option_value=='global' ){

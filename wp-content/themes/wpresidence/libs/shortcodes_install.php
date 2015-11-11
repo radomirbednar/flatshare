@@ -96,8 +96,18 @@ function wpestate_register_shortcodes() {
     add_shortcode('advanced_search', 'wpestate_advanced_search_function');
     add_shortcode('font_awesome', 'wpestate_font_awesome_function');
     add_shortcode('icon_container', 'wpestate_icon_container_function');
+    
+    
     add_shortcode('list_agents','wpestate_list_agents_function');
+    
+    add_shortcode('list_users', 'wpestate_list_agents_function');
+    
     add_shortcode('places_list', 'wpestate_places_list_function');
+    
+    
+    
+    
+    
 }
 
 

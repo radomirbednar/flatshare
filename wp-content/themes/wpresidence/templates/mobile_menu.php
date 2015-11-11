@@ -83,11 +83,12 @@ if( $user_small_picture_id == '' ){
                     <?php   
                     }
 
-                    if($home_url!=$dash_invoices){?>
+                    /*if($home_url!=$dash_invoices){?>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php print $dash_invoices;?>" class="active_fav"><i class="fa fa-file-text-o"></i><?php _e('My Invoices','wpestate');?></a></li>
                     <?php   
                     }
-                    ?>
+                    */?>
+                        
                     <li role="presentation"><a href="<?php echo wp_logout_url();?>" title="Logout" class="menulogout"><i class="fa fa-power-off"></i><?php _e('Log Out','wpestate');?></a></li>
                 </ul>
     

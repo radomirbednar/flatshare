@@ -93,8 +93,7 @@ if( !function_exists('estate_floor_plan') ):
     }
 endif;
 
-
-
+ 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // List features and ammenities
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -154,11 +153,7 @@ function estate_listing_features($post_id){
 endif; // end   estate_listing_features  
 
 
-
-
-
-
-
+ 
 if( !function_exists('estate_listing_address') ):
 function estate_listing_address($post_id){
     

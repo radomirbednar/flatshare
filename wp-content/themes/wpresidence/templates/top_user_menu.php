@@ -73,13 +73,13 @@ if ($user_small_picture_id == '') {
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php print $dash_searches; ?>" class="active_fav"><i class="fa fa-search"></i><?php _e('Saved Searches', 'wpestate'); ?></a></li>
                     <?php
                 }
-
+                /*
                 if ($home_url != $dash_invoices) {
                     ?>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php print $dash_invoices; ?>" class="active_fav"><i class="fa fa-file-text-o"></i><?php _e('My Invoices', 'wpestate'); ?></a></li>
                     <?php
-                }
-                ?>
+                }*/
+                ?> 
 
 
                 <li role="presentation" class="divider"></li>
