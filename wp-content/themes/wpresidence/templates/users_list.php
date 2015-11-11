@@ -11,11 +11,11 @@ if ($options['content_class'] == 'col-md-12') {
     $col_class = 3;
 }
 ?>
+
 <div class="row">
     <?php get_template_part('templates/breadcrumbs'); ?>
     <div class=" <?php print $options['content_class']; ?> ">
-        <?php get_template_part('templates/ajax_container'); ?>
-
+        <?php get_template_part('templates/ajax_container'); ?> 
         <?php
         while (have_posts()) : the_post();
             if (esc_html(get_post_meta($post->ID, 'page_show_title', true)) != 'no') {
@@ -28,22 +28,22 @@ if ($options['content_class'] == 'col-md-12') {
         ?>
         <div id="listing_ajax_container_agent">
 
-            <?php
+            <?php  
             
             $number = 10;
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $offset = ($paged - 1) * $number;
-
+   
             /*
               $users = get_users();
               $query = get_users('&offset=' . $offset . '&number=' . $number);
               $total_users = count($users);
               $total_query = count($query);
               $total_pages = intval($total_users / $number) + 1;
-             */
-
+            */            
             //$how_long = get_user_meta_int($userID, 'how_long');
 
+            
             $user_status                = !empty($_GET['status']) ? (array) $_GET['status'] : array(1, 2);
             $how_long                   = !empty($_GET['how_long']) ? $_GET['how_long'] : '';
             $age_from                   = !empty($_GET['age_low']) ? $_GET['age_low'] : 0;
@@ -57,17 +57,14 @@ if ($options['content_class'] == 'col-md-12') {
             $activity                   = !empty($_GET['activity']) ? $_GET['activity'] : '';
             $user_origin                = !empty($_GET['user_origin']) ? $_GET['user_origin'] : '';
             $party                      = !empty($_GET['party']) ? $_GET['party'] : '';
-            $looking_where              = !empty($_GET['looking_where']) ? $_GET['looking_where'] : '';
-
+            $looking_where              = !empty($_GET['looking_where']) ? $_GET['looking_where'] : ''; 
             $user_skill_ids             = !empty($_GET['skill']) ? $_GET['skill'] : '';
             $user_language_ids          = !empty($_GET['language']) ? $_GET['language'] : '';
-
-
+ 
             /**
              *
              */
-
-
+ 
             $sql = "
                 SELECT
                     *
@@ -163,11 +160,10 @@ if ($options['content_class'] == 'col-md-12') {
                 $sql .= " AND looking_where = '" . esc_sql($looking_where) . "' ";
             }   */          
 
-
+ 
             global $wpdb;
             $query = $wpdb->get_results($sql);
-
-
+ 
             foreach ($query as $q) {
 
                 $fl_user_data = get_fl_data($q->ID);
@@ -189,10 +185,7 @@ if ($options['content_class'] == 'col-md-12') {
                     '2' => __('female', 'wpestate'),
                     '1' => __('male', 'wpestate')
                 );
-
-
-
-
+ 
                 $author_url = esc_url(get_author_posts_url($q->ID));
 
                 $thumb_prop = '<img src="' . $photo_url . '" alt="agent-images">';
@@ -251,8 +244,7 @@ if ($options['content_class'] == 'col-md-12') {
             ?>
 
             <?php
-            if ($total_users > $total_query) {
-
+            if ($total_users > $total_query) { 
                 $current_page = max(1, get_query_var('paged'));
                 $pages = paginate_links(array(
                     'base' => get_pagenum_link(1) . '%_%',
@@ -261,8 +253,7 @@ if ($options['content_class'] == 'col-md-12') {
                     'total' => $total_pages,
                     'prev_next' => false,
                     'type' => 'array',
-                ));
-
+                )); 
                 if (is_array($pages)) {
                     $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
                     echo '<div class="pagination-wrap"><ul class="pagination">';

@@ -143,10 +143,13 @@ class Login_widget extends WP_Widget {
                     if($home_url!=$dash_searches){
                         $logged_display.=' <li> <a href="'.$dash_searches.'" class="'.$activefav.'"><i class="fa fa-search"></i>'.__('Saved Searches','wpestate').'</a> </li>';
                     } 
+                    
+                    /*
                     if($home_url!=$dash_invoices){
                         $logged_display.=' <li> <a href="'.$dash_invoices.'" class="'.$activefav.'"><i class="fa fa-file-text-o"></i>'.__('My Invoices','wpestate').'</a> </li>';
-                    }
-                       
+                    } 
+                    */
+                    
                         $logged_display.=' <li> <a href="'.wp_logout_url().'" title="Logout"><i class="fa fa-power-off"></i>'.__('Log Out','wpestate').'</a> </li>   
                     </ul>
                 ';

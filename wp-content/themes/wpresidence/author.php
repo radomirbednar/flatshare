@@ -10,14 +10,15 @@ $show_compare = 1;
 $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
 $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
 ?>
-
-
+ 
 <div class="row"> 
     <?php get_template_part('templates/breadcrumbs'); ?>
+    
     <div class=" <?php print $options['content_class']; ?> "> 
         <?php get_template_part('templates/ajax_container'); ?>
         <div id="content_container">  
             <?php
+            
             $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
             $userID = $curauth->data->ID;
 
@@ -116,6 +117,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                 <?php include( locate_template('templates/userdetails.php')); ?> 
             </div> 
             <?php get_template_part('templates/agent_contact'); ?> 
+             
             <?php get_template_part('templates/user_listings'); ?>  
 
         </div>

@@ -26,10 +26,11 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
 $leftcompare = 1;
 $property_unit_slider = get_option('wp_estate_prop_list_slider', '');
 
- 
-echo $userID;
- 
- 
+  
+    $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+    $userID = $curauth->data->ID;
+  
+    
 $args = array(
     'post_type' => 'estate_property',
     'post_status' => 'publish',
@@ -38,8 +39,7 @@ $args = array(
     'meta_key' => 'prop_featured',
     'orderby' => 'meta_value',
     'order' => 'DESC',    
-    'author' => $userID,
-    
+    'author' => $userID,  
 );
 
 
@@ -70,12 +70,9 @@ if ($prop_selection->have_posts()) {
     $show_compare = 1;
     $compare_submit = get_compare_link();
     ?>
-
-
-    <div class="mylistings">
-         
-    <?php get_template_part('templates/compare_list'); ?> 
-     
+ 
+    <div class="mylistings"> 
+    <?php get_template_part('templates/compare_list'); ?>  
         <?php
         print'<h3 class="agent_listings_title">' . __('My Listings', 'wpestate') . '</h3>';
         while ($prop_selection->have_posts()): $prop_selection->the_post();
@@ -89,8 +86,7 @@ if ($prop_selection->have_posts()) {
         second_loop_pagination($prop_selection->max_num_pages, $range = 2, $paged, get_permalink());
         //kriesi_pagination_agent($prop_selection->max_num_pages, $range =2);    
         ?>  
-    </div>
-
+    </div> 
 <?php } ?>  
 <?php
 wp_localize_script('googlecode_regular', 'googlecode_regular_vars2', array('markers2' => $selected_pins,
