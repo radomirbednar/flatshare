@@ -110,7 +110,7 @@ if( !function_exists('wpestate_list_users_function') ):
     
            $user_args = array( 
                                'number' => 4,
-                               'order'  => 
+                               'order'  => 'DESC'
                
                
                              );
