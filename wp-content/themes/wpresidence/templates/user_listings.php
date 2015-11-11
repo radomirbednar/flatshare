@@ -16,8 +16,9 @@ if (isset($_GET['pagelist'])) {
 
 get_currentuserinfo();
  
-$userID = $current_user->ID;
-$user_option = 'favorites' . $userID;
+$currentuserID = $current_user->ID;
+$user_option = 'favorites' . $currentuserID;
+ 
 $curent_fav = get_option($user_option);
 $show_compare_link = 'no';
 $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
@@ -25,7 +26,10 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
 $leftcompare = 1;
 $property_unit_slider = get_option('wp_estate_prop_list_slider', '');
 
-
+ 
+echo $userID;
+ 
+ 
 $args = array(
     'post_type' => 'estate_property',
     'post_status' => 'publish',
@@ -33,13 +37,9 @@ $args = array(
     'posts_per_page' => 9,
     'meta_key' => 'prop_featured',
     'orderby' => 'meta_value',
-    'order' => 'DESC',
-    'meta_query' => array(
-        array(
-            'key' => 'property_agent',
-            'value' => $agent_id,
-        )
-    )
+    'order' => 'DESC',    
+    'author' => $userID,
+    
 );
 
 
@@ -73,7 +73,9 @@ if ($prop_selection->have_posts()) {
 
 
     <div class="mylistings">
+         
     <?php get_template_part('templates/compare_list'); ?> 
+     
         <?php
         print'<h3 class="agent_listings_title">' . __('My Listings', 'wpestate') . '</h3>';
         while ($prop_selection->have_posts()): $prop_selection->the_post();
@@ -82,18 +84,14 @@ if ($prop_selection->have_posts()) {
         // Reset postdata
         wp_reset_postdata();
         // Custom query loop pagination
-        ?>
-
+        ?>  
         <?php
         second_loop_pagination($prop_selection->max_num_pages, $range = 2, $paged, get_permalink());
         //kriesi_pagination_agent($prop_selection->max_num_pages, $range =2);    
         ?>  
-
     </div>
-<?php }
-?>
 
-
+<?php } ?>  
 <?php
 wp_localize_script('googlecode_regular', 'googlecode_regular_vars2', array('markers2' => $selected_pins,
     'agent_id' => $agent_id)

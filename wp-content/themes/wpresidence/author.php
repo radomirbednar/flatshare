@@ -21,7 +21,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
             $userID = $curauth->data->ID;
 
-
+            echo $userID;
 
             $sexual_preference = esc_attr(get_user_meta_int($userID, 'sexual_preference'));
             $sleeping_span = esc_attr(get_user_meta_int($userID, 'sleeping_span'));
