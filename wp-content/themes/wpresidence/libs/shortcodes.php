@@ -89,6 +89,36 @@ endif;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////
+///  shortcode - users list
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+if( !function_exists('wpestate_list_users_function') ):
+
+    function wpestate_list_users_function(){
+     
+    
+             /*
+              $users = get_users();
+              $query = get_users('&offset=' . $offset . '&number=' . $number);
+              $total_users = count($users);
+              $total_query = count($query);
+              $total_pages = intval($total_users / $number) + 1;
+            */            
+            //$how_long = get_user_meta_int($userID, 'how_long');
+    
+    
+           $user_args = array( 
+                               'number' => 4,
+                               'order'  => 
+               
+               
+                             );
+            
+    }     
+endif;
+ 
+////////////////////////////////////////////////////////////////////////////////////////////
 ///  shortcode - agent list
 ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -346,6 +376,15 @@ function wpestate_list_agents_function($attributes, $content = null) {
     
 }
 endif; // end   wpestate_recent_posts_pictures 
+
+
+
+
+ 
+
+
+
+
 
 
 
