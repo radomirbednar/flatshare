@@ -1449,7 +1449,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         $when_move = null;
         
         if(isset($data['when_move'])){
-            $when_move = DateTime::createFromFormat('Y-m-d', $data['when_move']);
+            $when_move = DateTime::createFromFormat('m. d. Y', $data['when_move']);
         }
 
         global $wpdb;

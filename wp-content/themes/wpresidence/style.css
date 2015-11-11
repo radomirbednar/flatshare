@@ -7190,6 +7190,8 @@ table tbody tr td {
 .wpb_btn_adv_submit{
 
 }
+.adv-search-1 .form-control-one,
+.adv-search-1 .form-control-two,
 .adv-search-1 .form-control-quarter,
 .adv-search-1 .form-control-half,
 .adv-search-1 .form-control {
@@ -7200,6 +7202,14 @@ table tbody tr td {
     padding:0px;
     font-size:13px;
     color: #434a54;
+}
+
+.adv-search-1 .form-control-two {
+    width: 310px;
+}
+
+.adv-search-1 .form-control-one {
+    width: 120px;
 }
 
 .adv-search-1 .form-control-half {

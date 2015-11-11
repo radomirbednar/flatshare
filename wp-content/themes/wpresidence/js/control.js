@@ -814,6 +814,7 @@ jQuery(document).ready(function ($) {
         $(this).parent().find('.adv_extended_options_text').hide();
         $(this).parent().find('.extended_search_check_wrapper').slideDown();
         $(this).parent().find('#adv_extended_close_adv, .adv_extended_close_adv').show();
+        $(this).parent().find('#ra').val(1);
     });
 
     $('#adv_extended_close_adv, #roommate_extended_close_adv').click(function () {
@@ -822,6 +823,7 @@ jQuery(document).ready(function ($) {
         $(this).parent().parent().find('.adv_extended_options_text').show();
         $('.adv-search-1.adv_extended_class').removeAttr('style');
         $('.adv_extended_class .adv1-holder').removeAttr('style');
+        $(this).parent().find('#ra').val(0);
     });
     
     

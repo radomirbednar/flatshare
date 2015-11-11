@@ -35,6 +35,8 @@ define('BSF_6892199_CHECK_UPDATES',false);
 # Disable license registration nag -
 define('BSF_6892199_NAG', false);
 
+define('DATEPICKER_FORMAT', 'd. m. yy');
+
 add_action('after_setup_theme', 'wp_estate_init');
 if( !function_exists('wp_estate_init') ):
     function wp_estate_init() {

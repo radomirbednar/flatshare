@@ -35,7 +35,13 @@ $user_status            = !empty($fl_user_data->user_status) ? $fl_user_data->us
 $user_origin            = !empty($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
 $looking_where          = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
 $user_rent              = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : 200;
-$when_move              = !empty($fl_user_data->disponibility) ? $fl_user_data->disponibility : '';
+
+$when_move = '';
+
+if(!empty($fl_user_data->disponibility)){
+    $when_move              = !empty($fl_user_data->disponibility) ? $fl_user_data->disponibility : '';    
+}
+
 
 
 
@@ -374,7 +380,7 @@ if ($user_custom_picture == '') {
             <script>
                 jQuery(document).ready(function ($) {
                     jQuery("#when_move").datepicker({
-                        dateFormat: "yy-mm-dd",
+                        dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
                     }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
                 });
             </script>

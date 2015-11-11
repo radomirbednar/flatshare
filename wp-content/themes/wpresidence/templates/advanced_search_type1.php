@@ -32,32 +32,83 @@ if ($extended_search == 'yes') {
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active">
+        <li role="presentation" class="<?php echo !isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>">
             <a class="search-tab" href="#roommate" aria-controls="roommate" role="tab" data-toggle="tab"><?php _e('Roommate listings', 'wpestate'); ?></a>
         </li>
-        <li role="presentation">
+        <li role="presentation" class="<?php echo isset($_GET['tab']) && 2 == $_GET['tab'] ? 'active' : '' ?>">
             <a class="search-tab" href="#rental" aria-controls="rental" role="tab" data-toggle="tab"><?php _e('Rental listings', 'wpestate'); ?></a>
         </li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="roommate"><!-- search roommate panel -->
-            <form role="search" method="get"   action="<?php echo get_page_link(17745) ?>" >
+        <div role="tabpanel" class="tab-pane <?php echo !isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>" id="roommate"><!-- search roommate panel -->
+            <form role="search" method="get"   action="<?php echo get_page_link(17745) ?>" >                
+                <input type="hidden" name="tab" value="1">
+                
                 <div class="adv1-holder triple-switch">
 
-                    <div class="form-control-half">
+                    <div class="form-control-two">
+
+                        <?php
+                        global $wpdb;
+                        $sql = "
+                            SELECT DISTINCT 
+                                looking_where 
+                            FROM 
+                                fl_user_data AS ud 
+                            JOIN 
+                                " . $wpdb->prefix . "users AS u
+                            ON 
+                                u.ID = ud.id_user 
+                            WHERE 
+                                ud.user_status IN (1, 2) 
+                            AND 
+                                looking_where != ''";
+
+                        $where = $wpdb->get_col($sql);
+                        /*
+                          foreach ($where as $w) {
+                          $availableTags[] = $w;
+                          } */
+                        array_walk($where, 'esc_attr');
+                        ?>
+
+                        <script type="text/javascript">
+                            //<![CDATA[
+                            jQuery(document).ready(function () {
+                                var availableTags = ['<?php echo implode("','", $where) ?>'];
+                                jQuery("#looking_where").autocomplete({
+                                    source: availableTags
+                                });
+                            });
+                            //]]>
+                        </script>
 
                         <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
                         <div class="value-row">
-                            <input type="text" id="looking_where" class="form-control w100" value="<?php echo esc_attr($looking_where) ?>"  name="looking_where">
+                            <input type="text" id="looking_where" class="form-control w100" value="<?php echo esc_attr(isset($_GET['looking_where']) ? esc_attr($_GET['looking_where']) : '') ?>"  name="looking_where">
                         </div>
 
                     </div>
 
+                    <div class="form-control-one">
+                        <script>
+                            jQuery(document).ready(function ($) {
+                                jQuery("#disponibility").datepicker({
+                                    dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
+                                }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
+                            });
+                        </script>                        
+                        <label><?php _e('Disponibility from', 'wpestate'); ?></label>
+                        <div class="value-row">
+                            <input type="text" id="disponibility" class="form-control w100" value="<?php echo esc_attr(isset($_GET['disponibility']) ? esc_attr($_GET['disponibility']) : '') ?>"  name="looking_where">
+                        </div>                        
+                    </div>    
+
                     <div class="form-control-half">
                         <div class="switcher">
-                            
+
                             <label><?php _e('Gender', 'wpestate'); ?></label>
                             <div class="value-row">
 
@@ -77,16 +128,15 @@ if ($extended_search == 'yes') {
                     <!-- sliders -->
 
                     <div class="adv_search_slider"><!-- age slider -->
-                        
+
                         <?php
                         $age_min = 0;
                         $age_max = 99;
-                        
+
                         $age_min_val = isset($_GET['age_low']) ? $_GET['age_low'] : $age_min;
                         $age_max_val = isset($_GET['age_max']) ? $_GET['age_max'] : $age_max;
-                        
                         ?>                        
-                        
+
                         <script>
                             jQuery(document).ready(function ($) {
                                 jQuery("#slider_age").slider({
@@ -115,7 +165,7 @@ if ($extended_search == 'yes') {
 
                     <div class="adv_search_slider"><!-- price slider -->
                         <?php
-                        $currency               =   esc_html( get_option('wp_estate_currency_symbol', '') );
+                        $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
                         $roommate_price_low = 0;
                         $roommate_price_max = 1500000;
                         ?>
@@ -131,7 +181,7 @@ if ($extended_search == 'yes') {
 
                     <!-- /sliders -->
                     <div class="clearfix"></div>
-                    
+
                     <div id="roommate-advance" class="form-control-full tpadding adv_extended_options_text">
                         <?php _e('More search options', 'wpestate'); ?>
                     </div>                    
@@ -144,7 +194,6 @@ if ($extended_search == 'yes') {
                         <div class="form-control-half">
                             <?php
                             $arr = array(
-                 
                                 1 => __('looking for a flat', 'wpestate'),
                                 2 => __('looking for a roommate', 'wpestate'),
                                     //3 => __('Real estate', 'wpestate'),
@@ -153,18 +202,18 @@ if ($extended_search == 'yes') {
                             ?>
                             <label for="status"><?php _e('Looking for:', 'wpestate'); ?></label>
                             <div class="value-row">
-                                
+
                                 <select id="status" class="form-control w100" name="status" class="w100">
-                                    
-                                    
+
+
                                     <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option> 
-                                    
+
                                     <?php foreach ($arr as $key => $val): ?>
                                         <option value="<?php echo $key ?>" <?php echo isset($_GET['status']) && $_GET['status'] == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
                                     <?php endforeach; ?>
-                                
+
                                 </select>
-                                
+
                             </div>
                         </div>
 
@@ -331,12 +380,11 @@ if ($extended_search == 'yes') {
                                 $skills = fl_get_house_skills();
                                 if (!empty($skills)):
                                     foreach ($skills as $skill):
-                                        
+
                                         $selected = '';
-                                        if(isset($_GET['skill']) && is_array($_GET['skill'])){
+                                        if (isset($_GET['skill']) && is_array($_GET['skill'])) {
                                             $selected = in_array($skill->id_skill, $_GET['skill']) ? ' checked ' : '';
                                         }
-                                        
                                         ?>
                                         <span class="flcheckbox">
                                             <label>
@@ -403,11 +451,11 @@ if ($extended_search == 'yes') {
 
                                 if (!empty($languages)):
                                     foreach ($languages as $lang):
-                                        
+
                                         $selected = '';
-                                        if(isset($_GET['language']) && is_array($_GET['language'])){
+                                        if (isset($_GET['language']) && is_array($_GET['language'])) {
                                             $selected = in_array($lang->id_lang, $_GET['language']) ? ' checked ' : '';
-                                        }                                
+                                        }
                                         ?>
                                         <span class="flcheckbox">
                                             <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>" <?php echo $selected ?>><?php esc_attr_e($lang->name) ?></label>
@@ -418,7 +466,7 @@ if ($extended_search == 'yes') {
                                 ?>
                             </p>
                         </div>
-
+                        <input id="ra" type="hidden" value="0">
                     </div><!-- /advance search block -->
 
 
@@ -440,8 +488,8 @@ if ($extended_search == 'yes') {
                       } */
                     ?>
                 </div>
-                
-  
+
+
 
                 <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large btn-action border-radius" id="advanced_submit_2" value="<?php _e('Search', 'wpestate'); ?>">
                 <?php if ($adv_search_type != 2) { ?>
@@ -451,12 +499,13 @@ if ($extended_search == 'yes') {
                     </div>
                 <?php } ?>
             </form>
-            
-            
+
+
         </div><!-- /search roommate panel -->
 
-        <div role="tabpanel" class="tab-pane" id="rental"><!-- rental search -->
+        <div role="tabpanel" class="tab-pane <?php echo isset($_GET['tab']) && 2 == $_GET['tab'] ? 'active' : '' ?>" id="rental"><!-- rental search -->
             <form role="search" method="get"   action="<?php print $adv_submit; ?>" >
+                <input type="hidden" name="tab" value="2">
                 <div class="adv1-holder">
                     <?php
                     $custom_advanced_search = get_option('wp_estate_custom_advanced_search', '');
