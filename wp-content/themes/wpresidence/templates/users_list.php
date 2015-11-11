@@ -195,7 +195,7 @@ if ($options['content_class'] == 'col-md-12') {
                 ?> 
             
                 <div class="col-md-3 listing_wrapper">
-                    <div class="agent_unit" data-link="<?php print $link; ?>">
+                    <div class="agent_unit" data-link="<?php print $author_url; ?>">
 
                         <div class="agent-unit-img-wrapper">
                             <?php
@@ -206,7 +206,7 @@ if ($options['content_class'] == 'col-md-12') {
                         </div>   
                         <div class="user_unit_info">  
                             <?php
-                            print '<h4> <a href="' . $link . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
+                            print '<h4> <a href="' . $author_url . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
                             <div class="agent_position">' . esc_attr($looking_where) . '</div>';
                             if ($user_age) {
                                 print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . esc_attr($user_age) . '</div>';
