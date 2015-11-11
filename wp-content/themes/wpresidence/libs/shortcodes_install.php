@@ -81,8 +81,8 @@ function wpestate_add_plugin($plugin_array) {
 
 
 function wpestate_register_shortcodes() {
-    add_shortcode('slider_recent_items', 'wpestate_slider_recent_posts_pictures');
-        
+    
+    add_shortcode('slider_recent_items', 'wpestate_slider_recent_posts_pictures');     
     add_shortcode('spacer', 'wpestate_spacer_shortcode_function');
     add_shortcode('recent-posts', 'wpestate_recent_posts_function');
     add_shortcode('testimonial', 'wpestate_testimonial_function');
@@ -95,26 +95,21 @@ function wpestate_register_shortcodes() {
     add_shortcode('list_items_by_id', 'wpestate_list_items_by_id_function');
     add_shortcode('advanced_search', 'wpestate_advanced_search_function');
     add_shortcode('font_awesome', 'wpestate_font_awesome_function');
-    add_shortcode('icon_container', 'wpestate_icon_container_function');
-    
-    
-    add_shortcode('list_agents','wpestate_list_agents_function');
-    
-    add_shortcode('list_users', 'wpestate_list_agents_function');
-    
+    add_shortcode('icon_container', 'wpestate_icon_container_function'); 
+    add_shortcode('list_agents','wpestate_list_agents_function'); 
     add_shortcode('places_list', 'wpestate_places_list_function');
-    
-    
-    
-    
+     
+     
+    //nas shortcode
+    add_shortcode('list_users', 'wpestate_list_users_function');
+     
     
 }
 
-
-
+ 
 ////////////////////////////////////////////////////////////////////////////////
 // add shortcodes to visual composer
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////// 
 
 if( function_exists('vc_map') ):
      vc_map( array(
