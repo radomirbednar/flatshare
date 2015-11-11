@@ -130,6 +130,10 @@ if ($extended_search == 'yes') {
 
                     <!-- /sliders -->
                     <div class="clearfix"></div>
+                    
+                    <div id="roommate-advance" class="form-control-full tpadding adv_extended_options_text">
+                        <?php _e('More search options', 'wpestate'); ?>
+                    </div>                    
 
 
                     <div id="more-search-options" class="extended_search_check_wrapper"><!-- advance search block -->
@@ -416,10 +420,9 @@ if ($extended_search == 'yes') {
 
                     </div><!-- /advance search block -->
 
-                    <div id="roommate-advance" class="form-control-full tpadding adv_extended_options_text">
-                        <?php _e('More search options', 'wpestate'); ?>
-                    </div>
 
+                    <div class="clearfix"></div>
+                    <div style="clear: both"></div>
 
                     <?php
                     /*
@@ -438,6 +441,8 @@ if ($extended_search == 'yes') {
                       } */
                     ?>
                 </div>
+                
+                <div class="clearfix"></div>
 
                 <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large btn-action border-radius" id="advanced_submit_2" value="<?php _e('SEARCH', 'wpestate'); ?>">
                 <?php if ($adv_search_type != 2) { ?>
@@ -447,6 +452,8 @@ if ($extended_search == 'yes') {
                     </div>
                 <?php } ?>
             </form>
+            
+            
         </div><!-- /search roommate panel -->
 
         <div role="tabpanel" class="tab-pane" id="rental"><!-- rental search -->
@@ -489,4 +496,5 @@ if ($extended_search == 'yes') {
 
 
     <div style="clear:both;"></div>
+    <div class="clearfix"></div>
 </div>
