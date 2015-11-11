@@ -1444,6 +1444,13 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         /**
          * update our new user data
          */
+        
+        
+        $when_move = null;
+        
+        if(isset($data['when_move'])){
+            $when_move = DateTime::createFromFormat('Y-m-d', $data['when_move']);
+        }
 
         global $wpdb;
 
@@ -1466,7 +1473,8 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                     user_status,
                     looking_for,
                     looking_where,
-                    rent_amount
+                    rent_amount,
+                    disponibility
                 )
             VALUES (
                 \"" . (int) $userID . "\",
@@ -1485,7 +1493,8 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                 \"" . (empty($data['user_status']) ? '' : (int) $data['user_status']) . "\",
                 \"" . (empty($data['looking_for']) ? '' : (int) $data['looking_for']) . "\",
                 \"" . (empty($data['looking_where']) ? '' : esc_sql($data['looking_where'])) . "\",
-                \"" . (empty($data['rent_amount']) ? '' : esc_sql($data['rent_amount'])) . "\"            
+                \"" . (empty($data['rent_amount']) ? '' : esc_sql($data['rent_amount'])) . "\",
+                \"" . (empty($when_move) ? '' : $when_move->format('Y-m-d')) . "\"                
             )
         ";
 

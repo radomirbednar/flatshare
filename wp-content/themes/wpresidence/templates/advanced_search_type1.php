@@ -115,12 +115,13 @@ if ($extended_search == 'yes') {
 
                     <div class="adv_search_slider"><!-- price slider -->
                         <?php
+                        $currency               =   esc_html( get_option('wp_estate_currency_symbol', '') );
                         $roommate_price_low = 0;
-                        $roommate_price_max = 1200000;
+                        $roommate_price_max = 1500000;
                         ?>
                         <p>
                             <label for="roommate_amount" class="wauto"><?php _e('Price range:', 'wpestate'); ?></label>
-                            <span id="roommate_amount" class="slide-label">$ 0 to $ 1.500.000</span>
+                            <span id="roommate_amount" class="slide-label"><?php echo esc_attr($currency) ?> 0 to <?php echo esc_attr($currency) ?> <?php echo $roommate_price_max ?></span>
                         </p>
                         <div id="slider_roommate_price" class="fl-slider"></div>
                         <input type="hidden" value="<?php echo (int) $roommate_price_low ?>" name="roommate_price_low" id="roommate_price_low">
@@ -130,6 +131,10 @@ if ($extended_search == 'yes') {
 
                     <!-- /sliders -->
                     <div class="clearfix"></div>
+                    
+                    <div id="roommate-advance" class="form-control-full tpadding adv_extended_options_text">
+                        <?php _e('More search options', 'wpestate'); ?>
+                    </div>                    
 
 
                     <div id="more-search-options" class="extended_search_check_wrapper"><!-- advance search block -->
@@ -416,9 +421,6 @@ if ($extended_search == 'yes') {
 
                     </div><!-- /advance search block -->
 
-                    <div id="roommate-advance" class="form-control-full tpadding adv_extended_options_text">
-                        <?php _e('More search options', 'wpestate'); ?>
-                    </div>
 
 
                     <?php
@@ -438,8 +440,10 @@ if ($extended_search == 'yes') {
                       } */
                     ?>
                 </div>
+                
+  
 
-                <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large btn-action border-radius" id="advanced_submit_2" value="<?php _e('SEARCH', 'wpestate'); ?>">
+                <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large btn-action border-radius" id="advanced_submit_2" value="<?php _e('Search', 'wpestate'); ?>">
                 <?php if ($adv_search_type != 2) { ?>
                     <div id="results">
                         <?php _e('We found ', 'wpestate'); ?> <span id="results_no">0</span> <?php _e('results.', 'wpestate'); ?>
@@ -447,6 +451,8 @@ if ($extended_search == 'yes') {
                     </div>
                 <?php } ?>
             </form>
+            
+            
         </div><!-- /search roommate panel -->
 
         <div role="tabpanel" class="tab-pane" id="rental"><!-- rental search -->
@@ -488,5 +494,4 @@ if ($extended_search == 'yes') {
 
 
 
-    <div style="clear:both;"></div>
 </div>
