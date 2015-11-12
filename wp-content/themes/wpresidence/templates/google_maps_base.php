@@ -25,7 +25,7 @@ if( !is_tax() && !is_category() && isset($post->ID) ){
 
 
 
-<div id="gmap_wrapper"  <?php print $property_add_on; ?> style="height:<?php print $closed_height;?>px"  >
+<div id="gmap_wrapper"  <?php print $property_add_on; ?> style="height:<?php print $closed_height;?>px" <?php echo !isset($_GET['tab']) || 1 == $_GET['tab'] ? ' style="display: none;" ' : ''  ?> >
     <div id="googleMap"  style="height:<?php print $closed_height;?>px">   
     </div>    
     
