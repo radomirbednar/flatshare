@@ -299,4 +299,4 @@ if ($options['content_class'] == 'col-md-12') {
     wp_suspend_cache_addition(false);
     ?>
 </div>
-<?php get_footer(); ?>
+<?php get_footer();
