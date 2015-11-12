@@ -97,7 +97,6 @@ if( !function_exists('wpestate_list_users_function') ):
 
     function wpestate_list_users_function(){
      
-    
              /*
               $users = get_users();
               $query = get_users('&offset=' . $offset . '&number=' . $number);
@@ -106,17 +105,29 @@ if( !function_exists('wpestate_list_users_function') ):
               $total_pages = intval($total_users / $number) + 1;
             */            
             //$how_long = get_user_meta_int($userID, 'how_long');
-    
-    
+     
            $user_args = array( 
                                'number' => 4,
-                               'order'  => 
-               
-               
-                             );
+                                
+                             ); 
+           $query = get_users($user_args);
+           
+            ob_start();
             
+            foreach($query as $q){
+              
+                
+                get_template_part('templates/agent_unit');    
+              
+                
+            } // end foreach
+             
+            $templates = ob_get_contents();
+            ob_end_clean(); 
+             
+            return $templates;
     }     
-endif;
+    endif;
  
 ////////////////////////////////////////////////////////////////////////////////////////////
 ///  shortcode - agent list

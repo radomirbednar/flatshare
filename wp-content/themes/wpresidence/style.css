@@ -3489,9 +3489,7 @@ listing_actions a{
 }
 
 .col-md-3 .featured_div {      
-}
-
-
+} 
 /* =Agent Unit
 ----------------------------------------------- */
 .agent_unit{
@@ -3627,8 +3625,7 @@ listing_actions a{
 .social-wrapper{
     margin: 0px auto;
     max-width: 100%;
-    text-align: center;
-
+    text-align: center; 
 }
 
 .agent_unit_social a{
@@ -3639,10 +3636,7 @@ listing_actions a{
 .agent_unit_social a:hover{
     color:#3C90BE;                    
 }
-
-
-
-
+ 
 .featured_agent_notes{
     padding: 0px 15px;
     -webkit-transition: all 0.4s ease;
@@ -3664,13 +3658,11 @@ listing_actions a{
     max-width: 255px;
     margin-right: 30px;
 }
-
-
+ 
 .agent_unit_featured .agent_unit{
     padding-bottom: 0px;
 }
-
-
+ 
 .agent_unit_featured:last-child{
     margin-right:0px;
 }
@@ -3687,10 +3679,7 @@ listing_actions a{
 .agent_unit_featured:hover .featured_agent_notes{
     opacity:0;
 }
-
-
-
-
+ 
 /* =Blog Unit
 ----------------------------------------------- */
 
