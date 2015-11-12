@@ -626,7 +626,7 @@ jQuery(document).ready(function ($) {
     wpestate_enable_slider('slider_price', 'price_low', 'price_max', 'amount', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
     
     // price slider in roomamate listing tab filter
-    wpestate_enable_slider('slider_roommate_price', 'roommate_price_low', 'roommate_price_max', 'roommate_amount', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
+    fl_enable_slider('slider_roommate_price', 'roommate_price_low', 'roommate_price_max', 'roommate_amount', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
     
     $("#slider_price").slider({
         stop: function (event, ui) {
@@ -657,6 +657,7 @@ jQuery(document).ready(function ($) {
 
         slider_min = control_vars.slider_min;
         slider_max = control_vars.slider_max;
+        
         if (!isNaN(my_custom_curr_pos) && my_custom_curr_pos !== -1) {
             slider_min = slider_min * my_custom_curr_coef;
             slider_max = slider_max * my_custom_curr_coef;
@@ -694,6 +695,54 @@ jQuery(document).ready(function ($) {
             }
         });
     }
+    
+    function fl_enable_slider(slider_name, price_low, price_max, amount, my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef) {
+        "use strict";
+        var price_low_val, price_max_val, temp_min, temp_max, slider_min, slider_max;
+        
+        price_low_val = parseInt(jQuery('#' + price_low).val(), 10);
+        price_max_val = parseInt(jQuery('#' + price_max).val(), 10);
+
+        slider_min = parseInt(jQuery('#' + slider_name).data('bound_min'));
+        slider_max = parseInt(jQuery('#' + slider_name).data('bound_max'));
+        
+        if (!isNaN(my_custom_curr_pos) && my_custom_curr_pos !== -1) {
+            slider_min = slider_min * my_custom_curr_coef;
+            slider_max = slider_max * my_custom_curr_coef;
+        }
+
+        jQuery("#" + slider_name).slider({
+            range: true,
+            min: parseFloat(slider_min),
+            max: parseFloat(slider_max),
+            values: [price_low_val, price_max_val],
+            slide: function (event, ui) {
+
+                if (!isNaN(my_custom_curr_pos) && my_custom_curr_pos !== -1) {
+                    jQuery("#" + price_low).val(ui.values[0]);
+                    jQuery("#" + price_max).val(ui.values[1]);
+
+                    temp_min = ui.values[0];
+                    temp_max = ui.values[1];
+
+                    if (my_custom_curr_cur_post === 'before') {
+                        jQuery("#" + amount).text(replace_plus(decodeURIComponent(my_custom_curr_symbol)) + " " + temp_min.format() + " " + control_vars.to + " " + replace_plus(decodeURIComponent(my_custom_curr_symbol)) + " " + temp_max.format());
+                    } else {
+                        jQuery("#" + amount).text(temp_min.format() + " " + replace_plus(decodeURIComponent(my_custom_curr_symbol)) + " " + control_vars.to + " " + temp_max.format() + " " + replace_plus(decodeURIComponent(my_custom_curr_symbol)));
+                    }
+                } else {
+                    jQuery("#" + price_low).val(ui.values[0]);
+                    jQuery("#" + price_max).val(ui.values[1]);
+
+                    if (control_vars.where_curency === 'before') {
+                        jQuery("#" + amount).text(replace_plus(decodeURIComponent(control_vars.curency)) + " " + ui.values[0].format() + " " + control_vars.to + " " + replace_plus(decodeURIComponent(control_vars.curency)) + " " + ui.values[1].format());
+                    } else {
+                        jQuery("#" + amount).text(ui.values[0].format() + " " + replace_plus(decodeURIComponent(control_vars.curency)) + " " + control_vars.to + " " + ui.values[1].format() + " " + replace_plus(decodeURIComponent(control_vars.curency)));
+                    }
+                }
+            }
+        });
+    }    
 
 
 
@@ -814,6 +863,7 @@ jQuery(document).ready(function ($) {
         $(this).parent().find('.adv_extended_options_text').hide();
         $(this).parent().find('.extended_search_check_wrapper').slideDown();
         $(this).parent().find('#adv_extended_close_adv, .adv_extended_close_adv').show();
+        $(this).parent().find('#ra').val(1);
     });
 
     $('#adv_extended_close_adv, #roommate_extended_close_adv').click(function () {
@@ -822,6 +872,7 @@ jQuery(document).ready(function ($) {
         $(this).parent().parent().find('.adv_extended_options_text').show();
         $('.adv-search-1.adv_extended_class').removeAttr('style');
         $('.adv_extended_class .adv1-holder').removeAttr('style');
+        $(this).parent().find('#ra').val(0);
     });
     
     

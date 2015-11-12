@@ -35,6 +35,9 @@ define('BSF_6892199_CHECK_UPDATES',false);
 # Disable license registration nag -
 define('BSF_6892199_NAG', false);
 
+define('DATEPICKER_FORMAT', 'd. m. yy');
+define('PHP_DATEPICKER_FORMAT', 'j. n. Y');
+
 add_action('after_setup_theme', 'wp_estate_init');
 if( !function_exists('wp_estate_init') ):
     function wp_estate_init() {
@@ -695,6 +698,11 @@ if( !function_exists('wpestate_show_search_field_classic_form') ):
             $advanced_city_value1='all';
         }
 
+        //$return_string .= '<div class="dropdown form-control '.$drop_class.'" >';
+        $return_string .= '<input type="text" id="adv_location" class="form-control" name="adv_location" placeholder="'. __('City', 'wpestate') . '" value="' . (isset($_GET['advanced_city']) ? esc_attr($_GET['advanced_city']) : '') . '" autocomplete="off">';
+        //$return_string .= '</div>';
+        
+        /*
         $return_string.='
         <div class="dropdown form-control '.$drop_class.'" >
             <div data-toggle="dropdown" id="'.$appendix.'advanced_city" class="'.$main_class.'" data-value="'. strtolower (rawurlencode ($advanced_city_value1)).'"> 
@@ -709,7 +717,7 @@ if( !function_exists('wpestate_show_search_field_classic_form') ):
             <ul  class="dropdown-menu filter_menu" role="menu"  id="adv-search-city" aria-labelledby="'.$appendix.'advanced_city">
                 '.$select_city_list.'
             </ul>        
-        </div>';  
+        </div>';  */
 
             
         if(isset($_GET['advanced_area']) && $_GET['advanced_area']!=''&& $_GET['advanced_area']!='all'){

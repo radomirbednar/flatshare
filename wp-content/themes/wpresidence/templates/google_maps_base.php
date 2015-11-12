@@ -47,6 +47,8 @@ if( !is_tax() && !is_category() && isset($post->ID) ){
        <?php _e('We didn\'t find any results','wpestate');?>
    </div>
    
+   <?php
+   /*
    <div class="gmap-controls">
         <?php
         // show or not the open close map button
@@ -96,6 +98,8 @@ if( !is_tax() && !is_category() && isset($post->ID) ){
             }
         ?>
    </div>
+   */
+   ?>
  
 
 </div>    

@@ -15,7 +15,7 @@ if ($options['content_class'] == 'col-md-12') {
 <div class="row">
     <?php get_template_part('templates/breadcrumbs'); ?>
     <div class=" <?php print $options['content_class']; ?> ">
-        <?php get_template_part('templates/ajax_container'); ?> 
+        <?php get_template_part('templates/ajax_container'); ?>
         <?php
         while (have_posts()) : the_post();
             if (esc_html(get_post_meta($post->ID, 'page_show_title', true)) != 'no') {
@@ -29,9 +29,10 @@ if ($options['content_class'] == 'col-md-12') {
         <div id="listing_ajax_container_agent">
 
             <?php
-            $number = 10;
+            //$number = 10;
+            $total_query = 12;
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-            $offset = ($paged - 1) * $number;
+            $offset = ($paged - 1) * $total_query;
 
             /*
               $users = get_users();
@@ -59,12 +60,19 @@ if ($options['content_class'] == 'col-md-12') {
             $looking_where = !empty($_GET['looking_where']) ? $_GET['looking_where'] : '';
             $user_skill_ids = !empty($_GET['skill']) ? $_GET['skill'] : '';
             $user_language_ids = !empty($_GET['language']) ? $_GET['language'] : '';
+            
+            $rent_low = !empty($_GET['rent_low']) ? $_GET['rent_low'] : '';
+            $rent_max = !empty($_GET['rent_max']) ? $_GET['rent_max'] : '';
+            
+
+
+            $disponibility = !empty($_GET['disponibility']) ? DATETIME::createFromFormat(PHP_DATEPICKER_FORMAT, $_GET['disponibility']) : '';
 
             /**
              *
              */
             $sql = "
-                SELECT
+                SELECT SQL_CALC_FOUND_ROWS
                     *
                 FROM
                     " . $wpdb->prefix . "users AS u
@@ -151,21 +159,39 @@ if ($options['content_class'] == 'col-md-12') {
                 $sql .= " AND party = '" . (int) $party . "' ";
             }
 
+            if (!empty($disponibility)) {
+                $sql .= " AND disponibility >= '" . $disponibility->format("Y-m-d") . "' ";
+            }
+
+            if (!empty($looking_where)) {
+                $sql .= " AND looking_where = '" . esc_sql($looking_where) . "' ";
+            }
+            
+            if(!empty($rent_max)){
+                $sql .= " AND rent_amount BETWEEN " . (int) $rent_low . " AND " . (int) $rent_max;
+            }
+
             $sql .= " GROUP BY u.ID ";
 
-            /*
-              if(!empty($looking_where)){
-              $sql .= " AND looking_where = '" . esc_sql($looking_where) . "' ";
-              } */
-
+            $sql .= " LIMIT " . (int) $offset . ", " . (int) $total_query;
 
             global $wpdb;
             $query = $wpdb->get_results($sql);
+            $total_users = $wpdb->get_var("SELECT FOUND_ROWS() cnt");
+            $total_pages = ceil($total_users / $total_query);
 
             foreach ($query as $q) {
 
 
                 $fl_user_data = get_fl_data($q->ID);
+                $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
+                $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
+                $user_facebook = get_the_author_meta('facebook', $q->ID);
+                $user_twitter = get_the_author_meta('twitter', $q->ID);
+                $user_linkedin = get_the_author_meta('linkedin', $q->ID);
+                $user_pinterest = get_the_author_meta('pinterest', $q->ID);
+                $photo_url = get_the_author_meta('custom_picture', $q->ID);
+
                 $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
                 $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
                 $user_facebook = get_the_author_meta('facebook', $q->ID);
@@ -190,35 +216,68 @@ if ($options['content_class'] == 'col-md-12') {
                 if ($photo_url == '') {
                     $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
                 }
-                ?> 
+                ?>
 
-                <?php include( 'user_unit.php' ); ?>
+                <div class="col-md-3 listing_wrapper">
+                    <div class="agent_unit" data-link="<?php print $author_url; ?>">
+
+                        <div class="agent-unit-img-wrapper person-<?php echo (int) $q->ID ?>">
+                            <?php
+                            print $thumb_prop;
+                            print '<div class="listing-cover"></div>
+                            <a href="' . $author_url . '"> <span class="listing-cover-plus">+</span></a>';
+                            ?>
+                        </div>
+                        <div class="user_unit_info">
+                            <?php
+                            print '<h4> <a href="' . $author_url . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
+                            <div class="agent_position">' . esc_attr($looking_where) . '</div>';
+                            if ($user_age) {
+                                print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . esc_attr($user_age) . '</div>';
+                            }
+                            if ($user_gender) {
+                                print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
+                            }
+                            ?>
+                        </div>
 
                 <?php
             }
             ?>
 
-            <?php
-            if ($total_users > $total_query) {
-                $current_page = max(1, get_query_var('paged'));
-                $pages = paginate_links(array(
-                    'base' => get_pagenum_link(1) . '%_%',
-                    'format' => 'page/%#%/',
-                    'current' => $current_page,
-                    'total' => $total_pages,
-                    'prev_next' => false,
-                    'type' => 'array',
-                ));
-                if (is_array($pages)) {
-                    $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
-                    echo '<div class="pagination-wrap"><ul class="pagination">';
-                    foreach ($pages as $page) {
-                        echo "<li>$page</li>";
+            <?php if ($total_users > $total_query): ?>
+                <div class="col-xs-12">
+                    <?php
+                    $current_page = max(1, get_query_var('paged'));
+
+                    $query_args = (array) $_GET;
+
+                    $args = array(
+                        //'base' => get_pagenum_link(1) . '%_%',
+                        //'base'          => get_page_link(get_the_ID()),
+                        'base' => preg_replace('/\?.*/', '/', get_pagenum_link(1)) . '%_%',
+                        'format' => 'page/%#%/',
+                        'current' => $current_page,
+                        'total' => $total_pages,
+                        'prev_next' => false,
+                        'type' => 'array',
+                        'add_args' => $_GET
+                    );
+
+                    $pages = paginate_links($args);
+
+                    if (is_array($pages)) {
+                        $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+                        echo '<div class="pagination-wrap"><ul class="pagination">';
+                        foreach ($pages as $key => $page) {
+                            $class = $current_page == $key + 1 ? ' class="active" ' : '';
+                            echo "<li " . $class . ">$page</li>";
+                        }
+                        echo '</ul></div>';
                     }
-                    echo '</ul></div>';
-                }
-            }
-            ?>
+                    ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div><!-- end 12 container--> 
             <?php wp_suspend_cache_addition(false); ?> 
