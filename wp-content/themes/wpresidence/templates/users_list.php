@@ -60,6 +60,10 @@ if ($options['content_class'] == 'col-md-12') {
             $looking_where = !empty($_GET['looking_where']) ? $_GET['looking_where'] : '';
             $user_skill_ids = !empty($_GET['skill']) ? $_GET['skill'] : '';
             $user_language_ids = !empty($_GET['language']) ? $_GET['language'] : '';
+            
+            $rent_low = !empty($_GET['rent_low']) ? $_GET['rent_low'] : '';
+            $rent_max = !empty($_GET['rent_max']) ? $_GET['rent_max'] : '';
+            
 
 
             $disponibility = !empty($_GET['disponibility']) ? DATETIME::createFromFormat(PHP_DATEPICKER_FORMAT, $_GET['disponibility']) : '';
@@ -161,6 +165,10 @@ if ($options['content_class'] == 'col-md-12') {
 
             if (!empty($looking_where)) {
                 $sql .= " AND looking_where = '" . esc_sql($looking_where) . "' ";
+            }
+            
+            if(!empty($rent_max)){
+                $sql .= " AND rent_amount BETWEEN " . (int) $rent_low . " AND " . (int) $rent_max;
             }
 
             $sql .= " GROUP BY u.ID ";

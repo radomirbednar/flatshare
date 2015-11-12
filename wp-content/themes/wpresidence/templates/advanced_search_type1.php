@@ -165,17 +165,35 @@ if ($extended_search == 'yes') {
 
                     <div class="adv_search_slider"><!-- price slider -->
                         <?php
+                        
+                        $roommate_price_low = $current_price_low = 0;
+                        $roommate_price_max = $current_price_max = 1200;
+                        
+                        $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                         $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
-                        $roommate_price_low = 0;
-                        $roommate_price_max = 1500000;
+
+
+
+                        //$min_price_slider= ( floatval(get_option('wp_estate_show_slider_min_price','')) );
+                        //$max_price_slider= ( floatval(get_option('wp_estate_show_slider_max_price','')) );
+
+                        if (isset($_GET['rent_low'])) {
+                            $current_price_low = floatval($_GET['rent_low']);
+                        }
+
+                        if (isset($_GET['rent_max'])) {
+                            $current_price_max = floatval($_GET['rent_max']);
+                        }
+
+                        $price_slider_label = wpestate_show_price_label_slider($current_price_low, $current_price_max, $currency, $where_currency);
                         ?>
                         <p>
                             <label for="roommate_amount" class="wauto"><?php _e('Price range:', 'wpestate'); ?></label>
-                            <span id="roommate_amount" class="slide-label"><?php echo esc_attr($currency) ?> 0 to <?php echo esc_attr($currency) ?> <?php echo $roommate_price_max ?></span>
+                            <span id="roommate_amount" class="slide-label"><?php echo $price_slider_label ?></span>
                         </p>
-                        <div id="slider_roommate_price" class="fl-slider"></div>
-                        <input type="hidden" value="<?php echo (int) $roommate_price_low ?>" name="roommate_price_low" id="roommate_price_low">
-                        <input type="hidden" value="<?php echo (int) $roommate_price_max ?>" name="roommate_price_max" id="roommate_price_max">
+                        <div id="slider_roommate_price" data-bound_min="<?php echo (int) $roommate_price_min ?>" data-bound_max="<?php echo (int) $roommate_price_max ?>" class="fl-slider"></div>
+                        <input type="hidden" value="<?php echo (int) $current_price_low ?>" name="rent_low" id="roommate_price_low">
+                        <input type="hidden" value="<?php echo (int) $current_price_max ?>" name="rent_max" id="roommate_price_max">
                     </div><!-- /price slider -->
 
 

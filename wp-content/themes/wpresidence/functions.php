@@ -698,7 +698,9 @@ if( !function_exists('wpestate_show_search_field_classic_form') ):
             $advanced_city_value1='all';
         }
 
-        $return_string.= '<input type="text" id="adv_location" class="form-control" name="adv_location" placeholder="'. __('City', 'wpestate') . '" value="' . (isset($_GET['advanced_city']) ? esc_attr($_GET['advanced_city']) : '') . '" autocomplete="off">';
+        //$return_string .= '<div class="dropdown form-control '.$drop_class.'" >';
+        $return_string .= '<input type="text" id="adv_location" class="form-control" name="adv_location" placeholder="'. __('City', 'wpestate') . '" value="' . (isset($_GET['advanced_city']) ? esc_attr($_GET['advanced_city']) : '') . '" autocomplete="off">';
+        //$return_string .= '</div>';
         
         /*
         $return_string.='
