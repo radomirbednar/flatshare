@@ -1,4 +1,4 @@
-<div id="video-wrap" <?php echo !isset($_GET['tab']) || 1 == $_GET['tab'] ? ' style="display: none;" ' : ''  ?>>
+<div id="video-wrap" <?php echo isset($_GET['tab']) || 2 == $_GET['tab'] ? ' style="display: none;" ' : ''  ?>>
     <div class="homepage-hero-module">
         <div class="video-container">
             <div class="filter"></div>
