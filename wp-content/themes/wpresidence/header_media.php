@@ -75,6 +75,7 @@ if( isset($post->ID) && !wpestate_half_map_conditions ($post->ID) ){
                  putRevSlider($global_revolution_slider);
                 break;
             case 4://google maps
+                get_template_part('templates/video_base'); 
                 get_template_part('templates/google_maps_base'); 
                 break;
           }

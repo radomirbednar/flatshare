@@ -1,3 +1,4 @@
+
 <?php
 // Template Name: Users list
 // Wp Estate Pack
@@ -58,10 +59,13 @@ if ($options['content_class'] == 'col-md-12') {
             $party = !empty($_GET['party']) ? $_GET['party'] : '';
             $looking_where = !empty($_GET['looking_where']) ? $_GET['looking_where'] : '';
             $user_skill_ids = !empty($_GET['skill']) ? $_GET['skill'] : '';
-            $user_language_ids = !empty($_GET['language']) ? $_GET['language'] : ''; 
+            $user_language_ids = !empty($_GET['language']) ? $_GET['language'] : '';
+
             $rent_low = !empty($_GET['rent_low']) ? $_GET['rent_low'] : '';
             $rent_max = !empty($_GET['rent_max']) ? $_GET['rent_max'] : '';
- 
+
+
+
             $disponibility = !empty($_GET['disponibility']) ? DATETIME::createFromFormat(PHP_DATEPICKER_FORMAT, $_GET['disponibility']) : '';
 
             /**
@@ -163,7 +167,7 @@ if ($options['content_class'] == 'col-md-12') {
                 $sql .= " AND looking_where = '" . esc_sql($looking_where) . "' ";
             }
 
-            if (!empty($rent_max)) {
+            if(!empty($rent_max)){
                 $sql .= " AND rent_amount BETWEEN " . (int) $rent_low . " AND " . (int) $rent_max;
             }
 
@@ -247,8 +251,8 @@ if ($options['content_class'] == 'col-md-12') {
                 <?php endif; ?>
         </div>
     </div><!-- end 12 container-->
-<?php
-wp_suspend_cache_addition(false);
-?>
+    <?php
+    wp_suspend_cache_addition(false);
+    ?>
 </div>
-    <?php get_footer(); ?>
+<?php get_footer(); ?>
