@@ -78,7 +78,6 @@ if ($extended_search == 'yes') {
                         $('#video-wrap').hide();
                         $('#gmap_wrapper').show();
                         break;
-
                 }
 
             })
