@@ -30,8 +30,65 @@ if ($extended_search == 'yes') {
 <div class="adv-search-1 <?php echo $close_class . ' ' . $extended_class; ?>" id="adv-search-1" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : '' ?>>
 
 
+    <?php
+    global $wpdb;
+    $sql = "
+                            SELECT DISTINCT
+                                looking_where
+                            FROM
+                                fl_user_data AS ud
+                            JOIN
+                                " . $wpdb->prefix . "users AS u
+                            ON
+                                u.ID = ud.id_user
+                            WHERE
+                                ud.user_status IN (1, 2)
+                            AND
+                                looking_where != ''";
+
+    $where = $wpdb->get_col($sql);
+    /*
+      foreach ($where as $w) {
+      $availableTags[] = $w;
+      } */
+    array_walk($where, 'esc_attr');
+    ?>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        jQuery(document).ready(function ($) {
+            var availableTags = ['<?php echo implode("','", $where) ?>'];
+            jQuery("#looking_where").autocomplete({
+                source: availableTags
+            });
+
+            jQuery("#disponibility").datepicker({
+                dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
+            }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
+
+            $('#what-lookup a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                var tab = $(e.target).attr('aria-controls');
+
+                switch(tab){
+                    case 'roommate':
+                        $('#video-wrap').show();
+                        $('#gmap_wrapper').hide();
+                        break;
+                    case 'rental':
+                        $('#video-wrap').hide();
+                        $('#gmap_wrapper').show();
+                        break;
+
+                }
+
+            })
+
+        });
+        //]]>
+    </script>
+
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
+    <ul id="what-lookup" class="nav nav-tabs" role="tablist">
         <li role="presentation" class="<?php echo!isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>">
             <a class="search-tab" href="#roommate" aria-controls="roommate" role="tab" data-toggle="tab"><?php _e('Roommate listings', 'wpestate'); ?></a>
         </li>
@@ -43,68 +100,25 @@ if ($extended_search == 'yes') {
     <!-- Tab panes -->
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane <?php echo!isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>" id="roommate"><!-- search roommate panel -->
-            <form role="search" method="get"   action="<?php echo get_page_link(17745) ?>" >                
+            <form role="search" method="get"   action="<?php echo get_page_link(17745) ?>" >
                 <input type="hidden" name="tab" value="1">
 
                 <div class="adv1-holder triple-switch" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : '' ?>>
 
                     <div class="form-control-two">
-
-                        <?php
-                        global $wpdb;
-                        $sql = "
-                            SELECT DISTINCT 
-                                looking_where 
-                            FROM 
-                                fl_user_data AS ud 
-                            JOIN 
-                                " . $wpdb->prefix . "users AS u
-                            ON 
-                                u.ID = ud.id_user 
-                            WHERE 
-                                ud.user_status IN (1, 2) 
-                            AND 
-                                looking_where != ''";
-
-                        $where = $wpdb->get_col($sql);
-                        /*
-                          foreach ($where as $w) {
-                          $availableTags[] = $w;
-                          } */
-                        array_walk($where, 'esc_attr');
-                        ?>
-
-                        <script type="text/javascript">
-                            //<![CDATA[
-                            jQuery(document).ready(function () {
-                                var availableTags = ['<?php echo implode("','", $where) ?>'];
-                                jQuery("#looking_where").autocomplete({
-                                    source: availableTags
-                                });
-                            });
-                            //]]>
-                        </script>
-
                         <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
                         <div class="value-row">
                             <input type="text" id="looking_where" name="looking_where" class="form-control w100" placeholder="<?php _e('City', 'wpestate') ?>"  value="<?php echo esc_attr(isset($_GET['looking_where']) ? esc_attr($_GET['looking_where']) : '') ?>">
                         </div>
-
                     </div>
 
                     <div class="form-control-one">
-                        <script>
-                            jQuery(document).ready(function ($) {
-                                jQuery("#disponibility").datepicker({
-                                    dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
-                                }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
-                            });
-                        </script>                        
+
                         <label><?php _e('Disponibility from', 'wpestate'); ?></label>
                         <div class="value-row">
                             <input type="text" id="disponibility" name="disponibility" class="form-control w100" value="<?php echo esc_attr(isset($_GET['disponibility']) ? esc_attr($_GET['disponibility']) : '') ?>">
-                        </div>                        
-                    </div>    
+                        </div>
+                    </div>
 
                     <div class="form-control-half">
                         <div class="switcher">
@@ -135,7 +149,7 @@ if ($extended_search == 'yes') {
 
                         $age_min_val = isset($_GET['age_low']) ? $_GET['age_low'] : $age_min;
                         $age_max_val = isset($_GET['age_max']) ? $_GET['age_max'] : $age_max;
-                        ?>                        
+                        ?>
 
                         <script>
                             jQuery(document).ready(function ($) {
@@ -165,10 +179,9 @@ if ($extended_search == 'yes') {
 
                     <div class="adv_search_slider"><!-- price slider -->
                         <?php
-                        
                         $roommate_price_low = $current_price_low = 0;
                         $roommate_price_max = $current_price_max = 1200;
-                        
+
                         $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                         $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
 
@@ -202,7 +215,7 @@ if ($extended_search == 'yes') {
 
                     <div id="roommate-advance" class="form-control-full tpadding adv_extended_options_text" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: none;"' : '' ?>>
                         <?php _e('More search options', 'wpestate'); ?>
-                    </div>                    
+                    </div>
 
 
                     <div id="more-search-options" class="extended_search_check_wrapper" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: block;"' : '' ?>><!-- advance search block -->
@@ -225,7 +238,7 @@ if ($extended_search == 'yes') {
 
                                 <select id="status" class="form-control w100" name="status" class="w100">
 
-                                    <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option> 
+                                    <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option>
 
                                     <?php foreach ($arr as $key => $val): ?>
                                         <option value="<?php echo $key ?>" <?php echo isset($_GET['status']) && $_GET['status'] == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
@@ -251,7 +264,7 @@ if ($extended_search == 'yes') {
 
 
                         <div class="form-control-half">
-                            <div class="switcher">                                
+                            <div class="switcher">
                                 <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
 
                                 <div class="value-row">
@@ -301,7 +314,7 @@ if ($extended_search == 'yes') {
                         </div>
 
                         <div class="form-control-half">
-                            <div class="switcher">                                
+                            <div class="switcher">
                                 <label><?php _e('Smoker', 'wpestate'); ?></label>
                                 <div class="value-row">
 
@@ -317,7 +330,7 @@ if ($extended_search == 'yes') {
                         </div>
 
                         <div class="form-control-half">
-                            <div class="switcher">                                
+                            <div class="switcher">
                                 <label><?php _e('Pets', 'wpestate'); ?></label>
                                 <div class="value-row">
                                     <input id="pets-nevermind" name="pets" type="radio" value="" class="hidden">
@@ -331,7 +344,7 @@ if ($extended_search == 'yes') {
                         </div>
 
                         <div class="form-control-half">
-                            <div class="switcher">                                
+                            <div class="switcher">
                                 <label><?php _e('Activity', 'wpestate'); ?></label>
                                 <div class="value-row">
                                     <input id="activity-nevermind" name="activity" type="radio" value="" class="hidden">
