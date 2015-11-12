@@ -43,8 +43,7 @@ if ($options['content_class'] == 'col-md-12') {
               $total_pages = intval($total_users / $number) + 1;
              */
             //$how_long = get_user_meta_int($userID, 'how_long');
-
-
+ 
             $user_status = !empty($_GET['status']) ? (array) $_GET['status'] : array(1, 2);
             $how_long = !empty($_GET['how_long']) ? $_GET['how_long'] : '';
             $age_from = !empty($_GET['age_low']) ? $_GET['age_low'] : 0;
@@ -210,89 +209,46 @@ if ($options['content_class'] == 'col-md-12') {
                     $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
                 }
                 ?>
-
-                <div class="col-md-3 listing_wrapper">
-                    <div class="agent_unit" data-link="<?php print $author_url; ?>">
-
-                        <div class="agent-unit-img-wrapper person-<?php echo (int) $q->ID ?>">
-                            <?php
-                            print $thumb_prop;
-                            print '<div class="listing-cover"></div>
-                            <a href="' . $author_url . '"> <span class="listing-cover-plus">+</span></a>';
-                            ?>
-                        </div>
-                        <div class="user_unit_info">
-                            <?php
-                            print '<h4> <a href="' . $author_url . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
-                            <div class="agent_position">' . esc_attr($looking_where) . '</div>';
-                            if ($user_age) {
-                                print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . esc_attr($user_age) . '</div>';
-                            }
-                            if ($user_gender) {
-                                print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
-                            }
-                            ?>
-                        </div>
-
-                        <div class="agent_unit_social">
-                            <div class="social-wrapper">
-
-                                <?php
-                                if ($user_facebook != '') {
-                                    print ' <a href="' . esc_url($user_facebook) . '"><i class="fa fa-facebook"></i></a>';
-                                }
-                                if ($user_twitter != '') {
-                                    print ' <a href="' . esc_url($user_twitter) . '"><i class="fa fa-twitter"></i></a>';
-                                }
-                                if ($user_linkedin != '') {
-                                    print ' <a href="' . esc_url($user_linkedin) . '"><i class="fa fa-linkedin"></i></a>';
-                                }
-                                if ($user_pinterest != '') {
-                                    print ' <a href="' . esc_url($user_pinterest) . '"><i class="fa fa-pinterest"></i></a>';
-                                }
-                                ?>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+ 
+                <?php
+                
+                include('user_unit.php');
+                
+                ?> 
                 <?php
             }
-            ?>
-
+            ?> 
             <?php if ($total_users > $total_query): ?>
                 <div class="col-xs-12">
-                    <?php
-                    $current_page = max(1, get_query_var('paged'));
+                <?php
+                $current_page = max(1, get_query_var('paged')); 
+                $query_args = (array) $_GET; 
+                $args = array(
+                    //'base' => get_pagenum_link(1) . '%_%',
+                    //'base'          => get_page_link(get_the_ID()),
+                    'base' => preg_replace('/\?.*/', '/', get_pagenum_link(1)) . '%_%',
+                    'format' => 'page/%#%/',
+                    'current' => $current_page,
+                    'total' => $total_pages,
+                    'prev_next' => false,
+                    'type' => 'array',
+                    'add_args' => $_GET
+                );
 
-                    $query_args = (array) $_GET;
+                $pages = paginate_links($args);
 
-                    $args = array(
-                        //'base' => get_pagenum_link(1) . '%_%',
-                        //'base'          => get_page_link(get_the_ID()),
-                        'base' => preg_replace('/\?.*/', '/', get_pagenum_link(1)) . '%_%',
-                        'format' => 'page/%#%/',
-                        'current' => $current_page,
-                        'total' => $total_pages,
-                        'prev_next' => false,
-                        'type' => 'array',
-                        'add_args' => $_GET
-                    );
-
-                    $pages = paginate_links($args);
-
-                    if (is_array($pages)) {
-                        $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
-                        echo '<div class="pagination-wrap"><ul class="pagination">';
-                        foreach ($pages as $key => $page) {
-                            $class = $current_page == $key + 1 ? ' class="active" ' : '';
-                            echo "<li " . $class . ">$page</li>";
-                        }
-                        echo '</ul></div>';
+                if (is_array($pages)) {
+                    $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+                    echo '<div class="pagination-wrap"><ul class="pagination">';
+                    foreach ($pages as $key => $page) {
+                        $class = $current_page == $key + 1 ? ' class="active" ' : '';
+                        echo "<li " . $class . ">$page</li>";
                     }
-                    ?>
+                    echo '</ul></div>';
+                }
+                ?>
                 </div>
-            <?php endif; ?>
+                <?php endif; ?>
         </div>
     </div><!-- end 12 container-->
     <?php
