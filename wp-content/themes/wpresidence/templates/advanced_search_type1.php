@@ -24,12 +24,8 @@ if ($extended_search == 'yes') {
 }
 ?>
 
-
-
-
-<div class="adv-search-1 <?php echo $close_class . ' ' . $extended_class; ?>" id="adv-search-1" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : '' ?>>
-
-
+ 
+<div class="adv-search-1 <?php echo $close_class . ' ' . $extended_class; ?>" id="adv-search-1" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : '' ?>> 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="<?php echo!isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>">
@@ -88,8 +84,7 @@ if ($extended_search == 'yes') {
                         <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
                         <div class="value-row">
                             <input type="text" id="looking_where" name="looking_where" class="form-control w100" placeholder="<?php _e('City', 'wpestate') ?>"  value="<?php echo esc_attr(isset($_GET['looking_where']) ? esc_attr($_GET['looking_where']) : '') ?>">
-                        </div>
-
+                        </div> 
                     </div>
 
                     <div class="form-control-one">

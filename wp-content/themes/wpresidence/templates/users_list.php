@@ -63,14 +63,13 @@ if ($options['content_class'] == 'col-md-12') {
 
             $rent_low = !empty($_GET['rent_low']) ? $_GET['rent_low'] : '';
             $rent_max = !empty($_GET['rent_max']) ? $_GET['rent_max'] : '';
-
-
-
+ 
             $disponibility = !empty($_GET['disponibility']) ? DATETIME::createFromFormat(PHP_DATEPICKER_FORMAT, $_GET['disponibility']) : '';
 
             /**
              *
              */
+            
             $sql = "
                 SELECT SQL_CALC_FOUND_ROWS
                     *
@@ -176,7 +175,13 @@ if ($options['content_class'] == 'col-md-12') {
             $sql .= " LIMIT " . (int) $offset . ", " . (int) $total_query;
 
             global $wpdb;
+             
             $query = $wpdb->get_results($sql);
+            
+            
+            echo $wpdb->last_query;
+            
+              
             $total_users = $wpdb->get_var("SELECT FOUND_ROWS() cnt");
             $total_pages = ceil($total_users / $total_query);
 
@@ -208,13 +213,8 @@ if ($options['content_class'] == 'col-md-12') {
                 if ($photo_url == '') {
                     $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
                 }
-                ?>
- 
-                <?php
-                
-                include('user_unit.php');
-                
                 ?> 
+                <?php include('user_unit.php');  ?> 
                 <?php
             }
             ?> 
