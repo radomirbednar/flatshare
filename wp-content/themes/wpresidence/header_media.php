@@ -41,7 +41,7 @@ if( isset($post->ID) && !wpestate_half_map_conditions ($post->ID) ){
                 break;
             case 2://image
                 //print '<img src="'.$custom_image.'"  class="img-responsive" alt="header_image"/>';
-                print '<div class="header-image a" style="background-image: url('.$custom_image.')"></div>';
+                print '<div class="header-image" style="background-image: url('.$custom_image.')"></div>';
                 break;
             case 3://theme slider
                 wpestate_present_theme_slider();
