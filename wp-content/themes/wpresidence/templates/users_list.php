@@ -275,8 +275,9 @@ if ($options['content_class'] == 'col-md-12') {
                     if (is_array($pages)) {
                         $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
                         echo '<div class="pagination-wrap"><ul class="pagination">';
-                        foreach ($pages as $page) {
-                            echo "<li>$page</li>";
+                        foreach ($pages as $key => $page) {
+                            $class = $current_page == $key + 1 ? ' class="active" ' : '';
+                            echo "<li " . $class . ">$page</li>";
                         }
                         echo '</ul></div>';
                     }

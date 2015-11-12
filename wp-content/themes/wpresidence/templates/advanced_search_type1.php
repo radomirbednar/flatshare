@@ -27,12 +27,12 @@ if ($extended_search == 'yes') {
 
 
 
-<div class="adv-search-1 <?php echo $close_class . ' ' . $extended_class; ?>" id="adv-search-1" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : ''  ?>>
+<div class="adv-search-1 <?php echo $close_class . ' ' . $extended_class; ?>" id="adv-search-1" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : '' ?>>
 
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="<?php echo !isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>">
+        <li role="presentation" class="<?php echo!isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>">
             <a class="search-tab" href="#roommate" aria-controls="roommate" role="tab" data-toggle="tab"><?php _e('Roommate listings', 'wpestate'); ?></a>
         </li>
         <li role="presentation" class="<?php echo isset($_GET['tab']) && 2 == $_GET['tab'] ? 'active' : '' ?>">
@@ -42,11 +42,11 @@ if ($extended_search == 'yes') {
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane <?php echo !isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>" id="roommate"><!-- search roommate panel -->
+        <div role="tabpanel" class="tab-pane <?php echo!isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>" id="roommate"><!-- search roommate panel -->
             <form role="search" method="get"   action="<?php echo get_page_link(17745) ?>" >                
                 <input type="hidden" name="tab" value="1">
-                
-                <div class="adv1-holder triple-switch" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : ''  ?>>
+
+                <div class="adv1-holder triple-switch" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : '' ?>>
 
                     <div class="form-control-two">
 
@@ -87,7 +87,7 @@ if ($extended_search == 'yes') {
 
                         <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
                         <div class="value-row">
-                            <input type="text" id="looking_where" name="looking_where" class="form-control w100" value="<?php echo esc_attr(isset($_GET['looking_where']) ? esc_attr($_GET['looking_where']) : '') ?>">
+                            <input type="text" id="looking_where" name="looking_where" class="form-control w100" placeholder="<?php _e('City', 'wpestate') ?>"  value="<?php echo esc_attr(isset($_GET['looking_where']) ? esc_attr($_GET['looking_where']) : '') ?>">
                         </div>
 
                     </div>
@@ -182,12 +182,12 @@ if ($extended_search == 'yes') {
                     <!-- /sliders -->
                     <div class="clearfix"></div>
 
-                    <div id="roommate-advance" class="form-control-full tpadding adv_extended_options_text" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: none;"' : ''  ?>>
+                    <div id="roommate-advance" class="form-control-full tpadding adv_extended_options_text" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: none;"' : '' ?>>
                         <?php _e('More search options', 'wpestate'); ?>
                     </div>                    
 
 
-                    <div id="more-search-options" class="extended_search_check_wrapper" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: block;"' : ''  ?>><!-- advance search block -->
+                    <div id="more-search-options" class="extended_search_check_wrapper" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: block;"' : '' ?>><!-- advance search block -->
 
                         <span id="roommate_extended_close_adv" class="adv_extended_close_adv" style="display: <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'inline' : 'none' ?>;">
                             <i class="fa fa-times"></i>
@@ -206,7 +206,6 @@ if ($extended_search == 'yes') {
                             <div class="value-row">
 
                                 <select id="status" class="form-control w100" name="status" class="w100">
-
 
                                     <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option> 
 
@@ -234,8 +233,7 @@ if ($extended_search == 'yes') {
 
 
                         <div class="form-control-half">
-                            <div class="switcher">
-                                <!--<input type="hidden" value="<?php echo isset($_GET['sexual_preference']) ? (int) $_GET['sexual_preference'] : '' ?>" name="sexual_preference" id="sexual_preference">-->
+                            <div class="switcher">                                
                                 <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
 
                                 <div class="value-row">
@@ -247,19 +245,11 @@ if ($extended_search == 'yes') {
                                     <label for="sexual_preference-straight" class="wpb_button wpb_btn-large <?php echo isset($_GET['sexual_preference']) && 1 == $_GET['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Straight', 'wpestate'); ?></label>
                                     <label for="sexual_preference-bi" class="wpb_button wpb_btn-large <?php echo isset($_GET['sexual_preference']) && 2 == $_GET['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Bi / Gay', 'wpestate'); ?></label>
                                 </div>
-                                <!--
-                                <div class="value-row">
-                                    <button data-value="" data-target="#sexual_preference" class="wpb_button wpb_btn-large <?php echo empty($_GET['sexual_preference']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                    <button data-value="1" data-target="#sexual_preference" class="wpb_button wpb_btn-large <?php echo isset($_GET['sexual_preference']) && 1 == $_GET['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Straight', 'wpestate'); ?></button>
-                                    <button data-value="2" data-target="#sexual_preference" class="wpb_button wpb_btn-large <?php echo isset($_GET['sexual_preference']) && 2 == $_GET['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Bi / Gay', 'wpestate'); ?></button>
-                                </div>
-                                -->
                             </div>
                         </div>
 
                         <div class="form-control-half">
                             <div class="switcher">
-                                <!--<input type="hidden" value="<?php echo isset($_GET['sleeping_span']) ? (int) $_GET['sleeping_span'] : '' ?>" name="sleeping_span" id="sleeping_span">-->
                                 <label><?php _e('Sleep during week', 'wpestate'); ?></label>
 
                                 <div class="value-row">
@@ -271,20 +261,12 @@ if ($extended_search == 'yes') {
                                     <label for="sleeping_span-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['sleeping_span']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                     <label for="sleeping_span-before" class="wpb_button wpb_btn-large <?php echo isset($_GET['sleeping_span']) && 1 == $_GET['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Before 11PM', 'wpestate'); ?></label>
                                     <label for="sleeping_span-after" class="wpb_button wpb_btn-large <?php echo isset($_GET['sleeping_span']) && 2 == $_GET['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('After 11PM', 'wpestate'); ?></label>
-
-                                    <!--
-                                    <button data-value="" data-target="#sleeping_span" class="wpb_button wpb_btn-large <?php echo empty($_GET['sleeping_span']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                    <button data-value="1" data-target="#sleeping_span" class="wpb_button wpb_btn-large <?php echo isset($_GET['sleeping_span']) && 1 == $_GET['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Before 11PM', 'wpestate'); ?></button>
-                                    <button data-value="2" data-target="#sleeping_span" class="wpb_button wpb_btn-large <?php echo isset($_GET['sleeping_span']) && 2 == $_GET['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('After 11PM', 'wpestate'); ?></button>
-                                    -->
                                 </div>
-
                             </div>
                         </div>
 
                         <div class="form-control-half">
                             <div class="switcher">
-                                <!--<input type="hidden" value="<?php echo isset($_GET['couple']) ? (int) $_GET['couple'] : '' ?>" name="couple" id="couple">-->
                                 <label><?php _e('Couple', 'wpestate'); ?></label>
                                 <div class="value-row">
 
@@ -295,20 +277,13 @@ if ($extended_search == 'yes') {
                                     <label for="couple-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['couple']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                     <label for="couple-alone" class="wpb_button wpb_btn-large <?php echo isset($_GET['couple']) && 1 == $_GET['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Alone', 'wpestate'); ?></label>
                                     <label for="couple-in" class="wpb_button wpb_btn-large <?php echo isset($_GET['couple']) && 2 == $_GET['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('In couple', 'wpestate'); ?></label>
-
-                                    <!--
-                                    <button data-value="" data-target="#couple" class="wpb_button wpb_btn-large <?php echo empty($_GET['couple']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                    <button data-value="1" data-target="#couple" class="wpb_button wpb_btn-large <?php echo isset($_GET['couple']) && 1 == $_GET['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Alone', 'wpestate'); ?></button>
-                                    <button data-value="2" data-target="#couple" class="wpb_button wpb_btn-large <?php echo isset($_GET['couple']) && 2 == $_GET['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('In couple', 'wpestate'); ?></button>
-                                    -->
                                 </div>
 
                             </div>
                         </div>
 
                         <div class="form-control-half">
-                            <div class="switcher">
-                                <!--<input type="hidden" value="<?php echo isset($_GET['smoker']) ? (int) $_GET['smoker'] : '' ?>" name="smoker" id="smoker">-->
+                            <div class="switcher">                                
                                 <label><?php _e('Smoker', 'wpestate'); ?></label>
                                 <div class="value-row">
 
@@ -319,12 +294,6 @@ if ($extended_search == 'yes') {
                                     <label for="smoker-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['smoker']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                     <label for="smoker-no" class="wpb_button wpb_btn-large <?php echo isset($_GET['smoker']) && 1 == $_GET['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Non-smoker', 'wpestate'); ?></label>
                                     <label for="smoker-yes" class="wpb_button wpb_btn-large <?php echo isset($_GET['smoker']) && 2 == $_GET['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Smoker', 'wpestate'); ?></label>
-
-                                    <!--
-                                    <button data-value="" data-target="#smoker" class="wpb_button wpb_btn-large <?php echo empty($_GET['smoker']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></button>
-                                    <button data-value="1" data-target="#smoker" class="wpb_button wpb_btn-large <?php echo isset($_GET['smoker']) && 1 == $_GET['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Non-smoker', 'wpestate'); ?></button>
-                                    <button data-value="2" data-target="#smoker" class="wpb_button wpb_btn-large <?php echo isset($_GET['smoker']) && 2 == $_GET['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Smoker', 'wpestate'); ?></button>
-                                    -->
                                 </div>
                             </div>
                         </div>
@@ -483,14 +452,35 @@ if ($extended_search == 'yes') {
             <form role="search" method="get"   action="<?php print $adv_submit; ?>" >
                 <input type="hidden" name="tab" value="2">
                 <div class="adv1-holder">
+
+                    <?php
+                    $availableTags = '';
+                    $args = array('hide_empty=0');
+                    $terms = get_terms('property_city', $args);
+                    foreach ($terms as $term) {
+                        $availableTags.= '"' . esc_attr($term->name) . '",';
+                    }
+                    ?>
+
+                    <script type="text/javascript">
+                        //<![CDATA[
+                        jQuery(document).ready(function () {
+                            var availableTags = [<?php echo $availableTags ?>];
+                            jQuery("#adv_location").autocomplete({
+                                source: availableTags
+                            });
+                        });
+                        //]]>
+                    </script>
+
                     <?php
                     $custom_advanced_search = get_option('wp_estate_custom_advanced_search', '');
                     if ($custom_advanced_search == 'yes') {
                         foreach ($adv_search_what as $key => $search_field) {
-                            wpestate_show_search_field('mainform', $search_field, $action_select_list, $categ_select_list, $select_city_list, $select_area_list, $key, $select_county_state_list);
+                            wpestate_show_search_field('mainform', $search_field, $action_select_list, $categ_select_list, '', $select_area_list, $key, $select_county_state_list);
                         }
                     } else {
-                        $search_form = wpestate_show_search_field_classic_form('main', $action_select_list, $categ_select_list, $select_city_list, $select_area_list);
+                        $search_form = wpestate_show_search_field_classic_form('main', $action_select_list, $categ_select_list, '', $select_area_list);
                         print $search_form;
                     }
 
@@ -512,11 +502,6 @@ if ($extended_search == 'yes') {
 
     </div>
 
-
     <!--<div id="adv-search-header-1"> <?php _e('Advanced Search', 'wpestate'); ?></div>-->
-
-
-
-
 
 </div>
