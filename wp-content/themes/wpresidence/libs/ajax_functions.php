@@ -1449,7 +1449,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         $when_move = null;
         
         if(isset($data['when_move'])){
-            $when_move = DateTime::createFromFormat('m. d. Y', $data['when_move']);
+            $when_move = DateTime::createFromFormat(PHP_DATEPICKER_FORMAT, $data['when_move']);
         }
 
         global $wpdb;
@@ -1479,7 +1479,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
             VALUES (
                 \"" . (int) $userID . "\",
                 \"" . (empty($data['how_long']) ? '' : (int) $data['how_long']) . "\",
-                \"" . (empty($data['user_age']) ? 'null' : (int) $data['user_age']) . "\",
+                "   . (empty($data['user_age']) ? 'NULL' : "\"" . (int) $data['user_age'] . "\""). " ,
                 \"" . (empty($data['user_gender']) ? '' : (int) $data['user_gender']) . "\",
                 \"" . (empty($data['sexual_preference']) ? "''" : (int) $data['sexual_preference']) . "\",
                 \"" . (empty($data['sleeping_span']) ? '' : (int) $data['sleeping_span']) . "\",

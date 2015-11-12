@@ -36,6 +36,7 @@ define('BSF_6892199_CHECK_UPDATES',false);
 define('BSF_6892199_NAG', false);
 
 define('DATEPICKER_FORMAT', 'd. m. yy');
+define('PHP_DATEPICKER_FORMAT', 'j. n. Y');
 
 add_action('after_setup_theme', 'wp_estate_init');
 if( !function_exists('wp_estate_init') ):

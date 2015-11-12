@@ -39,7 +39,7 @@ $user_rent              = !empty($fl_user_data->rent_amount) ? $fl_user_data->re
 $when_move = '';
 
 if(!empty($fl_user_data->disponibility)){
-    $when_move              = !empty($fl_user_data->disponibility) ? $fl_user_data->disponibility : '';    
+    $when_move              = !empty($fl_user_data->disponibility) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->disponibility) : '';    
 }
 
 
@@ -390,7 +390,7 @@ if ($user_custom_picture == '') {
             <div class="fl-row">
                 <label><?php _e('Disponibility', 'wpestate'); ?></label>
                 <div class="value-row">
-                    <input type="text" id="when_move" class="form-control" value="<?php echo esc_attr($when_move) ?>"  name="when_move">
+                    <input type="text" id="when_move" class="form-control" value="<?php echo empty($when_move) ? '' : $when_move->format(PHP_DATEPICKER_FORMAT);  ?>"  name="when_move">
                 </div>
             </div>
 
