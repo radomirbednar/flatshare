@@ -115,10 +115,8 @@ if( !function_exists('wpestate_list_users_function') ):
             ob_start();
             
             foreach($query as $q){
-              
-                
-                get_template_part('templates/agent_unit');    
-              
+               
+                get_template_part('templates/user_unit.php');    
                 
             } // end foreach
              
