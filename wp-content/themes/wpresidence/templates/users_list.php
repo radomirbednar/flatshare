@@ -182,7 +182,15 @@ if ($options['content_class'] == 'col-md-12') {
 
             foreach ($query as $q) {
 
+
                 $fl_user_data = get_fl_data($q->ID);
+                $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
+                $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
+                $user_facebook = get_the_author_meta('facebook', $q->ID);
+                $user_twitter = get_the_author_meta('twitter', $q->ID);
+                $user_linkedin = get_the_author_meta('linkedin', $q->ID);
+                $user_pinterest = get_the_author_meta('pinterest', $q->ID);
+                $photo_url = get_the_author_meta('custom_picture', $q->ID);
 
                 $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
                 $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
@@ -233,28 +241,6 @@ if ($options['content_class'] == 'col-md-12') {
                             ?>
                         </div>
 
-                        <div class="agent_unit_social">
-                            <div class="social-wrapper">
-
-                                <?php
-                                if ($user_facebook != '') {
-                                    print ' <a href="' . esc_url($user_facebook) . '"><i class="fa fa-facebook"></i></a>';
-                                }
-                                if ($user_twitter != '') {
-                                    print ' <a href="' . esc_url($user_twitter) . '"><i class="fa fa-twitter"></i></a>';
-                                }
-                                if ($user_linkedin != '') {
-                                    print ' <a href="' . esc_url($user_linkedin) . '"><i class="fa fa-linkedin"></i></a>';
-                                }
-                                if ($user_pinterest != '') {
-                                    print ' <a href="' . esc_url($user_pinterest) . '"><i class="fa fa-pinterest"></i></a>';
-                                }
-                                ?>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <?php
             }
             ?>
@@ -293,9 +279,7 @@ if ($options['content_class'] == 'col-md-12') {
                 </div>
             <?php endif; ?>
         </div>
-    </div><!-- end 12 container-->
-    <?php
-    wp_suspend_cache_addition(false);
-    ?>
+    </div><!-- end 12 container--> 
+            <?php wp_suspend_cache_addition(false); ?> 
 </div>
-<?php get_footer(); ?>
+            <?php get_footer(); ?>

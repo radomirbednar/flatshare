@@ -193,15 +193,12 @@ if($options['content_class']=='col-md-12'){
             
         }else if($sidebar_agent_option_value !='yes'){
              get_template_part ('/templates/agent_area');
-        }
-        
+        } 
         get_template_part ('/templates/similar_listings');
      
         ?>
         </div><!-- end single content -->
-    </div><!-- end 9col container-->
-    
-<?php  include(locate_template('sidebar.php')); ?>
-</div>   
-
+    </div><!-- end 9col container--> 
+<?php include(locate_template('sidebar.php')); ?>
+</div>    
 <?php get_footer(); ?>
