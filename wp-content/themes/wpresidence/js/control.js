@@ -867,9 +867,10 @@ jQuery(document).ready(function ($) {
     });
 
     $('#adv_extended_close_adv, #roommate_extended_close_adv').click(function () {
-        $(this).parent().parent().find('.extended_search_check_wrapper').slideUp();
-        $(this).hide();
-        $(this).parent().parent().find('.adv_extended_options_text').show();
+        $(this).parents('#adv-search-1').find('.extended_search_check_wrapper').slideUp();
+        //$(this).hide();
+        $('#adv_extended_close_adv, #roommate_extended_close_adv').hide();
+        $(this).parents('#adv-search-1').find('.adv_extended_options_text').show();
         $('.adv-search-1.adv_extended_class').removeAttr('style');
         $('.adv_extended_class .adv1-holder').removeAttr('style');
         $(this).parent().find('#ra').val(0);
