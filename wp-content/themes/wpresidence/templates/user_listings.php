@@ -26,11 +26,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
 $leftcompare = 1;
 $property_unit_slider = get_option('wp_estate_prop_list_slider', '');
 
-  
-    $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
-    $userID = $curauth->data->ID;
-  
-    
+     
 $args = array(
     'post_type' => 'estate_property',
     'post_status' => 'publish',
@@ -108,8 +104,7 @@ function second_loop_pagination($pages = '', $range = 2, $paged, $link) {
     if ($pages > 1) {
         print "<ul class='pagination pagination_nojax pagination_agent'>";
         echo "<li class=\"roundleft\"><a href='" . $next_page . "'><i class=\"fa fa-angle-left\"></i></a></li>";
-
-
+ 
         for ($i = 1; $i <= $pages; $i++) {
             if (1 != $pages && (!($i >= $paged + $range + 1 || $i <= $paged - $range - 1) || $pages <= $showitems )) {
                 $newpage = $paged - 1;

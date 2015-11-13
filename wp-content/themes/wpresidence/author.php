@@ -20,8 +20,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             <?php
             
             $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
-            
-            
+             
             $userID = $curauth->data->ID;
  
             /*
@@ -66,27 +65,22 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $fl_user_data = get_fl_data($userID);
 
             $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
-            
-            
+             
             $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
             $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
             $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
             $activity = !empty($fl_user_data->activity) ? $fl_user_data->activity : '';
-             
-
+              
             $disponibility = !empty($fl_user_data->disponibility) ? $fl_user_data->disponibility : '';
             
             $activity_array = array(
                 '1' => __('Student', 'wpestate'),
                 '2' => __('Professional', 'wpestate')
-            );
-             
+            ); 
             $user_gender_array = array(
                 '2' => __('female', 'wpestate'),
                 '1' => __('male', 'wpestate')
-            );
-
-           
+            );            
             if ($user_custom_picture == '') {
                 $user_custom_picture = get_template_directory_uri() . '/img/default_user.png';
             }
@@ -109,15 +103,24 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                 <?php include( locate_template('templates/userdetails.php')); ?> 
             </div> 
          
-            <?php
-           
-            include('templates/author_contact.php'); ?> 
+            <?php  
+            if ( is_user_logged_in() ) { 
+                include('templates/author_contact.php');                   
+            }else{
+                
+                echo '<div>PLEASE LOGIN TO CONTACT THIS USER </div>'; 
+                  
+            }  
+            ?> 
              
-            <?php get_template_part('templates/user_listings'); ?>  
+            <?php 
+         
+                include('templates/user_listings.php'); 
+          
+            ?>  
 
         </div> 
-    </div><!-- end 9col container-->    
-
+    </div><!-- end 9col container-->     
     <div class="col-md-3">
         <?php
             $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
