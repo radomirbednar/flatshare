@@ -480,6 +480,7 @@ if ($extended_search == 'yes') {
                         <span id="showinpage"> <?php _e('Do you want to load the results now ?', 'wpestate'); ?> </span>
                     </div>
                 <?php } ?>
+                <div class="clearfix"></div>
             </form>
 
 

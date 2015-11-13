@@ -7208,7 +7208,7 @@ table tbody tr td {
 }
 
 .adv-search-1 .form-control-half {
-    width: 48.5%;
+    width: 48.3%;
 }
 .adv-search-1 .form-control-quarter {
     width: 23.5%;
@@ -7392,7 +7392,11 @@ table tbody tr td {
 
 .adv-search-1.adv_extended_class{
     height:176px;
-
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .adv_extended_class #advanced_submit_2{
+        height:176px;
+    }    
 }
 
 .adv_results_wrapper .adv-search-1.adv_extended_class{
@@ -7418,6 +7422,8 @@ table tbody tr td {
     padding: 41px 45px 37px 45px;
     height: 141px;
 }
+
+
 
 
 .extended_search_check_wrapper{
@@ -11117,7 +11123,7 @@ span.wpb_btn-large {
     -webkit-border-radius: 3px!important;
     -moz-border-radius: 3px!important;
     border-radius: 3px!important;
-    min-width: 32.6%;
+    min-width: 49%;
     color: #ffffff;
 }
 .triple-switch .switcher label.wpb_btn-large,
