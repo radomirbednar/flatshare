@@ -158,7 +158,7 @@ if ($options['content_class'] == 'col-md-12') {
             }
 
             if (!empty($disponibility)) {
-                $sql .= " AND disponibility >= '" . $disponibility->format("Y-m-d") . "' AND disponibility NOT NULL ";
+                $sql .= " AND disponibility >= '" . $disponibility->format("Y-m-d") . "' AND disponibility IS NOT NULL ";
             }
 
             if (!empty($looking_where)) {
