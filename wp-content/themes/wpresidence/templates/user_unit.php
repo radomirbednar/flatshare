@@ -10,11 +10,20 @@
     <div class="agent_unit" data-link="<?php print $author_url; ?>"> 
         <div class="agent-unit-img-wrapper person-<?php echo (int) $q->ID ?>">
             <?php
+             
             print $thumb_prop;
             print '<div class="listing-cover"></div>
                    <a href="' . $author_url . '"> <span class="listing-cover-plus">+</span></a>';
             ?>   
-            <div class="user_euro_unit"> <?php echo $rent_amount; ?></div> 
+            <span class="user_euro_unit">  
+                <?php
+               
+                if ($rent_amount != '') {
+                    print __('', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
+                }
+                
+                ?>  
+            </span>   
         </div> 
         <div class="user_unit_info">
             <?php

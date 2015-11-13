@@ -32,8 +32,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $pets = esc_attr(get_user_meta_int($userID, 'pets'));
             $smoker = esc_attr(get_user_meta_int($userID, 'smoker'));
             */
-             
-            
+              
             $user_origin = esc_attr(get_user_meta($userID, 'user_origin', true));
             $looking_where = esc_attr(get_user_meta($userID, 'looking_where', true));
             $user_language_ids = fl_get_user_language_ids($userID);
@@ -87,8 +86,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             ?>
 
             <h1 class="entry-title-agent"><?php echo $first_name . ' ' . $last_name; ?></h1> 
-            <div class="agent_meta"><?php print '<a href="mailto:' . $user_email . '">' . $user_email . '</a>'; ?>
-
+            <div class="agent_meta"><?php print '<a href="mailto:' . $user_email . '">' . $user_email . '</a>'; ?> 
                 <?php
                 if ($user_age) {
                     print ' | ' . __('Age', 'wpestate') . ':  | ';
@@ -96,29 +94,21 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                 if ($user_gender) {
                     print ' <img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="">';
                 }
-                ?>    
-
+                ?>  
             </div> 
             <div class="single-content single-agent">      
                 <?php include( locate_template('templates/userdetails.php')); ?> 
-            </div> 
-         
+            </div>   
             <?php  
             if ( is_user_logged_in() ) { 
                 include('templates/author_contact.php');                   
-            }else{
-                
-                echo '<div>PLEASE LOGIN TO CONTACT THIS USER </div>'; 
-                  
+            }else{ 
+                echo '<div>PLEASE LOGIN TO CONTACT THIS USER </div>';    
             }  
-            ?> 
-             
-            <?php 
-         
-                include('templates/user_listings.php'); 
-          
             ?>  
-
+            <?php  
+                include('templates/user_listings.php');  
+            ?>   
         </div> 
     </div><!-- end 9col container-->     
     <div class="col-md-3">

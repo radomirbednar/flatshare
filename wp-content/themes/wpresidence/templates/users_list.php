@@ -180,7 +180,10 @@ if ($options['content_class'] == 'col-md-12') {
                
             $total_users = $wpdb->get_var("SELECT FOUND_ROWS() cnt");
             $total_pages = ceil($total_users / $total_query);
-
+            
+            $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
+            $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
+             
             foreach ($query as $q) {
 
                 $fl_user_data = get_fl_data($q->ID);
@@ -196,15 +199,17 @@ if ($options['content_class'] == 'col-md-12') {
                 $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
                 $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
                 $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
+                
                 $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
-
+          
                 $user_gender_array = array(
                     '2' => __('female', 'wpestate'),
                     '1' => __('male', 'wpestate')
                 );
-
+ 
+                
                 $author_url = esc_url(get_author_posts_url($q->ID));
-
+                 
                 $thumb_prop = '<img src="' . $photo_url . '" alt="agent-images">';
                 if ($photo_url == '') {
                     $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';

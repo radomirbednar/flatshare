@@ -12481,3 +12481,18 @@ img.user_gender_image{
 .video-container video.fillWidth {
     width: 100%;
 }
+
+
+.user_euro_unit{ 
+    
+    background: #3c90be;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding:12px; 
+    padding: 12px 30px 12px 30px; 
+
+} 
