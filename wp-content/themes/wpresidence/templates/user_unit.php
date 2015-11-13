@@ -7,15 +7,24 @@
 ?>
 
 <div class="col-md-3 listing_wrapper">
-    <div class="agent_unit" data-link="<?php print $author_url; ?>">
-
+    <div class="agent_unit" data-link="<?php print $author_url; ?>"> 
         <div class="agent-unit-img-wrapper person-<?php echo (int) $q->ID ?>">
             <?php
+             
             print $thumb_prop;
             print '<div class="listing-cover"></div>
-                            <a href="' . $author_url . '"> <span class="listing-cover-plus">+</span></a>';
-            ?>
-        </div>
+                   <a href="' . $author_url . '"> <span class="listing-cover-plus">+</span></a>';
+            ?>   
+            <span class="user_euro_unit">  
+                <?php
+               
+                if ($rent_amount != '') {
+                    print __('', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
+                }
+                
+                ?>  
+            </span>   
+        </div> 
         <div class="user_unit_info">
             <?php
             print '<h4> <a href="' . $author_url . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
@@ -27,11 +36,9 @@
                 print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
             }
             ?>
-        </div>
-
+        </div> 
         <div class="agent_unit_social">
-            <div class="social-wrapper">
-
+            <div class="social-wrapper"> 
                 <?php
                 if ($user_facebook != '') {
                     print ' <a href="' . esc_url($user_facebook) . '"><i class="fa fa-facebook"></i></a>';
@@ -45,8 +52,7 @@
                 if ($user_pinterest != '') {
                     print ' <a href="' . esc_url($user_pinterest) . '"><i class="fa fa-pinterest"></i></a>';
                 }
-                ?>
-
+                ?>  
             </div>
         </div>
     </div>

@@ -43,7 +43,7 @@ if ($options['content_class'] == 'col-md-12') {
               $total_pages = intval($total_users / $number) + 1;
              */
             //$how_long = get_user_meta_int($userID, 'how_long');
- 
+
             $user_status = !empty($_GET['status']) ? (array) $_GET['status'] : array(1, 2);
             $how_long = !empty($_GET['how_long']) ? $_GET['how_long'] : '';
             $age_from = !empty($_GET['age_low']) ? $_GET['age_low'] : 0;
@@ -63,13 +63,12 @@ if ($options['content_class'] == 'col-md-12') {
 
             $rent_low = !empty($_GET['rent_low']) ? $_GET['rent_low'] : '';
             $rent_max = !empty($_GET['rent_max']) ? $_GET['rent_max'] : '';
- 
+
             $disponibility = !empty($_GET['disponibility']) ? DATETIME::createFromFormat(PHP_DATEPICKER_FORMAT, $_GET['disponibility']) : '';
 
             /**
              *
              */
-            
             $sql = "
                 SELECT SQL_CALC_FOUND_ROWS
                     *
@@ -166,7 +165,7 @@ if ($options['content_class'] == 'col-md-12') {
                 $sql .= " AND looking_where = '" . esc_sql($looking_where) . "' ";
             }
 
-            if(!empty($rent_max)){
+            if (!empty($rent_max)) {
                 $sql .= " AND rent_amount BETWEEN " . (int) $rent_low . " AND " . (int) $rent_max;
             }
 
@@ -175,15 +174,14 @@ if ($options['content_class'] == 'col-md-12') {
             $sql .= " LIMIT " . (int) $offset . ", " . (int) $total_query;
 
             global $wpdb;
-             
+
             $query = $wpdb->get_results($sql);
-            
-            
-            echo $wpdb->last_query;
-            
-              
+
             $total_users = $wpdb->get_var("SELECT FOUND_ROWS() cnt");
             $total_pages = ceil($total_users / $total_query);
+
+            $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
+            $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
 
             foreach ($query as $q) {
 
@@ -200,6 +198,7 @@ if ($options['content_class'] == 'col-md-12') {
                 $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
                 $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
                 $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
+
                 $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
 
                 $user_gender_array = array(
@@ -214,45 +213,46 @@ if ($options['content_class'] == 'col-md-12') {
                     $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
                 }
                 ?> 
-                <?php include('user_unit.php');  ?> 
+                <?php include('user_unit.php'); ?> 
                 <?php
             }
             ?> 
             <?php if ($total_users > $total_query): ?>
                 <div class="col-xs-12">
-                <?php
-                $current_page = max(1, get_query_var('paged')); 
-                $query_args = (array) $_GET; 
-                $args = array(
-                    //'base' => get_pagenum_link(1) . '%_%',
-                    //'base'          => get_page_link(get_the_ID()),
-                    'base' => preg_replace('/\?.*/', '/', get_pagenum_link(1)) . '%_%',
-                    'format' => 'page/%#%/',
-                    'current' => $current_page,
-                    'total' => $total_pages,
-                    'prev_next' => false,
-                    'type' => 'array',
-                    'add_args' => $_GET
-                );
+                    <?php
+                    $current_page = max(1, get_query_var('paged'));
+                    $query_args = (array) $_GET;
+                    $args = array(
+                        //'base' => get_pagenum_link(1) . '%_%',
+                        //'base'          => get_page_link(get_the_ID()),
+                        'base' => preg_replace('/\?.*/', '/', get_pagenum_link(1)) . '%_%',
+                        'format' => 'page/%#%/',
+                        'current' => $current_page,
+                        'total' => $total_pages,
+                        'prev_next' => false,
+                        'type' => 'array',
+                        'add_args' => $_GET
+                    );
 
-                $pages = paginate_links($args);
+                    $pages = paginate_links($args);
 
-                if (is_array($pages)) {
-                    $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
-                    echo '<div class="pagination-wrap"><ul class="pagination">';
-                    foreach ($pages as $key => $page) {
-                        $class = $current_page == $key + 1 ? ' class="active" ' : '';
-                        echo "<li " . $class . ">$page</li>";
+                    if (is_array($pages)) {
+                        $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+                        echo '<div class="pagination-wrap"><ul class="pagination">';
+                        foreach ($pages as $key => $page) {
+                            $class = $current_page == $key + 1 ? ' class="active" ' : '';
+                            echo "<li " . $class . ">$page</li>";
+                        }
+                        echo '</ul></div>';
                     }
-                    echo '</ul></div>';
-                }
-                ?>
+                    ?>
                 </div>
-                <?php endif; ?>
+            <?php endif; ?>
         </div>
     </div><!-- end 12 container-->
     <?php
     wp_suspend_cache_addition(false);
     ?>
 </div>
-<?php get_footer();
+<?php
+get_footer();

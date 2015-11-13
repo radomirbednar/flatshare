@@ -139,15 +139,14 @@ if ($user_custom_picture == '') {
         <div class="col-xs-12">
             <?php
             $arr = array(
-                1 => __('Looking for a flat', 'wpestate'),
-                2 => __('Looking for a roommate', 'wpestate'),
                 3 => __('inactive', 'wpestate'),
+                1 => __('Looking for a flat', 'wpestate'),
+                2 => __('Looking for a roommate', 'wpestate'), 
              //   4 => __('Landlord', 'wpestate'),
             );
             ?>
             <label for="user_status"><?php _e('Your status:', 'wpestate'); ?></label>
             <select id="user_status" name="user_status" class="w100">
-                <option value=""></option>
                 <?php foreach ($arr as $key => $val): ?>
                     <option value="<?php echo $key ?>" <?php echo $user_status == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
                 <?php endforeach; ?>

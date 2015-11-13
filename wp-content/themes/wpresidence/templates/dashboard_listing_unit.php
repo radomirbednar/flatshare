@@ -121,14 +121,17 @@ $expiration_date=$pfx_date+$free_feat_list_expiration*24*60*60;
             } ?>
         </div>
         
-        <div class="user_dashboard_listed">
-            <?php _e('Listed in','wpestate');?>  
-            <?php print $property_action_category; ?> 
-            <?php if( $property_action_category!='') {
+        <!--<div class="user_dashboard_listed">
+            <?php // _e('Listed in','wpestate');?>  
+            <?php //print $property_action_category; ?> 
+            <?php /*if( $property_action_category!='') {
                     print' '.__('and','wpestate').' ';
                     } 
-                  print $property_category;?>                     
-        </div>
+                  print $property_category;
+             */ 
+               ?>                     
+              
+        </div>-->
         
         <div class="user_dashboard_listed">
             <?php print __('City','wpestate').': ';?>            
@@ -175,9 +178,7 @@ $expiration_date=$pfx_date+$free_feat_list_expiration*24*60*60;
                 if( $post_status == 'expired' ){ 
                 //   print'<span data-original-title="'.__('Resend for approval','wpestate').'" class="dashboad-tooltip resend_pending" data-listingid="'.$post_id.'"><i class="fa fa-upload deleteprop"></i></span>';   
                 }else{
-
-                   
-
+ 
                     if($paid_submission_status=='per listing'){
                         $enable_paypal_status= esc_html ( get_option('wp_estate_enable_paypal','') );
                         $enable_stripe_status= esc_html ( get_option('wp_estate_enable_stripe','') );
