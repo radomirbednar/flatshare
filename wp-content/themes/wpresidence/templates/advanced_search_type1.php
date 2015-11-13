@@ -4,6 +4,7 @@ global $adv_search_type;
 $adv_search_what = get_option('wp_estate_adv_search_what', '');
 $show_adv_search_visible = get_option('wp_estate_show_adv_search_visible', '');
 $close_class = '';
+$adv_submit = get_adv_search_link();
 
 if ($show_adv_search_visible == 'no') {
     $close_class = 'adv-search-1-close';
@@ -67,21 +68,21 @@ if ($extended_search == 'yes') {
             }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
 
             /*
-            $('#what-lookup a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                var tab = $(e.target).attr('aria-controls');
-
-                switch(tab){
-                    case 'roommate':
-                        $('#video-wrap').show();
-                        $('#gmap_wrapper').hide();
-                        break;
-                    case 'rental':
-                        $('#video-wrap').hide();
-                        $('#gmap_wrapper').show();
-                        break;
-                }
-
-            })*/
+             $('#what-lookup a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+             var tab = $(e.target).attr('aria-controls');
+             
+             switch(tab){
+             case 'roommate':
+             $('#video-wrap').show();
+             $('#gmap_wrapper').hide();
+             break;
+             case 'rental':
+             $('#video-wrap').hide();
+             $('#gmap_wrapper').show();
+             break;
+             }
+             
+             })*/
 
         });
         //]]>
@@ -223,7 +224,8 @@ if ($extended_search == 'yes') {
                         <span id="roommate_extended_close_adv" class="adv_extended_close_adv" style="display: <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'inline' : 'none' ?>;">
                             <i class="fa fa-times"></i>
                         </span>
-
+                        
+                        
                         <div class="form-control-half">
                             <?php
                             $arr = array(
@@ -261,8 +263,11 @@ if ($extended_search == 'yes') {
                                 <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($_GET['how_long']) && 2 == $_GET['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('+ 6 months'); ?></label>
                             </div>
                         </div>
+                        
 
-
+                        <div class="clearfix"></div>
+                        
+                        
                         <div class="form-control-half">
                             <div class="switcher">
                                 <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
@@ -507,9 +512,21 @@ if ($extended_search == 'yes') {
                     <?php
                     $custom_advanced_search = get_option('wp_estate_custom_advanced_search', '');
                     if ($custom_advanced_search == 'yes') {
-                        foreach ($adv_search_what as $key => $search_field) {
-                            wpestate_show_search_field('mainform', $search_field, $action_select_list, $categ_select_list, '', $select_area_list, $key, $select_county_state_list);
-                        }
+                        ?>
+                        <div class="half-map-row">
+                            <?php
+                            foreach ($adv_search_what as $key => $search_field) {
+                                ?>
+                                <div class="half-map-col">
+                                    <?php
+                                    wpestate_show_search_field('mainform', $search_field, $action_select_list, $categ_select_list, '', $select_area_list, $key, $select_county_state_list);
+                                    ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <?php
                     } else {
                         $search_form = wpestate_show_search_field_classic_form('main', $action_select_list, $categ_select_list, '', $select_area_list);
                         print $search_form;
@@ -531,8 +548,10 @@ if ($extended_search == 'yes') {
             </form>
         </div><!-- /rental search -->
 
+        <div class="clearfix"></div>
     </div>
 
     <!--<div id="adv-search-header-1"> <?php _e('Advanced Search', 'wpestate'); ?></div>-->
+
 
 </div>
