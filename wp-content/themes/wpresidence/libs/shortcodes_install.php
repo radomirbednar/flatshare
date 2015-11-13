@@ -97,13 +97,11 @@ function wpestate_register_shortcodes() {
     add_shortcode('font_awesome', 'wpestate_font_awesome_function');
     add_shortcode('icon_container', 'wpestate_icon_container_function'); 
     add_shortcode('list_agents','wpestate_list_agents_function'); 
-    add_shortcode('places_list', 'wpestate_places_list_function');
-     
-     
+    add_shortcode('places_list', 'wpestate_places_list_function'); 
+    
     //nas shortcode
     add_shortcode('list_users', 'wpestate_list_users_function');
-     
-    
+      
 }
 
  
@@ -174,8 +172,7 @@ if( function_exists('vc_map') ):
              "param_name" => "title",
              "value" => "",
              "description" => __("Section Title","wpestate")
-          ),
-         
+          ),      
            array(
              "type" => "textfield",
              "holder" => "div",
@@ -344,16 +341,9 @@ if( function_exists('vc_map') ):
              "description" => __("Auto scroll period in seconds - 0 for manual scroll, 1000 for 1 second, 2000 for 2 seconds and so on.","wpestate")
           ) 
         )
-    )
-    );
-
-
-
-
-
-
-
-
+        )
+        );
+ 
       vc_map( array(
        "name" => __("Icon content box","wpestate"),//done
        "base" => "icon_container",

@@ -179,7 +179,7 @@ if (!function_exists('wpestate_list_users_function')):
 
         $templates = ob_get_contents();
         ob_end_clean();
-        $return_string .=$templates;
+        $return_string = $templates;
         wp_reset_query();
         $is_shortcode = 0;
         return $return_string;

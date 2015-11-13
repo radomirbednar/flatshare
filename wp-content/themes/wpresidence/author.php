@@ -20,20 +20,21 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             <?php
             
             $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+            
+            
             $userID = $curauth->data->ID;
-
-            echo $userID;
-
-            $sexual_preference = esc_attr(get_user_meta_int($userID, 'sexual_preference'));
+ 
+            /*
+            $sexual_preference = esc_attr(get_user_meta_int($userID, 'sexual_preference')); 
             $sleeping_span = esc_attr(get_user_meta_int($userID, 'sleeping_span'));
             $party = esc_attr(get_user_meta_int($userID, 'party'));
             $looking_for = esc_attr(get_user_meta_int($userID, 'looking_for'));
             $couple = esc_attr(get_user_meta_int($userID, 'couple'));
             $pets = esc_attr(get_user_meta_int($userID, 'pets'));
             $smoker = esc_attr(get_user_meta_int($userID, 'smoker'));
-        
-
-
+            */
+             
+            
             $user_origin = esc_attr(get_user_meta($userID, 'user_origin', true));
             $looking_where = esc_attr(get_user_meta($userID, 'looking_where', true));
             $user_language_ids = fl_get_user_language_ids($userID);
@@ -43,12 +44,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $user_small_picture = get_the_author_meta('small_custom_picture', $userID);
             $image_id = get_the_author_meta('small_custom_picture', $userID);
             $about_me = get_the_author_meta('description', $userID);
-
-
-
-
-
-
+  
             $first_name = esc_attr(get_the_author_meta('first_name', $userID));
             $last_name = esc_attr(get_the_author_meta('last_name', $userID));
 
@@ -57,9 +53,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $user_linkedin = get_the_author_meta('linkedin', $userID);
             $user_pinterest = get_the_author_meta('pinterest', $userID);
             $photo_url = get_the_author_meta('custom_picture', $userID);
-
-
-
+ 
             $user_email = get_the_author_meta('user_email', $userID);
 
             $user_mobile = get_the_author_meta('mobile', $userID);
@@ -72,6 +66,8 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $fl_user_data = get_fl_data($userID);
 
             $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
+            
+            
             $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
             $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
             $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
@@ -79,33 +75,29 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
              
 
             $disponibility = !empty($fl_user_data->disponibility) ? $fl_user_data->disponibility : '';
-
-            
             
             $activity_array = array(
                 '1' => __('Student', 'wpestate'),
                 '2' => __('Professional', 'wpestate')
             );
-            
              
             $user_gender_array = array(
                 '2' => __('female', 'wpestate'),
                 '1' => __('male', 'wpestate')
             );
 
-            $how_long = esc_attr(get_user_meta_int($userID, 'how_long'));
-
+           
             if ($user_custom_picture == '') {
                 $user_custom_picture = get_template_directory_uri() . '/img/default_user.png';
             }
             ?>
 
             <h1 class="entry-title-agent"><?php echo $first_name . ' ' . $last_name; ?></h1> 
-            <div class="agent_meta"><?php print $agent_posit . ' | ' . '<a href="mailto:' . $user_email . '">' . $user_email . '</a>'; ?>
+            <div class="agent_meta"><?php print '<a href="mailto:' . $user_email . '">' . $user_email . '</a>'; ?>
 
                 <?php
                 if ($user_age) {
-                    print ' | ' . __('Age', 'wpestate') . ': ' . esc_attr($user_age) . ' | ';
+                    print ' | ' . __('Age', 'wpestate') . ':  | ';
                 }
                 if ($user_gender) {
                     print ' <img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="">';
@@ -116,11 +108,14 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             <div class="single-content single-agent">      
                 <?php include( locate_template('templates/userdetails.php')); ?> 
             </div> 
-            <?php get_template_part('templates/agent_contact'); ?> 
+         
+            <?php
+           
+            include('templates/author_contact.php'); ?> 
              
             <?php get_template_part('templates/user_listings'); ?>  
 
-        </div>
+        </div> 
     </div><!-- end 9col container-->    
 
     <div class="col-md-3">

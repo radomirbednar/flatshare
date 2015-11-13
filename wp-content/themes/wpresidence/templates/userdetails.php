@@ -4,8 +4,7 @@ global $prop_id;
 global $post;
 global $agent_url;
 global $agent_urlc;
-
-
+ 
 $pict_size=5;
 $content_size=7;
 
@@ -24,23 +23,18 @@ if ( get_post_type($prop_id) == 'estate_property' ){
 }
 $link = get_permalink();
  
-?>
-
+?> 
     <div class="col-md-<?php print $pict_size;?> agentpic-wrapper">
-        <div class="agent-listing-img-wrapper" data-link="<?php echo  $link; ?>"> 
-            
-            
+        <div class="agent-listing-img-wrapper" data-link="<?php echo  $link; ?>">  
             <a href="<?php print $link;?>">
                  <img src="<?php print $user_custom_picture;?>"  alt="agent picture" class="img-responsive agentpict"/>
-            </a>
-            
+            </a>     
             <div class="listing-cover"></div>
             <div class="listing-cover-title"><a href="<?php echo $link;?>"><?php echo $name;?></a></div> 
-        </div>
-    
+        </div> 
+        
         <div class="agent_unit_social_single">
-            <div class="social-wrapper"> 
-
+            <div class="social-wrapper">  
                 <?php 
                 if($user_facebook!=''){
                     print ' <a href="'. $user_facebook.'" target="_blank"><i class="fa fa-facebook"></i></a>';
@@ -57,45 +51,35 @@ $link = get_permalink();
                 ?> 
              </div>
         </div>
-    </div>  
-
+    </div>   
 <div class="col-md-<?php print $content_size;?> agent_details">    
         <div class="mydetails">
             <?php _e('My details','wpestate');?>
         </div>
-        <?php   
-        print '<h3><a href="'.$link.'">' .$name. '</a></h3>
-        <div class="agent_position">'.$agent_posit.'</div>';
+        <?php  
         
-        
+        print '<h3><a href="'.$link.'">' .$name. '</a></h3>';
+         
         if ($user_phone) {
             print '<div class="agent_detail"><i class="fa fa-phone"></i><a href="tel:' . $user_phone . '">' . $user_phone . '</a></div>';
-        }
-        
+        } 
         if ($user_mobile) {
             print '<div class="agent_detail"><i class="fa fa-mobile"></i><a href="tel:' . $user_mobile . '">' . $user_mobile . '</a></div>';
-        }
-
+        } 
         if ($user_email) {
             print '<div class="agent_detail agent_email_class"><i class="fa fa-envelope-o"></i><a href="mailto:' . $user_email . '">' . $user_email . '</a></div>';
-        }
-
+        } 
         if ($user_skype) {
             print '<div class="agent_detail"><i class="fa fa-skype"></i>' . $user_skype . '</div>';
-        }
-     
+        } 
         if ($agent_urlc) {
             print '<div class="agent_detail"><i class="fa fa-desktop"></i><a href="http://'.$agent_urlc.'" target="_blank">'.$agent_urlc.'</a></div>';
         }
-        ?>
-
-</div>
-  
-   <?php // if (  )) { ?> 
-
+        ?> 
+</div> 
+   <?php //if ()) { ?>  
             <div class="agent_content col-md-12">
                 <h4><?php _e('About Me ','wpestate'); ?></h4>                      
                     <?php  echo $user_description; ?>  
-            </div>
- 
+            </div> 
     <?php //} ?>

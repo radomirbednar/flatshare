@@ -2875,8 +2875,7 @@ function wpestate_ajax_agent_contact_form(){
                 $receiver_email = wp_kses ($_POST['agentemail'],$allowed_html) ;
             }
         }
-
-
+                
         $propid=intval($_POST['propid']);
         if($propid!=0){
             $permalink = get_permalink(  $propid );
@@ -2887,7 +2886,7 @@ function wpestate_ajax_agent_contact_form(){
         $message .= __('Client Name','wpestate').": " . $name . "\n\n ".__('Email','wpestate').": " . $email . " \n\n ".__('Phone','wpestate').": " . $phone . " \n\n ".__('Subject','wpestate').": " . $subject . " \n\n".__('Message','wpestate').": \n " . $comment;
         $message .="\n\n Message sent from " .$permalink;
         $headers = 'From: No Reply <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n";
-
+                
         $mail = @wp_mail($receiver_email, $subject, $message, $headers);
 
         $duplicate_email_adr        =   esc_html ( get_option('wp_estate_duplicate_email_adr','') );
@@ -2924,9 +2923,7 @@ function wpestate_ajax_contact_form_footer(){
         if ( !wp_verify_nonce( $_POST['nonce'], 'ajax-footer-contact')) {
             exit("No naughty business please");
         }
-
-
-
+                
         if ( isset($_POST['name']) ) {
            if( trim($_POST['name']) =='' || trim($_POST['name']) ==__('Your Name','wpestate') ){
                echo json_encode(array('sent'=>false, 'response'=>__('The name field is empty !','wpestate') ));
@@ -2967,22 +2964,17 @@ function wpestate_ajax_contact_form_footer(){
             }
         }
 
-        $message='';
-
+        $message=''; 
         $subject =__('Contact form from ','wpestate') . home_url() ;
         $message .= __('Client Name','wpestate').": ". $name . "\n\n".__('Email','wpestate').": " . $email . " \n\n ".__('Phone','wpestate').": " . $phone . " \n\n ".__("Subject",'wpestate').": " . $subject . " \n\n".__('Message','wpestate').":\n " . $comment;
         $message .="\n\n ".__('Message sent from footer form','wpestate');
         $headers = 'From: noreply  <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n".
                         'Reply-To: noreply@'.$_SERVER['HTTP_HOST']. "\r\n" .
                         'X-Mailer: PHP/' . phpversion();
-        wp_mail($receiver_email, $subject, $message, $headers);
-
-        echo json_encode(array('sent'=>true, 'response'=>__('The message was sent !','wpestate') ) );
-
-        die();
-
-    }
-
+        wp_mail($receiver_email, $subject, $message, $headers); 
+        echo json_encode(array('sent'=>true, 'response'=>__('The message was sent !','wpestate') ) ); 
+        die(); 
+    } 
 endif; // end   ajax_agent_contact_form
 
 

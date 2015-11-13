@@ -23,6 +23,8 @@ global $prop_category_selected;
             wp_dropdown_categories( $args ); ?>
         </p>
 
+        
+        <!--
         <p><label for="prop_action_category"> <?php _e('Listed In ','wpestate'); $prop_action_category;?></label>
             <?php 
             $args=array(
@@ -39,5 +41,5 @@ global $prop_category_selected;
                 );
 
                wp_dropdown_categories( $args );  ?>
-        </p>       
+        </p>-->       
 </div>

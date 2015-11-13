@@ -177,11 +177,7 @@ if ($options['content_class'] == 'col-md-12') {
             global $wpdb;
              
             $query = $wpdb->get_results($sql);
-            
-            
-            echo $wpdb->last_query;
-            
-              
+               
             $total_users = $wpdb->get_var("SELECT FOUND_ROWS() cnt");
             $total_pages = ceil($total_users / $total_query);
 
