@@ -2269,7 +2269,8 @@ function wpestate_theme_admin_apperance(){
                             'image',
                             'theme slider',
                             'revolution slider',
-                            'google map'
+                            'google map',
+                            'video'
                             );
     $header_select   = wpestate_dropdowns_theme_admin_with_key($header_array,'header_type');
 
