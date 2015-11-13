@@ -66,6 +66,7 @@ if ($extended_search == 'yes') {
                 dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
             }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
 
+            /*
             $('#what-lookup a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                 var tab = $(e.target).attr('aria-controls');
 
@@ -80,7 +81,7 @@ if ($extended_search == 'yes') {
                         break;
                 }
 
-            })
+            })*/
 
         });
         //]]>
@@ -203,7 +204,7 @@ if ($extended_search == 'yes') {
                             <label for="roommate_amount" class="wauto"><?php _e('Price range:', 'wpestate'); ?></label>
                             <span id="roommate_amount" class="slide-label"><?php echo $price_slider_label ?></span>
                         </p>
-                        <div id="slider_roommate_price" data-bound_min="<?php echo (int) $roommate_price_min ?>" data-bound_max="<?php echo (int) $roommate_price_max ?>" class="fl-slider"></div>
+                        <div id="slider_roommate_price" data-bound_min="<?php echo (int) $roommate_price_low ?>" data-bound_max="<?php echo (int) $roommate_price_max ?>" class="fl-slider"></div>
                         <input type="hidden" value="<?php echo (int) $current_price_low ?>" name="rent_low" id="roommate_price_low">
                         <input type="hidden" value="<?php echo (int) $current_price_max ?>" name="rent_max" id="roommate_price_max">
                     </div><!-- /price slider -->

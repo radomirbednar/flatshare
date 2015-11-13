@@ -177,6 +177,7 @@ if (!function_exists('wpestate_list_users_function')):
             <?php
         } // end foreach
 
+        
         $templates = ob_get_contents();
         ob_end_clean();
         $return_string = $templates;

@@ -1266,7 +1266,7 @@ function show_pins_custom_search(){
  
 function show_pins() {
     "use strict";
-    console.log('show pins ');
+    //console.log('show pins ');
     if(mapfunctions_vars.custom_search==='yes'){
        show_pins_custom_search();
        return;
@@ -1274,15 +1274,24 @@ function show_pins() {
     
     var results_no  =   0;
     var action      =   jQuery('#adv_actions').attr('data-value');
+    
+    //console.log('action ' + action);
+    
     var category    =   jQuery('#adv_categ').attr('data-value');
+    
+    //console.log('category ' + category);
+    
     var city        =   jQuery('#advanced_city').attr('data-value');
+    
+    //console.log('city ' + city);
+    
     var area        =   jQuery('#advanced_area').attr('data-value');   
     var rooms       =   parseInt( jQuery('#adv_rooms').val(),10 );
     var baths       =   parseInt( jQuery('#adv_bath').val(),10 );
     var min_price   =   parseInt( jQuery('#price_low').val() );
     var price_max   =   parseInt( jQuery('#price_max').val() );
     
-  
+    
        
     action      =   action.trim().toLowerCase();
     action      =   action.replace(/ /g,'-',action);
