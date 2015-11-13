@@ -424,6 +424,7 @@ if ($extended_search == 'yes') {
                             </div>
                         </div>
 
+                        <div class="clearfix"></div>
                         <div class="form-control-full clearfix">
                             <label><?php _e('Language skills', 'wpestate'); ?></label>
                             <p class="inline-checkboxes">

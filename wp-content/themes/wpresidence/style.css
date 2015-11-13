@@ -7210,6 +7210,9 @@ table tbody tr td {
 .adv-search-1 .form-control-half {
     width: 48.5%;
 }
+.adv-search-1 .form-control-quarter {
+    width: 23.5%;
+}
 .adv-search-1 .form-control-full {
     width: 886px;    
 }
