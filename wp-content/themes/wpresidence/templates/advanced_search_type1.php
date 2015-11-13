@@ -393,13 +393,13 @@ if ($extended_search == 'yes') {
                             $coutnries = fl_get_countries();
                             ?>
                             <p>
-                                <select id="user_origin" name="user_origin" class="form-control">
+                                <select id="user_origin" name="origin" class="form-control">
                                     <option value=""><?php _e('Country of origin', 'wpestate'); ?></option>
                                     <?php
                                     if (!empty($coutnries)):
                                         foreach ($coutnries as $country):
                                             ?>
-                                            <option value="<?php echo esc_attr($country->iso) ?>" <?php echo $user_origin == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
+                                            <option value="<?php echo esc_attr($country->iso) ?>" <?php echo isset($_GET['origin']) && $_GET['origin'] == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
                                             <?php
                                         endforeach;
                                     endif;

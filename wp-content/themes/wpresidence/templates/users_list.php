@@ -55,7 +55,7 @@ if ($options['content_class'] == 'col-md-12') {
             $smoker = !empty($_GET['smoker']) ? $_GET['smoker'] : '';
             $pets = !empty($_GET['pets']) ? $_GET['pets'] : '';
             $activity = !empty($_GET['activity']) ? $_GET['activity'] : '';
-            $user_origin = !empty($_GET['user_origin']) ? $_GET['user_origin'] : '';
+            $user_origin = !empty($_GET['origin']) ? $_GET['origin'] : '';
             $party = !empty($_GET['party']) ? $_GET['party'] : '';
             $looking_where = !empty($_GET['looking_where']) ? $_GET['looking_where'] : '';
             $user_skill_ids = !empty($_GET['skill']) ? $_GET['skill'] : '';
