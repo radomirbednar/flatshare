@@ -40,6 +40,8 @@ $when_move = '';
 
 if(!empty($fl_user_data->disponibility)){
     $when_move              = !empty($fl_user_data->disponibility) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->disponibility) : '';    
+} else {
+    $when_move = new DateTime();
 }
 
 

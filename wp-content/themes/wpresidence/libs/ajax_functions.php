@@ -1494,7 +1494,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                 \"" . (empty($data['looking_for']) ? '' : (int) $data['looking_for']) . "\",
                 \"" . (empty($data['looking_where']) ? '' : esc_sql($data['looking_where'])) . "\",
                 \"" . (empty($data['rent_amount']) ? '' : esc_sql($data['rent_amount'])) . "\",
-                \"" . (empty($when_move) ? '' : $when_move->format('Y-m-d')) . "\"                
+                "   . (empty($when_move) ? 'NULL' : "\"" . $when_move->format('Y-m-d') . "\"") . "
             )
         ";
 
