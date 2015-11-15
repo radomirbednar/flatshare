@@ -110,7 +110,7 @@ if ($options['content_class'] == 'col-md-12') {
             $sql .= " WHERE fud.user_status IN (" . implode(',', $user_status) . ") ";
 
             if (!empty($age_to)) {
-                $sql .= " AND user_age BETWEEN " . (int) $age_from . " AND " . (int) $age_to . " ";
+                $sql .= " AND birthdate BETWEEN DATE_SUB(CURDATE(), INTERVAL " . (int) $age_to . " YEAR) AND DATE_SUB(CURDATE(), INTERVAL " . (int) $age_from . " YEAR) AND birthdate IS NOT NULL ";
             }
 
             if (!empty($user_gender)) {

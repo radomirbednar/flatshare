@@ -18,32 +18,37 @@ $website = get_the_author_meta('website', $userID);
 
 //
 
-$fl_user_data           = get_fl_data($userID);
+$fl_user_data = get_fl_data($userID);
 
-$how_long               = !empty($fl_user_data->how_long) ? $fl_user_data->how_long : '';
-$user_age               = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
-$sexual_preference      = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
-$sleeping_span          = !empty($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
-$party                  = !empty($fl_user_data->party) ? $fl_user_data->party : '';
-$looking_for            = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
-$couple                 = !empty($fl_user_data->couple) ? $fl_user_data->couple : '';
-$pets                   = !empty($fl_user_data->pets) ? $fl_user_data->pets : '';
-$smoker                 = !empty($fl_user_data->smoker) ? $fl_user_data->smoker : '';
-$activity               = !empty($fl_user_data->activity) ? $fl_user_data->activity : '';
-$user_gender            = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
-$user_status            = !empty($fl_user_data->user_status) ? $fl_user_data->user_status : '';
-$user_origin            = !empty($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
-$looking_where          = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
-$user_rent              = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : 200;
+$how_long = !empty($fl_user_data->how_long) ? $fl_user_data->how_long : '';
+//$user_age               = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
+$sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
+$sleeping_span = !empty($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
+$party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
+$looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
+$couple = !empty($fl_user_data->couple) ? $fl_user_data->couple : '';
+$pets = !empty($fl_user_data->pets) ? $fl_user_data->pets : '';
+$smoker = !empty($fl_user_data->smoker) ? $fl_user_data->smoker : '';
+$activity = !empty($fl_user_data->activity) ? $fl_user_data->activity : '';
+$user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
+$user_status = !empty($fl_user_data->user_status) ? $fl_user_data->user_status : '';
+$user_origin = !empty($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
+$looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
+$user_rent = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : 200;
 
 $when_move = '';
 
-if(!empty($fl_user_data->disponibility)){
-    $when_move              = !empty($fl_user_data->disponibility) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->disponibility) : '';    
-} else {
-    $when_move = new DateTime();
-}
+//if (!empty($fl_user_data->disponibility)) {
+    $when_move = !empty($fl_user_data->disponibility) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->disponibility) : new DateTime();
+//}
 
+
+ if(!empty($fl_user_data->birthdate)){
+  $birthdate              = !empty($fl_user_data->birthdate) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->birthdate) : new DateTime();
+ } 
+
+
+//$birthdate = !empty($fl_user_data->birthdate) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->birthdate) : '';
 
 
 
@@ -143,8 +148,8 @@ if ($user_custom_picture == '') {
             $arr = array(
                 3 => __('inactive', 'wpestate'),
                 1 => __('Looking for a flat', 'wpestate'),
-                2 => __('Looking for a roommate', 'wpestate'), 
-             //   4 => __('Landlord', 'wpestate'),
+                2 => __('Looking for a roommate', 'wpestate'),
+                    //   4 => __('Landlord', 'wpestate'),
             );
             ?>
             <label for="user_status"><?php _e('Your status:', 'wpestate'); ?></label>
@@ -316,37 +321,37 @@ if ($user_custom_picture == '') {
 
             <script>
 
-                  function loadScript(src, callback) {
+                function loadScript(src, callback) {
                     var script = document.createElement("script");
                     script.type = "text/javascript";
                     if (callback)
                         script.onload = callback;
                     document.getElementsByTagName("head")[0].appendChild(script);
                     script.src = src;
-                } 
-                
+                }
+
                 loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&language=en&callback=initialize');
- 
-                function initialize() { 
-                    
+
+                function initialize() {
+
                     var options = {
                         types: ['(cities)'],
                         //componentRestrictions: {country: "cz"}
                     };
-                    
+
                     var input = document.getElementById('looking_where');
                     var autocomplete = new google.maps.places.Autocomplete(input, options);
-                     
-                        autocomplete.addListener('place_changed', function() {    
+
+                    autocomplete.addListener('place_changed', function () {
                         var place = autocomplete.getPlace();
-  
-   
-                      }); 
-                    }
+
+
+                    });
+                }
 
             </script>
-          
-               <div class="fl-row adv_search_slider">
+
+            <div class="fl-row adv_search_slider">
 
                 <script>
                     jQuery(document).ready(function ($) {
@@ -365,33 +370,37 @@ if ($user_custom_picture == '') {
                         });
                     });
                 </script>
-                <?php 
-                $currency = esc_html( get_option('wp_estate_currency_symbol', '') );
+                <?php
+                $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
                 ?>
                 <p>
                     <label for="rent_amount" class="wauto"><?php _e('How much do you want to pay?:', 'wpestate'); ?></label>
                     <span id="rent_label_text" class="slide-label"><?php printf(__('%s', 'dokan'), (int) $user_rent); ?> <?php echo esc_html($currency) ?></span>
                 </p>
-                 
+
                 <div id="slider_rent" class="fl-slider"></div>
                 <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $user_rent; ?>">
             </div>
-            
-            
+
+
             <script>
                 jQuery(document).ready(function ($) {
                     jQuery("#when_move").datepicker({
                         dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
                     }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
+
+                    jQuery("#birthdate").datepicker({
+                        dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
+                    }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
                 });
             </script>
-            
-            
-            
+
+
+
             <div class="fl-row">
                 <label><?php _e('Disponibility', 'wpestate'); ?></label>
                 <div class="value-row">
-                    <input type="text" id="when_move" class="form-control" value="<?php echo empty($when_move) ? '' : $when_move->format(PHP_DATEPICKER_FORMAT);  ?>"  name="when_move">
+                    <input type="text" id="when_move" class="form-control" value="<?php echo empty($when_move) ? '' : $when_move->format(PHP_DATEPICKER_FORMAT); ?>"  name="when_move">
                 </div>
             </div>
 
@@ -417,9 +426,9 @@ if ($user_custom_picture == '') {
             </div>
 
             <div class="fl-row">
-                <label for="user_age"><?php _e('Your age', 'wpestate'); ?></label>
+                <label for="user_age"><?php _e('Birthdate', 'wpestate'); ?></label>
                 <div class="value-row">
-                    <input type="text" id="user_age" class="form-control" value="<?php echo empty($user_age) ? '' : (int) $user_age; ?>"  name="user_age">
+                    <input type="text" id="birthdate" class="form-control" value="<?php echo empty($birthdate) ? '' : $birthdate->format(PHP_DATEPICKER_FORMAT); ?>"  name="birthdate">
                 </div>
             </div>
 
@@ -463,7 +472,7 @@ if ($user_custom_picture == '') {
                 <div class="clearfix"></div>
             </div>
 
-         
+
 
         </div>
 
