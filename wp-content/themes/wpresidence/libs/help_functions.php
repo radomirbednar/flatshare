@@ -1390,6 +1390,9 @@ if( !function_exists('wpestate_show_search_field') ):
         if($search_field=='none'){
             $return_string=''; 
         }
+        else if($search_field=='cities'){
+            $return_string .= '<input type="text" id="adv_location" class="form-control a" name="adv_location" placeholder="'. __('City', 'wpestate') . '" value="' . (isset($_GET['advanced_city']) ? esc_attr($_GET['advanced_city']) : '') . '" autocomplete="off" data-value="all">';
+        }
         else if($search_field=='types'){
 
             if(isset($_GET['filter_search_action'][0]) && $_GET['filter_search_action'][0]!='' && $_GET['filter_search_action'][0]!='all'){
