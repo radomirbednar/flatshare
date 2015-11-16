@@ -102,6 +102,9 @@ if (!function_exists('wpestate_list_users_function')):
              
         $query = $wpdb->get_results($sql);
          
+        $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
+        $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
+         
         ob_start(); 
         foreach ($query as $q) {
 
@@ -118,7 +121,7 @@ if (!function_exists('wpestate_list_users_function')):
         $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
         $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
         $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
-
+        
             $user_gender_array = array(
                 '2' => __('female', 'wpestate'),
                 '1' => __('male', 'wpestate')
@@ -139,6 +142,15 @@ if (!function_exists('wpestate_list_users_function')):
                         print $thumb_prop;
                         print '<div class="listing-cover"></div>
                             <a href="' . $author_url . '"> <span class="listing-cover-plus">+</span></a>';
+                        
+                        print '<span class="user_euro_unit">';
+                
+                        if ($rent_amount != '') {
+                            print __('', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
+                        }
+                 
+                    print '</span>';
+                        
                         ?>
                     </div>
                     <div class="user_unit_info">

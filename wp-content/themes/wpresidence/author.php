@@ -104,15 +104,19 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                 <?php include( locate_template('templates/userdetails.php')); ?> 
             </div>   
             <?php  
+            
+            $login_url = get_permalink(240);
+            
             if ( is_user_logged_in() ) { 
                 include('templates/author_contact.php');                   
-            }else{ 
-                echo '<div>'. __('PLEASE LOGIN TO CONTACT THIS USER', 'wpestate').' </div>';    
+            }else{  
             }  
             ?>  
-            <?php  
-                include('templates/user_listings.php');  
-            ?>   
+            <?php   
+                // return '<div class="row"><div class="col-md-12"><a href="'.$login_url.'" class="wpb_button  wpb_btn-info wpb_btn-large vc_button">'. __('PLEASE LOGIN OR REGISTER TO CONTACT THIS USER', 'wpestate').' </a></div></div>';     
+                echo '<div class="row"></div>';
+                include('templates/user_listings.php');     
+                ?>   
         </div> 
     </div><!-- end 9col container-->     
     <div class="col-md-3">
@@ -147,19 +151,13 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
         </p>     
          
         <p>
-        <h4>House Skills</h4>    
-            
+        <h4>House Skills</h4>                
         <?php 
             foreach ($houseskils as $skil){ 
                 echo '<strong>'.$skil->name.'</strong></br>'; 
             } 
         ?>     
-        </p>
-        
-        
-        
-        
-        
+        </p> 
     </div> 
     <?php // include(locate_template('sidebar.php'));   ?>
 </div>    

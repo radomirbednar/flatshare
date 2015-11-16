@@ -5,10 +5,7 @@ global $propid;
 
 $contact_form_7_agent   =   stripslashes( ( get_option('wp_estate_contact_form_7_agent','') ) );
 $contact_form_7_contact =   stripslashes( ( get_option('wp_estate_contact_form_7_contact','') ) );
- 
-
-
-
+  
 ?>
   
 <div class="agent_contanct_form">
@@ -33,10 +30,8 @@ $contact_form_7_contact =   stripslashes( ( get_option('wp_estate_contact_form_7
         <input type="submit" class="wpb_button  wpb_btn-info wpb_btn-large"  id="agent_submit" value="<?php _e('Send Message', 'wpestate'); ?>"> 
         <input name="prop_id" type="hidden"  id="agent_property_id" value="<?php echo $propid;?>"> 
         <input name="agent_email" type="hidden"  id="agent_email" value="<?php print $user_email; ?>">
-        <input type="hidden" name="contact_ajax_nonce" id="agent_property_ajax_nonce"  value="<?php echo wp_create_nonce( 'ajax-property-contact' );?>" />
- 
-    <?php 
-    
+        <input type="hidden" name="contact_ajax_nonce" id="agent_property_ajax_nonce"  value="<?php echo wp_create_nonce( 'ajax-property-contact' );?>" /> 
+    <?php  
     }else{
         if ( basename(get_page_template())=='contact_page.php') {
           //  $contact_form_7_contact = stripslashes( ( get_option('wp_estate_contact_form_7_contact','') ) );
