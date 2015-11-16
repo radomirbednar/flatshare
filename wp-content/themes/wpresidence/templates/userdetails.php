@@ -57,7 +57,7 @@ $link = esc_url(get_author_posts_url($user_ID));
 </div>   
 <div class="col-md-<?php print $content_size; ?> agent_details">    
     <div class="mydetails"> 
-        <?php _e('My details', 'wpestate'); ?>
+        <?php _e('My Contacts', 'wpestate'); ?>
     </div>
     <?php
     print '<h3><a href="' . $link . '">' . $name . '</a></h3>';

@@ -229,8 +229,8 @@ if ($extended_search == 'yes') {
                         <div class="form-control-half">
                             <?php
                             $arr = array(
-                                1 => __('looking for a flat', 'wpestate'),
-                                2 => __('looking for a roommate', 'wpestate'),
+                                1 => __('a flat', 'wpestate'),
+                                2 => __('a roommate', 'wpestate'),
                                     //3 => __('Real estate', 'wpestate'),
                                     //4 => __('Landlord', 'wpestate'),
                             );
@@ -240,8 +240,7 @@ if ($extended_search == 'yes') {
 
                                 <select id="status" class="form-control w100" name="status" class="w100">
 
-                                    <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option>
-
+                                    <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option> 
                                     <?php foreach ($arr as $key => $val): ?>
                                         <option value="<?php echo $key ?>" <?php echo isset($_GET['status']) && $_GET['status'] == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
                                     <?php endforeach; ?>

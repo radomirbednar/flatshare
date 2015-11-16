@@ -1358,9 +1358,7 @@ if (!function_exists('wpestate_featured_property')):
             'post_status' => 'publish',
             'p' => $prop_id
         );
-
-
-
+ 
         $my_query = new WP_Query($args);
         if ($my_query->have_posts()) {
             while ($my_query->have_posts()) {
@@ -1381,11 +1379,17 @@ if (!function_exists('wpestate_featured_property')):
 
                 if (function_exists('icl_translate')) {
                     $prop_stat = icl_translate('wpestate', 'wp_estate_property_status_sh_' . $prop_stat, $prop_stat);
-                }
-
-                $featured = intval(get_post_meta($prop_id, 'prop_featured', true));
+                } 
+                
+                $featured = intval(get_post_meta($prop_id, 'prop_featured', true));               
                 $agent_id = intval(get_post_meta($prop_id, 'property_agent', true));
+                
+                 
                 $thumb_id = get_post_thumbnail_id($agent_id);
+                      
+                $user_ID = get_the_author_meta( 'ID' );   
+                $photo_url = get_the_author_meta('custom_picture', $user_ID);
+                
                 $agent_face = wp_get_attachment_image_src($thumb_id, 'agent_picture_thumb');
                 $agent_posit = esc_html(get_post_meta($agent_id, 'agent_position', true));
                 $agent_permalink = get_permalink($agent_id);
@@ -1393,6 +1397,7 @@ if (!function_exists('wpestate_featured_property')):
                 $agent_mobile = esc_html(get_post_meta($agent_id, 'agent_mobile', true));
                 $agent_email = esc_html(get_post_meta($agent_id, 'agent_email', true));
 
+                  
                 if ($price != 0) {
                     $price = wpestate_show_price($prop_id, $currency, $where_currency, 1);
                 } else {
@@ -1478,35 +1483,27 @@ if (!function_exists('wpestate_featured_property')):
                                 </div>
                             </div>';
                 }
-
-
+ 
                 if ($featured == 1) {
                     $return_string .= '<div class="featured_div"></div>';
                 }
                 $return_string .= '<h2><a href="' . $link . '">';
-
-
+ 
                 $return_string .= mb_substr($title, 0, 27);
                 if (mb_strlen($title) > 27) {
                     $return_string .= '...';
-                }
-
+                } 
                 $return_string.='</a></h2>
                         <div class="sale_line">' . $sale_line . '</div>
-                        <div class="featured_prop_price">' . $price . ' </div>
-                         
-                       
-                 </div>';
-
+                        <div class="featured_prop_price">' . $price . ' </div>      
+                 </div>'; 
                 $return_string .='
                 </div>';
             }
-        }
-
+        } 
         wp_reset_query();
         return $return_string;
-    }
-
+    } 
 endif; // end   wpestate_featured_property
 ////////////////////////////////////////////////////////////////////////////////////
 /// featured agent
@@ -1518,8 +1515,7 @@ if (!function_exists('wpestate_featured_agent')):
         global $notes;
         $return_string = '';
         $notes = '';
-
-
+ 
         $attributes = shortcode_atts(
                 array(
             'id' => 0,

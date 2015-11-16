@@ -3,23 +3,22 @@
 // Wp Estate Pack
 
 get_header();
- 
+
 $options = wpestate_page_details($post->ID);
 $show_compare = 1;
 $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
 $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
 ?>
- 
+
 <div class="row"> 
     <?php get_template_part('templates/breadcrumbs'); ?>
-    
+
     <div class=" <?php print $options['content_class']; ?> "> 
         <?php get_template_part('templates/ajax_container'); ?>
         <div id="content_container">  
             <?php
-            
-            $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author)); 
-            $userID = $curauth->data->ID;         
+            $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+            $userID = $curauth->data->ID;
             $user_origin = esc_attr(get_user_meta($userID, 'user_origin', true));
             $looking_where = esc_attr(get_user_meta($userID, 'looking_where', true));
             $user_language_ids = fl_get_user_language_ids($userID);
@@ -29,7 +28,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $user_small_picture = get_the_author_meta('small_custom_picture', $userID);
             $image_id = get_the_author_meta('small_custom_picture', $userID);
             $about_me = get_the_author_meta('description', $userID);
-  
+
             $first_name = esc_attr(get_the_author_meta('first_name', $userID));
             $last_name = esc_attr(get_the_author_meta('last_name', $userID));
 
@@ -38,7 +37,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $user_linkedin = get_the_author_meta('linkedin', $userID);
             $user_pinterest = get_the_author_meta('pinterest', $userID);
             $photo_url = get_the_author_meta('custom_picture', $userID);
- 
+
             $user_email = get_the_author_meta('user_email', $userID);
 
             $user_mobile = get_the_author_meta('mobile', $userID);
@@ -46,41 +45,61 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $user_description = esc_attr(get_the_author_meta('description', $userID));
 
             $user_skype = get_the_author_meta('skype', $userID);
-            $website = get_the_author_meta('website', $userID); 
+            $website = get_the_author_meta('website', $userID);
             $fl_user_data = get_fl_data($userID);
- 
-            $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';  
+
+            $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
             $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
             $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
             $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
-            $activity = !empty($fl_user_data->activity) ? $fl_user_data->activity : ''; 
+            $activity = !empty($fl_user_data->activity) ? $fl_user_data->activity : '';
             $disponibility = !empty($fl_user_data->disponibility) ? $fl_user_data->disponibility : '';
-            
-            $how_long = !empty($fl_user_data->how_long) ? $fl_user_data->how_long : ''; 
+
+            $how_long = !empty($fl_user_data->how_long) ? $fl_user_data->how_long : '';
             $sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
             $sleeping_span = !empty($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
             $couple = !empty($fl_user_data->couple) ? $fl_user_data->couple : '';
-            $smoker = !empty($fl_user_data->smoker) ? $fl_user_data->smoker : '';   
+            $smoker = !empty($fl_user_data->smoker) ? $fl_user_data->smoker : '';
             $pets = !empty($fl_user_data->pets) ? $fl_user_data->pets : '';
             $user_origin = !empty($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
-            $party = !empty($fl_user_data->party) ? $fl_user_data->party : ''; 
+            $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
             $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
             $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
-             
+
             $houseskils = fl_get_user_house_skills($userID);
-             
-              
-            $activity_array = array(
+
+            $activity_array = array( 
                 '1' => __('Student', 'wpestate'),
-                '2' => __('Professional', 'wpestate')
+                '2' => __('Professional', 'wpestate') 
             ); 
+             
             $user_gender_array = array(
                 '2' => __('female', 'wpestate'),
                 '1' => __('male', 'wpestate')
-            );            
+            ); 
+            
+            $how_long_array = array(
+                '1' => __('short term', 'wpestate'),
+                '2' => __('long term', 'wpestate')  
+            );
+            
+            $looking_for_array = array(    
+                '1' => array(
+                    '<i class="icon-icon_roommate"></i>',
+                    __('roomate', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_flat"> </i>',
+                    __('flat', 'wpestate')  
+                )
+            );
+            
+            
+            
             if ($user_custom_picture == '') {
                 $user_custom_picture = get_template_directory_uri() . '/img/default_user.png';
             }
+            
             ?>
 
             <h1 class="entry-title-agent"><?php echo $first_name . ' ' . $last_name; ?></h1> 
@@ -97,91 +116,131 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             <div class="single-content single-agent">      
                 <?php include( locate_template('templates/userdetails.php')); ?> 
             </div>   
-            <?php  
-            
+            <?php
             $login_url = get_permalink(240);
-            
-            if ( is_user_logged_in() ) { 
-                include('templates/author_contact.php');                   
-            }else{  
-            }  
+
+            if (is_user_logged_in()) {
+                include('templates/author_contact.php');
+            } else {
+                
+            }
             ?>  
-            <?php   
-                // return '<div class="row"><div class="col-md-12"><a href="'.$login_url.'" class="wpb_button  wpb_btn-info wpb_btn-large vc_button">'. __('PLEASE LOGIN OR REGISTER TO CONTACT THIS USER', 'wpestate').' </a></div></div>';     
-                echo '<div class="row"></div>';
-                include('templates/user_listings.php');     
-                ?>   
+            <?php
+            // return '<div class="row"><div class="col-md-12"><a href="'.$login_url.'" class="wpb_button  wpb_btn-info wpb_btn-large vc_button">'. __('PLEASE LOGIN OR REGISTER TO CONTACT THIS USER', 'wpestate').' </a></div></div>';     
+            echo '<div class="row"></div>';
+            include('templates/user_listings.php');
+            ?>   
         </div> 
     </div><!-- end 9col container-->     
-    <div class="col-md-3"> 
+    <div class="col-md-3">  
+        <div class="mydetails"> 
+            <?php _e('My Details', 'wpestate'); ?>
+        </div> 
         <?php
-            $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
-            $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
+        $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
+        $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
         ?>          
-        <h4> 
-            <?php
+       
+        
+        
+        <div class="sub_block">
+        <?php
             if ($rent_amount != '') {
-                print __('Price: ', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
+ 
+                print __('<span class="sub">Price: </span><i class="icon-icon_price"></i>', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
             }
-            ?> 
-        </h4>        
-        
-        <h4><?php print __('Disponibility: ', 'wpestate') ;?><?php 
-            if( $disponibility != '' ) {   
-                $date = new DateTime($disponibility); 
-                print $date->format('d. m. Y'); 
-            }
-            ?>
-        </h4>          
-        
-        <h4><?php print __('Activity: ', 'wpestate');?><?php 
-            if( $activity != '' ) {  
-               print $activity_array[$activity]; 
+        ?> 
+        </div>       
+ 
+        <div class="sub_block">
+         <?php print __('<span class="sub">Disponibility: </span><i class="icon-icon_date"></i>', 'wpestate'); ?></span><?php
+            if ($disponibility != '') {
+                $date = new DateTime($disponibility);
+                print $date->format('d. m. Y');
             }
             ?>
-        </h4>          
-         
-        <h4>House Skills</h4>                
-        <?php 
-            foreach ($houseskils as $skil){ 
-                echo '<strong>'.$skil->name.'</strong></br>'; 
-            } 
+        </div>
+        <div class="sub_block"> 
+         <?php print __('<span class="sub">Activity: </span>', 'wpestate'); ?><?php
+            if ($activity != '') {
+                
+                print $activity_array[$activity];    
+            }
+            ?>
+        </div>    
+        
+        <div class="sub_block"> 
+        <span class="sub"><?php print __('House Skills: ', 'wpestate'); ?></span>               
+        <?php
+        foreach ($houseskils as $skil) {
+            echo '<strong>' . $skil->name . '</strong>';
+        }
         ?>     
-        
-        <h4><?php print __('For how long: ', 'wpestate');?></h4>      
+        </div>    
          
+        <div class="sub_block">
+        <span class="sub"><?php print __('For how long: ', 'wpestate'); ?></span> 
+            <i class="icon-icon_time"></i>
+            <?php print  $how_long_array[$how_long]; ?> 
+        </div>
         
         
-        <h4><?php print __('Looking for: ', 'wpestate');?></h4>     
+        <div class="sub_block">
+        <span class="sub"><?php print __('Looking for: ', 'wpestate'); ?> </span>
+        <?php print esc_attr($looking_for); ?> 
+        </div>
+
+        
+        <div class="sub_block">
+        <span class="sub"><?php print __('Sexual preferences: ', 'wpestate'); ?></span>
+        <?php print esc_attr($sexual_preference); ?> 
+        </div>
+
+        
+        <div class="sub_block">         
+        <span class="sub"><?php print __('Sleep during week: ', 'wpestate'); ?></span>
+        <?php print esc_attr($sexual_preference); ?> 
+        </div>
+
+        <div class="sub_block">
+        <span class="sub"><?php print __('Couple: ', 'wpestate'); ?></span> 
+        <?php print esc_attr($couple); ?> 
+        </div>
         
         
         
-        <h4><?php print __('Sexual preferences: ', 'wpestate');?></h4>
+        <div class="sub_block">          
+        <span class="sub"><?php print __('Pets: ', 'wpestate'); ?></span>
+            <?php print esc_attr($pets); ?>
+        </div>
+
+        <div class="sub_block">          
+        <span class="sub"><?php print __('Smoker: ', 'wpestate'); ?></span>
+            <?php print esc_attr($smoker); ?> 
+        </div>
+        
+        <div class="sub_block">           
+        <span class="sub"><?php print __('Party: ', 'wpestate'); ?></span>
+            <?php print esc_attr($party); ?>  
+        </div>
+
+        <div class="sub_block">
+        <span class="sub"><?php print __('Language skills: ', 'wpestate'); ?>     </span>    
+            <?php
+            var_dump($user_language_ids);
+            ?>  
+        </div>
+        <div class="sub_block"> 
+        <span class="sub">
+            <?php print __('Country of origin: ', 'wpestate');?>
         
         
-        <h4><?php print __('Sleep during week: ', 'wpestate');?></h4>
+        </span>           
+        </div>
         
-        
-        <h4><?php print __('Couple: ', 'wpestate');?></h4>
-   
-        
-        <h4><?php print __('Pets: ', 'wpestate');?></h4>
-        
-        
-        <h4><?php print __('Smoker: ', 'wpestate');?></h4>
-        
-        
-        <h4><?php print __('Party: ', 'wpestate');?></h4>
-        
-        
-        <h4><?php print __('Country of origin: ', 'wpestate');?></h4>
-        
-        
-        <h4><?php print __('Language skills: ', 'wpestate');?></h4>
-         
-    </div> 
-    <?php // include(locate_template('sidebar.php'));   ?>
+        </div> 
+<?php // include(locate_template('sidebar.php'));    ?>
 </div>    
-<?php
-get_footer();
-?>
+    <?php
+    get_footer();
+    ?>

@@ -541,11 +541,7 @@ function tdd_tax_filter_posts_per_page( $value ) {
     $prop_no            =   intval( get_option('wp_estate_prop_no','') );
     return (is_tax('estate_property')) ? 1 : $prop_no;
 }
- 
-
-
-
-
+            
 //add_filter( 'posts_results', 'cache_meta_data', 9999, 2 );
 function cache_meta_data( $posts, $object ) {
   //  global $posts;
@@ -586,10 +582,7 @@ if ( !function_exists('estate_get_pin_file_path')):
     }
 
 endif;
-
-
-
-
+            
 if( !function_exists('wpestate_show_search_field_classic_form') ):
     function  wpestate_show_search_field_classic_form($postion,$action_select_list,$categ_select_list ,$select_city_list,$select_area_list){
 
@@ -807,14 +800,14 @@ if( !function_exists('wpestate_show_search_field_classic_form') ):
             <input type="text" id="'.$price_low.'" class="form-control advanced_select" name="price_low"  placeholder="'.__('Type Min. Price','wpestate').'" value=""/>
             <input type="text" id="'.$price_max.'" class="form-control advanced_select" name="price_max"  placeholder="'.__('Type Max. Price','wpestate').'" value=""/>';
         
-        } 
-
-
-        return $return_string;
-        
-        
+        }  
+        return $return_string; 
     }
 endif;     
+
+
+
+
 
 
 

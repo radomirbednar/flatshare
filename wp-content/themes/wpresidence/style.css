@@ -7236,7 +7236,7 @@ table tbody tr td {
     float: left;
 }
 .half-map {
-    
+
 }
 .half-map .adv1-holder {
     padding-left: 15px;
@@ -12553,84 +12553,124 @@ img.user_gender_image{
 } 
 
 @font-face {
-	font-family: 'flicon';
-	src:url('fonts/flicon.eot?wz38br');
-	src:url('fonts/flicon.eot?wz38br#iefix') format('embedded-opentype'),
-		url('fonts/flicon.ttf?wz38br') format('truetype'),
-		url('fonts/flicon.woff?wz38br') format('woff'),
-		url('fonts/flicon.svg?wz38br#flicon') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'icomoon';
+    src:url('fonts/icomoon.eot?b9nj2s');
+    src:url('fonts/icomoon.eot?b9nj2s#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?b9nj2s') format('truetype'),
+        url('fonts/icomoon.woff?b9nj2s') format('woff'),
+        url('fonts/icomoon.svg?b9nj2s#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 i {
-	font-family: 'flicon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
 
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-icons-no-cat2:before {
-	content: "\e909";
+.icon-icon_couple:before {
+    content: "\e900";
 }
-.icon-icons-cat:before {
-	content: "\e913";
+.icon-icon_date:before {
+    content: "\e901";
 }
-.icon-icons-cigar:before {
-	content: "\e914";
+.icon-icon_flat:before {
+    content: "\e902";
 }
-.icon-icons-no-cat:before {
-	content: "\e915";
+.icon-icon_gender-female:before {
+    content: "\e903";
 }
-.icon-icons-05:before {
-	content: "\e900";
+.icon-icon_gender-male:before {
+    content: "\e904";
 }
-.icon-icons-06:before {
-	content: "\e901";
+.icon-icon_no-pets:before {
+    content: "\e905";
 }
-.icon-icons-07:before {
-	content: "\e902";
+.icon-icon_no-smoking:before {
+    content: "\e906";
 }
-.icon-icons-08:before {
-	content: "\e903";
+.icon-icon_party-less:before {
+    content: "\e907";
 }
-.icon-icons-09 .path1:before {
-	content: "\e904";
-	color: rgb(0, 0, 0);
+.icon-icon_party-often:before {
+    content: "\e908";
 }
-.icon-icons-09 .path2:before {
-	content: "\e905";
-	margin-left: -1em;
-	color: rgb(0, 0, 0);
+.icon-icon_pets:before {
+    content: "\e909";
 }
-.icon-icons-09 .path3:before {
-	content: "\e906";
-	margin-left: -1em;
-	color: rgb(0, 0, 0);
+.icon-icon_price:before {
+    content: "\e90a";
 }
-.icon-icons-09 .path4:before {
-	content: "\e907";
-	margin-left: -1em;
-	color: rgb(255, 255, 255);
+.icon-icon_professional:before {
+    content: "\e90b";
 }
-.icon-icons-09 .path5:before {
-	content: "\e908";
-	margin-left: -1em;
-	color: rgb(0, 0, 0);
+.icon-icon_roommate:before {
+    content: "\e90c";
 }
-.icon-icons-01:before {
-	content: "\e90a";
+.icon-icon_sex-gay:before {
+    content: "\e90d";
 }
-.icon-icons-03:before {
-	content: "\e910";
+.icon-icon_sex-straight:before {
+    content: "\e90e";
 }
-.icon-icons-04:before {
-	content: "\e911";
+.icon-icon_single:before {
+    content: "\e90f";
+}
+.icon-icon_sleep:before {
+    content: "\e910";
+}
+.icon-icon_smoking:before {
+    content: "\e911";
+}
+.icon-icon_student:before {
+    content: "\e912";
+}
+.icon-icon_time:before {
+    content: "\e913";
 } 
+
+.submit_action{     
+    background: #fb6a5c;
+    color: #fff;
+    padding: 5px 15px 5px 15px;  
+} 
+.sub_block{
+    border-bottom: 1px solid #f0f0f0; 
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    color: #434a54;
+}
+.sub_block i {   
+    color: #3c90be;
+    font-size: 30px;  
+    vertical-align: middle;
+} 
+span.sub{
+    display: block;   
+    font-size: 13px;   
+    margin-bottom: 5px;
+    color: #768082;
+}
+.sub_block strong{
+
+    color: #434a54;
+    border: 1px solid #3c90be;
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    padding: 3px 10px 3px 10px;
+    margin-right: 2px;
+    display: inline-block;
+
+}
