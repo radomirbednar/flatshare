@@ -21,7 +21,11 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $userID = $curauth->data->ID;
             $user_origin = esc_attr(get_user_meta($userID, 'user_origin', true));
             $looking_where = esc_attr(get_user_meta($userID, 'looking_where', true));
-            $user_language_ids = fl_get_user_language_ids($userID);
+            
+            
+            $user_language_ids = fl_get_user_languages_name($userID);
+            
+            
             $user_skill_ids = fl_get_user_house_skill_ids($userID);
             $user_title = get_the_author_meta('title', $userID);
             $user_custom_picture = get_the_author_meta('custom_picture', $userID);
@@ -65,7 +69,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
             $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
             $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
-
+ 
             $houseskils = fl_get_user_house_skills($userID);
 
             $activity_array = array( 
@@ -159,14 +163,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                     __('Not often', 'wpestate')  
                 )     
             );
-            
-            
-            
-            
-            
-            
-            
-            
+             
             if ($user_custom_picture == '') {
                 $user_custom_picture = get_template_directory_uri() . '/img/default_user.png';
             }
@@ -292,16 +289,16 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
         </div>
 
         <div class="sub_block">
-        <span class="sub"><?php print __('Language skills: ', 'wpestate'); ?>     </span>    
-            <?php
-            var_dump($user_language_ids);
-            ?>  
+        <span class="sub"><?php print __('Language skills: ', 'wpestate'); ?></span>    
+        <?php 
+        foreach ($user_language_ids as $lang) {
+            echo '<strong>' . $lang . '</strong>';
+        } 
+        ?> 
         </div>
         <div class="sub_block"> 
         <span class="sub">
-            <?php print __('Country of origin: ', 'wpestate');?>
-        
-        
+            <?php print __('Country of origin: ', 'wpestate');?> 
         </span>           
         </div>
         

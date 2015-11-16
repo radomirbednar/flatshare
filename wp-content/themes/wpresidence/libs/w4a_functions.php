@@ -7,6 +7,26 @@ function fl_get_languages(){
     return $result;
 }
 
+function fl_get_user_languages_name($user_id){ 
+    global $wpdb;  
+     
+    
+    $sql = "SELECT 
+            lu.name 
+        FROM 
+            fl_language_user AS lu 
+        JOIN 
+            fl_language2user AS l2u 
+        ON 
+            lu.id_lang = l2u.id_lang 
+        WHERE 
+            l2u.id_user = '" . (int) $user_id ."'"; 
+
+    $result = $wpdb->get_col($sql);
+    return $result;
+    
+}
+ 
 function fl_get_user_language_ids($user_id){    
     global $wpdb;
     $sql = "
