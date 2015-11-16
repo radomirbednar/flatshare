@@ -185,11 +185,9 @@ if($options['content_class']=='col-md-12'){
          
         $sidebar_agent_option_value = get_post_meta($post->ID, 'sidebar_agent_option', true);
         $enable_global_property_page_agent_sidebar= esc_html ( get_option('wp_estate_global_property_page_agent_sidebar','') );
-        
          
         get_template_part ('/templates/author_area');
-          
-        
+         
         get_template_part ('/templates/similar_listings');
      
         ?>

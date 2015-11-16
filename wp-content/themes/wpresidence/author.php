@@ -3,8 +3,7 @@
 // Wp Estate Pack
 
 get_header();
-
-
+ 
 $options = wpestate_page_details($post->ID);
 $show_compare = 1;
 $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
@@ -19,10 +18,8 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
         <div id="content_container">  
             <?php
             
-            $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
-             
-            $userID = $curauth->data->ID;
-               
+            $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author)); 
+            $userID = $curauth->data->ID;         
             $user_origin = esc_attr(get_user_meta($userID, 'user_origin', true));
             $looking_where = esc_attr(get_user_meta($userID, 'looking_where', true));
             $user_language_ids = fl_get_user_language_ids($userID);
@@ -51,9 +48,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $user_skype = get_the_author_meta('skype', $userID);
             $website = get_the_author_meta('website', $userID); 
             $fl_user_data = get_fl_data($userID);
-
-             
-            
+ 
             $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';  
             $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
             $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
@@ -71,8 +66,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $party = !empty($fl_user_data->party) ? $fl_user_data->party : ''; 
             $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
             $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
-            
-            
+             
             $houseskils = fl_get_user_house_skills($userID);
              
               
@@ -104,62 +98,87 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                 <?php include( locate_template('templates/userdetails.php')); ?> 
             </div>   
             <?php  
+            
+            $login_url = get_permalink(240);
+            
             if ( is_user_logged_in() ) { 
                 include('templates/author_contact.php');                   
-            }else{ 
-                echo '<div>'. __('PLEASE LOGIN TO CONTACT THIS USER', 'wpestate').' </div>';    
+            }else{  
             }  
             ?>  
-            <?php  
-                include('templates/user_listings.php');  
-            ?>   
+            <?php   
+                // return '<div class="row"><div class="col-md-12"><a href="'.$login_url.'" class="wpb_button  wpb_btn-info wpb_btn-large vc_button">'. __('PLEASE LOGIN OR REGISTER TO CONTACT THIS USER', 'wpestate').' </a></div></div>';     
+                echo '<div class="row"></div>';
+                include('templates/user_listings.php');     
+                ?>   
         </div> 
     </div><!-- end 9col container-->     
-    <div class="col-md-3">
+    <div class="col-md-3"> 
         <?php
             $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
             $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
-        ?>         
+        ?>          
         <h4> 
             <?php
             if ($rent_amount != '') {
-                print __('price: ', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
+                print __('Price: ', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
             }
             ?> 
-        </h4> 
-        <p>
-        <strong> 
-            <?php 
-            if( $disponibility != '' ) {  
-                print __('disponibility: ', 'wpestate').' '.$disponibility; 
+        </h4>        
+        
+        <h4><?php print __('Disponibility: ', 'wpestate') ;?><?php 
+            if( $disponibility != '' ) {   
+                $date = new DateTime($disponibility); 
+                print $date->format('d. m. Y'); 
             }
-            ?>  
-        </strong>    
-        </p> 
-        <p>
-        <strong>
-            <?php 
+            ?>
+        </h4>          
+        
+        <h4><?php print __('Activity: ', 'wpestate');?><?php 
             if( $activity != '' ) {  
-                print __('activity: ', 'wpestate').' '.$activity_array[$activity]; 
+               print $activity_array[$activity]; 
             }
-            ?>  
-        </strong>
-        </p>     
+            ?>
+        </h4>          
          
-        <p>
-        <h4>House Skills</h4>    
-            
+        <h4>House Skills</h4>                
         <?php 
             foreach ($houseskils as $skil){ 
                 echo '<strong>'.$skil->name.'</strong></br>'; 
             } 
         ?>     
-        </p>
+        
+        <h4><?php print __('For how long: ', 'wpestate');?></h4>      
+         
+        
+        
+        <h4><?php print __('Looking for: ', 'wpestate');?></h4>     
         
         
         
+        <h4><?php print __('Sexual preferences: ', 'wpestate');?></h4>
         
         
+        <h4><?php print __('Sleep during week: ', 'wpestate');?></h4>
+        
+        
+        <h4><?php print __('Couple: ', 'wpestate');?></h4>
+   
+        
+        <h4><?php print __('Pets: ', 'wpestate');?></h4>
+        
+        
+        <h4><?php print __('Smoker: ', 'wpestate');?></h4>
+        
+        
+        <h4><?php print __('Party: ', 'wpestate');?></h4>
+        
+        
+        <h4><?php print __('Country of origin: ', 'wpestate');?></h4>
+        
+        
+        <h4><?php print __('Language skills: ', 'wpestate');?></h4>
+         
     </div> 
     <?php // include(locate_template('sidebar.php'));   ?>
 </div>    

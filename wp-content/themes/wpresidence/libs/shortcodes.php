@@ -102,9 +102,11 @@ if (!function_exists('wpestate_list_users_function')):
              
         $query = $wpdb->get_results($sql);
          
+        $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
+        $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
+         
         ob_start(); 
-        foreach ($query as $q) {
-
+        foreach ($query as $q) { 
         $fl_user_data = get_fl_data($q->ID);
         $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
         $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
@@ -112,26 +114,22 @@ if (!function_exists('wpestate_list_users_function')):
         $user_twitter = get_the_author_meta('twitter', $q->ID);
         $user_linkedin = get_the_author_meta('linkedin', $q->ID);
         $user_pinterest = get_the_author_meta('pinterest', $q->ID);
-        $photo_url = get_the_author_meta('custom_picture', $q->ID);
-
+        $photo_url = get_the_author_meta('custom_picture', $q->ID); 
         $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
         $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
         $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
-        $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
-
+        $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : ''; 
             $user_gender_array = array(
                 '2' => __('female', 'wpestate'),
                 '1' => __('male', 'wpestate')
-            );
-
+            ); 
             $author_url = esc_url(get_author_posts_url($q->ID));
             $thumb_prop = '<img src="' . $photo_url . '" alt="agent-images">';
 
             if ($photo_url == '') {
                 $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
             }
-            ?>
-
+            ?> 
             <div class="col-md-3 listing_wrapper">
                 <div class="agent_unit" data-link="<?php print $author_url; ?>"> 
                     <div class="agent-unit-img-wrapper person-<?php echo (int) $q->ID ?>">
@@ -139,6 +137,15 @@ if (!function_exists('wpestate_list_users_function')):
                         print $thumb_prop;
                         print '<div class="listing-cover"></div>
                             <a href="' . $author_url . '"> <span class="listing-cover-plus">+</span></a>';
+                        
+                        print '<span class="user_euro_unit">';
+                
+                        if ($rent_amount != '') {
+                            print __('', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
+                        }
+                 
+                    print '</span>';
+                        
                         ?>
                     </div>
                     <div class="user_unit_info">
