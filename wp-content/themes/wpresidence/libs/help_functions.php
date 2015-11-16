@@ -20,6 +20,8 @@ endif;
 if( !function_exists('wpestate_half_map_conditions')):
     function wpestate_half_map_conditions($pos_id){
     
+        
+    
         if( !is_category() && !is_tax()  && basename(get_page_template($pos_id)) == 'property_list_half.php'){
             return true;
         } else if( (  is_tax() ) &&  get_option('wp_estate_property_list_type','')==2){
@@ -1390,9 +1392,10 @@ if( !function_exists('wpestate_show_search_field') ):
         if($search_field=='none'){
             $return_string=''; 
         }
+        /*
         else if($search_field=='cities'){
-            $return_string .= '<input type="text" id="adv_location" class="form-control a" name="adv_location" placeholder="'. __('City', 'wpestate') . '" value="' . (isset($_GET['advanced_city']) ? esc_attr($_GET['advanced_city']) : '') . '" autocomplete="off" data-value="all">';
-        }
+            $return_string .= '<input type="text" id="adv_location" class="form-control a" name="adv_location" placeholder="'. __('City', 'wpestate') . '" value="' . (isset($_GET['adv_location']) ? esc_attr($_GET['adv_location']) : '') . '" autocomplete="off" data-value="all">';
+        }*/
         else if($search_field=='types'){
 
             if(isset($_GET['filter_search_action'][0]) && $_GET['filter_search_action'][0]!='' && $_GET['filter_search_action'][0]!='all'){

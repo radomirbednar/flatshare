@@ -315,7 +315,7 @@ if ($user_custom_picture == '') {
             <div class="fl-row">
                 <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
                 <div class="value-row">
-                    <input type="text" id="looking_where" class="form-control" value="<?php echo esc_attr($looking_where) ?>"  name="looking_where">
+                    <input  data-value="all" type="text" id="looking_where" class="form-control" value="<?php echo esc_attr($looking_where) ?>"  name="looking_where">
                 </div>
             </div>
 

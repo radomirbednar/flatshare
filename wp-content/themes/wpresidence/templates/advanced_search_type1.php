@@ -520,7 +520,8 @@ if ($extended_search == 'yes') {
                                 ?>
                                 <div class="half-map-col">
                                     <?php
-                                    wpestate_show_search_field('mainform', $search_field, $action_select_list, $categ_select_list, '', $select_area_list, $key, $select_county_state_list);
+                                    wpestate_show_search_field('mainform',$search_field,$action_select_list,$categ_select_list,$select_city_list,$select_area_list,$key,$select_county_state_list);                                    
+                                    //wpestate_show_search_field('mainform', $search_field, $action_select_list, $categ_select_list, '', $select_area_list, $key, $select_county_state_list);
                                     ?>
                                 </div>
                                 <?php
