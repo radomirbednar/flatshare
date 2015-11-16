@@ -384,15 +384,18 @@ if ($user_custom_picture == '') {
 
 
             <script>
+                
                 jQuery(document).ready(function ($) {
-                    jQuery("#when_move").datepicker({
+                    jQuery("#when_move").datepicker({                      
                         dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
+                        defaultDate: new Date(),
                     }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
 
                     jQuery("#birthdate").datepicker({
                         dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
                     }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
                 });
+                
             </script>
 
 
@@ -403,7 +406,7 @@ if ($user_custom_picture == '') {
                     <input type="text" id="when_move" class="form-control" value="<?php echo empty($when_move) ? '' : $when_move->format(PHP_DATEPICKER_FORMAT); ?>"  name="when_move">
                 </div>
             </div>
-
+ 
             <div class="fl-row">
                 <?php
                 $coutnries = fl_get_countries();
