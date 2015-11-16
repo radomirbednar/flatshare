@@ -11898,7 +11898,8 @@ select.dsidx-resp-select {
 
 .adv_search_slider{
     float: left;
-    height: 53px;
+    /*height: 53px;*/
+    height: 49px;
     padding-right: 15px!important;
 }
 
@@ -11925,10 +11926,14 @@ select.dsidx-resp-select {
     float: left;
 }
 
-
+#rental .adv1-holder .adv_search_slider {
+    max-width: 456px;
+    padding-right: 17px !important;
+}
 .adv1-holder .adv_search_slider{
     width: 50%;
     max-width: 450px;
+    
 }
 
 #google_map_prop_list_sidebar .adv_search_slider{
