@@ -79,6 +79,7 @@ if( isset($post->ID) && !wpestate_half_map_conditions ($post->ID) ){
                 get_template_part('templates/google_maps_base'); 
                 break;
             case 5://video
+            
                 get_template_part('templates/video_base'); 
                 break;
           }
