@@ -22,17 +22,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
              
             $userID = $curauth->data->ID;
- 
-            /*
-            $sexual_preference = esc_attr(get_user_meta_int($userID, 'sexual_preference')); 
-            $sleeping_span = esc_attr(get_user_meta_int($userID, 'sleeping_span'));
-            $party = esc_attr(get_user_meta_int($userID, 'party'));
-            $looking_for = esc_attr(get_user_meta_int($userID, 'looking_for'));
-            $couple = esc_attr(get_user_meta_int($userID, 'couple'));
-            $pets = esc_attr(get_user_meta_int($userID, 'pets'));
-            $smoker = esc_attr(get_user_meta_int($userID, 'smoker'));
-            */
-              
+               
             $user_origin = esc_attr(get_user_meta($userID, 'user_origin', true));
             $looking_where = esc_attr(get_user_meta($userID, 'looking_where', true));
             $user_language_ids = fl_get_user_language_ids($userID);
@@ -59,19 +49,33 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $user_description = esc_attr(get_the_author_meta('description', $userID));
 
             $user_skype = get_the_author_meta('skype', $userID);
-            $website = get_the_author_meta('website', $userID);
-
+            $website = get_the_author_meta('website', $userID); 
             $fl_user_data = get_fl_data($userID);
 
-            $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
              
+            
+            $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';  
             $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
             $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
             $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
-            $activity = !empty($fl_user_data->activity) ? $fl_user_data->activity : '';
-              
+            $activity = !empty($fl_user_data->activity) ? $fl_user_data->activity : ''; 
             $disponibility = !empty($fl_user_data->disponibility) ? $fl_user_data->disponibility : '';
             
+            $how_long = !empty($fl_user_data->how_long) ? $fl_user_data->how_long : ''; 
+            $sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
+            $sleeping_span = !empty($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
+            $couple = !empty($fl_user_data->couple) ? $fl_user_data->couple : '';
+            $smoker = !empty($fl_user_data->smoker) ? $fl_user_data->smoker : '';   
+            $pets = !empty($fl_user_data->pets) ? $fl_user_data->pets : '';
+            $user_origin = !empty($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
+            $party = !empty($fl_user_data->party) ? $fl_user_data->party : ''; 
+            $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
+            $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
+            
+            
+            $houseskils = fl_get_user_house_skills($userID);
+             
+              
             $activity_array = array(
                 '1' => __('Student', 'wpestate'),
                 '2' => __('Professional', 'wpestate')
@@ -103,7 +107,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             if ( is_user_logged_in() ) { 
                 include('templates/author_contact.php');                   
             }else{ 
-                echo '<div>PLEASE LOGIN TO CONTACT THIS USER </div>';    
+                echo '<div>'. __('PLEASE LOGIN TO CONTACT THIS USER', 'wpestate').' </div>';    
             }  
             ?>  
             <?php  
@@ -141,6 +145,21 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             ?>  
         </strong>
         </p>     
+         
+        <p>
+        <h4>House Skills</h4>    
+            
+        <?php 
+            foreach ($houseskils as $skil){ 
+                echo '<strong>'.$skil->name.'</strong></br>'; 
+            } 
+        ?>     
+        </p>
+        
+        
+        
+        
+        
     </div> 
     <?php // include(locate_template('sidebar.php'));   ?>
 </div>    

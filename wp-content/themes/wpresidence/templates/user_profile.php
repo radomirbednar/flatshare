@@ -374,25 +374,27 @@ if ($user_custom_picture == '') {
                 <div id="slider_rent" class="fl-slider"></div>
                 <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $user_rent; ?>">
             </div>
-            
-            
+             
+            <?php $date_picker = (new DateTime())->format('d. m.Y'); ?>
+             
             <script>
+                
                 jQuery(document).ready(function ($) {
-                    jQuery("#when_move").datepicker({
+                    jQuery("#when_move").datepicker({                      
                         dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
+                        defaultDate: new Date(),
                     }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
                 });
+                
             </script>
-            
-            
-            
+             
             <div class="fl-row">
                 <label><?php _e('Disponibility', 'wpestate'); ?></label>
                 <div class="value-row">
-                    <input type="text" id="when_move" class="form-control" value="<?php echo empty($when_move) ? '' : $when_move->format(PHP_DATEPICKER_FORMAT);  ?>"  name="when_move">
+                    <input type="text" id="when_move" class="form-control" value="<?php echo empty( $when_move ) ? '' : $when_move->format(PHP_DATEPICKER_FORMAT);  ?>"  name="when_move">
                 </div>
             </div>
-
+ 
             <div class="fl-row">
                 <?php
                 $coutnries = fl_get_countries();
@@ -417,7 +419,9 @@ if ($user_custom_picture == '') {
             <div class="fl-row">
                 <label for="user_age"><?php _e('Your age', 'wpestate'); ?></label>
                 <div class="value-row">
+                     
                     <input type="text" id="user_age" class="form-control" value="<?php echo empty($user_age) ? '' : (int) $user_age; ?>"  name="user_age">
+                 
                 </div>
             </div>
 
