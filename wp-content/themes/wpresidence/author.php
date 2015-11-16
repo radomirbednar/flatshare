@@ -227,16 +227,14 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                 print $date->format('d. m. Y');
             }
             ?>
-        </div>
-        
+        </div> 
         <div class="sub_block"> 
          <?php print __('<span class="sub">Activity: </span>', 'wpestate'); ?><?php
             if ($activity != '') {         
                 print $activity_array[$activity];    
                 }
             ?>
-        </div>    
-        
+        </div>  
         <div class="sub_block"> 
         <span class="sub"><?php print __('House Skills: ', 'wpestate'); ?></span>               
         <?php
@@ -244,8 +242,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             echo '<strong>' . $skil->name . '</strong>';
         }
         ?>     
-        </div>    
-        
+        </div>     
         <div class="sub_block">
         <span class="sub"><?php print __('For how long: ', 'wpestate'); ?></span> 
             <i class="icon-icon_time"></i>
@@ -299,9 +296,9 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
         <div class="sub_block"> 
         <span class="sub">
             <?php print __('Country of origin: ', 'wpestate');?> 
-        </span>           
-        </div>
-        
+           </span>    
+             <?php echo $user_origin;  ?>     
+        </div> 
         </div> 
 <?php // include(locate_template('sidebar.php'));    ?>
 </div>    
