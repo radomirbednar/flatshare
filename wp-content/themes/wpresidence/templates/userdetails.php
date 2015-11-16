@@ -21,7 +21,12 @@ if (get_post_type($prop_id) == 'estate_property') {
         $content_size = '9';
     }
 }
-$link = get_permalink();
+
+
+//link to user
+  
+$link = esc_url(get_author_posts_url($user_ID));
+ 
 ?> 
 <div class="col-md-<?php print $pict_size; ?> agentpic-wrapper">
     <div class="agent-listing-img-wrapper" data-link="<?php echo $link; ?>">  
@@ -51,7 +56,7 @@ $link = get_permalink();
     </div>
 </div>   
 <div class="col-md-<?php print $content_size; ?> agent_details">    
-    <div class="mydetails">
+    <div class="mydetails"> 
         <?php _e('My details', 'wpestate'); ?>
     </div>
     <?php

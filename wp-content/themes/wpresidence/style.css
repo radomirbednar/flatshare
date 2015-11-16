@@ -12552,19 +12552,18 @@ img.user_gender_image{
     padding: 12px 30px 12px 30px;  
 } 
 
-
 @font-face {
 	font-family: 'flicon';
-	src:url('fonts/flicon.eot?c3ae5z');
-	src:url('fonts/flicon.eot?c3ae5z#iefix') format('embedded-opentype'),
-		url('fonts/flicon.ttf?c3ae5z') format('truetype'),
-		url('fonts/flicon.woff?c3ae5z') format('woff'),
-		url('fonts/flicon.svg?c3ae5z#flicon') format('svg');
+	src:url('fonts/flicon.eot?wz38br');
+	src:url('fonts/flicon.eot?wz38br#iefix') format('embedded-opentype'),
+		url('fonts/flicon.ttf?wz38br') format('truetype'),
+		url('fonts/flicon.woff?wz38br') format('woff'),
+		url('fonts/flicon.svg?wz38br#flicon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
-.icon {
+i {
 	font-family: 'flicon';
 	speak: none;
 	font-style: normal;
@@ -12578,6 +12577,9 @@ img.user_gender_image{
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-icons-no-cat2:before {
+	content: "\e909";
+}
 .icon-icons-cat:before {
 	content: "\e913";
 }
@@ -12598,7 +12600,31 @@ img.user_gender_image{
 }
 .icon-icons-08:before {
 	content: "\e903";
-} 
+}
+.icon-icons-09 .path1:before {
+	content: "\e904";
+	color: rgb(0, 0, 0);
+}
+.icon-icons-09 .path2:before {
+	content: "\e905";
+	margin-left: -1em;
+	color: rgb(0, 0, 0);
+}
+.icon-icons-09 .path3:before {
+	content: "\e906";
+	margin-left: -1em;
+	color: rgb(0, 0, 0);
+}
+.icon-icons-09 .path4:before {
+	content: "\e907";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-icons-09 .path5:before {
+	content: "\e908";
+	margin-left: -1em;
+	color: rgb(0, 0, 0);
+}
 .icon-icons-01:before {
 	content: "\e90a";
 }
@@ -12607,5 +12633,4 @@ img.user_gender_image{
 }
 .icon-icons-04:before {
 	content: "\e911";
-}
- 
+} 
