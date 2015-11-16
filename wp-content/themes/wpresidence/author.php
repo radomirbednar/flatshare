@@ -21,7 +21,11 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $userID = $curauth->data->ID;
             $user_origin = esc_attr(get_user_meta($userID, 'user_origin', true));
             $looking_where = esc_attr(get_user_meta($userID, 'looking_where', true));
-            $user_language_ids = fl_get_user_language_ids($userID);
+            
+            
+            $user_language_ids = fl_get_user_languages_name($userID);
+            
+            
             $user_skill_ids = fl_get_user_house_skill_ids($userID);
             $user_title = get_the_author_meta('title', $userID);
             $user_custom_picture = get_the_author_meta('custom_picture', $userID);
@@ -65,7 +69,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
             $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
             $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
-
+ 
             $houseskils = fl_get_user_house_skills($userID);
 
             $activity_array = array( 
@@ -93,9 +97,73 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                     __('flat', 'wpestate')  
                 )
             );
+             
+            $sexual_preference_array = array( 
+                '1' => array(
+                      '<i class="icon-icon_sex-straight"></i>',
+                    __('straight', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_sex-gay"> </i>',
+                    __('BI/GAY', 'wpestate')  
+                ) 
+            );
             
+            $sleeping_span_array = array(              
+                '1' => array(
+                      '<i class="icon-icon_sleep"></i>',
+                    __('Before 11PM', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_sleep"></i>',
+                    __('After 11PM', 'wpestate')  
+                ) 
+            );
+             
+            $couple_array = array(              
+                '1' => array(
+                      '<i class="icon-icon_single"> </i>',
+                    __('single', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_couple"> </i>',
+                    __('in couple', 'wpestate')  
+                ) 
+            );
+             
+            $pets_array = array( 
+                '1' => array(
+                      '<i class="icon-icon_no-pets"> </i>',
+                    __('No pets', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_pets"> </i>',
+                    __('Pets', 'wpestate')  
+                ) 
+            );
             
+            $smoker_array = array( 
+                '1' => array(
+                      '<i class="icon-icon_smoking"> </i>',
+                    __('Non-smoker', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_smoking"> </i>',
+                    __('Smoker', 'wpestate')  
+                )   
+            );
             
+            $party_array = array (  
+                '1' => array(
+                      '<i class="icon-icon_party-less"> </i>',
+                    __('Often', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_party-often"> </i>',
+                    __('Not often', 'wpestate')  
+                )     
+            );
+             
             if ($user_custom_picture == '') {
                 $user_custom_picture = get_template_directory_uri() . '/img/default_user.png';
             }
@@ -132,17 +200,17 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             ?>   
         </div> 
     </div><!-- end 9col container-->     
+        
     <div class="col-md-3">  
-        <div class="mydetails"> 
+    <div class="mydetails"> 
             <?php _e('My Details', 'wpestate'); ?>
-        </div> 
-        <?php
-        $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
-        $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
-        ?>          
-       
-        
-        
+    </div> 
+    
+    <?php
+            $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
+            $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
+    ?> 
+    
         <div class="sub_block">
         <?php
             if ($rent_amount != '') {
@@ -159,16 +227,14 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                 print $date->format('d. m. Y');
             }
             ?>
-        </div>
+        </div> 
         <div class="sub_block"> 
          <?php print __('<span class="sub">Activity: </span>', 'wpestate'); ?><?php
-            if ($activity != '') {
-                
+            if ($activity != '') {         
                 print $activity_array[$activity];    
-            }
+                }
             ?>
-        </div>    
-        
+        </div>  
         <div class="sub_block"> 
         <span class="sub"><?php print __('House Skills: ', 'wpestate'); ?></span>               
         <?php
@@ -176,68 +242,63 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             echo '<strong>' . $skil->name . '</strong>';
         }
         ?>     
-        </div>    
-         
+        </div>     
         <div class="sub_block">
         <span class="sub"><?php print __('For how long: ', 'wpestate'); ?></span> 
             <i class="icon-icon_time"></i>
             <?php print  $how_long_array[$how_long]; ?> 
-        </div>
-        
+        </div> 
         
         <div class="sub_block">
         <span class="sub"><?php print __('Looking for: ', 'wpestate'); ?> </span>
-        <?php print esc_attr($looking_for); ?> 
-        </div>
-
-        
+        <?php print $looking_for_array[$looking_for][0].$looking_for_array[$looking_for][1]; ?> 
+        </div>         
+         
         <div class="sub_block">
-        <span class="sub"><?php print __('Sexual preferences: ', 'wpestate'); ?></span>
-        <?php print esc_attr($sexual_preference); ?> 
-        </div>
-
+        <span class="sub"><?php print __('Sexual preferences: ', 'wpestate'); ?></span> 
+        <?php print  $sexual_preference_array[ $sexual_preference][0]. $sexual_preference_array[ $sexual_preference][1]; ?>  
+        </div> 
+        
         
         <div class="sub_block">         
         <span class="sub"><?php print __('Sleep during week: ', 'wpestate'); ?></span>
-        <?php print esc_attr($sexual_preference); ?> 
+        <?php print  $sleeping_span_array[ $sleeping_span][0].$sleeping_span_array[ $sleeping_span][1]; ?> 
         </div>
 
         <div class="sub_block">
-        <span class="sub"><?php print __('Couple: ', 'wpestate'); ?></span> 
-        <?php print esc_attr($couple); ?> 
+        <span class="sub"><?php print __('Couple: ', 'wpestate'); ?></span>   
+         <?php print  $couple_array[ $couple][0].$couple_array[$couple][1]; ?>  
         </div>
-        
-        
-        
+         
         <div class="sub_block">          
-        <span class="sub"><?php print __('Pets: ', 'wpestate'); ?></span>
-            <?php print esc_attr($pets); ?>
+        <span class="sub"><?php print __('Pets: ', 'wpestate'); ?></span> 
+        <?php print  $pets_array[$pets][0].$pets_array[$pets][1]; ?> 
         </div>
 
         <div class="sub_block">          
-        <span class="sub"><?php print __('Smoker: ', 'wpestate'); ?></span>
-            <?php print esc_attr($smoker); ?> 
+        <span class="sub"><?php print __('Smoker: ', 'wpestate'); ?></span> 
+            <?php print  $smoker_array[$smoker][0].$smoker_array[$smoker][1]; ?>  
         </div>
         
         <div class="sub_block">           
         <span class="sub"><?php print __('Party: ', 'wpestate'); ?></span>
-            <?php print esc_attr($party); ?>  
+        <?php print  $party_array[$party][0].$party_array[$party][1]; ?>  
         </div>
 
         <div class="sub_block">
-        <span class="sub"><?php print __('Language skills: ', 'wpestate'); ?>     </span>    
-            <?php
-            var_dump($user_language_ids);
-            ?>  
+        <span class="sub"><?php print __('Language skills: ', 'wpestate'); ?></span>    
+        <?php 
+        foreach ($user_language_ids as $lang) {
+            echo '<strong>' . $lang . '</strong>';
+        } 
+        ?> 
         </div>
         <div class="sub_block"> 
         <span class="sub">
-            <?php print __('Country of origin: ', 'wpestate');?>
-        
-        
-        </span>           
-        </div>
-        
+            <?php print __('Country of origin: ', 'wpestate');?> 
+           </span>    
+             <?php echo $user_origin;  ?>     
+        </div> 
         </div> 
 <?php // include(locate_template('sidebar.php'));    ?>
 </div>    
