@@ -65,12 +65,8 @@ $property_unit_slider = get_option('wp_estate_prop_list_slider','');
                                     </div> 
                                 </div> 
                         </div>';
-
                     }
-
-                }
-
-            
+                }            
             ?>
         
             </div>
@@ -185,14 +181,10 @@ $property_unit_slider = get_option('wp_estate_prop_list_slider','');
                     print '<h4 class="nothing">'.__('There are no properties listed on this page at this moment. Please try again later. ','wpestate').'</h4>';
                 }
             }
-           
-            
             wp_reset_query();               
         ?>
         </div>
-        <!-- Listings Ends  here --> 
-        
-        
+        <!-- Listings Ends  here -->
         
         <?php kriesi_pagination($prop_selection->max_num_pages, $range =2); ?>       
     
