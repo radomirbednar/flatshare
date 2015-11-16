@@ -43,8 +43,10 @@ get_template_part('templates/property_ajax_tax_hidden_filters');
         $show_adv_search_general    =   get_option('wp_estate_show_adv_search_general','');
         if($show_adv_search_general ==  'yes' ){
             $show_mobile=1;
-            print '<div class="search_wrapper" id="xsearch_wrapper" >  ';
-                include(locate_template('templates/advanced_search_type_half.php'));
+            print '<div class="search_wrapper half-map" id="xsearch_wrapper" >  ';
+                //include(locate_template('templates/advanced_search_type_half.php'));
+                include(locate_template('templates/advanced_search_type1.php'));
+            print '<div class="clearfix"></div>';     
             print '</div>';
         }
    

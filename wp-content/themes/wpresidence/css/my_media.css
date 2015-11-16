@@ -40,8 +40,8 @@
     }
     
     .adv1-holder .adv_search_slider {
-        width: 391px;
-        max-width: 450px;
+        width: 486px;
+        max-width: 486px;
     }
     
     .listing_unit_price_wrapper {
@@ -553,11 +553,38 @@
     }
     
     .adv1-holder {
-        width: 805px;
+        /*width: 805px;*/
+        width: 100%;   
+        
     }
     
-    #advanced_submit_2 {
+    .adv-search-1.adv_extended_class {
+        height: 212px;
+    }
+    
+    .adv-search-1 form {
+        margin-right: -15px;
+    }
+    
+    
+    .adv_extended_class #advanced_submit_2 {
         width: 185px;
+        float: right;
+        position: relative;
+        padding: 0px 0 0 3px;
+        height: 40px;        
+        margin-right: 5px;
+    }
+    
+    .adv_extended_close_adv, #adv_extended_close_adv {
+        right: 24px;
+    }
+    .adv-search-1 .form-control, 
+    .adv-search-1 input[type="text"] {
+        width: 231px;
+    }
+    .adv-search-1 .wpb_button {
+        margin-bottom: 10px !important;
     }
     
     #adv_location {

@@ -1446,11 +1446,17 @@ if( !function_exists('wpestate_ajax_update_profile') ):
          */
         
         
-        $when_move = null;
-        
+        $when_move = null;        
         if(isset($data['when_move'])){
             $when_move = DateTime::createFromFormat(PHP_DATEPICKER_FORMAT, $data['when_move']);
         }
+        
+        $birthdate = null;        
+        if(isset($data['birthdate'])){
+            $birthdate = DateTime::createFromFormat(PHP_DATEPICKER_FORMAT, $data['birthdate']);
+        }        
+        
+        
 
         global $wpdb;
 
@@ -1459,7 +1465,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                 fl_user_data (
                     id_user,
                     how_long,
-                    user_age,
+                    birthdate,
                     user_gender,
                     sexual_preference,
                     sleeping_span,
@@ -1479,7 +1485,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
             VALUES (
                 \"" . (int) $userID . "\",
                 \"" . (empty($data['how_long']) ? '' : (int) $data['how_long']) . "\",
-                "   . (empty($data['user_age']) ? 'NULL' : "\"" . (int) $data['user_age'] . "\""). " ,
+                "   . (empty($birthdate) ? 'NULL' : "\"" . $birthdate->format('Y-m-d') . "\"") . ",
                 \"" . (empty($data['user_gender']) ? '' : (int) $data['user_gender']) . "\",
                 \"" . (empty($data['sexual_preference']) ? "''" : (int) $data['sexual_preference']) . "\",
                 \"" . (empty($data['sleeping_span']) ? '' : (int) $data['sleeping_span']) . "\",
@@ -1494,7 +1500,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                 \"" . (empty($data['looking_for']) ? '' : (int) $data['looking_for']) . "\",
                 \"" . (empty($data['looking_where']) ? '' : esc_sql($data['looking_where'])) . "\",
                 \"" . (empty($data['rent_amount']) ? '' : esc_sql($data['rent_amount'])) . "\",
-                \"" . (empty($when_move) ? '' : $when_move->format('Y-m-d')) . "\"                
+                "   . (empty($when_move) ? 'NULL' : "\"" . $when_move->format('Y-m-d') . "\"") . "
             )
         ";
 
