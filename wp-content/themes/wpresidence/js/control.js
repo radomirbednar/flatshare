@@ -1966,14 +1966,14 @@ jQuery(document).ready(function ($) {
 //jQuery is required to run this code
 jQuery(document).ready(function ($) {
 
-    scaleVideoContainer();
+    //scaleVideoContainer();
 
     initBannerVideoSize('.video-container .poster img');
     initBannerVideoSize('.video-container .filter');
     initBannerVideoSize('.video-container video');
 
     $(window).on('resize', function() {
-        scaleVideoContainer();
+        //scaleVideoContainer();
         scaleBannerVideoSize('.video-container .poster img');
         scaleBannerVideoSize('.video-container .filter');
         scaleBannerVideoSize('.video-container video');

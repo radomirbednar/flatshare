@@ -258,8 +258,8 @@ if ($extended_search == 'yes') {
                                 <input id="how_long-2" name="how_long" type="radio" value="2" class="hidden">
 
                                 <label for="how_long-0" class="wpb_button wpb_btn-large <?php echo empty($_GET['how_long']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
-                                <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo isset($_GET['how_long']) && 1 == $_GET['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Less than 6 months', 'wpestate'); ?></label>
-                                <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($_GET['how_long']) && 2 == $_GET['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('+ 6 months'); ?></label>
+                                <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo isset($_GET['how_long']) && 1 == $_GET['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Short term', 'wpestate'); ?></label>
+                                <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($_GET['how_long']) && 2 == $_GET['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Long term'); ?></label>
                             </div>
                         </div>
                         
@@ -514,20 +514,20 @@ if ($extended_search == 'yes') {
                     $custom_advanced_search = get_option('wp_estate_custom_advanced_search', '');
                     if ($custom_advanced_search == 'yes') {
                         ?>
-                        <div class="half-map-row">
+                        
                             <?php
                             foreach ($adv_search_what as $key => $search_field) {
                                 ?>
-                                <div class="half-map-col">
+                                
                                     <?php
                                     wpestate_show_search_field('mainform',$search_field,$action_select_list,$categ_select_list,$select_city_list,$select_area_list,$key,$select_county_state_list);                                    
                                     //wpestate_show_search_field('mainform', $search_field, $action_select_list, $categ_select_list, '', $select_area_list, $key, $select_county_state_list);
                                     ?>
-                                </div>
+                                
                                 <?php
                             }
                             ?>
-                        </div>
+                        
                         <?php
                     } else {
                         $search_form = wpestate_show_search_field_classic_form('main', $action_select_list, $categ_select_list, '', $select_area_list);

@@ -163,19 +163,16 @@ if ($user_custom_picture == '') {
         <div class="col-md-6">
 
             <div class="switcher fl-row">
-                <!--<input type="hidden" id="how_long" name="how_long" value="<?php echo (int) $how_long ?>">-->
+
                 <label><?php _e('For how long', 'wpestate'); ?></label>
 
                 <div class="value-row">
                     <input id="how_long-1" name="how_long" type="radio" value="1" class="hidden" <?php echo isset($how_long) && 1 == $how_long ? ' checked="checked" ' : '' ?>>
                     <input id="how_long-2" name="how_long" type="radio" value="2" class="hidden" <?php echo isset($how_long) && 2 == $how_long ? ' checked="checked" ' : '' ?>>
-                    <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo empty($how_long) || 1 == $how_long ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Less than 6 months', 'wpestate'); ?></label>
-                    <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($how_long) && 2 == $how_long ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('+ 6 months', 'wpestate'); ?></label>
+                    <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo empty($how_long) || 1 == $how_long ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Short term', 'wpestate'); ?></label>
+                    <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($how_long) && 2 == $how_long ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Long term', 'wpestate'); ?></label>
                 </div>                
-                <!--
-                <button class="wpb_button wpb_btn-large <?php echo $how_long == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#how_long" data-value="1"><?php _e('Less than 6 months', 'wpestate'); ?></button>
-                <button class="wpb_button wpb_btn-large <?php echo $how_long == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#how_long" data-value="2"><?php _e('+ 6 months', 'wpestate'); ?></button>
-                -->
+
             </div>
 
             <div class="switcher fl-row">
