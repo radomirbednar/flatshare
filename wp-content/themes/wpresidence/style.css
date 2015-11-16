@@ -12539,11 +12539,8 @@ img.user_gender_image{
 }
 .video-container video.fillWidth {
     width: 100%;
-}
-
-
-.user_euro_unit{ 
-    
+} 
+.user_euro_unit{  
     background: #3c90be;
     color: #fff;
     font-size: 16px;
@@ -12552,6 +12549,63 @@ img.user_gender_image{
     left: 0;
     bottom: 0;
     padding:12px; 
-    padding: 12px 30px 12px 30px; 
-
+    padding: 12px 30px 12px 30px;  
 } 
+
+
+@font-face {
+	font-family: 'flicon';
+	src:url('fonts/flicon.eot?c3ae5z');
+	src:url('fonts/flicon.eot?c3ae5z#iefix') format('embedded-opentype'),
+		url('fonts/flicon.ttf?c3ae5z') format('truetype'),
+		url('fonts/flicon.woff?c3ae5z') format('woff'),
+		url('fonts/flicon.svg?c3ae5z#flicon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.icon {
+	font-family: 'flicon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-icons-cat:before {
+	content: "\e913";
+}
+.icon-icons-cigar:before {
+	content: "\e914";
+}
+.icon-icons-no-cat:before {
+	content: "\e915";
+}
+.icon-icons-05:before {
+	content: "\e900";
+}
+.icon-icons-06:before {
+	content: "\e901";
+}
+.icon-icons-07:before {
+	content: "\e902";
+}
+.icon-icons-08:before {
+	content: "\e903";
+} 
+.icon-icons-01:before {
+	content: "\e90a";
+}
+.icon-icons-03:before {
+	content: "\e910";
+}
+.icon-icons-04:before {
+	content: "\e911";
+}
+ 
