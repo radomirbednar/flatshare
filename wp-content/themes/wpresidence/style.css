@@ -820,11 +820,16 @@ input.form-control::-moz-placeholder {
 .admin-bar.has_top_bar .has_header_type1 .header_media{
     padding-top: 164px;    
 }
-#video-wrap,
-.header-image {
-    min-height: 650px;
-    height: 650px;
+
+@media (min-width: 992px) {
+    #video-wrap,
+    .header-image {
+        min-height: 650px;
+        height: 650px;
+    }
 }
+
+
 .header-image {    
     background-repeat: no-repeat;
     background-position: center center; 
