@@ -8,7 +8,16 @@
 
 
 
-@media only screen and (max-width: 1200px) and (min-width: 992px){       
+@media only screen and (max-width: 1200px) and (min-width: 992px){   
+    
+    #access {
+        margin-right: 10px;
+    }
+    
+    #access a {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 
     #listing_ajax_container_agent, #listing_ajax_container {
         margin: 0px -15px;
@@ -39,9 +48,38 @@
         width: 370px;
     }
     
+    #roommate .adv1-holder .adv_search_slider,
+    #rental .adv1-holder .adv_search_slider {
+        width: 394px;
+    }
+    
+    .adv-search-1 .form-control-two {
+        width: 28.2%;
+    }
+    
+    .adv-search-1 .form-control-one {
+        width: 12.5%;
+    }
+    
+    .adv-search-1 .form-control-quarter {
+        width: 20.5%;
+    }
+    
+    /*
+    .triple-switch .switcher label.wpb_btn-large, 
+    .triple-switch .switcher button.wpb_btn-large, 
+    .triple-switch .switcher span.wpb_btn-large {
+        min-width: 28.6%;
+    }*/
+    
+    .adv-search-1 .form-control-half {
+        width: 42.3%;
+    }
+
+    
     .adv1-holder .adv_search_slider {
-        width: 486px;
-        max-width: 486px;
+        width: 450px;
+        max-width: 450px;
     }
     
     .listing_unit_price_wrapper {
@@ -2127,4 +2165,68 @@
     .property_listing{
         min-width: 200px;
     }
+}
+
+
+@media only screen and (max-width: 1200px) and (min-width: 993px){
+    .triple-switch .switcher label.wpb_btn-large, 
+    .triple-switch .switcher button.wpb_btn-large, 
+    .triple-switch .switcher span.wpb_btn-large {
+        
+    }    
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 992px){
+    
+    .triple-switch .switcher label.wpb_btn-large, 
+    .triple-switch .switcher button.wpb_btn-large, 
+    .triple-switch .switcher span.wpb_btn-large {
+        
+    }
+    /*
+    .value-row {
+        width: 336px;
+    }*/
+    
+    #roommate .adv1-holder .adv_search_slider, 
+    #rental .adv1-holder .adv_search_slider {
+        width: 488px;
+        max-width: 488px;
+    }
+    
+    .adv-search-1 #disponibility.form-control, 
+    .adv-search-1 input[type="text"]#disponibility {
+        width: 100%;
+    }
+    
+    .adv-search-1 .form-control-two {
+        width: 34.3%;
+    }
+    .adv-search-1 .form-control-half {
+        width: 48%;
+    }
+    .adv-search-1 .form-control-quarter {
+        width: 23.3%;
+    }
+    
+    .header-image video {
+        max-width: none; 
+    }
+    
+    /*
+    .adv-search-1 .form-control, 
+    .adv-search-1 input[type="text"] {
+        width: 60%;
+    }*/
+    
+    /*
+    .adv1-holder .adv_search_slider {
+        width: 398px;
+        max-width: 398px;
+    }*/
+    
+}
+
+@media screen and (max-width: 768px) {
+    
 }
