@@ -389,9 +389,7 @@ if ($user_custom_picture == '') {
                 });
 
             </script>
-
-
-
+ 
             <div class="fl-row">
                 <label><?php _e('Disponibility', 'wpestate'); ?></label>
                 <div class="value-row">
@@ -465,10 +463,7 @@ if ($user_custom_picture == '') {
                     ?>
                 </p>
                 <div class="clearfix"></div>
-            </div>
-
-
-
+            </div> 
         </div>
 
         <div class="col-xs-12">
@@ -492,9 +487,7 @@ if ($user_custom_picture == '') {
                     ?>
                 </p>
             </div>
-        </div>
-
-
+        </div> 
     </div>
 
     <div class="add-estate profile-page row">
@@ -543,18 +536,15 @@ if ($user_custom_picture == '') {
 
 
 
-    <h3><?php _e('Change Password', 'wpestate'); ?> </h3>
-
+    <h3><?php _e('Change Password', 'wpestate'); ?> </h3> 
     <div class="profile-page row">
         <div class="pass_note"> <?php _e('*After you change the password you will have to login again.', 'wpestate') ?></div>
         <div id="profile_pass">
-        </div>
-
+        </div> 
         <p  class="col-md-4">
             <label for="oldpass"><?php _e('Old Password', 'wpestate'); ?></label>
             <input  id="oldpass" value=""  class="form-control" name="oldpass" type="password">
-        </p>
-
+        </p> 
         <p  class="col-md-4">
             <label for="newpass"><?php _e('New Password ', 'wpestate'); ?></label>
             <input  id="newpass" value="" class="form-control" name="newpass" type="password">
@@ -562,12 +552,10 @@ if ($user_custom_picture == '') {
         <p  class="col-md-4">
             <label for="renewpass"><?php _e('Confirm New Password', 'wpestate'); ?></label>
             <input id="renewpass" value=""  class="form-control" name="renewpass"type="password">
-        </p>
-
+        </p> 
         <?php wp_nonce_field('pass_ajax_nonce', 'security-pass'); ?>
         <p class="fullp-button">
             <button class="wpb_button  wpb_btn-info wpb_btn-large vc_button" id="change_pass"><?php _e('Reset Password', 'wpestate'); ?></button>
-
         </p>
     </div>
 </div>

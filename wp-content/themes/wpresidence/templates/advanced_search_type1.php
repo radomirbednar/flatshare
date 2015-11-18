@@ -359,7 +359,7 @@ if ($extended_search == 'yes') {
                             </div>
                         </div>
 
-                        <div class="form-control-quarter">
+                        <div class="form-control-quarter no-label">
                             <label><?php _e('House skills', 'wpestate'); ?></label>
                             <p class="inline-checkboxes">
                                 <?php
