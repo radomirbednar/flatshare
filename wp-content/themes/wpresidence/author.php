@@ -8,11 +8,9 @@ $options = wpestate_page_details($post->ID);
 $show_compare = 1;
 $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
 $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
-?>
-
+?> 
 <div class="row"> 
-    <?php get_template_part('templates/breadcrumbs'); ?>
-
+    <?php //get_template_part('templates/breadcrumbs'); ?>
     <div class=" <?php print $options['content_class']; ?> "> 
         <?php get_template_part('templates/ajax_container'); ?>
         <div id="content_container">  
@@ -20,12 +18,8 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
             $userID = $curauth->data->ID;
             $user_origin = esc_attr(get_user_meta($userID, 'user_origin', true));
-            $looking_where = esc_attr(get_user_meta($userID, 'looking_where', true));
-            
-            
-            $user_language_ids = fl_get_user_languages_name($userID);
-            
-            
+            $looking_where = esc_attr(get_user_meta($userID, 'looking_where', true));          
+            $user_language_ids = fl_get_user_languages_name($userID); 
             $user_skill_ids = fl_get_user_house_skill_ids($userID);
             $user_title = get_the_author_meta('title', $userID);
             $user_custom_picture = get_the_author_meta('custom_picture', $userID);

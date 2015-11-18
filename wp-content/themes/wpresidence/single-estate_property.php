@@ -65,10 +65,7 @@ if($options['content_class']=='col-md-12'){
     $slider_size='full';
 }
 
-?>
-
-
-
+?> 
 <div class="row">
     <?php get_template_part('templates/breadcrumbs'); ?>
     <div class=" <?php print $options['content_class'];?> ">
@@ -192,7 +189,7 @@ if($options['content_class']=='col-md-12'){
      
         ?>
         </div><!-- end single content -->
-    </div><!-- end 9col container--> 
+    </div><!-- end 9col container-->      
 <?php include(locate_template('sidebar.php')); ?>
 </div>    
 <?php get_footer(); ?>
