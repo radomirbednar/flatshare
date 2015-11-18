@@ -39,13 +39,13 @@ $user_rent = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : 2
 $when_move = '';
 
 //if (!empty($fl_user_data->disponibility)) {
-    $when_move = !empty($fl_user_data->disponibility) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->disponibility) : new DateTime();
+$when_move = !empty($fl_user_data->disponibility) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->disponibility) : new DateTime();
 //}
 
 
- if(!empty($fl_user_data->birthdate)){
-  $birthdate              = !empty($fl_user_data->birthdate) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->birthdate) : new DateTime();
- } 
+if (!empty($fl_user_data->birthdate)) {
+    $birthdate = !empty($fl_user_data->birthdate) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->birthdate) : new DateTime();
+}
 
 
 //$birthdate = !empty($fl_user_data->birthdate) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->birthdate) : '';
@@ -301,14 +301,10 @@ if ($user_custom_picture == '') {
                 <button class="wpb_button wpb_btn-large <?php echo $party == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#party" data-value="1"><?php _e('Often', 'wpestate'); ?></button>
                 <button class="wpb_button wpb_btn-large <?php echo $party == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#party" data-value="2"><?php _e('Not often', 'wpestate'); ?></button>
                 -->
-            </div>
-
+            </div> 
         </div>
-
-
-
-        <div class="col-md-6">
-
+ 
+        <div class="col-md-6"> 
             <div class="fl-row">
                 <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
                 <div class="value-row">
@@ -316,8 +312,7 @@ if ($user_custom_picture == '') {
                 </div>
             </div>
 
-            <script>
-
+            <script> 
                 function loadScript(src, callback) {
                     var script = document.createElement("script");
                     script.type = "text/javascript";
@@ -326,26 +321,25 @@ if ($user_custom_picture == '') {
                     document.getElementsByTagName("head")[0].appendChild(script);
                     script.src = src;
                 }
-
-                loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&language=en&callback=initialize');
-
-                function initialize() {
-
-                    var options = {
-                        types: ['(cities)'],
-                        //componentRestrictions: {country: "cz"}
-                    };
-
-                    var input = document.getElementById('looking_where');
-                    var autocomplete = new google.maps.places.Autocomplete(input, options);
-
-                    autocomplete.addListener('place_changed', function () {
-                        var place = autocomplete.getPlace();
-
-
-                    });
-                }
-
+ 
+                loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&language=cz&callback=initialize');
+ 
+                function initialize() { 
+                    var options = {      
+                        types: ['(cities)']
+                        //componentRestrictions: {country: "cz"} 
+                    }; 
+                    var input = document.getElementById('looking_where');  
+                    var autocomplete = new google.maps.places.Autocomplete(input, options);  
+                    autocomplete.addListener('place_changed', function () {  
+                    var place = autocomplete.getPlace(); 
+                    var city = place.address_components[0].long_name;
+                    
+                    document.getElementById("looking_where").value = city;  
+                     
+                    }); 
+                } 
+                //ONLY CITY - RESTRICT TO THE LANGUAGE  
             </script>
 
             <div class="fl-row adv_search_slider">
@@ -381,9 +375,9 @@ if ($user_custom_picture == '') {
 
 
             <script>
-                
+
                 jQuery(document).ready(function ($) {
-                    jQuery("#when_move").datepicker({                      
+                    jQuery("#when_move").datepicker({
                         dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
                         defaultDate: new Date(),
                     }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
@@ -392,7 +386,7 @@ if ($user_custom_picture == '') {
                         dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
                     }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
                 });
-                
+
             </script>
 
 
@@ -403,7 +397,7 @@ if ($user_custom_picture == '') {
                     <input type="text" id="when_move" class="form-control" value="<?php echo empty($when_move) ? '' : $when_move->format(PHP_DATEPICKER_FORMAT); ?>"  name="when_move">
                 </div>
             </div>
- 
+
             <div class="fl-row">
                 <?php
                 $coutnries = fl_get_countries();
