@@ -7000,8 +7000,12 @@ table tbody tr td {
     -ms-transition: all 0.3s ease;          
     transition: all 0.3s ease;
     z-index: 99;
-    background:#fdfdfd;
+    background:#fb6a5c;
     border-bottom: 3px solid #f0f0f0;
+}
+
+#search_wrapper:hover {
+    background-color: #ff5342;
 }
 
 .fullscreen_search{
@@ -7104,7 +7108,7 @@ table tbody tr td {
     border-bottom: 1px solid #f0f0f0;
 }
 
-#google_map_prop_list_sidebar #advanced_submit_2{
+#google_map_prop_list_sidebar #advanced_submit_2 {
     position: relative;
     padding: 10px 10px;
     height: auto;
@@ -7114,11 +7118,13 @@ table tbody tr td {
     font-size: 14px;
     margin-bottom: 15px!important;
     font-weight: normal;
-    background-color: #3C90BE;
+    background-color: #fb6a5c;
     color:#fff;
 }
 
-
+#google_map_prop_list_sidebar #advanced_submit_2:hover {
+    background: #ff5342;
+}
 
 
 .adv-search-1-close{
