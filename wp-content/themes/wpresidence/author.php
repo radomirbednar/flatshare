@@ -134,8 +134,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                     '<i class="icon-icon_pets"> </i>',
                     __('Pets', 'wpestate')  
                 ) 
-            );
-            
+            );       
             $smoker_array = array( 
                 '1' => array(
                       '<i class="icon-icon_smoking"> </i>',
@@ -149,11 +148,11 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             
             $party_array = array (  
                 '1' => array(
-                      '<i class="icon-icon_party-less"> </i>',
+                      '<i class="icon-icon_party-often"> </i>',
                     __('Often', 'wpestate'))
                 ,
                 '2' => array(
-                    '<i class="icon-icon_party-often"> </i>',
+                    '<i class="icon-icon_party-less"> </i>',
                     __('Not often', 'wpestate')  
                 )     
             );

@@ -7508,7 +7508,6 @@ table tbody tr td {
 }
 .adv_extended_close_adv,
 #adv_extended_close_adv{
-    position: absolute;
     top: 0px;
     right: 14px;
     color: #99a3b1;
@@ -12650,12 +12649,15 @@ i {
 }
 .icon-icon_time:before {
     content: "\e913";
-} 
-
+}  
 .submit_action{     
     background: #fb6a5c;
     color: #fff;
-    padding: 5px 15px 5px 15px;  
+    padding: 10px 15px 10px 15px;
+    margin-top: -10px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px; 
 } 
 .sub_block{
     border-bottom: 1px solid #f0f0f0; 
@@ -12675,22 +12677,21 @@ span.sub{
     margin-bottom: 5px;
     color: #768082;
 }
-.sub_block strong{
-
+.sub_block strong{ 
     color: #434a54;
     border: 1px solid #3c90be;
     font-size: 14px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     padding: 3px 10px 3px 10px;
     margin-right: 2px;
-    display: inline-block;
-
+    display: inline-block; 
 }
-
-.search_wr_1 .adv1-holder .col-md-3 {
-    padding-left: 0;
-    padding-right: 0;
-    width: auto;
+.button_register{ 
+    color: #fff;
+    padding: 11px 26px; 
+}
+.button_register:hover{
+    color: #fff;    
 }

@@ -218,11 +218,7 @@ if ($extended_search == 'yes') {
                     </div> 
 
                     <div id="more-search-options" class="extended_search_check_wrapper" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: block;"' : '' ?>><!-- advance search block -->
-
-                        <span id="roommate_extended_close_adv" class="adv_extended_close_adv" style="display: <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'inline' : 'none' ?>;">
-                            <i class="fa fa-times"></i>
-                        </span>
-                        
+ 
                         <div class="form-control-half">
                             <?php
                             $arr = array(
@@ -232,18 +228,14 @@ if ($extended_search == 'yes') {
                                     //4 => __('Landlord', 'wpestate'),
                             );
                             ?>
-                            <label for="status"><?php _e('Looking for:', 'wpestate'); ?></label>
-                            <div class="value-row">
-
-                                <select id="status" class="form-control w100" name="status" class="w100">
-
+                            <label for="status"><?php _e('Someone looking for:', 'wpestate'); ?></label>
+                            <div class="value-row"> 
+                                <select id="status" class="form-control w100" name="status" class="w100"> 
                                     <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option> 
                                     <?php foreach ($arr as $key => $val): ?>
                                         <option value="<?php echo $key ?>" <?php echo isset($_GET['status']) && $_GET['status'] == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
-                                    <?php endforeach; ?>
-
-                                </select>
-
+                                    <?php endforeach; ?> 
+                                </select> 
                             </div>
                         </div>
 
@@ -399,8 +391,7 @@ if ($extended_search == 'yes') {
                                     ?>
                                 </select>
                             </p>
-                        </div>
-
+                        </div> 
                         <div class="form-control-half">
                             <div class="switcher">
                                 <!--<input type="hidden" value="<?php echo isset($_GET['party']) ? (int) $_GET['party'] : '' ?>" name="party" id="party">-->
@@ -415,8 +406,7 @@ if ($extended_search == 'yes') {
                                     <label for="party-not-often" class="wpb_button wpb_btn-large <?php echo isset($_GET['party']) && 2 == $_GET['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Not often', 'wpestate'); ?></label>
                                 </div>
                             </div>
-                        </div>
-
+                        </div> 
                         <div class="clearfix"></div>
                         <div class="form-control-full clearfix">
                             <label><?php _e('Language skills', 'wpestate'); ?></label>
@@ -440,12 +430,13 @@ if ($extended_search == 'yes') {
                                 endif;
                                 ?>
                             </p>
-                        </div>
+                        </div> 
+                        <span id="roommate_extended_close_adv" class="adv_extended_close_adv" style="display: <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'inline' : 'none' ?>;">
+                            <i class="fa fa-times"> </i> Less search options
+                        </span> 
                         <input id="ra" name="ra" type="hidden" value="<?php echo isset($_GET['ra']) ? (int) $_GET['ra'] : 0 ?>">
                     </div><!-- /advance search block -->
-
-
-
+ 
                     <?php
                     /*
                       $custom_advanced_search = get_option('wp_estate_custom_advanced_search', '');
@@ -462,10 +453,7 @@ if ($extended_search == 'yes') {
                       show_extended_search('adv');
                       } */
                     ?>
-                </div>
-
-
-
+                </div> 
                 <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large btn-action border-radius" id="advanced_submit_2" value="<?php _e('Search', 'wpestate'); ?>">
                 <?php if ($adv_search_type != 2) { ?>
                     <div id="results">
@@ -474,11 +462,8 @@ if ($extended_search == 'yes') {
                     </div>
                 <?php } ?>
                 <div class="clearfix"></div>
-            </form>
-
-
-        </div><!-- /search roommate panel -->
-
+            </form> 
+        </div><!-- /search roommate panel --> 
         <div role="tabpanel" class="tab-pane <?php echo isset($_GET['tab']) && 2 == $_GET['tab'] ? 'active' : '' ?>" id="rental"><!-- rental search -->
             <form role="search" method="get"   action="<?php print $adv_submit; ?>" >
                 <input type="hidden" name="tab" value="2">
@@ -544,12 +529,8 @@ if ($extended_search == 'yes') {
                     </div>
                 <?php } ?>
             </form>
-        </div><!-- /rental search -->
-
+        </div><!-- /rental search --> 
         <div class="clearfix"></div>
-    </div>
-
-    <!--<div id="adv-search-header-1"> <?php _e('Advanced Search', 'wpestate'); ?></div>-->
-
-
+    </div> 
+    <!--<div id="adv-search-header-1"> <?php _e('Advanced Search', 'wpestate'); ?></div>--> 
 </div>
