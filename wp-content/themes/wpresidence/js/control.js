@@ -850,20 +850,21 @@ jQuery(document).ready(function ($) {
         }
 
     });
-
-
-
-
-    ////////////////////////////////////////////////////////////////////////////
-
-    $('#adv_extended_options_text_adv, #roommate-advance').click(function (e) {
+ 
+    //////////////////////////////////////////////////////////////////////////// 
+    $('#adv_extended_options_text_adv, #roommate-advance').click(function (e) { 
+          
         e.preventDefault();
+         
         $('.adv-search-1.adv_extended_class').css('height', 'auto');
         $('.adv_extended_class .adv1-holder').css('height', 'auto');
+         
         $(this).parent().find('.adv_extended_options_text').hide();
+         
         $(this).parent().find('.extended_search_check_wrapper').slideDown();
         $(this).parent().find('#adv_extended_close_adv, .adv_extended_close_adv').show();
         $(this).parent().find('#ra').val(1);
+    
     });
 
     $('#adv_extended_close_adv, #roommate_extended_close_adv').click(function () {

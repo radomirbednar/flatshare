@@ -209,15 +209,13 @@ if ($extended_search == 'yes') {
                         <input type="hidden" value="<?php echo (int) $current_price_low ?>" name="rent_low" id="roommate_price_low">
                         <input type="hidden" value="<?php echo (int) $current_price_max ?>" name="rent_max" id="roommate_price_max">
                     </div><!-- /price slider -->
-
-
+ 
                     <!-- /sliders -->
                     <div class="clearfix"></div>
-
+                    
                     <div id="roommate-advance" class="form-control-full tpadding adv_extended_options_text" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: none;"' : '' ?>>
                         <?php _e('More search options', 'wpestate'); ?>
-                    </div>
-
+                    </div> 
 
                     <div id="more-search-options" class="extended_search_check_wrapper" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: block;"' : '' ?>><!-- advance search block -->
 
