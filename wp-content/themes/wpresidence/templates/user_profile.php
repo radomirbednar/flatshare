@@ -322,7 +322,7 @@ if ($user_custom_picture == '') {
                     script.src = src;
                 }
  
-                loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&language=cz&callback=initialize');
+                loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&language=en&callback=initialize');
  
                 function initialize() { 
                     var options = {      
@@ -333,8 +333,7 @@ if ($user_custom_picture == '') {
                     var autocomplete = new google.maps.places.Autocomplete(input, options);  
                     autocomplete.addListener('place_changed', function () {  
                     var place = autocomplete.getPlace(); 
-                    var city = place.address_components[0].long_name;
-                    
+                    var city = place.address_components[0].long_name; 
                     document.getElementById("looking_where").value = city;  
                      
                     }); 
@@ -345,6 +344,7 @@ if ($user_custom_picture == '') {
             <div class="fl-row adv_search_slider">
 
                 <script>
+                    
                     jQuery(document).ready(function ($) {
                         jQuery("#slider_rent").slider({
                             //range: true,
@@ -361,6 +361,7 @@ if ($user_custom_picture == '') {
                         });
                     });
                 </script>
+                
                 <?php
                 $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
                 ?>
