@@ -420,6 +420,8 @@ function custom_search_start_filtering_ajax(newpage) {
  
     jQuery('#listing_ajax_container').empty();
     jQuery('#listing_loader').show();
+    
+    
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
@@ -451,6 +453,7 @@ function custom_search_start_filtering_ajax(newpage) {
         },
         error: function (errorThrown) {}
     });//end ajax     
+    
 }
 
 

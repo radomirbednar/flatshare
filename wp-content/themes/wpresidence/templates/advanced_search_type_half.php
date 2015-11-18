@@ -220,6 +220,13 @@ if ( $extended_search =='yes' ){
     
         
         </div>
+        
+        <!--
+        <div class="row clearfix">            
+            <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large" id="advanced_submit_2" value="<?php _e('SEARCH PROPERTIES','wpestate');?>">            
+        </div>  
+        -->
+        
        
      <!--
          <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large" id="advanced_submit_2" value="<?php _e('SEARCH PROPERTIES','wpestate');?>">
