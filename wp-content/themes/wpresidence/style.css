@@ -12652,7 +12652,13 @@ i {
 .submit_action{     
     background: #fb6a5c;
     color: #fff;
-    padding: 5px 15px 5px 15px;  
+    padding: 10px 15px 10px 15px;
+    margin-top: -10px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    
+    
 } 
 .sub_block{
     border-bottom: 1px solid #f0f0f0; 
@@ -12677,9 +12683,9 @@ span.sub{
     color: #434a54;
     border: 1px solid #3c90be;
     font-size: 14px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     padding: 3px 10px 3px 10px;
     margin-right: 2px;
     display: inline-block;
