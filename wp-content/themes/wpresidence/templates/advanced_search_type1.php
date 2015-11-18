@@ -225,7 +225,6 @@ if ($extended_search == 'yes') {
                             <i class="fa fa-times"></i>
                         </span>
                         
-                        
                         <div class="form-control-half">
                             <?php
                             $arr = array(
@@ -261,11 +260,9 @@ if ($extended_search == 'yes') {
                                 <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo isset($_GET['how_long']) && 1 == $_GET['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Short term', 'wpestate'); ?></label>
                                 <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($_GET['how_long']) && 2 == $_GET['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Long term'); ?></label>
                             </div>
-                        </div>
-                        
+                        </div>                        
 
-                        <div class="clearfix"></div>
-                        
+                        <div class="clearfix"></div>                        
                         
                         <div class="form-control-half">
                             <div class="switcher">
