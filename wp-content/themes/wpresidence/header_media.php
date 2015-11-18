@@ -8,7 +8,11 @@ $adv_search_type            =   get_option('wp_estate_adv_search_type','');
     <?php
 if ( is_category() || is_tax() || is_archive() || is_search() ){
     $header_type=0;
-}else{
+}    
+elseif('estate_property' == get_post_type()){ 
+    $header_type=5;     
+}                 
+else{
     $header_type                =   get_post_meta ( $post->ID, 'header_type', true);
 }
 

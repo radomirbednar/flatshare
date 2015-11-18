@@ -340,8 +340,7 @@ if ($extended_search == 'yes') {
                                     <label for="pets-yes" class="wpb_button wpb_btn-large <?php echo isset($_GET['pets']) && 2 == $_GET['pets'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Pets', 'wpestate'); ?></label>
                                 </div>
                             </div>
-                        </div>
-
+                        </div> 
                         <div class="form-control-half">
                             <div class="switcher">
                                 <label><?php _e('Activity', 'wpestate'); ?></label>
