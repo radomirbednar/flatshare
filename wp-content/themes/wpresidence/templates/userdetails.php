@@ -21,11 +21,10 @@ if (get_post_type($prop_id) == 'estate_property') {
         $content_size = '9';
     }
 }
-
-
-//link to user
-  
-$link = esc_url(get_author_posts_url($user_ID));
+ 
+//link to user  
+ 
+$link = esc_url(get_author_posts_url($userID));
  
 ?> 
 <div class="col-md-<?php print $pict_size; ?> agentpic-wrapper">
@@ -59,7 +58,11 @@ $link = esc_url(get_author_posts_url($user_ID));
     <div class="mydetails"> 
         <?php _e('My Contacts', 'wpestate'); ?>
     </div>
-    <?php
+     
+    <?php 
+    
+    if(is_user_logged_in()){
+     
     print '<h3><a href="' . $link . '">' . $name . '</a></h3>';
     if ($user_phone) {
         print '<div class="agent_detail"><i class="fa fa-phone"></i><a href="tel:' . $user_phone . '">' . $user_phone . '</a></div>';
@@ -75,13 +78,15 @@ $link = esc_url(get_author_posts_url($user_ID));
     }
     if ($agent_urlc) {
         print '<div class="agent_detail"><i class="fa fa-desktop"></i><a href="http://' . $agent_urlc . '" target="_blank">' . $agent_urlc . '</a></div>';
-    }
-    ?> 
+    } 
+    }else{         
+        echo '<a href="'.get_permalink(240).'" class="wpb_button  wpb_btn-info wpb_btn-large button_register">'.__('Please Login to see the contact', 'wpestate').'</a>';  
+    }  
+    ?>  
 </div> 
 <?php //if ()) {  ?>  
 <div class="agent_content col-md-12">
-    <h4><?php _e('About Me ', 'wpestate'); ?></h4>                      
-    <?php echo $user_description; ?>  
+    <h4><?php _e('About Me ', 'wpestate'); ?></h4>   
+    <?php echo $user_description; ?>   
 </div> 
-<?php
-//} ?>
+<?php //} ?>
