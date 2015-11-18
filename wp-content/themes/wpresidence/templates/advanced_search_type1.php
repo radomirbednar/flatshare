@@ -524,7 +524,9 @@ if ($extended_search == 'yes') {
                         
                         <?php
                     } else {
-                        $search_form = wpestate_show_search_field_classic_form('main', $action_select_list, $categ_select_list, '', $select_area_list);
+                        $search_form = '<div class="col-md-3">';
+                        $search_form .= wpestate_show_search_field_classic_form('main', $action_select_list, $categ_select_list, '', $select_area_list);
+                        $search_form .= '</div>';
                         print $search_form;
                     }
 

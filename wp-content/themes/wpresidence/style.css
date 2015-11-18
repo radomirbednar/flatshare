@@ -7246,7 +7246,10 @@ table tbody tr td {
 }
 .half-map .adv1-holder {
     padding-left: 15px;
-    padding-right: 0px;
+    /*
+    padding-right: 15px;
+    margin-right: -15px;
+    */
 }
 /*
 #google_map_prop_list_sidebar .half-map .adv-search-1 .form-control {
@@ -7413,7 +7416,7 @@ table tbody tr td {
     position:relative;
 }
 
-.adv_extended_class .adv1-holder{
+.search_wr_1 .adv_extended_class .adv1-holder{
     height:171px;
     min-height: 171px;
     /*height: auto;*/
@@ -12684,4 +12687,10 @@ span.sub{
     margin-right: 2px;
     display: inline-block;
 
+}
+
+.search_wr_1 .adv1-holder .col-md-3 {
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
 }

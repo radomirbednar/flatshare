@@ -1405,7 +1405,9 @@ if( !function_exists('wpestate_show_search_field') ):
                 $adv_actions_value=__('All Actions','wpestate');
                 $adv_actions_value1='all';
             } 
-            $return_string=wpestate_build_dropdown_adv($appendix,'actionslist','adv_actions',$adv_actions_value,$adv_actions_value1,'filter_search_action',$action_select_list);
+            $return_string = '<div class="col-md-3">';
+            $return_string .= wpestate_build_dropdown_adv($appendix,'actionslist','adv_actions',$adv_actions_value,$adv_actions_value1,'filter_search_action',$action_select_list);
+            $return_string .= '</div>';
 
 
         }else if($search_field=='categories'){
@@ -1417,7 +1419,10 @@ if( !function_exists('wpestate_show_search_field') ):
                 $adv_categ_value    = __('All Types','wpestate');
                 $adv_categ_value1   ='all';
             }
-            $return_string=wpestate_build_dropdown_adv($appendix,'categlist','adv_categ',$adv_categ_value,$adv_categ_value1,'filter_search_type',$categ_select_list);
+            
+            $return_string = '<div class="col-md-3">';
+            $return_string .= wpestate_build_dropdown_adv($appendix,'categlist','adv_categ',$adv_categ_value,$adv_categ_value1,'filter_search_type',$categ_select_list);
+            $return_string .= '</div>';
 
 
         }  else if($search_field=='cities'){
@@ -1429,7 +1434,10 @@ if( !function_exists('wpestate_show_search_field') ):
                 $advanced_city_value=__('All Cities','wpestate');
                 $advanced_city_value1='all';
             } 
-            $return_string=wpestate_build_dropdown_adv($appendix,'adv-search-city','advanced_city',$advanced_city_value,$advanced_city_value1,'advanced_city',$select_city_list);
+            
+            $return_string = '<div class="col-md-3">';
+            $return_string .= wpestate_build_dropdown_adv($appendix,'adv-search-city','advanced_city',$advanced_city_value,$advanced_city_value1,'advanced_city',$select_city_list);
+            $return_string .= '</div>';
 
         }   else if($search_field=='areas'){
 
@@ -1440,7 +1448,10 @@ if( !function_exists('wpestate_show_search_field') ):
                 $advanced_area_value=__('All Areas','wpestate');
                 $advanced_area_value1='all';
             }
-            $return_string=wpestate_build_dropdown_adv($appendix,'adv-search-area','advanced_area',$advanced_area_value,$advanced_area_value1,'advanced_area',$select_area_list);
+            
+            $return_string = '<div class="col-md-3">';
+            $return_string .= wpestate_build_dropdown_adv($appendix,'adv-search-area','advanced_area',$advanced_area_value,$advanced_area_value1,'advanced_area',$select_area_list);
+            $return_string .= '</divs>';
 
         }else if($search_field=='county / state'){
             
@@ -1452,7 +1463,10 @@ if( !function_exists('wpestate_show_search_field') ):
                 $advanced_county_value = __('All Counties/States','wpestate');
                 $advanced_county_value1 = 'all';
             }
-            $return_string=wpestate_build_dropdown_adv($appendix,'adv-search-countystate','county-state',$advanced_county_value,$advanced_county_value1,'advanced_contystate',$select_county_state_list);
+            
+            $return_string = '<div class="col-md-3">';
+            $return_string .= wpestate_build_dropdown_adv($appendix,'adv-search-countystate','county-state',$advanced_county_value,$advanced_county_value1,'advanced_contystate',$select_county_state_list);
+            $return_string .= '</div>';
 
         }else {
                 $show_dropdowns          =   get_option('wp_estate_show_dropdowns','');
@@ -1468,11 +1482,15 @@ if( !function_exists('wpestate_show_search_field') ):
                 
                 if ( $adv_search_what[$key]=='property country'){
                     ////////////////////////////////  show country list
-                    $return_string =  wpestate_country_list_adv_search($appendix,$slug);
+                    $return_string = '<div class="col-md-3">';
+                    $return_string .=  wpestate_country_list_adv_search($appendix,$slug);
+                    $return_string .= '</div>';
                      
                 } else if ( $adv_search_what[$key]=='property price'){
                     ////////////////////////////////  show price form
-                    $return_string = wpestate_price_form_adv_search($position,$slug,$label);
+                    //$return_string = '<div class="col-slider">';
+                    $return_string .= wpestate_price_form_adv_search($position,$slug,$label);
+                    //$return_string .= '</div>';
                 
                     
                 } else if ( $show_dropdowns=='yes' && ( $adv_search_what[$key]=='property rooms' ||  $adv_search_what[$key]=='property bedrooms' ||  $adv_search_what[$key]=='property bathrooms') ){
@@ -1484,7 +1502,9 @@ if( !function_exists('wpestate_show_search_field') ):
                         $rooms_select_list.='<li data-value="'.$i.'"  value="'.$i.'">'.$i.'</li>';
                     }
                     
-                    $return_string=wpestate_build_dropdown_adv($appendix,'search-'.$slug,$slug,$adv_search_label[$key],'all',$slug,$rooms_select_list);
+                    $return_string = '<div class="col-md-3">';
+                    $return_string .= wpestate_build_dropdown_adv($appendix,'search-'.$slug,$slug,$adv_search_label[$key],'all',$slug,$rooms_select_list);
+                    $return_string .= '</div>';
                  
                 }else{ 
                     $custom_fields = get_option( 'wp_estate_custom_fields', true); 
@@ -1516,8 +1536,10 @@ if( !function_exists('wpestate_show_search_field') ):
                                     $advanced_drop_value= $label;
                                     $advanced_drop_value1='all';
                                 } 
-                                $return_string=wpestate_build_dropdown_adv($appendix,$front_name,$front_name,$advanced_drop_value,$advanced_drop_value1,$front_name,$action_select_list);
-                 
+                                
+                                $return_string = '<div class="col-md-3">';
+                                $return_string .= wpestate_build_dropdown_adv($appendix,$front_name,$front_name,$advanced_drop_value,$advanced_drop_value1,$front_name,$action_select_list);
+                                $return_string .= '</div>';                 
                               
                             }
                             $i++;
@@ -1527,21 +1549,29 @@ if( !function_exists('wpestate_show_search_field') ):
                     
                     if($found_dropdown==0){
                         //////////////// regular field 
-                        $return_string='';
-                        if($position=='half'){
-                            $return_string.='<div class="col-md-3">';
-                            $appendix='';
-                        }
+                        $return_string = '';
+                        //$return_string .= '<div class="col-md-3">';
                         
-                        $return_string.='<input type="text" id="'.$appendix.$slug.'"  name="'.$slug.'" placeholder="'.$label.'" value="';
+                        $return_string .= '<div class="col-md-3">';
+                        
+                        if($position=='half'){                            
+                            //$return_string .= '<div class="col-md-3">';
+                            $appendix='';
+                        }                        
+                        
+                        $return_string .= '<input type="text" id="'.$appendix.$slug.'"  name="'.$slug.'" placeholder="'.$label.'" value="';                        
+                        
                         if (isset($_GET[$slug])) {
                             $return_string.= $_GET[$slug];
                         }
                         $return_string.='" class="advanced_select form-control" />';
                         
                         if($position=='half'){
-                            $return_string.='</div>';
+                            //$return_string.='</div>';
                         }
+                        
+                        $return_string.='</div>';
+                        
                         ////////////////// apply datepicker if is the case
                         if ( $adv_search_how[$key]=='date bigger' || $adv_search_how[$key]=='date smaller'){
                             wpestate_date_picker_translation($appendix.$slug);
