@@ -1183,7 +1183,11 @@ jQuery(document).ready(function ($) {
 
     var elems = ['#adv-search-3', '#adv-search-1 .tab-content', '#advanced_search_shortcode', '#adv-search-2', '#advanced_search_shortcode_2', '.adv-search-mobile', '.advanced_search_sidebar'];
 
+    //console.log('input replace');
+
     $.each(elems, function (i, elem) {
+
+        //console.log('input replace');
 
         $(elem + ' li').click(function (event) {
             event.preventDefault();
@@ -1196,6 +1200,9 @@ jQuery(document).ready(function ($) {
 
             pick = $(this).text();
             value = $(this).attr('data-value');
+            
+           // console.log(value);
+            
             parent = $(this).parent().parent();
             parent.find(parent_replace).text(pick).append('<span class="caret caret_filter"></span>').attr('data-value', value);
             parent.find('input').val(value);
