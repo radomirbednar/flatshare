@@ -114,7 +114,9 @@ if (!function_exists('wpestate_list_users_function')):
         $user_twitter = get_the_author_meta('twitter', $q->ID);
         $user_linkedin = get_the_author_meta('linkedin', $q->ID);
         $user_pinterest = get_the_author_meta('pinterest', $q->ID);
+        
         $photo_url = get_the_author_meta('custom_picture', $q->ID); 
+        
         $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
         $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
         $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
@@ -130,57 +132,16 @@ if (!function_exists('wpestate_list_users_function')):
                 $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
             }
             ?> 
-            <div class="col-md-3 listing_wrapper">
-                <div class="agent_unit" data-link="<?php print $author_url; ?>"> 
-                    <div class="agent-unit-img-wrapper person-<?php echo (int) $q->ID ?>">
-                        <?php
-                        print $thumb_prop;
-                        print '<div class="listing-cover"></div>
-                            <a href="' . $author_url . '"> <span class="listing-cover-plus">+</span></a>';
-                        
-                        print '<span class="user_euro_unit">';
-                
-                        if ($rent_amount != '') {
-                            print __('', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
-                        }
-                 
-                    print '</span>';
-                        
-                        ?>
-                    </div>
-                    <div class="user_unit_info">
-                        <?php
-                        print '<h4> <a href="' . $author_url . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
-                            <div class="agent_position">' . esc_attr($looking_where) . '</div>';
-                        if ($user_age) {
-                            print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . esc_attr($user_age) . '</div>';
-                        }
-                        if ($user_gender) {
-                            print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
-                        }
-                        ?>
-                    </div> 
-                    <div class="agent_unit_social">
-                        <div class="social-wrapper">
+            
 
-                            <?php
-                            if ($user_facebook != '') {
-                                print ' <a href="' . esc_url($user_facebook) . '"><i class="fa fa-facebook"></i></a>';
-                            }
-                            if ($user_twitter != '') {
-                                print ' <a href="' . esc_url($user_twitter) . '"><i class="fa fa-twitter"></i></a>';
-                            }
-                            if ($user_linkedin != '') {
-                                print ' <a href="' . esc_url($user_linkedin) . '"><i class="fa fa-linkedin"></i></a>';
-                            }
-                            if ($user_pinterest != '') {
-                                print ' <a href="' . esc_url($user_pinterest) . '"><i class="fa fa-pinterest"></i></a>';
-                            }
-                            ?> 
-                        </div>
-                    </div>
-                </div>
-            </div> 
+            <div id="listing_ajax_container_agent">
+            <?php  
+                include('user_unit.php');  
+            ?> 
+            </div>
+                
+                
+                
             <?php
         } // end foreach
 

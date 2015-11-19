@@ -20,9 +20,7 @@ $options=wpestate_page_details($post->ID);
             <?php } ?>
          
             <div class="single-content"><?php the_content();?></div><!-- single content-->
-
-                   
-        
+ 
         <!-- #comments start-->
         <?php comments_template('', true);?> 	
         <!-- end comments -->   
