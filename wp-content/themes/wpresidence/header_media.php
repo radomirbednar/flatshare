@@ -13,7 +13,8 @@ elseif('estate_property' == get_post_type()){
     $header_type=5;     
 }                 
 else{
-    $header_type                =   get_post_meta ( $post->ID, 'header_type', true);
+    $header_type  =   get_post_meta ( $post->ID, 'header_type', true);
+            
 }
 
 if( isset($post->ID) && !wpestate_half_map_conditions ($post->ID) ){
@@ -29,9 +30,7 @@ if( isset($post->ID) && !wpestate_half_map_conditions ($post->ID) ){
             $term_data  =   get_term_by('slug', $term, $taxonmy);
             $place_id   =   $term_data->term_id;
             $term_meta  =   get_option( "taxonomy_$place_id");
-            if(isset($term_meta['category_featured_image'])){
-               $header_type=7;
-            } 
+            
       }
       
     }

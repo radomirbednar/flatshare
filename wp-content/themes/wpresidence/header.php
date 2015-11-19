@@ -107,8 +107,6 @@ $logo_margin    =   intval( get_option('wp_estate_logo_margin','') );
 <div class="website-wrapper" id="all_wrapper" >
 <div class="container main_wrapper <?php print $wide_class; print 'has_header_'.$logo_header_type.' '.$header_transparent_class; ?> ">
  
-
-    
     <div class="master_header <?php print $wide_class.' '.$header_transparent_class; ?>">
         
         <?php   
@@ -150,7 +148,7 @@ $logo_margin    =   intval( get_option('wp_estate_logo_margin','') );
         </div> 
      </div>  
        
-    <?php if(!is_author()): ?> 
+    <?php if(!is_author() &&  !is_category() ): ?> 
     <?php get_template_part( 'header_media' ); ?>    
     <?php else:?> 
     <div class="header_media with_search_1"> </div> 
