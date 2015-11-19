@@ -6,13 +6,11 @@
 get_header();
 wp_suspend_cache_addition(true);
 $options = wpestate_page_details($post->ID);
-$col_class = 4;
-
+$col_class = 4; 
 if ($options['content_class'] == 'col-md-12') {
     $col_class = 3;
 }
-?>
-
+?> 
 <div class="row">
     <?php get_template_part('templates/breadcrumbs'); ?>
     <div class=" <?php print $options['content_class']; ?> ">
@@ -213,7 +211,9 @@ if ($options['content_class'] == 'col-md-12') {
                     $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
                 }
                 ?> 
-                <?php include('user_unit.php'); ?> 
+                <?php  
+                    include( trailingslashit( get_template_directory() ). 'libs/user_unit.php' );
+                ?> 
                 <?php
             }
             ?> 

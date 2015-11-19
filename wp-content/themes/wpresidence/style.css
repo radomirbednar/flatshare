@@ -12700,11 +12700,18 @@ span.sub{
 }
 .button_register:hover{
     color: #fff;    
-}
-
-
+} 
 .search_wr_1 .adv1-holder .col-md-3 {
     padding-left: 0;
     padding-right: 0;
     width: auto;
+}
+
+.heading_title{
+    left: 0px;
+    width: 100%;
+    color:#fff;
+    position:absolute;  
+    text-align: center;
+    padding-top: 25%;
 }
