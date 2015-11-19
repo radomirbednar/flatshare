@@ -3624,7 +3624,15 @@ listing_actions a{
     background-color: #F0f0f0;
     width: 100%;
     padding: 11px 0px 0px 15px;
+    
 }
+
+.agent_unit_social i{
+    color: #3C90BE;
+    
+    
+}
+
 
 .agent-unit-img-wrapper{
     position:relative;   

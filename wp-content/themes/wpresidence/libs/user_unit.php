@@ -43,6 +43,16 @@
                 if ($user_facebook != '') {
                     print ' <a href="' . esc_url($user_facebook) . '"><i class="fa fa-facebook"></i></a>';
                 }
+                ?> 
+                
+                <?php !empty($sexual_preference_array[$sexual_preference][0]) ? print $sexual_preference_array[$sexual_preference][0] : ''; ?>   
+                <?php !empty($sleeping_span_array[$sleeping_span][0]) ? print $sleeping_span_array[$sleeping_span][0] : ''; ?>  
+                <?php !empty($couple_array[$couple][0]) ? print $couple_array[$couple][0] : '' ; ?>     
+                <?php !empty($pets_array[$pets][0]) ? print $pets_array[$pets][0] : ''; ?>   
+                <?php !empty($smoker_array[$smoker][0]) ? print $smoker_array[$smoker][0] : ''; ?>   
+                <?php !empty($party_array[$party][0]) ? print $party_array[$party][0] : ''; ?>  
+ 
+                <?php 
                 /*if ($user_twitter != '') {
                     print ' <a href="' . esc_url($user_twitter) . '"><i class="fa fa-twitter"></i></a>';
                 }

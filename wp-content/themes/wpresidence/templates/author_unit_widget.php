@@ -32,6 +32,84 @@ $looking_for_array = array(
                 )
             );
  
+
+
+$sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
+            $sleeping_span = !empty($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
+            $couple = !empty($fl_user_data->couple) ? $fl_user_data->couple : '';
+            $smoker = !empty($fl_user_data->smoker) ? $fl_user_data->smoker : '';
+            $pets = !empty($fl_user_data->pets) ? $fl_user_data->pets : '';
+            $user_origin = !empty($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
+            $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
+            $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
+   
+         $sexual_preference_array = array( 
+                '1' => array(
+                      '<i class="icon-icon_sex-straight"></i>',
+                    __('straight', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_sex-gay"> </i>',
+                    __('BI/GAY', 'wpestate')  
+                ) 
+            );
+            
+            $sleeping_span_array = array(              
+                '1' => array(
+                      '<i class="icon-icon_sleep"></i>',
+                    __('Before 11PM', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_sleep"></i>',
+                    __('After 11PM', 'wpestate')  
+                ) 
+            );
+             
+            $couple_array = array(              
+                '1' => array(
+                      '<i class="icon-icon_single"> </i>',
+                    __('single', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_couple"> </i>',
+                    __('in couple', 'wpestate')  
+                ) 
+            );
+             
+            $pets_array = array( 
+                '1' => array(
+                      '<i class="icon-icon_no-pets"> </i>',
+                    __('No pets', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_pets"> </i>',
+                    __('Pets', 'wpestate')  
+                ) 
+            );       
+            $smoker_array = array( 
+                '1' => array(
+                      '<i class="icon-icon_smoking"> </i>',
+                    __('Non-smoker', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_smoking"> </i>',
+                    __('Smoker', 'wpestate')  
+                )   
+            );
+            
+            $party_array = array (  
+                '1' => array(
+                      '<i class="icon-icon_party-often"> </i>',
+                    __('Often', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_party-less"> </i>',
+                    __('Not often', 'wpestate')  
+                )     
+            );
+
+
+
 $user_gender_array = array(
     '2' => __('female', 'wpestate'),
     '1' => __('male', 'wpestate')
@@ -49,56 +127,74 @@ if ($photo_url == '') {
 ?>
  
 <!-- <div class="col-md-<?php //print $col_class; ?> listing_wrapper"> -->
-<div class="listing_wrapper">
+ 
+
+    <div class="listing_wrapper">
     <div class="agent_unit" data-link="<?php print $author_url; ?>"> 
         <div class="agent-unit-img-wrapper person-<?php echo (int) $q->ID ?>">
-<?php
-print $thumb_prop;
-print '<div class="listing-cover"></div>
+            <?php           
+            print $thumb_prop;
+            print '<div class="listing-cover"></div>
                    <a href="' . $author_url . '"> <span class="listing-cover-plus">+</span></a>';
-?>   
+            ?>   
             <span class="user_euro_unit">  
-            <?php
-            if ($rent_amount != '') {
-                print __('', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
-            }
-            ?>  
+                <?php
+               
+                if ($rent_amount != '') {
+                    print __('', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
+                } 
+                ?>  
             </span>   
         </div> 
         <div class="user_unit_info">
-                <?php
-                print '<h4> <a href="' . $author_url . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>
-                       <div class="agent_position"> ' .__('Looking for ', 'wpestate') .esc_attr(  $looking_for_array[$looking_for][1]) .' in '. esc_attr( $looking_where ) . '</div>';
-                if ($user_age) {
-                    print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . esc_attr($user_age) . '</div>';
-                }
-                if ($user_gender) {
-                    print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
-                }
-                ?>
+            <?php
+            print '<h4> <a href="' . $author_url . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4> 
+                   <div class="agent_position"> ' .__('Looking for ', 'wpestate') .esc_attr( $looking_for_array[$looking_for][1]) .' in '. esc_attr( $looking_where ) . '</div>';   
+            if ($user_age) {
+                print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . esc_attr($user_age) . '</div>';
+            }
+            if ($user_gender) {
+                print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
+            }
+            ?>
         </div> 
         <div class="agent_unit_social">
             <div class="social-wrapper"> 
-            <?php
-            if ($user_facebook != '') {
-                print ' <a href="' . esc_url($user_facebook) . '"><i class="fa fa-facebook"></i></a>';
-            }
-
-
-            /* if ($user_twitter != '') {
-              print ' <a href="' . esc_url($user_twitter) . '"><i class="fa fa-twitter"></i></a>';
-              }
-              if ($user_linkedin != '') {
-              print ' <a href="' . esc_url($user_linkedin) . '"><i class="fa fa-linkedin"></i></a>';
-              }
-              if ($user_pinterest != '') {
-              print ' <a href="' . esc_url($user_pinterest) . '"><i class="fa fa-pinterest"></i></a>';
-              }
-
-             */
-            ?>  
+                <?php
+                if ($user_facebook != '') {
+                    print ' <a href="' . esc_url($user_facebook) . '"><i class="fa fa-facebook"></i></a>';
+                }
+                ?> 
+                
+                <?php !empty($sexual_preference_array[$sexual_preference][0]) ? print $sexual_preference_array[$sexual_preference][0] : ''; ?>   
+                <?php !empty($sleeping_span_array[$sleeping_span][0]) ? print $sleeping_span_array[$sleeping_span][0] : ''; ?>  
+                <?php !empty($couple_array[$couple][0]) ? print $couple_array[$couple][0] : '' ; ?>     
+                <?php !empty($pets_array[$pets][0]) ? print $pets_array[$pets][0] : ''; ?>   
+                <?php !empty($smoker_array[$smoker][0]) ? print $smoker_array[$smoker][0] : ''; ?>   
+                <?php !empty($party_array[$party][0]) ? print $party_array[$party][0] : ''; ?>  
+ 
+                <?php 
+                /*if ($user_twitter != '') {
+                    print ' <a href="' . esc_url($user_twitter) . '"><i class="fa fa-twitter"></i></a>';
+                }
+                if ($user_linkedin != '') {
+                    print ' <a href="' . esc_url($user_linkedin) . '"><i class="fa fa-linkedin"></i></a>';
+                }
+                if ($user_pinterest != '') {
+                    print ' <a href="' . esc_url($user_pinterest) . '"><i class="fa fa-pinterest"></i></a>';
+                }*/
+                ?>  
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
 <!-- </div>    -->
