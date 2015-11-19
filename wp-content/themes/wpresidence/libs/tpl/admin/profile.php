@@ -36,7 +36,7 @@ if (!empty($fl_user_data->birthdate)) {
 }
 
 
-
+$image_id = get_the_author_meta('small_custom_picture', $user_id);
 
 $user_custom_picture = get_the_author_meta('custom_picture', $user_id);
 $user_small_picture = get_the_author_meta('small_custom_picture', $user_id);
@@ -62,6 +62,39 @@ if ($user_custom_picture == '') {
 
 <h3><?php _e('Personal Information', 'wpestate') ?></h3>
 <table class="form-table">
+
+    
+    <tr>
+        <th>
+            <?php _e('Profile image', 'wpestate') ?>
+        </th>
+        <td>
+            <div class="profile_div col-md-4" id="profile-div">
+                <?php
+                print '<img id="profile-image" src="' . $user_custom_picture . '" alt="user image" data-profileurl="' . $user_custom_picture . '" data-smallprofileurl="' . $image_id . '" >';
+
+                //print '/ '.$user_small_picture;
+                ?>
+                
+                <input id="profile-imagefileurl" name="custom_picture" type="hidden" value="<?php echo esc_url($user_custom_picture) ?>">
+                <input id="profile-smallprofileurl" name="small_custom_picture" type="hidden" value="<?php echo (int) $image_id ?>">
+
+                <div id="upload-container">
+                    <div id="aaiu-upload-container">
+
+                        <button id="aaiu-uploader" class="wpb_button  wpb_btn-success wpb_btn-large vc_button"><?php _e('Upload Profile Image', 'wpestate'); ?></button>
+                        
+                        <div id="aaiu-upload-imagelist">
+                            <ul id="aaiu-ul-list" class="aaiu-upload-list"></ul>
+                        </div>
+                    </div>
+                </div>
+                <span class="upload_explain"><?php _e('*minimum 314px x 180px', 'wpestate'); ?></span>
+            </div>
+        </td>
+    </tr>
+    
+    
     <tr>
         <th>
             <?php _e('Status', 'wpestate') ?>
