@@ -1446,65 +1446,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
          */
         
         
-        $when_move = null;        
-        if(isset($data['when_move'])){
-            $when_move = DateTime::createFromFormat(PHP_DATEPICKER_FORMAT, $data['when_move']);
-        }
-        
-        $birthdate = null;        
-        if(isset($data['birthdate'])){
-            $birthdate = DateTime::createFromFormat(PHP_DATEPICKER_FORMAT, $data['birthdate']);
-        }        
-        
-        
-
-        global $wpdb;
-
-        $sql = "
-            REPLACE INTO
-                fl_user_data (
-                    id_user,
-                    how_long,
-                    birthdate,
-                    user_gender,
-                    sexual_preference,
-                    sleeping_span,
-                    couple,
-                    smoker,
-                    pets,
-                    activity,
-                    user_origin,
-                    party,
-                    looking_when,
-                    user_status,
-                    looking_for,
-                    looking_where,
-                    rent_amount,
-                    disponibility
-                )
-            VALUES (
-                \"" . (int) $userID . "\",
-                \"" . (empty($data['how_long']) ? '' : (int) $data['how_long']) . "\",
-                "   . (empty($birthdate) ? 'NULL' : "\"" . $birthdate->format('Y-m-d') . "\"") . ",
-                \"" . (empty($data['user_gender']) ? '' : (int) $data['user_gender']) . "\",
-                \"" . (empty($data['sexual_preference']) ? "''" : (int) $data['sexual_preference']) . "\",
-                \"" . (empty($data['sleeping_span']) ? '' : (int) $data['sleeping_span']) . "\",
-                \"" . (empty($data['couple']) ? '' : (int) $data['couple']) . "\",
-                \"" . (empty($data['smoker']) ? '' : (int) $data['smoker']) . "\",
-                \"" . (empty($data['pets']) ? '' : (int) $data['pets']) . "\",
-                \"" . (empty($data['activity']) ? '' : (int) $data['activity']) . "\",
-                \"" . (empty($data['user_origin']) ? '' : esc_sql($data['user_origin'])) . "\",
-                \"" . (empty($data['party']) ? '' : (int) $data['party']) . "\",
-                \"" . (empty($data['looking_when']) ? '' : (int) $data['looking_when']) . "\",
-                \"" . (empty($data['user_status']) ? '' : (int) $data['user_status']) . "\",
-                \"" . (empty($data['looking_for']) ? '' : (int) $data['looking_for']) . "\",
-                \"" . (empty($data['looking_where']) ? '' : esc_sql($data['looking_where'])) . "\",
-                \"" . (empty($data['rent_amount']) ? '' : esc_sql($data['rent_amount'])) . "\",
-                "   . (empty($when_move) ? 'NULL' : "\"" . $when_move->format('Y-m-d') . "\"") . "
-            )
-        ";
-
-        $wpdb->query($sql);
+        fl_update_user_data($userID, $data);
 
         /**
          * Update user languages
