@@ -41,6 +41,12 @@ $link = esc_url(get_author_posts_url($userID));
             if ($user_facebook != '') {
                 print ' <a href="' . $user_facebook . '" target="_blank"><i class="fa fa-facebook"></i></a>';
             }
+            
+            
+            
+            
+            
+            /*
             if ($user_twitter != '') {
                 print ' <a href="' . $user_twitter . '" target="_blank"><i class="fa fa-twitter"></i></a>';
             }
@@ -50,6 +56,12 @@ $link = esc_url(get_author_posts_url($userID));
             if ($user_pinterest != '') {
                 print ' <a href="' . $user_pinterest . '" target="_blank"><i class="fa fa-pinterest"></i></a>';
             }
+            */
+            
+            
+            
+            
+            
             ?> 
         </div>
     </div>
@@ -57,16 +69,18 @@ $link = esc_url(get_author_posts_url($userID));
 <div class="col-md-<?php print $content_size; ?> agent_details">    
     <div class="mydetails"> 
         <?php _e('My Contacts', 'wpestate'); ?>
-    </div>
-     
-    <?php 
-    
+    </div> 
+    <?php  
     if(is_user_logged_in()){
      
     print '<h3><a href="' . $link . '">' . $name . '</a></h3>';
+    
     if ($user_phone) {
         print '<div class="agent_detail"><i class="fa fa-phone"></i><a href="tel:' . $user_phone . '">' . $user_phone . '</a></div>';
     }
+    
+    
+    
     if ($user_mobile) {
         print '<div class="agent_detail"><i class="fa fa-mobile"></i><a href="tel:' . $user_mobile . '">' . $user_mobile . '</a></div>';
     }
@@ -81,7 +95,11 @@ $link = esc_url(get_author_posts_url($userID));
     } 
     }else{         
         echo '<a href="'.get_permalink(240).'" class="wpb_button  wpb_btn-info wpb_btn-large button_register">'.__('Please Login to see the contact', 'wpestate').'</a>';  
-    }  
+    }
+    
+    
+    
+    
     ?>  
 </div> 
 <?php //if ()) {  ?>  

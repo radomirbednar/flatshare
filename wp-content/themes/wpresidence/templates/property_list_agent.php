@@ -1,4 +1,5 @@
 <?php 
+
 global $agent_email;
 global $propid;
 global $agent_wid;
@@ -13,22 +14,25 @@ $preview        = wp_get_attachment_image_src($thumb_id, 'property_listings');
 $preview_img    = $preview[0];
 
 if($thumb_id==''){
-      $preview_img    =   get_template_directory_uri().'/img/default_user_agent.gif';
+    $preview_img    = get_template_directory_uri().'/img/default_user_agent.gif';
 }else{
-    $preview_img         = $preview[0];
+    $preview_img    = $preview[0];
 }
 
 ?>
-
-
-<div class="agent_contanct_form_sidebar">
-    
+ 
+<div class="agent_contanct_form_sidebar">    
 <?php
     wp_reset_query();
     $agent_wid=$agent_id;
     if ( get_the_author_meta('user_level',$agent_wid) !=10){
+        
+         
         get_template_part('templates/agent_unit_widget'); 
         get_template_part('templates/agent_contact'); 
+     
+        
     }
 ?>
 </div>
+ 
