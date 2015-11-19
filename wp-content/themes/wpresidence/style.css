@@ -7021,11 +7021,11 @@ table tbody tr td {
 
 .search-tab,
 #adv-search-header-1{
-    background-color: #3C90BE;
+    background-color: #fff;
     height: 40px;
     margin: 0px;
     /*padding: 13px 15px 10px 15px;*/
-    color: #fff;
+    color: #555;
     cursor: pointer;
     /*
     position: absolute;
@@ -12409,8 +12409,10 @@ span.wpcf7-form-control-wrap {
 .search_wrapper .nav-tabs > li.active > a,
 .search_wrapper .nav > li > a:hover, 
 .search_wrapper .nav > li > a:focus {
-    background-color: #fdfdfd;
+    background-color: #3C90BE;
     text-decoration: none;
+    color: white;
+    border-color: transparent;
 }
 .search_wrapper a {
     -moz-transition-property: none;
@@ -12656,7 +12658,7 @@ i {
 .icon-icon_time:before {
     content: "\e913";
 }  
-.submit_action{     
+.submit_action {     
     background: #fb6a5c;
     color: #fff;
     padding: 10px 15px 10px 15px;
@@ -12665,6 +12667,11 @@ i {
     -moz-border-radius: 2px;
     border-radius: 2px; 
 } 
+
+.submit_action:hover {
+    background: #ff5342;
+}
+
 .sub_block{
     border-bottom: 1px solid #f0f0f0; 
     font-size: 18px;
