@@ -3624,7 +3624,15 @@ listing_actions a{
     background-color: #F0f0f0;
     width: 100%;
     padding: 11px 0px 0px 15px;
+    
 }
+
+.agent_unit_social i{
+    color: #3C90BE;
+    
+    
+}
+
 
 .agent-unit-img-wrapper{
     position:relative;   
@@ -12429,7 +12437,7 @@ span.wpcf7-form-control-wrap {
 .inline-checkboxes .flcheckbox {
     float: left;
     margin-bottom: 5px;
-    margin-right: 20px;
+    margin-right: 15px;
 }
 .flcheckbox input {
     margin-right: 5px;
@@ -12712,13 +12720,21 @@ span.sub{
     padding-left: 0;
     padding-right: 0;
     width: auto;
-}
-
+} 
 .heading_title{
     left: 0px;
     width: 100%;
     color:#fff;
     position:absolute;  
     text-align: center;
-    padding-top: 25%;
+    padding-top: 15%; 
+    font-size: calc(2vw + 2vh + 1vmin); 
+} 
+#user_menu_open a.hightlight {
+    font-size: 15px;
+    color: #3C90BE;
+    display: block;
+    margin: 0px;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }

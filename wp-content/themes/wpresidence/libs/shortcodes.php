@@ -111,16 +111,108 @@ if (!function_exists('wpestate_list_users_function')):
         $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
         $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
         $user_facebook = get_the_author_meta('facebook', $q->ID);
-        $user_twitter = get_the_author_meta('twitter', $q->ID);
+        
+        /*$user_twitter = get_the_author_meta('twitter', $q->ID);
         $user_linkedin = get_the_author_meta('linkedin', $q->ID);
         $user_pinterest = get_the_author_meta('pinterest', $q->ID);
+        */
         
-        $photo_url = get_the_author_meta('custom_picture', $q->ID); 
-        
+        $photo_url = get_the_author_meta('custom_picture', $q->ID);  
         $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
         $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
-        $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
-        $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : ''; 
+        $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : ''; 
+        $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
+        
+ 
+            $sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
+            $sleeping_span = !empty($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
+            $couple = !empty($fl_user_data->couple) ? $fl_user_data->couple : '';
+            $smoker = !empty($fl_user_data->smoker) ? $fl_user_data->smoker : '';
+            $pets = !empty($fl_user_data->pets) ? $fl_user_data->pets : '';
+            $user_origin = !empty($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
+            $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
+            $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
+            $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
+        
+        
+        $looking_for_array = array(    
+                '1' => array(
+                    '<i class="icon-icon_roommate"></i>',
+                    __('roomate', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_flat"> </i>',
+                    __('flat', 'wpestate')  
+                )
+            );
+        
+  
+         $sexual_preference_array = array( 
+                '1' => array(
+                      '<i class="icon-icon_sex-straight"></i>',
+                    __('straight', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_sex-gay"> </i>',
+                    __('BI/GAY', 'wpestate')  
+                ) 
+            );
+            
+            $sleeping_span_array = array(              
+                '1' => array(
+                      '<i class="icon-icon_sleep"></i>',
+                    __('Before 11PM', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_sleep"></i>',
+                    __('After 11PM', 'wpestate')  
+                ) 
+            );
+             
+            $couple_array = array(              
+                '1' => array(
+                      '<i class="icon-icon_single"> </i>',
+                    __('single', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_couple"> </i>',
+                    __('in couple', 'wpestate')  
+                ) 
+            );
+             
+            $pets_array = array( 
+                '1' => array(
+                      '<i class="icon-icon_no-pets"> </i>',
+                    __('No pets', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_pets"> </i>',
+                    __('Pets', 'wpestate')  
+                ) 
+            );       
+            $smoker_array = array( 
+                '1' => array(
+                      '<i class="icon-icon_smoking"> </i>',
+                    __('Non-smoker', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_smoking"> </i>',
+                    __('Smoker', 'wpestate')  
+                )   
+            );
+            
+            $party_array = array (  
+                '1' => array(
+                      '<i class="icon-icon_party-often"> </i>',
+                    __('Often', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_party-less"> </i>',
+                    __('Not often', 'wpestate')  
+                )     
+            );
+         
+            $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : ''; 
             $user_gender_array = array(
                 '2' => __('female', 'wpestate'),
                 '1' => __('male', 'wpestate')
@@ -130,30 +222,24 @@ if (!function_exists('wpestate_list_users_function')):
 
             if ($photo_url == '') {
                 $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
-            }
-            ?> 
-            
-
-            <div id="listing_ajax_container_agent">
+            } 
+ 
+        ?> 
+        
+        <div id="listing_ajax_container_agent">
             <?php  
                 include('user_unit.php');  
             ?> 
-            </div>
-                
-                
-                
+        </div> 
             <?php
-        } // end foreach
-
-        
+        } // end foreach 
         $templates = ob_get_contents();
         ob_end_clean();
         $return_string = $templates;
         wp_reset_query();
         $is_shortcode = 0;
         return $return_string;
-    }
-
+    } 
 endif;
 
 ////////////////////////////////////////////////////////////////////////////////////////////

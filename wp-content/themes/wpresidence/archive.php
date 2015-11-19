@@ -14,7 +14,7 @@ $blog_unit  =   esc_html ( get_option('wp_estate_blog_unit','') );
           <h1 class="entry-title">
              <?php 
              if (is_category() ) {
-                    printf(__('Category Archives: %s', 'wpestate'), '<span>' . single_cat_title('', false) . '</span>');
+                    printf(  single_cat_title('', false)  );
              }else if (is_day()) {
                     printf(__('Daily Archives: %s', 'wpestate'), '<span>' . get_the_date() . '</span>'); 
              } elseif (is_month()) {
@@ -43,6 +43,16 @@ $blog_unit  =   esc_html ( get_option('wp_estate_blog_unit','') );
 
     </div>
        
-<?php  include(locate_template('sidebar.php')); ?>
+<?php 
+
+    if(!is_category(41))
+    {
+        include(locate_template('sidebar.php'));
+    }
+
+?>
+
+
+
 </div>   
 <?php get_footer(); ?>

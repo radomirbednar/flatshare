@@ -28,20 +28,16 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $about_me = get_the_author_meta('description', $userID);
 
             $first_name = esc_attr(get_the_author_meta('first_name', $userID));
-            $last_name = esc_attr(get_the_author_meta('last_name', $userID));
-
+            $last_name = esc_attr(get_the_author_meta('last_name', $userID)); 
             $user_facebook = get_the_author_meta('facebook', $userID);
             $user_twitter = get_the_author_meta('twitter', $userID);
             $user_linkedin = get_the_author_meta('linkedin', $userID);
             $user_pinterest = get_the_author_meta('pinterest', $userID);
-            $photo_url = get_the_author_meta('custom_picture', $userID);
-
-            $user_email = get_the_author_meta('user_email', $userID);
-
+            $photo_url = get_the_author_meta('custom_picture', $userID); 
+            $user_email = get_the_author_meta('user_email', $userID); 
             $user_mobile = get_the_author_meta('mobile', $userID);
             $user_phone = get_the_author_meta('phone', $userID);
-            $user_description = esc_attr(get_the_author_meta('description', $userID));
-
+            $user_description = esc_attr(get_the_author_meta('description', $userID)); 
             $user_skype = get_the_author_meta('skype', $userID);
             $website = get_the_author_meta('website', $userID);
             $fl_user_data = get_fl_data($userID);
@@ -51,8 +47,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
             $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
             $activity = !empty($fl_user_data->activity) ? $fl_user_data->activity : '';
-            $disponibility = !empty($fl_user_data->disponibility) ? $fl_user_data->disponibility : '';
-
+            $disponibility = !empty($fl_user_data->disponibility) ? $fl_user_data->disponibility : ''; 
             $how_long = !empty($fl_user_data->how_long) ? $fl_user_data->how_long : '';
             $sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
             $sleeping_span = !empty($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
@@ -164,7 +159,8 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             ?>
 
             <h1 class="entry-title-agent"><?php echo $first_name . ' ' . $last_name; ?></h1> 
-            <div class="agent_meta"><?php print '<a href="mailto:' . $user_email . '">' . $user_email . '</a>'; ?> 
+            <div class="agent_meta">     
+           
                 <?php
                 if ($user_age) {
                     print ' | ' . __('Age', 'wpestate') . ':  | ';
@@ -173,6 +169,8 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                     print ' <img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="">';
                 }
                 ?>  
+                <?php echo __(' Looking for ', 'wpestate') .esc_attr( $looking_for_array[$looking_for][1]) .' in '. esc_attr( $looking_where ); ?> 
+                 
             </div> 
             <div class="single-content single-agent">      
                 <?php include( locate_template('templates/userdetails.php')); ?> 
