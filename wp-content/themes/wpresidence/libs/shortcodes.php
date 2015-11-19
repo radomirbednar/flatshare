@@ -111,15 +111,28 @@ if (!function_exists('wpestate_list_users_function')):
         $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
         $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
         $user_facebook = get_the_author_meta('facebook', $q->ID);
-        $user_twitter = get_the_author_meta('twitter', $q->ID);
+        
+        /*$user_twitter = get_the_author_meta('twitter', $q->ID);
         $user_linkedin = get_the_author_meta('linkedin', $q->ID);
         $user_pinterest = get_the_author_meta('pinterest', $q->ID);
+        */
         
-        $photo_url = get_the_author_meta('custom_picture', $q->ID); 
-        
+        $photo_url = get_the_author_meta('custom_picture', $q->ID);  
         $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
         $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
-        $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
+        $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : ''; 
+        $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
+                $looking_for_array = array(    
+                '1' => array(
+                    '<i class="icon-icon_roommate"></i>',
+                    __('roomate', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_flat"> </i>',
+                    __('flat', 'wpestate')  
+                )
+            );
+        
         $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : ''; 
             $user_gender_array = array(
                 '2' => __('female', 'wpestate'),
@@ -130,18 +143,14 @@ if (!function_exists('wpestate_list_users_function')):
 
             if ($photo_url == '') {
                 $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
-            }
-            ?> 
-            
-
+            } 
+        ?> 
             <div id="listing_ajax_container_agent">
             <?php  
                 include('user_unit.php');  
             ?> 
             </div>
-                
-                
-                
+    
             <?php
         } // end foreach
 

@@ -183,14 +183,10 @@ if ($options['content_class'] == 'col-md-12') {
 
             foreach ($query as $q) {
 
-                $fl_user_data = get_fl_data($q->ID);
-
+                $fl_user_data = get_fl_data($q->ID); 
                 $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
                 $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
-                $user_facebook = get_the_author_meta('facebook', $q->ID);
-                $user_twitter = get_the_author_meta('twitter', $q->ID);
-                $user_linkedin = get_the_author_meta('linkedin', $q->ID);
-                $user_pinterest = get_the_author_meta('pinterest', $q->ID);
+                $user_facebook = get_the_author_meta('facebook', $q->ID); 
                 $photo_url = get_the_author_meta('custom_picture', $q->ID);
 
                 $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
@@ -203,6 +199,20 @@ if ($options['content_class'] == 'col-md-12') {
                     '2' => __('female', 'wpestate'),
                     '1' => __('male', 'wpestate')
                 );
+                
+                
+                $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
+                $looking_for_array = array(    
+                '1' => array(
+                    '<i class="icon-icon_roommate"></i>',
+                    __('roomate', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_flat"> </i>',
+                    __('flat', 'wpestate')  
+                )
+                );
+                
 
                 $author_url = esc_url(get_author_posts_url($q->ID));
 
