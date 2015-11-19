@@ -48,7 +48,7 @@ class Login_widget extends WP_Widget {
                         <button class="wpb_button  wpb_btn-info wpb_btn-large" id="wp-login-but-wd" >'.__('Login','wpestate').'</button>
                         
                         <div class="login-links">
-                            <a href="#" id="widget_register_sw">'.__('Need an account? Register here!','wpestate').'</a>
+                            <a href="#" id="widget_register_sw" class="hightlight">'.__('Register yourself in 5 sec here','wpestate').'</a>
                             <a href="#" id="forgot_pass_widget">'.__('Forgot Password?','wpestate').'</a>';
                         if($facebook_status=='yes'){
                             $display.='<div id="facebookloginsidebar" data-social="facebook"></div>';

@@ -113,7 +113,7 @@ if ($user_small_picture_id == '') {
 
                         <button class="wpb_button  wpb_btn-info wpb_btn-large" id="wp-login-but-topbar"><?php _e('Login', 'wpestate'); ?></button>
                         <div class="login-links">
-                            <a href="#" id="widget_register_topbar"><?php _e('Need an account? Register here!', 'wpestate'); ?></a>
+                            <a href="#" id="widget_register_topbar"  class="hightlight"><?php _e('Register yourself in 5 sec here', 'wpestate'); ?></a>
                             <a href="#" id="forgot_pass_topbar"><?php _e('Forgot Password?', 'wpestate'); ?></a>
                             <?php
                             if ($facebook_status == 'yes') {

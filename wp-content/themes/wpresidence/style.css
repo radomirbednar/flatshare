@@ -12708,3 +12708,16 @@ span.sub{
     padding-right: 0;
     width: auto;
 }
+/*
+.hightlight {
+    color: #3C90BE;
+    display: block;        
+}*/
+#user_menu_open a.hightlight {
+    font-size: 15px;
+    color: #3C90BE;
+    display: block;
+    margin: 0px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
