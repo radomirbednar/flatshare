@@ -684,12 +684,21 @@ function wpestate_admin($hook_suffix) {
     global $pagenow;
     global $typenow;
     
+    $date_lang_status= esc_html ( get_option('wp_estate_date_lang','') );
+
+    if($date_lang_status!='xx'){
+        $handle="datepicker-".$date_lang_status;
+        $name="datepicker-".$date_lang_status.".js";
+        wp_enqueue_script($handle, get_template_directory_uri().'/js/i18n/'.$name,array('jquery'), '1.0', true);
+    }    
+    
     wp_enqueue_script('media-upload');
     wp_enqueue_script('thickbox');
     wp_enqueue_script('my-upload'); 
     wp_enqueue_style('thickbox');
     wp_enqueue_style('adminstyle', get_template_directory_uri() . '/css/admin.css');
-    wp_enqueue_script('admin-control', get_template_directory_uri().'/js/admin-control.js',array('jquery'), '1.0', true);     
+    wp_enqueue_script('admin-control', get_template_directory_uri().'/js/admin-control.js',array('jquery'), '1.0', true);        
+    
     wp_localize_script('admin-control', 'admin_control_vars', 
         array( 'ajaxurl'            => admin_url('admin-ajax.php'),
                 'plan_title'        =>  __('Plan Title','wpestate'),
@@ -699,11 +708,47 @@ function wpestate_admin($hook_suffix) {
                 'plan_rooms'        =>  __('Plan Rooms','wpestate'),
                 'plan_bathrooms'    =>  __('Plan Bathrooms','wpestate'),
                 'plan_price'        =>  __('Plan Price','wpestate'),
+                'datepick_lang'     =>  $date_lang_status,
+                
                   
         )
     );
     
     
+    $max_file_size  = 100 * 1000 * 1000;
+    
+    wp_localize_script('admin-control', 'ajax_vars', 
+        array(  
+                'ajaxurl'           => admin_url('admin-ajax.php'),
+                'nonce'             => wp_create_nonce('aaiu_upload'),
+                'remove'            => wp_create_nonce('aaiu_remove'),
+                'number'            => 1,
+                'upload_enabled'    => true,
+                'path'              =>  get_template_directory_uri(),
+                'confirmMsg'        => __('Are you sure you want to delete this?','wpestate'),
+                'plupload'         => array(
+                    'runtimes'          => 'html5,flash,html4',
+                    'browse_button'     => 'aaiu-uploader',
+                    'container'         => 'aaiu-upload-container',
+                    'file_data_name'    => 'aaiu_upload_file',
+                    'max_file_size'     => $max_file_size . 'b',
+                    'url'               => admin_url('admin-ajax.php') . '?action=me_upload&nonce=' . wp_create_nonce('aaiu_allow'),
+                    'flash_swf_url'     => includes_url('js/plupload/plupload.flash.swf'),
+                    'filters'           => array(
+                                                array(
+                                                    'title'         => __('Allowed Files','wpestate'), 
+                                                    'extensions'    => "jpeg,jpg,gif,png,pdf"
+                                                )
+                                            ),
+                    'multipart'         => true,
+                    'urlstream_upload'  => true,
+                    //    'max_file_count'    =>2
+                    //     'multi_selection'   => false                                                                     
+                )                
+            )
+    );    
+    
+
     
     
     if($hook_suffix=='post-new.php' || $hook_suffix=='post.php'){

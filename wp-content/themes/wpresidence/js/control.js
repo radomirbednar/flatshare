@@ -671,6 +671,7 @@ jQuery(document).ready(function ($) {
             slide: function (event, ui) {
 
                 if (!isNaN(my_custom_curr_pos) && my_custom_curr_pos !== -1) {
+                    
                     jQuery("#" + price_low).val(ui.values[0]);
                     jQuery("#" + price_max).val(ui.values[1]);
 

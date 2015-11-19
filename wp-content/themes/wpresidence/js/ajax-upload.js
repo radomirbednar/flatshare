@@ -47,7 +47,10 @@
                    
                     $('#profile-image').attr('src',result.html);
                     $('#profile-image').attr('data-profileurl',result.html);
-                    $('#profile-image').attr('data-smallprofileurl',result.attach);
+                    $('#profile-image').attr('data-smallprofileurl',result.attach);                    
+                    
+                    $('#profile-imagefileurl').val(result.html);
+                    $('#profile-smallprofileurl').val(result.attach);
                     
                     var all_id=$('#attachid').val();
                     all_id=all_id+","+result.attach;

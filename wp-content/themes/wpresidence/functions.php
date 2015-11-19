@@ -27,6 +27,12 @@ require_once ('libs/searchfunctions.php');
 require_once ('libs/stats.php');
 //require_once ('profiling.php');
 
+
+if(current_user_can('manage_options')){
+    require_once 'libs/w4a_backoffice.php';
+}
+
+
 define('ULTIMATE_NO_EDIT_PAGE_NOTICE', true);
 define('ULTIMATE_NO_PLUGIN_PAGE_NOTICE', true);
 # Disable check updates - 

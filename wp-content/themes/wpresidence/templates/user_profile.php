@@ -145,12 +145,17 @@ if ($user_custom_picture == '') {
 
         <div class="col-xs-12">
             <?php
+            /*
             $arr = array(
                 3 => __('inactive', 'wpestate'),
                 1 => __('Looking for a flat', 'wpestate'),
                 2 => __('Looking for a roommate', 'wpestate'),
                     //   4 => __('Landlord', 'wpestate'),
             );
+            */
+            
+            $arr = fl_user_statuses();
+            
             ?>
             <label for="user_status"><?php _e('Your status:', 'wpestate'); ?></label>
             <select id="user_status" name="user_status" class="w100">
@@ -350,9 +355,9 @@ if ($user_custom_picture == '') {
                             //range: true,
                             "value": <?php echo (int) $user_rent ?>,
                             min: parseInt(0),
-                            max: parseInt(1200),
+                            max: parseInt(<?php echo MAX_RENT ?>),
                             //values: [$('#age_low').val(), $('#age_max').val()], // defaultni hodnoty
-                            slide: function (event, ui) {
+                            slide: function (event, ui) {                                
                                 //console.log(ui);
                                 //jQuery('#rent_label_text').val(ui.values[0]);
                                 jQuery('#rent_amount').val(ui.value);
