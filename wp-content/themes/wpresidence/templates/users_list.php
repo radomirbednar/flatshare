@@ -267,7 +267,7 @@ if ($options['content_class'] == 'col-md-12') {
             
             $party_array = array (  
                 '1' => array(
-                      '<i class="icon-icon_party-often"> </i>',
+                      '<i class="icon-icon_party-often" > </i>',
                     __('Often', 'wpestate'))
                 ,
                 '2' => array(
