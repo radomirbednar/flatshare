@@ -7213,28 +7213,38 @@ table tbody tr td {
     width: 215px;
     display: inline;
     float: left;
-    margin: 0px 13px 0px 0px;
+    margin: 0px 0px 0px 0px;
     padding:0px;
     font-size:13px;
     color: #434a54;
 }
 
+
+.adv-search-1 .form-control-one .form-control-in,
+.adv-search-1 .form-control-two .form-control-in,
+.adv-search-1 .form-control-quarter .form-control-in,
+.adv-search-1 .form-control-half .form-control-in,
+.adv-search-1 .form-control .form-control-in {
+    padding-right: 13px;
+}
+
 .adv-search-1 .form-control-two {
-    width: 32.2%;
+    width: 33%;
 }
 
 .adv-search-1 .form-control-one {
-    width: 14.5%;
+    width: 17%;
 }
 
 .adv-search-1 .form-control-half {
-    width: 48.3%;
+    width: 50%;
 }
 .adv-search-1 .form-control-quarter {
-    width: 23.5%;
+    width: 25%;
 }
 .adv-search-1 .form-control-full {
-    width: 886px;    
+    /*width: 886px;    */
+    width: 100%;
 }
 
 #google_map_prop_list_sidebar .adv-search-1 .form-control {
@@ -7307,7 +7317,7 @@ table tbody tr td {
 
 .adv-search-1 input[type=text] {
     width: 215px;
-    margin: 0px 13px 13px 0px;
+    margin: 0px 0px 13px 0px;
     padding: 9px 0px 9px 13px;
     color: #434a54;
     border-radius: 3px;
@@ -7524,7 +7534,7 @@ table tbody tr td {
 #adv_extended_close_adv{
     top: 0px;
     right: 14px;
-    color: #99a3b1;
+    color: #3c90be;
     display: none;
     cursor: pointer;
 }
@@ -12718,7 +12728,7 @@ span.sub{
 } 
 .search_wr_1 .adv1-holder .col-md-3 {
     padding-left: 0;
-    padding-right: 0;
+    padding-right: 13px;
     width: auto;
 } 
 .heading_title{
@@ -12737,4 +12747,20 @@ span.sub{
     margin: 0px;
     padding-top: 6px;
     padding-bottom: 6px;
+}
+
+.search_wrapper .nav-tabs > li > a {
+    border-top: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0;
+}
+
+.two-label {        
+    height: 34px;
+    display: table-cell;
+    vertical-align: bottom;   
+    padding-bottom: 8px;
+}
+.header-image .form-in {
+    
 }
