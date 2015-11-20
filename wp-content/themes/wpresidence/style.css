@@ -7547,6 +7547,9 @@ table tbody tr td {
     color: #3c90be;
     display: none;
     cursor: pointer;
+    font-size: 12px;
+    
+    
 }
 
 
