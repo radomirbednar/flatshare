@@ -48,7 +48,8 @@
         width: 370px;
     }
 
-    #roommate .adv1-holder .adv_search_slider,
+    
+    //#roommate .adv1-holder .adv_search_slider,
     #rental .adv1-holder .adv_search_slider {
         width: 394px;
     }
@@ -62,7 +63,7 @@
     }
 
     .adv-search-1 .form-control-quarter {
-        width: 20.5%;
+        width: 49.5%;
     }
 
     /*
@@ -78,8 +79,8 @@
 
 
     .adv1-holder .adv_search_slider {
-        width: 450px;
-        max-width: 450px;
+        width: 394px;
+        max-width: 394px;
     }
 
     .listing_unit_price_wrapper {
@@ -600,15 +601,15 @@
         height: 212px;
     }
 
-    
+
     .adv-search-1 form {
         margin-right: -15px;
     }
-    
+
     #google_map_prop_list_sidebar .adv-search-1 form {
         margin-right: 0;
     }
-    
+
     .adv_extended_class #advanced_submit_2 {
         width: 185px;
         float: right;
@@ -628,10 +629,10 @@
     .adv-search-1 .wpb_button {
         margin-bottom: 10px !important;
     }
-
+/*
     #adv_location {
         width: 374px;
-    }
+    }*/
 
 
     .logo {
@@ -2183,17 +2184,6 @@
 
 @media only screen and (max-width: 1024px) and (min-width: 992px){
 
-    .triple-switch .switcher label.wpb_btn-large, 
-    .triple-switch .switcher button.wpb_btn-large, 
-    .triple-switch .switcher span.wpb_btn-large {
-
-    }
-    /*
-    .value-row {
-        width: 336px;
-    }*/
-
-    #roommate .adv1-holder .adv_search_slider, 
     #rental .adv1-holder .adv_search_slider {
         width: 488px;
         max-width: 488px;
@@ -2211,7 +2201,7 @@
         width: 48%;
     }
     .adv-search-1 .form-control-quarter {
-        width: 23.3%;
+        width: 49.5%;
     }
 
     .header-image video {
@@ -2250,4 +2240,58 @@
         width: 100%;
         max-width: 100%;
     }
+    
+    #google_map_prop_list_sidebar .adv-search-1 .form-control-half {
+        width: 100%;
+    }
+    #google_map_prop_list_sidebar .triple-switch .switcher label.wpb_btn-large, 
+    #google_map_prop_list_sidebar .triple-switch .switcher button.wpb_btn-large, 
+    #google_map_prop_list_sidebar .triple-switch .switcher span.wpb_btn-large {        
+        min-width: 32.6%;
+    }  
+    
+    #google_map_prop_list_sidebar .adv-search-1 .form-control-two {
+        width: 70%;
+    }
+    
+    #google_map_prop_list_sidebar .adv-search-1 .form-control-one {
+        width: 30%;
+    }
+    
 }
+
+@media only screen and (min-width: 640px) and (max-width: 1375px){   
+    #google_map_prop_list_sidebar .triple-switch .switcher label.wpb_btn-large, 
+    #google_map_prop_list_sidebar  .triple-switch .switcher button.wpb_btn-large, 
+    #google_map_prop_list_sidebar  .triple-switch .switcher span.wpb_btn-large {        
+        min-width: 32.2%;
+    }
+    #google_map_prop_list_sidebar  label.wpb_btn-large, button.wpb_btn-large, span.wpb_btn-large {
+        font-size: 11px !important;
+    }
+    .inline-checkboxes .flcheckbox {
+        margin-right: 10px;
+    }
+    .inline-checkboxes {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 768px) {
+    .triple-switch .switcher label.wpb_btn-large, 
+    .triple-switch .switcher button.wpb_btn-large, 
+    .triple-switch .switcher span.wpb_btn-large {        
+        min-width: 32.0%;
+    }    
+}
+
+
+
+/*@media only screen and (min-width: 768px) and (max-width: 1728px){   
+    .two-label {        
+        height: 34px;
+        display: table-cell;
+        vertical-align: bottom;   
+        padding-bottom: 8px;
+    }
+}*/

@@ -632,7 +632,7 @@ jQuery(document).ready(function ($) {
         stop: function (event, ui) {
             if (typeof (show_pins) !== "undefined") {
                 first_time_wpestate_show_inpage_ajax_half = 1
-                show_pins();
+                //show_pins();
             }
         }
     });
@@ -1216,14 +1216,14 @@ jQuery(document).ready(function ($) {
     jQuery('#adv-search-1 .adv1-holder li, #adv-search-3 li, .halfsearch input[type="checkbox"]').click(function () {
         if (typeof (show_pins) !== "undefined") {
             first_time_wpestate_show_inpage_ajax_half = 1
-            show_pins();
+            //show_pins();
         }
     });
 
     jQuery('#adv_rooms, #adv_bath, #price_low, #price_max, #adv-search-1 input[type=text], #adv-search-3 input[type=text]').change(function () {
         if (typeof (show_pins) !== "undefined") {
             first_time_wpestate_show_inpage_ajax_half = 1
-            show_pins();
+            //show_pins();
         }
 
     });

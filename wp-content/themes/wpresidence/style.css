@@ -3624,13 +3624,13 @@ listing_actions a{
     background-color: #F0f0f0;
     width: 100%;
     padding: 11px 0px 0px 15px;
-    
+
 }
 
 .agent_unit_social i{
     color: #3C90BE;
-    
-    
+
+
 }
 
 
@@ -7213,28 +7213,48 @@ table tbody tr td {
     width: 215px;
     display: inline;
     float: left;
-    margin: 0px 13px 0px 0px;
+    margin: 0px 0px 0px 0px;
     padding:0px;
     font-size:13px;
     color: #434a54;
 }
 
+.form-control-skills {
+    width: 60%;
+}
+.form-control-origin {
+    width: 40%;
+}
+.form-control-in {
+    padding-right: 13px;
+}
+.adv-search-1 .form-control-in select {
+    width: 100%;
+}
+
+.form-control-where {
+    width: 70%;
+}
+.form-control-disponibility {
+    width: 30%;
+}
 .adv-search-1 .form-control-two {
-    width: 32.2%;
+    width: 33%;
 }
 
 .adv-search-1 .form-control-one {
-    width: 14.5%;
+    width: 17%;
 }
 
 .adv-search-1 .form-control-half {
-    width: 48.3%;
+    width: 50%;
 }
 .adv-search-1 .form-control-quarter {
-    width: 23.5%;
+    width: 25%;
 }
 .adv-search-1 .form-control-full {
-    width: 886px;    
+    /*width: 886px;    */
+    width: 100%;
 }
 
 #google_map_prop_list_sidebar .adv-search-1 .form-control {
@@ -7307,7 +7327,7 @@ table tbody tr td {
 
 .adv-search-1 input[type=text] {
     width: 215px;
-    margin: 0px 13px 13px 0px;
+    margin: 0px 0px 13px 0px;
     padding: 9px 0px 9px 13px;
     color: #434a54;
     border-radius: 3px;
@@ -7524,7 +7544,7 @@ table tbody tr td {
 #adv_extended_close_adv{
     top: 0px;
     right: 14px;
-    color: #99a3b1;
+    color: #3c90be;
     display: none;
     cursor: pointer;
 }
@@ -11955,7 +11975,7 @@ select.dsidx-resp-select {
 .adv1-holder .adv_search_slider{
     width: 50%;
     max-width: 450px;
-    
+
 }
 
 #google_map_prop_list_sidebar .adv_search_slider{
@@ -12718,7 +12738,7 @@ span.sub{
 } 
 .search_wr_1 .adv1-holder .col-md-3 {
     padding-left: 0;
-    padding-right: 0;
+    padding-right: 13px;
     width: auto;
 } 
 .heading_title{
@@ -12737,4 +12757,26 @@ span.sub{
     margin: 0px;
     padding-top: 6px;
     padding-bottom: 6px;
+}
+
+.search_wrapper .nav-tabs > li > a {
+    border-top: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0;
+}
+
+.two-label {        
+    height: 34px;
+    display: table-cell;
+    vertical-align: bottom;   
+    padding-bottom: 8px;
+}
+.header-image .form-in {
+
+}
+
+#roommate .adv1-holder .adv_search_slider {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 5px !important;
 }
