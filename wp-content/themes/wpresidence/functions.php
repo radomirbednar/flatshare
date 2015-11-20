@@ -490,15 +490,12 @@ function hook_javascript(){
                     exit('Not a Valid Key.');
                 }
         }// end if empty
-  PRINT  $mes='<div class="login_alert_full">'.__('We have just sent you a new password. Please check your email!','wpestate').'</div>';   
+  print  $mes='<div class="login_alert_full">'.__('We have just sent you a new password. Please check your email!','wpestate').'</div>';   
   
-    } 
-
+    }  
 }
 endif;
-
-
-
+            
 add_action('wpcf7_before_send_mail', 'wpcf7_update_email_body');
 
 function wpcf7_update_email_body($contact_form) {
@@ -814,27 +811,16 @@ if( !function_exists('wpestate_show_search_field_classic_form') ):
     }
 endif;     
 
+/*
+            
+function restrict_admin(){
+//if not administrator, kill WordPress execution and provide a message
+    if ( ! current_user_can( 'delete_others_posts' ) ) {
+        wp_die( __('You are not allowed to access this part of the site') );
+    }
+}
+add_action( 'admin_init', 'restrict_admin', 1 );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-?>
+*/
+            
+?> 

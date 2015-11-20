@@ -96,17 +96,17 @@ if ($user_custom_picture == '') {
 
         <div class="col-md-4">
             <p>
-                <label for="firstname"><?php _e('First Name', 'wpestate'); ?></label>
+                <label for="firstname"><?php _e('* First Name (mandatory)', 'wpestate'); ?></label>
                 <input type="text" id="firstname" class="form-control" value="<?php echo $first_name; ?>"  name="firstname">
             </p>
 
             <p>
-                <label for="secondname"><?php _e('Last Name', 'wpestate'); ?></label>
+                <label for="secondname"><?php _e('* Last Name (mandatory)', 'wpestate'); ?></label>
                 <input type="text" id="secondname" class="form-control" value="<?php echo $last_name; ?>"  name="firstname">
             </p>
 
             <p>
-                <label for="useremail"><?php _e('Email', 'wpestate'); ?></label>
+                <label for="useremail"><?php _e('* Email (mandatory)', 'wpestate'); ?></label>
                 <input type="text" id="useremail"  class="form-control" value="<?php echo $user_email; ?>"  name="useremail">
             </p>
 
@@ -121,7 +121,7 @@ if ($user_custom_picture == '') {
                 <input type="text" id="userphone" class="form-control" value="<?php echo $user_phone; ?>"  name="userphone">
             </p>
             <p>
-                <label for="usermobile"><?php _e('Mobile', 'wpestate'); ?></label>
+                <label for="usermobile"><?php _e('* Mobile (mandatory)', 'wpestate'); ?></label>
                 <input type="text" id="usermobile" class="form-control" value="<?php echo $user_mobile; ?>"  name="usermobile">
             </p>
 
@@ -421,7 +421,7 @@ if ($user_custom_picture == '') {
             </div>
 
             <div class="fl-row">
-                <label for="user_age"><?php _e('Birthdate', 'wpestate'); ?></label>
+                <label for="user_age"><?php _e('* Birthdate (mandatory)', 'wpestate'); ?></label>
                 <div class="value-row">
                     <input type="text" id="birthdate" class="form-control" value="<?php echo empty($birthdate) ? '' : $birthdate->format(PHP_DATEPICKER_FORMAT); ?>"  name="birthdate">
                 </div>

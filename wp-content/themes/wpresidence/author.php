@@ -64,15 +64,22 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
             $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
             
+            
+            $user_status = !empty($fl_user_data->user_status) ? $fl_user_data->user_status : '';
+            
+            
             $birthdate = !empty($fl_user_data->birthdate) ? $fl_user_data->birthdate : '';
    
             $date = new DateTime($birthdate);
             $now = new DateTime();
             $interval = $now->diff($date);
-            $year_old = $interval->y;
-            
+            $year_old = $interval->y; 
             $houseskils = fl_get_user_house_skills($userID);
 
+            
+            
+            
+            
             $activity_array = array(
                 '1' => __('Student', 'wpestate'),
                 '2' => __('Professional', 'wpestate')
@@ -219,11 +226,13 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
         </div> 
     </div><!-- end 9col container-->     
 
-    <div class="col-md-3">  
+    
+    <?php if($user_status!=3): ?>  
+    
+    <div class="col-md-3">   
         <div class="mydetails"> 
             <?php _e('My Details', 'wpestate'); ?>
-        </div> 
-
+        </div>  
         <?php
         $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
         $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
@@ -317,7 +326,8 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             </span>    
             <?php echo $user_origin; ?>     
         </div> 
-    </div> 
+    </div>  
+    <?php endif; ?> 
     <?php // include(locate_template('sidebar.php'));     ?>
 </div>    
 <?php
