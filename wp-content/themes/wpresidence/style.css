@@ -7205,6 +7205,11 @@ table tbody tr td {
     border-bottom-left-radius: 4px;
     border-left: 1px solid #f0f0f0;
 }
+
+.header_media .adv1-holder {
+    overflow: hidden;
+}
+
 .adv-search-1 {
     border-top: 1px solid #f0f0f0;
     border-right: 1px solid #f0f0f0;
@@ -12812,9 +12817,22 @@ span.sub{
 #mobile-rental {
     padding-top: 15px;
 }
-
+/*
 .adv-search-mobile .triple-switch .switcher label.wpb_btn-large, 
 .adv-search-mobile .triple-switch .switcher button.wpb_btn-large, 
 .adv-search-mobile .triple-switch .switcher span.wpb_btn-large {
     width: 33%;
+}*/
+
+
+.adv-search-mobile .switcher .value-row label,
+.adv_extended_class .switcher .value-row label {
+    display: block;
+    float: left;
+    width: 31.66%;
+    margin-right: 1%;    
+}
+.adv-search-mobile .switcher .value-row label:last-child,
+.adv_extended_class .switcher .value-row label:last-child {
+    margin-right: 0;
 }

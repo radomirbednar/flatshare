@@ -18,7 +18,7 @@ if(!isset($prefix)){
                             <div class="form-control-where pull-left clearfix">
                                 <div class="form-control-in">
                                     <label class="two-label"><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
-                                    <div class="value-row">
+                                    <div class="value-row clearfix">
                                         <input type="text" id="<?php echo $prefix ?>looking_where" name="looking_where" class="form-control w100" placeholder="<?php _e('City', 'wpestate') ?>"  value="<?php echo esc_attr(isset($_GET['looking_where']) ? esc_attr($_GET['looking_where']) : '') ?>">
                                     </div>
                                 </div>
@@ -27,7 +27,7 @@ if(!isset($prefix)){
                             <div class="form-control-disponibility pull-left clearfix">
                                 <div class="form-control-in">
                                     <label class="two-label"><?php _e('Disponibility from', 'wpestate'); ?></label>
-                                    <div class="value-row">
+                                    <div class="value-row clearfix">
                                         <input type="text" id="<?php echo $prefix ?>disponibility" name="disponibility" class="form-control w100" value="<?php echo esc_attr(isset($_GET['disponibility']) ? esc_attr($_GET['disponibility']) : '') ?>">
                                     </div>
                                 </div>
@@ -40,7 +40,7 @@ if(!isset($prefix)){
                                 <div class="switcher">
 
                                     <label class="two-label"><?php _e('Gender', 'wpestate'); ?></label>
-                                    <div class="value-row">
+                                    <div class="value-row clearfix">
 
                                         <input id="<?php echo $prefix ?>user-gender-nevermind" name="user_gender" type="radio" value="" class="hidden">
                                         <input id="<?php echo $prefix ?>user-gender-male" name="user_gender" type="radio" value="1" class="hidden" >
@@ -153,7 +153,7 @@ if(!isset($prefix)){
                                     );
                                     ?>
                                     <label for="status"><?php _e('Someone looking for:', 'wpestate'); ?></label>
-                                    <div class="value-row"> 
+                                    <div class="value-row clearfix"> 
                                         <select id="<?php echo $prefix ?>status" class="form-control w100" name="status" class="w100"> 
                                             <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option> 
                                             <?php foreach ($arr as $key => $val): ?>
@@ -167,7 +167,7 @@ if(!isset($prefix)){
                             <div class="form-control-half switcher">
                                 <div class="form-control-in">
                                     <label><?php _e('For how long', 'wpestate'); ?></label>
-                                    <div class="value-row">
+                                    <div class="value-row clearfix">
                                         <input id="<?php echo $prefix ?>how_long-0" name="how_long" type="radio" value="" class="hidden">
                                         <input id="<?php echo $prefix ?>how_long-1" name="how_long" type="radio" value="1" class="hidden" >
                                         <input id="<?php echo $prefix ?>how_long-2" name="how_long" type="radio" value="2" class="hidden">
@@ -186,7 +186,7 @@ if(!isset($prefix)){
                                     <div class="switcher">
                                         <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
 
-                                        <div class="value-row">
+                                        <div class="value-row clearfix">
                                             <input id="<?php echo $prefix ?>sexual_preference-nevermind" name="sexual_preference" type="radio" value="" class="hidden">
                                             <input id="<?php echo $prefix ?>sexual_preference-straight" name="sexual_preference" type="radio" value="1" class="hidden" >
                                             <input id="<?php echo $prefix ?>sexual_preference-bi" name="sexual_preference" type="radio" value="2" class="hidden">
@@ -204,7 +204,7 @@ if(!isset($prefix)){
                                     <div class="switcher">
                                         <label><?php _e('Sleep during week', 'wpestate'); ?></label>
 
-                                        <div class="value-row">
+                                        <div class="value-row clearfix">
 
                                             <input id="<?php echo $prefix ?>sleeping_span-nevermind" name="sleeping_span" type="radio" value="" class="hidden">
                                             <input id="<?php echo $prefix ?>sleeping_span-before" name="sleeping_span" type="radio" value="1" class="hidden" >
@@ -222,7 +222,7 @@ if(!isset($prefix)){
                                 <div class="form-control-in">
                                     <div class="switcher">
                                         <label><?php _e('Couple', 'wpestate'); ?></label>
-                                        <div class="value-row">
+                                        <div class="value-row clearfix">
 
                                             <input id="<?php echo $prefix ?>couple-nevermind" name="couple" type="radio" value="" class="hidden">
                                             <input id="<?php echo $prefix ?>couple-alone" name="couple" type="radio" value="1" class="hidden" >
@@ -241,7 +241,7 @@ if(!isset($prefix)){
                                 <div class="form-control-in">
                                     <div class="switcher">
                                         <label><?php _e('Smoker', 'wpestate'); ?></label>
-                                        <div class="value-row">
+                                        <div class="value-row clearfix">
 
                                             <input id="<?php echo $prefix ?>smoker-nevermind" name="smoker" type="radio" value="" class="hidden">
                                             <input id="<?php echo $prefix ?>smoker-no" name="smoker" type="radio" value="1" class="hidden" >
@@ -259,7 +259,7 @@ if(!isset($prefix)){
                                 <div class="form-control-in">
                                     <div class="switcher">
                                         <label><?php _e('Pets', 'wpestate'); ?></label>
-                                        <div class="value-row">
+                                        <div class="value-row clearfix">
                                             <input id="<?php echo $prefix ?>pets-nevermind" name="pets" type="radio" value="" class="hidden">
                                             <input id="<?php echo $prefix ?>pets-no" name="pets" type="radio" value="1" class="hidden" >
                                             <input id="<?php echo $prefix ?>pets-yes" name="pets" type="radio" value="2" class="hidden">
@@ -274,7 +274,7 @@ if(!isset($prefix)){
                                 <div class="form-control-in">
                                     <div class="switcher">
                                         <label><?php _e('Activity', 'wpestate'); ?></label>
-                                        <div class="value-row">
+                                        <div class="value-row clearfix">
                                             <input id="<?php echo $prefix ?>activity-nevermind" name="activity" type="radio" value="" class="hidden">
                                             <input id="<?php echo $prefix ?>activity-student" name="activity" type="radio" value="1" class="hidden" >
                                             <input id="<?php echo $prefix ?>activity-professional" name="activity" type="radio" value="2" class="hidden">
@@ -350,7 +350,7 @@ if(!isset($prefix)){
                                         <!--<input type="hidden" value="<?php echo isset($_GET['party']) ? (int) $_GET['party'] : '' ?>" name="party" id="<?php echo $prefix ?>party">-->
                                         <label><?php _e('Party', 'wpestate'); ?></label>
 
-                                        <div class="value-row">
+                                        <div class="value-row clearfix">
                                             <input id="<?php echo $prefix ?>party-nevermind" name="party" type="radio" value="" class="hidden">
                                             <input id="<?php echo $prefix ?>party-often" name="party" type="radio" value="1" class="hidden" >
                                             <input id="<?php echo $prefix ?>party-not-often" name="party" type="radio" value="2" class="hidden">
