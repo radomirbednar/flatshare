@@ -46,11 +46,7 @@ $when_move = !empty($fl_user_data->disponibility) ? DATETIME::createFromFormat("
 if (!empty($fl_user_data->birthdate)) {
     $birthdate = !empty($fl_user_data->birthdate) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->birthdate) : new DateTime();
 }
-
-
 //$birthdate = !empty($fl_user_data->birthdate) ? DATETIME::createFromFormat("Y-m-d", $fl_user_data->birthdate) : '';
-
-
 
 $user_language_ids = fl_get_user_language_ids($userID);
 $user_skill_ids = fl_get_user_house_skill_ids($userID);
@@ -64,6 +60,7 @@ $about_me = get_the_author_meta('description', $userID);
 if ($user_custom_picture == '') {
     $user_custom_picture = get_template_directory_uri() . '/img/default_user.png';
 }
+ 
 ?>
 
 
