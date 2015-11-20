@@ -7219,15 +7219,25 @@ table tbody tr td {
     color: #434a54;
 }
 
-
-.adv-search-1 .form-control-one .form-control-in,
-.adv-search-1 .form-control-two .form-control-in,
-.adv-search-1 .form-control-quarter .form-control-in,
-.adv-search-1 .form-control-half .form-control-in,
-.adv-search-1 .form-control .form-control-in {
+.form-control-skills {
+    width: 60%;
+}
+.form-control-origin {
+    width: 40%;
+}
+.form-control-in {
     padding-right: 13px;
 }
+.adv-search-1 .form-control-in select {
+    width: 100%;
+}
 
+.form-control-where {
+    width: 70%;
+}
+.form-control-disponibility {
+    width: 30%;
+}
 .adv-search-1 .form-control-two {
     width: 33%;
 }
