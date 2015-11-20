@@ -1066,6 +1066,7 @@
         float:left;
     }
 
+    #mo_results,
     #results_mobile{
         display:none;   
     }

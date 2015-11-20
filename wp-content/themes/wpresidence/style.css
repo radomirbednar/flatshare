@@ -7116,7 +7116,7 @@ table tbody tr td {
     background-color: #F0F0F0;
     border-bottom: 1px solid #f0f0f0;
 }
-
+.adv-search-mobile .btn-action,
 .fl-submit,
 .adv-search-mobile #advanced_submit_2_mobile,
 .adv-search-mobile #advanced_submit_2,
@@ -12835,4 +12835,9 @@ span.sub{
 .adv-search-mobile .switcher .value-row label:last-child,
 .adv_extended_class .switcher .value-row label:last-child {
     margin-right: 0;
+}
+
+.adv-search-mobile .adv_search_slider {
+    width: 100%;
+    max-width: 100%;
 }
