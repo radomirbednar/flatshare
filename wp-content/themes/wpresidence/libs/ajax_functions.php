@@ -1410,6 +1410,11 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         update_user_meta( $userID, 'website' , $userurl) ;
         update_user_meta( $userID, 'user_origin' , $user_origin) ;
         update_user_meta( $userID, 'looking_where' , $looking_where) ;
+        
+        
+        
+        
+        
 
         /**
          * Update user integer values
