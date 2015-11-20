@@ -74,7 +74,11 @@
     }*/
 
     .adv-search-1 .form-control-half {
-        width: 42.3%;
+        width: 50%;
+    }
+    
+    .header_media .adv1-holder {
+        width: 814px;
     }
 
 
@@ -619,6 +623,10 @@
         margin-right: 5px;
     }
 
+    .header_media .adv1-holder {
+        width: 100%;
+    }
+    
     .adv_extended_close_adv, #adv_extended_close_adv {
         right: 24px;
     }
