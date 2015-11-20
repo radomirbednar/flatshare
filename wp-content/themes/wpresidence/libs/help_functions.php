@@ -1586,9 +1586,7 @@ if( !function_exists('wpestate_show_search_field') ):
                     }
                     
                 }
-              
-           
-
+ 
             } 
             print $return_string;
          }
@@ -1621,7 +1619,6 @@ if( !function_exists('show_extended_search') ):
             print '</div>';     
         }
 endif;
-
  
 ////////////////////////////////////////////////////////////////////////////////
 /// get select arguments
