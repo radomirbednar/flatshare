@@ -1098,6 +1098,9 @@ function get_custom_value(slug){
   
   
 function show_pins_custom_search(){
+    
+    //return;
+    
     console.log ('show_pins_custom_search');
     var val1, val2, val3, val4, val5, val6, val7, val8, position;
     

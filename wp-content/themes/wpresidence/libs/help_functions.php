@@ -1394,8 +1394,13 @@ if( !function_exists('wpestate_show_search_field') ):
         }
         
         else if($search_field=='cities'){
-            $return_string .= '<div class="col-md-3">';
-            $return_string .= '<input type="text" id="adv_location" class="form-control a" name="adv_location" placeholder="'. __('City', 'wpestate') . '" value="' . (isset($_GET['adv_location']) ? esc_attr($_GET['adv_location']) : '') . '" autocomplete="off" data-value="all">';
+            
+            //$value = isset($_GET['adv_location']) ? esc_attr($_GET['adv_location']) : '';
+            $value = isset($_GET['advanced_city']) ? esc_attr($_GET['advanced_city']) : '';
+            
+            $return_string .= '<div class="col-md-3">';            
+            $return_string .= '<input type="text" id="adv_location" class="form-control a" name="advanced_city" placeholder="'. __('City', 'wpestate') . '" value="' . $value . '" autocomplete="off" data-value="' . $value . '">';
+            //$return_string .= '<input type="text" id="adv_location" class="form-control a" name="adv_location" placeholder="'. __('City', 'wpestate') . '" value="' . $value . '" autocomplete="off" data-value="' . $value . '">';
             $return_string .= '</div>';
         }
         else if($search_field=='types'){

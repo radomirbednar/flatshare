@@ -358,6 +358,11 @@ function typeof_value(val1){
 /// ajax filtering on header search ; jslint checked
 ////////////////////////////////////////////////////////////////////////////////////////////
 function custom_search_start_filtering_ajax(newpage) {
+    
+    
+    //return;
+    
+    
     "use strict";
     var   val1, val2, val3, val4, val5, val6, val7, val8, ajaxurl,postid , slider_min, slider_max, halfmap, all_checkers;
     
