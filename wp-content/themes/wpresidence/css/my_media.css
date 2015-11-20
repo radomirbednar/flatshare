@@ -1066,6 +1066,7 @@
         float:left;
     }
 
+    #mo_results,
     #results_mobile{
         display:none;   
     }
@@ -2293,6 +2294,40 @@
     }    
 }
 
+/*
+@media only screen and (max-width: 768px) {
+    .form-control-half {
+        clear: both;
+    }
+}*/
+
+@media only screen and (max-width: 420px) {
+    .adv-search-mobile .switcher .value-row label {
+        font-size: 11px !important;
+    }
+    .form-control-skills {
+        width: 100%;
+    }
+    .form-control-origin {
+        width: 100%;
+    }    
+}
+/*
+@media only screen and (max-width: 991px) {
+    .adv1-holder {        
+        width: 100%;
+    }    
+    #adv-search-mobile-wrap {
+        display: block;
+    }
+}
+@media only screen and (min-width: 992px) { 
+    #adv-search-mobile-wrap {
+        display: none;
+    }
+}
+*/
+
 
 
 /*@media only screen and (min-width: 768px) and (max-width: 1728px){   
@@ -2303,3 +2338,7 @@
         padding-bottom: 8px;
     }
 }*/
+
+#advanced_submit_2 {
+    
+}

@@ -55,6 +55,7 @@ if ($user_custom_picture == '') {
         }, jQuery.datepicker.regional[admin_control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
 
         jQuery("#birthdate").datepicker({
+            changeYear: true,
             dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
         }, jQuery.datepicker.regional[admin_control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
     });

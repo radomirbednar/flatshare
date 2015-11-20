@@ -95,6 +95,7 @@ function initialize(){
     if (googlecode_regular_vars.is_adv_search ==='1'){
         show_pins();
         jQuery('#results').hide();
+        jQuery('#mo_results').hide();
     }
 
     //set map cluster

@@ -626,6 +626,8 @@ jQuery(document).ready(function ($) {
     wpestate_enable_slider('slider_price', 'price_low', 'price_max', 'amount', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
     
     // price slider in roomamate listing tab filter
+    
+    fl_enable_slider('mo_slider_roommate_price', 'mo_roommate_price_low', 'mo_roommate_price_max', 'mo_roommate_amount', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
     fl_enable_slider('slider_roommate_price', 'roommate_price_low', 'roommate_price_max', 'roommate_amount', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
     
     $("#slider_price").slider({
@@ -853,7 +855,7 @@ jQuery(document).ready(function ($) {
     });
  
     //////////////////////////////////////////////////////////////////////////// 
-    $('#adv_extended_options_text_adv, #roommate-advance').click(function (e) { 
+    $('#adv_extended_options_text_adv, #roommate-advance, #mo_roommate-advance').click(function (e) { 
           
         e.preventDefault();
          
@@ -864,18 +866,18 @@ jQuery(document).ready(function ($) {
          
         $(this).parent().find('.extended_search_check_wrapper').slideDown();
         $(this).parent().find('#adv_extended_close_adv, .adv_extended_close_adv').show();
-        $(this).parent().find('#ra').val(1);
+        $(this).parent().find('.ra').val(1);
     
     });
 
-    $('#adv_extended_close_adv, #roommate_extended_close_adv').click(function () {
+    $('#adv_extended_close_adv, #roommate_extended_close_adv, #mo_roommate_extended_close_adv').click(function () {
         $(this).parents('#adv-search-1').find('.extended_search_check_wrapper').slideUp();
         //$(this).hide();
-        $('#adv_extended_close_adv, #roommate_extended_close_adv').hide();
+        $('#adv_extended_close_adv, #roommate_extended_close_adv, #mo_roommate_extended_close_adv').hide();
         $(this).parents('#adv-search-1').find('.adv_extended_options_text').show();
         $('.adv-search-1.adv_extended_class').removeAttr('style');
         $('.adv_extended_class .adv1-holder').removeAttr('style');
-        $(this).parent().find('#ra').val(0);
+        $(this).parent().find('.ra').val(0);
     });
     
     
@@ -917,7 +919,7 @@ jQuery(document).ready(function ($) {
         $(this).parent().find('#adv_extended_close_mobile').show();
     });
 
-    $('#adv_extended_close_mobile').click(function () {
+    $('#adv_extended_close_mobile, #mo_roommate_extended_close_adv').click(function () {
         $(this).parent().parent().find('.extended_search_check_wrapper').slideUp();
         $(this).hide();
         $(this).parent().parent().find('.adv_extended_options_text').show();
@@ -1182,7 +1184,7 @@ jQuery(document).ready(function ($) {
     //////// advanced search filters
     ////////////////////////////////////////////////////////////////////////////////////////////    
 
-    var elems = ['#adv-search-3', '#adv-search-1 .tab-content', '#advanced_search_shortcode', '#adv-search-2', '#advanced_search_shortcode_2', '.adv-search-mobile', '.advanced_search_sidebar'];
+    var elems = ['#adv-search-3', '#adv-search-1 .tab-content', '#advanced_search_shortcode', '#adv-search-2', '#advanced_search_shortcode_2', '.adv-search-mobile .tab-content', '.advanced_search_sidebar'];
 
     //console.log('input replace');
 
