@@ -2294,6 +2294,22 @@
 }
 
 
+@media only screen and (max-width: 991px) {
+    .adv1-holder {        
+        width: 100%;
+    }    
+    #adv-search-mobile-wrap {
+        display: block;
+    }
+}
+@media only screen and (min-width: 992px) { 
+    #adv-search-mobile-wrap {
+        display: none;
+    }
+}
+
+
+
 
 /*@media only screen and (min-width: 768px) and (max-width: 1728px){   
     .two-label {        
