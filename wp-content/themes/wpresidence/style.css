@@ -12841,3 +12841,6 @@ span.sub{
     width: 100%;
     max-width: 100%;
 }
+.ui-widget-header select {
+    color: #768082;
+}
