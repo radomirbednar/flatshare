@@ -19,6 +19,7 @@ if( $user_small_picture_id == '' ){
             <?php  
    
                 wp_nav_menu( array( 
+                    'menu' => 'Main Menu',
                     'theme_location'  => 'mobile',               
                     'container'       =>  false,
                     'menu_class'      => 'mobilex-menu',
