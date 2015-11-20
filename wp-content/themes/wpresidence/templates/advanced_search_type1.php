@@ -153,73 +153,80 @@ if ($extended_search == 'yes') {
                         <div class="clearfix"></div>
                         <!-- sliders -->
 
-                        <div class="adv_search_slider"><!-- age slider -->
+                        <div class="form-control-half">
+                            <div class="form-control-in">
+                                <div class="adv_search_slider"><!-- age slider -->
 
-                            <?php
-                            $age_min = 0;
-                            $age_max = 99;
+                                    <?php
+                                    $age_min = 0;
+                                    $age_max = 99;
 
-                            $age_min_val = isset($_GET['age_low']) ? $_GET['age_low'] : $age_min;
-                            $age_max_val = isset($_GET['age_max']) ? $_GET['age_max'] : $age_max;
-                            ?>
+                                    $age_min_val = isset($_GET['age_low']) ? $_GET['age_low'] : $age_min;
+                                    $age_max_val = isset($_GET['age_max']) ? $_GET['age_max'] : $age_max;
+                                    ?>
 
-                            <script>
-                                jQuery(document).ready(function ($) {
-                                    jQuery("#slider_age").slider({
-                                        range: true,
-                                        min: <?php echo (int) $age_min ?>,
-                                        max: <?php echo (int) $age_max ?>,
-                                        values: [<?php echo (int) $age_min_val ?>, <?php echo (int) $age_max_val ?>], // defaultni hodnoty
-                                        slide: function (event, ui) {
-                                            jQuery('#age_low').val(ui.values[0]);
-                                            jQuery('#age_max').val(ui.values[1]);
-                                            jQuery("#age_label_text").text(ui.values[0].format() + " " + control_vars.to + " " + ui.values[1].format());
-                                        }
-                                    });
-                                });
-                            </script>
+                                    <script>
+                                        jQuery(document).ready(function ($) {
+                                            jQuery("#slider_age").slider({
+                                                range: true,
+                                                min: <?php echo (int) $age_min ?>,
+                                                max: <?php echo (int) $age_max ?>,
+                                                values: [<?php echo (int) $age_min_val ?>, <?php echo (int) $age_max_val ?>], // defaultni hodnoty
+                                                slide: function (event, ui) {
+                                                    jQuery('#age_low').val(ui.values[0]);
+                                                    jQuery('#age_max').val(ui.values[1]);
+                                                    jQuery("#age_label_text").text(ui.values[0].format() + " " + control_vars.to + " " + ui.values[1].format());
+                                                }
+                                            });
+                                        });
+                                    </script>
 
-                            <p>
-                                <label for="age" class="wauto"><?php _e('Age range:', 'wpestate'); ?></label>
-                                <span id="age_label_text"><?php printf(__('%s to %s', 'wpestate'), (int) $age_min_val, (int) $age_max_val); ?></span>
-                            </p>
-                            <div id="slider_age" class="fl-slider"></div>
-                            <input type="hidden" id="age_low"  name="age_low"  value="<?php echo (int) $age_min_val; ?>" />
-                            <input type="hidden" id="age_max"  name="age_max"  value="<?php echo (int) $age_max_val; ?>" />
-                        </div><!-- /age slider -->
+                                    <p>
+                                        <label for="age" class="wauto"><?php _e('Age range:', 'wpestate'); ?></label>
+                                        <span id="age_label_text"><?php printf(__('%s to %s', 'wpestate'), (int) $age_min_val, (int) $age_max_val); ?></span>
+                                    </p>
+                                    <div id="slider_age" class="fl-slider"></div>
+                                    <input type="hidden" id="age_low"  name="age_low"  value="<?php echo (int) $age_min_val; ?>" />
+                                    <input type="hidden" id="age_max"  name="age_max"  value="<?php echo (int) $age_max_val; ?>" />
+                                </div><!-- /age slider -->
+                            </div>
+                        </div>
+
+                        <div class="form-control-half">
+                            <div class="form-control-in">
+                                <div class="adv_search_slider"><!-- price slider -->
+                                    <?php
+                                    $roommate_price_low = $current_price_low = 0;
+                                    $roommate_price_max = $current_price_max = 1200;
+
+                                    $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
+                                    $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
 
 
-                        <div class="adv_search_slider"><!-- price slider -->
-                            <?php
-                            $roommate_price_low = $current_price_low = 0;
-                            $roommate_price_max = $current_price_max = 1200;
 
-                            $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
-                            $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
+                                    //$min_price_slider= ( floatval(get_option('wp_estate_show_slider_min_price','')) );
+                                    //$max_price_slider= ( floatval(get_option('wp_estate_show_slider_max_price','')) );
 
+                                    if (isset($_GET['rent_low'])) {
+                                        $current_price_low = floatval($_GET['rent_low']);
+                                    }
 
+                                    if (isset($_GET['rent_max'])) {
+                                        $current_price_max = floatval($_GET['rent_max']);
+                                    }
 
-                            //$min_price_slider= ( floatval(get_option('wp_estate_show_slider_min_price','')) );
-                            //$max_price_slider= ( floatval(get_option('wp_estate_show_slider_max_price','')) );
-
-                            if (isset($_GET['rent_low'])) {
-                                $current_price_low = floatval($_GET['rent_low']);
-                            }
-
-                            if (isset($_GET['rent_max'])) {
-                                $current_price_max = floatval($_GET['rent_max']);
-                            }
-
-                            $price_slider_label = wpestate_show_price_label_slider($current_price_low, $current_price_max, $currency, $where_currency);
-                            ?>
-                            <p>
-                                <label for="roommate_amount" class="wauto"><?php _e('Price range:', 'wpestate'); ?></label>
-                                <span id="roommate_amount" class="slide-label"><?php echo $price_slider_label ?></span>
-                            </p>
-                            <div id="slider_roommate_price" data-bound_min="<?php echo (int) $roommate_price_low ?>" data-bound_max="<?php echo (int) $roommate_price_max ?>" class="fl-slider"></div>
-                            <input type="hidden" value="<?php echo (int) $current_price_low ?>" name="rent_low" id="roommate_price_low">
-                            <input type="hidden" value="<?php echo (int) $current_price_max ?>" name="rent_max" id="roommate_price_max">
-                        </div><!-- /price slider -->
+                                    $price_slider_label = wpestate_show_price_label_slider($current_price_low, $current_price_max, $currency, $where_currency);
+                                    ?>
+                                    <p>
+                                        <label for="roommate_amount" class="wauto"><?php _e('Price range:', 'wpestate'); ?></label>
+                                        <span id="roommate_amount" class="slide-label"><?php echo $price_slider_label ?></span>
+                                    </p>
+                                    <div id="slider_roommate_price" data-bound_min="<?php echo (int) $roommate_price_low ?>" data-bound_max="<?php echo (int) $roommate_price_max ?>" class="fl-slider"></div>
+                                    <input type="hidden" value="<?php echo (int) $current_price_low ?>" name="rent_low" id="roommate_price_low">
+                                    <input type="hidden" value="<?php echo (int) $current_price_max ?>" name="rent_max" id="roommate_price_max">
+                                </div><!-- /price slider -->
+                            </div>
+                        </div>
 
                         <!-- /sliders -->
                         <div class="clearfix"></div>
@@ -407,25 +414,25 @@ if ($extended_search == 'yes') {
 
                                     <div class="form-control-origin no-label pull-left clearfix">
                                         <!--<div class="form-control-in">-->
-                                            
+
+                                        <?php
+                                        $coutnries = fl_get_countries();
+                                        ?>
+                                        <p>
+                                            <select id="user_origin" name="origin" class="form-control">
+                                                <option value=""><?php _e('Country of origin', 'wpestate'); ?></option>
                                                 <?php
-                                                $coutnries = fl_get_countries();
-                                                ?>
-                                                <p>
-                                                    <select id="user_origin" name="origin" class="form-control">
-                                                        <option value=""><?php _e('Country of origin', 'wpestate'); ?></option>
-                                                        <?php
-                                                        if (!empty($coutnries)):
-                                                            foreach ($coutnries as $country):
-                                                                ?>
-                                                                <option value="<?php echo esc_attr($country->iso) ?>" <?php echo isset($_GET['origin']) && $_GET['origin'] == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
-                                                                <?php
-                                                            endforeach;
-                                                        endif;
+                                                if (!empty($coutnries)):
+                                                    foreach ($coutnries as $country):
                                                         ?>
-                                                    </select>
-                                                </p>
-                                            
+                                                        <option value="<?php echo esc_attr($country->iso) ?>" <?php echo isset($_GET['origin']) && $_GET['origin'] == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
+                                                        <?php
+                                                    endforeach;
+                                                endif;
+                                                ?>
+                                            </select>
+                                        </p>
+
                                         <!--</div>-->
                                     </div> 
 

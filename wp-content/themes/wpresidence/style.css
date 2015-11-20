@@ -3624,13 +3624,13 @@ listing_actions a{
     background-color: #F0f0f0;
     width: 100%;
     padding: 11px 0px 0px 15px;
-    
+
 }
 
 .agent_unit_social i{
     color: #3C90BE;
-    
-    
+
+
 }
 
 
@@ -11975,7 +11975,7 @@ select.dsidx-resp-select {
 .adv1-holder .adv_search_slider{
     width: 50%;
     max-width: 450px;
-    
+
 }
 
 #google_map_prop_list_sidebar .adv_search_slider{
@@ -12772,5 +12772,11 @@ span.sub{
     padding-bottom: 8px;
 }
 .header-image .form-in {
-    
+
+}
+
+#roommate .adv1-holder .adv_search_slider {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 5px !important;
 }
