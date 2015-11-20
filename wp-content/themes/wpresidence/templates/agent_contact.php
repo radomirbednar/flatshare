@@ -5,9 +5,7 @@ global $propid;
 
 $contact_form_7_agent   =   stripslashes( ( get_option('wp_estate_contact_form_7_agent','') ) );
 $contact_form_7_contact =   stripslashes( ( get_option('wp_estate_contact_form_7_contact','') ) );
-
-
-
+ 
 
 ?>
   
