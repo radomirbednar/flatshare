@@ -194,8 +194,8 @@ function get_filtering_ajax_result() {
             'postid'            :   postid
         },
         success: function (data) {     
-            jQuery("#results, #showinpage,#showinpage_mobile").show();
-            jQuery("#results_no").show().empty().append(data); 
+            jQuery("#mo_results ,#results, #showinpage,#showinpage_mobile").show();
+            jQuery("#mo_results_no ,#results_no").show().empty().append(data); 
           
         },
         error: function (errorThrown) {}
@@ -259,8 +259,8 @@ function custom_get_filtering_ajax_result() {
         },
         success: function (data) {  
             
-            jQuery("#results, #showinpage,#showinpage_mobile").show();
-            jQuery("#results_no").show().empty().append(data); 
+            jQuery("#mo_results, #results, #showinpage,#showinpage_mobile").show();
+            jQuery("#mo_results_no, #results_no").show().empty().append(data); 
           
         },
         error: function (errorThrown) {}

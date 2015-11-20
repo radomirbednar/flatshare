@@ -1201,14 +1201,14 @@ function show_pins_custom_search(){
                 jQuery('#listing_ajax_container').empty().append('<p class=" no_results_title ">'+mapfunctions_vars.half_no_results+'</p>');
             }
             
-            jQuery('#results').hide();
+            jQuery('#mo_results, #results').hide();
         }else{
             jQuery('#gmap-noresult').hide(); 
             if( !bounds.isEmpty() ){
                 map.fitBounds(bounds);
             } 
-            jQuery("#results, #showinpage,#showinpage_mobile").show();
-            jQuery("#results_no").show().empty().append(results_no); 
+            jQuery("#mo_results, #results, #showinpage,#showinpage_mobile").show();
+            jQuery("#mo_results_no, #results_no").show().empty().append(results_no); 
           
             if ( parseInt(mapfunctions_vars.is_half)===1 ){
 
@@ -1391,15 +1391,15 @@ function show_pins() {
             if(  document.getElementById('google_map_prop_list_wrapper') ){
                 jQuery('#listing_ajax_container').empty().append('<p class=" no_results_title ">'+mapfunctions_vars.half_no_results+'</p>');
             }
-            jQuery('#results').hide();
+            jQuery('#mo_results, #results').hide();
         }else{
             jQuery('#gmap-noresult').hide(); 
         
             if( !bounds.isEmpty() ){
                 map.fitBounds(bounds);
             } 
-            jQuery("#results, #showinpage,#showinpage_mobile").show();
-            jQuery("#results_no").show().empty().append(results_no); 
+            jQuery("#mo_results, #results, #showinpage,#showinpage_mobile").show();
+            jQuery("#mo_results_no, #results_no").show().empty().append(results_no); 
         
             
             if ( parseInt(mapfunctions_vars.is_half)===1 ){

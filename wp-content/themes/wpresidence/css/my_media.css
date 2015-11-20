@@ -2293,7 +2293,7 @@
     }    
 }
 
-
+/*
 @media only screen and (max-width: 991px) {
     .adv1-holder {        
         width: 100%;
@@ -2307,7 +2307,7 @@
         display: none;
     }
 }
-
+*/
 
 
 
@@ -2319,3 +2319,7 @@
         padding-bottom: 8px;
     }
 }*/
+
+#advanced_submit_2 {
+    
+}

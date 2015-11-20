@@ -1,4 +1,12 @@
-            <form role="search" method="get"   action="<?php echo get_page_link(17745) ?>" >
+<?php
+if(!isset($prefix)){
+    $prefix = '';
+}            
+
+    
+?>
+
+<form role="search" method="get"   action="<?php echo get_page_link(17745) ?>" >
                 <input type="hidden" name="tab" value="1">
 
                 <div class="form-in">
@@ -11,7 +19,7 @@
                                 <div class="form-control-in">
                                     <label class="two-label"><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
                                     <div class="value-row">
-                                        <input type="text" id="looking_where" name="looking_where" class="form-control w100" placeholder="<?php _e('City', 'wpestate') ?>"  value="<?php echo esc_attr(isset($_GET['looking_where']) ? esc_attr($_GET['looking_where']) : '') ?>">
+                                        <input type="text" id="<?php echo $prefix ?>looking_where" name="looking_where" class="form-control w100" placeholder="<?php _e('City', 'wpestate') ?>"  value="<?php echo esc_attr(isset($_GET['looking_where']) ? esc_attr($_GET['looking_where']) : '') ?>">
                                     </div>
                                 </div>
                             </div>
@@ -20,7 +28,7 @@
                                 <div class="form-control-in">
                                     <label class="two-label"><?php _e('Disponibility from', 'wpestate'); ?></label>
                                     <div class="value-row">
-                                        <input type="text" id="disponibility" name="disponibility" class="form-control w100" value="<?php echo esc_attr(isset($_GET['disponibility']) ? esc_attr($_GET['disponibility']) : '') ?>">
+                                        <input type="text" id="<?php echo $prefix ?>disponibility" name="disponibility" class="form-control w100" value="<?php echo esc_attr(isset($_GET['disponibility']) ? esc_attr($_GET['disponibility']) : '') ?>">
                                     </div>
                                 </div>
                             </div>
@@ -34,9 +42,9 @@
                                     <label class="two-label"><?php _e('Gender', 'wpestate'); ?></label>
                                     <div class="value-row">
 
-                                        <input id="user-gender-nevermind" name="user_gender" type="radio" value="" class="hidden">
-                                        <input id="user-gender-male" name="user_gender" type="radio" value="1" class="hidden" >
-                                        <input id="user-gender-female" name="user_gender" type="radio" value="2" class="hidden">
+                                        <input id="<?php echo $prefix ?>user-gender-nevermind" name="user_gender" type="radio" value="" class="hidden">
+                                        <input id="<?php echo $prefix ?>user-gender-male" name="user_gender" type="radio" value="1" class="hidden" >
+                                        <input id="<?php echo $prefix ?>user-gender-female" name="user_gender" type="radio" value="2" class="hidden">
 
                                         <label for="user-gender-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['user_gender']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                         <label for="user-gender-male" class="wpb_button wpb_btn-large <?php echo isset($_GET['user_gender']) && 1 == $_GET['user_gender'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Male', 'wpestate'); ?></label>
@@ -80,11 +88,11 @@
 
                                     <p>
                                         <label for="age" class="wauto"><?php _e('Age range:', 'wpestate'); ?></label>
-                                        <span id="age_label_text"><?php printf(__('%s to %s', 'wpestate'), (int) $age_min_val, (int) $age_max_val); ?></span>
+                                        <span id="<?php echo $prefix ?>age_label_text"><?php printf(__('%s to %s', 'wpestate'), (int) $age_min_val, (int) $age_max_val); ?></span>
                                     </p>
-                                    <div id="slider_age" class="fl-slider"></div>
-                                    <input type="hidden" id="age_low"  name="age_low"  value="<?php echo (int) $age_min_val; ?>" />
-                                    <input type="hidden" id="age_max"  name="age_max"  value="<?php echo (int) $age_max_val; ?>" />
+                                    <div id="<?php echo $prefix ?>slider_age" class="fl-slider"></div>
+                                    <input type="hidden" id="<?php echo $prefix ?>age_low"  name="age_low"  value="<?php echo (int) $age_min_val; ?>" />
+                                    <input type="hidden" id="<?php echo $prefix ?>age_max"  name="age_max"  value="<?php echo (int) $age_max_val; ?>" />
                                 </div><!-- /age slider -->
                             </div>
                         </div>
@@ -116,11 +124,11 @@
                                     ?>
                                     <p>
                                         <label for="roommate_amount" class="wauto"><?php _e('Price range:', 'wpestate'); ?></label>
-                                        <span id="roommate_amount" class="slide-label"><?php echo $price_slider_label ?></span>
+                                        <span id="<?php echo $prefix ?>roommate_amount" class="slide-label"><?php echo $price_slider_label ?></span>
                                     </p>
-                                    <div id="slider_roommate_price" data-bound_min="<?php echo (int) $roommate_price_low ?>" data-bound_max="<?php echo (int) $roommate_price_max ?>" class="fl-slider"></div>
-                                    <input type="hidden" value="<?php echo (int) $current_price_low ?>" name="rent_low" id="roommate_price_low">
-                                    <input type="hidden" value="<?php echo (int) $current_price_max ?>" name="rent_max" id="roommate_price_max">
+                                    <div id="<?php echo $prefix ?>slider_roommate_price" data-bound_min="<?php echo (int) $roommate_price_low ?>" data-bound_max="<?php echo (int) $roommate_price_max ?>" class="fl-slider"></div>
+                                    <input type="hidden" value="<?php echo (int) $current_price_low ?>" name="rent_low" id="<?php echo $prefix ?>roommate_price_low">
+                                    <input type="hidden" value="<?php echo (int) $current_price_max ?>" name="rent_max" id="<?php echo $prefix ?>roommate_price_max">
                                 </div><!-- /price slider -->
                             </div>
                         </div>
@@ -128,11 +136,11 @@
                         <!-- /sliders -->
                         <div class="clearfix"></div>
 
-                        <div id="roommate-advance" class="form-control-full tpadding adv_extended_options_text" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: none;"' : '' ?>>
+                        <div id="<?php echo $prefix ?>roommate-advance" class="form-control-full tpadding adv_extended_options_text" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: none;"' : '' ?>>
                             <?php _e('More search options', 'wpestate'); ?>
                         </div> 
 
-                        <div id="more-search-options" class="extended_search_check_wrapper" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: block;"' : '' ?>><!-- advance search block -->
+                        <div id="<?php echo $prefix ?>more-search-options" class="extended_search_check_wrapper" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: block;"' : '' ?>><!-- advance search block -->
 
                             <div class="form-control-half">
                                 <div class="form-control-in">
@@ -146,7 +154,7 @@
                                     ?>
                                     <label for="status"><?php _e('Someone looking for:', 'wpestate'); ?></label>
                                     <div class="value-row"> 
-                                        <select id="status" class="form-control w100" name="status" class="w100"> 
+                                        <select id="<?php echo $prefix ?>status" class="form-control w100" name="status" class="w100"> 
                                             <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option> 
                                             <?php foreach ($arr as $key => $val): ?>
                                                 <option value="<?php echo $key ?>" <?php echo isset($_GET['status']) && $_GET['status'] == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
@@ -160,9 +168,9 @@
                                 <div class="form-control-in">
                                     <label><?php _e('For how long', 'wpestate'); ?></label>
                                     <div class="value-row">
-                                        <input id="how_long-0" name="how_long" type="radio" value="" class="hidden">
-                                        <input id="how_long-1" name="how_long" type="radio" value="1" class="hidden" >
-                                        <input id="how_long-2" name="how_long" type="radio" value="2" class="hidden">
+                                        <input id="<?php echo $prefix ?>how_long-0" name="how_long" type="radio" value="" class="hidden">
+                                        <input id="<?php echo $prefix ?>how_long-1" name="how_long" type="radio" value="1" class="hidden" >
+                                        <input id="<?php echo $prefix ?>how_long-2" name="how_long" type="radio" value="2" class="hidden">
 
                                         <label for="how_long-0" class="wpb_button wpb_btn-large <?php echo empty($_GET['how_long']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                         <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo isset($_GET['how_long']) && 1 == $_GET['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Short term', 'wpestate'); ?></label>
@@ -179,9 +187,9 @@
                                         <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
 
                                         <div class="value-row">
-                                            <input id="sexual_preference-nevermind" name="sexual_preference" type="radio" value="" class="hidden">
-                                            <input id="sexual_preference-straight" name="sexual_preference" type="radio" value="1" class="hidden" >
-                                            <input id="sexual_preference-bi" name="sexual_preference" type="radio" value="2" class="hidden">
+                                            <input id="<?php echo $prefix ?>sexual_preference-nevermind" name="sexual_preference" type="radio" value="" class="hidden">
+                                            <input id="<?php echo $prefix ?>sexual_preference-straight" name="sexual_preference" type="radio" value="1" class="hidden" >
+                                            <input id="<?php echo $prefix ?>sexual_preference-bi" name="sexual_preference" type="radio" value="2" class="hidden">
 
                                             <label for="sexual_preference-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['sexual_preference']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                             <label for="sexual_preference-straight" class="wpb_button wpb_btn-large <?php echo isset($_GET['sexual_preference']) && 1 == $_GET['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Straight', 'wpestate'); ?></label>
@@ -198,9 +206,9 @@
 
                                         <div class="value-row">
 
-                                            <input id="sleeping_span-nevermind" name="sleeping_span" type="radio" value="" class="hidden">
-                                            <input id="sleeping_span-before" name="sleeping_span" type="radio" value="1" class="hidden" >
-                                            <input id="sleeping_span-after" name="sleeping_span" type="radio" value="2" class="hidden">
+                                            <input id="<?php echo $prefix ?>sleeping_span-nevermind" name="sleeping_span" type="radio" value="" class="hidden">
+                                            <input id="<?php echo $prefix ?>sleeping_span-before" name="sleeping_span" type="radio" value="1" class="hidden" >
+                                            <input id="<?php echo $prefix ?>sleeping_span-after" name="sleeping_span" type="radio" value="2" class="hidden">
 
                                             <label for="sleeping_span-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['sleeping_span']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                             <label for="sleeping_span-before" class="wpb_button wpb_btn-large <?php echo isset($_GET['sleeping_span']) && 1 == $_GET['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Before 11PM', 'wpestate'); ?></label>
@@ -216,9 +224,9 @@
                                         <label><?php _e('Couple', 'wpestate'); ?></label>
                                         <div class="value-row">
 
-                                            <input id="couple-nevermind" name="couple" type="radio" value="" class="hidden">
-                                            <input id="couple-alone" name="couple" type="radio" value="1" class="hidden" >
-                                            <input id="couple-in" name="couple" type="radio" value="2" class="hidden">
+                                            <input id="<?php echo $prefix ?>couple-nevermind" name="couple" type="radio" value="" class="hidden">
+                                            <input id="<?php echo $prefix ?>couple-alone" name="couple" type="radio" value="1" class="hidden" >
+                                            <input id="<?php echo $prefix ?>couple-in" name="couple" type="radio" value="2" class="hidden">
 
                                             <label for="couple-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['couple']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                             <label for="couple-alone" class="wpb_button wpb_btn-large <?php echo isset($_GET['couple']) && 1 == $_GET['couple'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Single', 'wpestate'); ?></label>
@@ -235,9 +243,9 @@
                                         <label><?php _e('Smoker', 'wpestate'); ?></label>
                                         <div class="value-row">
 
-                                            <input id="smoker-nevermind" name="smoker" type="radio" value="" class="hidden">
-                                            <input id="smoker-no" name="smoker" type="radio" value="1" class="hidden" >
-                                            <input id="smoker-yes" name="smoker" type="radio" value="2" class="hidden">
+                                            <input id="<?php echo $prefix ?>smoker-nevermind" name="smoker" type="radio" value="" class="hidden">
+                                            <input id="<?php echo $prefix ?>smoker-no" name="smoker" type="radio" value="1" class="hidden" >
+                                            <input id="<?php echo $prefix ?>smoker-yes" name="smoker" type="radio" value="2" class="hidden">
 
                                             <label for="smoker-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['smoker']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                             <label for="smoker-no" class="wpb_button wpb_btn-large <?php echo isset($_GET['smoker']) && 1 == $_GET['smoker'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Non-smoker', 'wpestate'); ?></label>
@@ -252,9 +260,9 @@
                                     <div class="switcher">
                                         <label><?php _e('Pets', 'wpestate'); ?></label>
                                         <div class="value-row">
-                                            <input id="pets-nevermind" name="pets" type="radio" value="" class="hidden">
-                                            <input id="pets-no" name="pets" type="radio" value="1" class="hidden" >
-                                            <input id="pets-yes" name="pets" type="radio" value="2" class="hidden">
+                                            <input id="<?php echo $prefix ?>pets-nevermind" name="pets" type="radio" value="" class="hidden">
+                                            <input id="<?php echo $prefix ?>pets-no" name="pets" type="radio" value="1" class="hidden" >
+                                            <input id="<?php echo $prefix ?>pets-yes" name="pets" type="radio" value="2" class="hidden">
                                             <label for="pets-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['pets']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                             <label for="pets-no" class="wpb_button wpb_btn-large <?php echo isset($_GET['pets']) && 1 == $_GET['pets'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('No pets', 'wpestate'); ?></label>
                                             <label for="pets-yes" class="wpb_button wpb_btn-large <?php echo isset($_GET['pets']) && 2 == $_GET['pets'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Pets', 'wpestate'); ?></label>
@@ -267,9 +275,9 @@
                                     <div class="switcher">
                                         <label><?php _e('Activity', 'wpestate'); ?></label>
                                         <div class="value-row">
-                                            <input id="activity-nevermind" name="activity" type="radio" value="" class="hidden">
-                                            <input id="activity-student" name="activity" type="radio" value="1" class="hidden" >
-                                            <input id="activity-professional" name="activity" type="radio" value="2" class="hidden">
+                                            <input id="<?php echo $prefix ?>activity-nevermind" name="activity" type="radio" value="" class="hidden">
+                                            <input id="<?php echo $prefix ?>activity-student" name="activity" type="radio" value="1" class="hidden" >
+                                            <input id="<?php echo $prefix ?>activity-professional" name="activity" type="radio" value="2" class="hidden">
                                             <label for="activity-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['activity']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                             <label for="activity-student" class="wpb_button wpb_btn-large <?php echo isset($_GET['activity']) && 1 == $_GET['activity'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Student', 'wpestate'); ?></label>
                                             <label for="activity-professional" class="wpb_button wpb_btn-large <?php echo isset($_GET['activity']) && 2 == $_GET['activity'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Professional', 'wpestate'); ?></label>
@@ -316,7 +324,7 @@
                                         $coutnries = fl_get_countries();
                                         ?>
                                         <p>
-                                            <select id="user_origin" name="origin" class="form-control">
+                                            <select id="<?php echo $prefix ?>user_origin" name="origin" class="form-control">
                                                 <option value=""><?php _e('Country of origin', 'wpestate'); ?></option>
                                                 <?php
                                                 if (!empty($coutnries)):
@@ -339,13 +347,13 @@
                             <div class="form-control-half">
                                 <div class="form-control-in">
                                     <div class="switcher">
-                                        <!--<input type="hidden" value="<?php echo isset($_GET['party']) ? (int) $_GET['party'] : '' ?>" name="party" id="party">-->
+                                        <!--<input type="hidden" value="<?php echo isset($_GET['party']) ? (int) $_GET['party'] : '' ?>" name="party" id="<?php echo $prefix ?>party">-->
                                         <label><?php _e('Party', 'wpestate'); ?></label>
 
                                         <div class="value-row">
-                                            <input id="party-nevermind" name="party" type="radio" value="" class="hidden">
-                                            <input id="party-often" name="party" type="radio" value="1" class="hidden" >
-                                            <input id="party-not-often" name="party" type="radio" value="2" class="hidden">
+                                            <input id="<?php echo $prefix ?>party-nevermind" name="party" type="radio" value="" class="hidden">
+                                            <input id="<?php echo $prefix ?>party-often" name="party" type="radio" value="1" class="hidden" >
+                                            <input id="<?php echo $prefix ?>party-not-often" name="party" type="radio" value="2" class="hidden">
                                             <label for="party-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['party']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                             <label for="party-often" class="wpb_button wpb_btn-large <?php echo isset($_GET['party']) && 1 == $_GET['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Often', 'wpestate'); ?></label>
                                             <label for="party-not-often" class="wpb_button wpb_btn-large <?php echo isset($_GET['party']) && 2 == $_GET['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Not often', 'wpestate'); ?></label>
@@ -379,10 +387,10 @@
                                     </p>
                                 </div>
                             </div> 
-                            <span id="roommate_extended_close_adv" class="adv_extended_close_adv" style="display: <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'inline' : 'none' ?>;">
+                            <span id="<?php echo $prefix ?>roommate_extended_close_adv" class="adv_extended_close_adv" style="display: <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'inline' : 'none' ?>;">
                                 <i class="fa fa-times"> </i> <?php _e('Less search options', 'wpestate'); ?>
                             </span> 
-                            <input id="ra" name="ra" type="hidden" value="<?php echo isset($_GET['ra']) ? (int) $_GET['ra'] : 0 ?>">
+                            <input class="ra" name="ra" type="hidden" value="<?php echo isset($_GET['ra']) ? (int) $_GET['ra'] : 0 ?>">
                         </div><!-- /advance search block -->
 
                         <?php
@@ -405,11 +413,11 @@
 
                 </div>
 
-                <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large btn-action border-radius" id="advanced_submit_2" value="<?php _e('Search', 'wpestate'); ?>">
+                <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large btn-action border-radius" id="<?php echo $prefix ?>advanced_submit_2" value="<?php _e('Search', 'wpestate'); ?>">
                 <?php if ($adv_search_type != 2) { ?>
-                    <div id="results">
-                        <?php _e('We found ', 'wpestate'); ?> <span id="results_no">0</span> <?php _e('results.', 'wpestate'); ?>
-                        <span id="showinpage"> <?php _e('Do you want to load the results now ?', 'wpestate'); ?> </span>
+                    <div id="<?php echo $prefix ?>results">
+                        <?php _e('We found ', 'wpestate'); ?> <span id="<?php echo $prefix ?>results_no">0</span> <?php _e('results.', 'wpestate'); ?>
+                        <span id="<?php echo $prefix ?>showinpage"> <?php _e('Do you want to load the results now ?', 'wpestate'); ?> </span>
                     </div>
                 <?php } ?>
                 <div class="clearfix"></div>

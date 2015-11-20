@@ -59,11 +59,11 @@ if ($extended_search == 'yes') {
         //<![CDATA[
         jQuery(document).ready(function ($) {
             var availableTags = ['<?php echo implode("','", $where) ?>'];
-            jQuery("#looking_where").autocomplete({
+            jQuery("#looking_where, #mo_looking_where").autocomplete({
                 source: availableTags
             });
 
-            jQuery("#disponibility").datepicker({
+            jQuery("#disponibility, #mo_disponibility").datepicker({
                 dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
             }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
 
