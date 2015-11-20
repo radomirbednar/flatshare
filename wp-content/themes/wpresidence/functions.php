@@ -12,7 +12,7 @@ require_once 'libs/theme-setup.php';//
 require_once 'libs/general-settings.php';//
 require_once 'libs/listing_functions.php'; 
 require_once 'libs/theme-slider.php'; 
-require_once 'libs/agents.php'; 
+//require_once 'libs/agents.php'; 
 require_once ('libs/invoices.php');
 require_once ('libs/searches.php');
 require_once ('libs/membership.php');
