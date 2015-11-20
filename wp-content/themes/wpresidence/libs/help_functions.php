@@ -1594,10 +1594,7 @@ if( !function_exists('wpestate_show_search_field') ):
          }
 endif; // 
 
-
-
-
-
+ 
 if( !function_exists('show_extended_search') ): 
     function show_extended_search($tip){
         print '<div class="adv_extended_options_text" id="adv_extended_options_text_'.$tip.'">'.__('More Search Options','wpestate').'</div>'; 
@@ -1607,12 +1604,10 @@ if( !function_exists('show_extended_search') ):
             foreach($advanced_exteded as $checker => $value){
                 $post_var_name  =   str_replace(' ','_', trim($value) );
                 $input_name     =   wpestate_limit45(sanitize_title( $post_var_name ));
-                $input_name     =   sanitize_key($input_name);
-
+                $input_name     =   sanitize_key($input_name); 
                 if (function_exists('icl_translate') ){
                     $value     =   icl_translate('wpestate','wp_estate_property_custom_amm_'.$value, $value ) ;                                      
-                }
-
+                } 
                 $value= str_replace('_',' ', trim($value) );
                 if($value!='none'){
                         $check_selected='';
@@ -1622,17 +1617,12 @@ if( !function_exists('show_extended_search') ):
                     print '<div class="extended_search_checker"><input type="checkbox" id="'.$input_name.$tip.'" name="'.$input_name.'" value="1" '.$check_selected.'><label for="'.$input_name.$tip.'">'.$value. '</label></div>';
                   }
                }  
-        print '<div class="clearfix"></div><span id="adv_extended_close_'.$tip.'"><i class="fa fa-times"></i> '.__('Less search options', 'wpestate').'</span>';         
-        print '</div>';    
-     
+            print '<div class="clearfix"></div><span id="adv_extended_close_'.$tip.'"><i class="fa fa-times"></i> '.__('Less search options', 'wpestate').'</span>';         
+            print '</div>';     
         }
 endif;
 
-
-
-
-
-
+ 
 ////////////////////////////////////////////////////////////////////////////////
 /// get select arguments
 ////////////////////////////////////////////////////////////////////////////////
