@@ -22,7 +22,12 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $user_language_ids = fl_get_user_languages_name($userID);
             $user_skill_ids = fl_get_user_house_skill_ids($userID);
             $user_title = get_the_author_meta('title', $userID);
+             
+            
             $user_custom_picture = get_the_author_meta('custom_picture', $userID);
+             
+             
+            
             $user_small_picture = get_the_author_meta('small_custom_picture', $userID);
             $image_id = get_the_author_meta('small_custom_picture', $userID);
             $about_me = get_the_author_meta('description', $userID);
