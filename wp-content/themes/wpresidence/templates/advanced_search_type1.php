@@ -122,19 +122,19 @@ if ($extended_search == 'yes') {
                 <div class="adv1-holder">
 
                     <?php
-                    $availableTags = '';
+                    $availableTags = array();
                     $args = array('hide_empty=0');
                     $terms = get_terms('property_city', $args);
                     foreach ($terms as $term) {
-                        $availableTags.= '"' . esc_attr($term->name) . '",';
+                        $availableTags[] = esc_attr($term->name);
                     }
                     ?>
 
                     <script type="text/javascript">
                         //<![CDATA[
-                        jQuery(document).ready(function () {
-                            var availableTags = [<?php echo $availableTags ?>];
-                            jQuery("#adv_location").autocomplete({
+                        jQuery(document).ready(function ($) {
+                            var availableTags = ['<?php echo implode("','", $availableTags); ?>'];
+                            $("#adv_location").autocomplete({
                                 source: availableTags
                             });
                         });
