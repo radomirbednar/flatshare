@@ -88,6 +88,17 @@ if ($extended_search == 'yes') {
         //]]>
     </script>
 
+    
+    <?php
+    $template = get_page_template();
+    
+    // jsem na strance properties, defaultne necham aktivni rental tab
+    if(is_page_template('advanced_search_results.php') && empty($_GET['tab'])){
+        $_GET['tab'] = 2;
+    }
+    
+    ?>
+    
     <!-- Nav tabs -->
     <ul id="what-lookup" class="nav nav-tabs" role="tablist">
         <li role="presentation" class="<?php echo!isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>">

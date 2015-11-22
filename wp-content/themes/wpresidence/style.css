@@ -11962,7 +11962,8 @@ select.dsidx-resp-select {
 .adv_search_slider{
     float: left;
     /*height: 53px;*/
-    height: 49px;
+    /*height: 49px;*/
+    height: 55px;
     padding-right: 15px!important;
 }
 
