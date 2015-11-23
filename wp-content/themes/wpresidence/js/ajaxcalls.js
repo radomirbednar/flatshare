@@ -1930,6 +1930,7 @@ jQuery(document).ready(function ($) {
     ////////////////////////////////////////////////////////////////////////////////////////////   
 
     $('#update_profile').click(function () {
+         
         var  userurl, usermobile, userpinterest, userlinkedin, usertwitter, userfacebook, profile_image_url, profile_image_url_small, firstname, secondname, useremail, userphone, userskype, usertitle, description, ajaxurl, securityprofile, upload_picture, how_long, looking_for, sexual_preference, sleeping_span, party, user_age;
         firstname           = $('#firstname').val();
         secondname          =  $('#secondname').val();
