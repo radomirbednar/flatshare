@@ -7564,6 +7564,7 @@ table tbody tr td {
     float: left;
     margin-right: 6px;
 }
+#adv_extended_close_mobile,
 .adv_extended_close_adv,
 #adv_extended_close_adv{
     top: 0px;
@@ -7583,6 +7584,7 @@ table tbody tr td {
     margin-bottom: 10px;
 }
 
+/*
 #adv_extended_close_mobile{
     position: absolute;
     top: 0px;
@@ -7590,7 +7592,7 @@ table tbody tr td {
     color: #99a3b1;
     display: none;
     cursor: pointer;
-}
+}*/
 
 #adv-search-mobile .extended_search_checker{
     width:100%;
