@@ -133,6 +133,9 @@ if ($extended_search == 'yes') {
                     <script type="text/javascript">
                         //<![CDATA[
                         jQuery(document).ready(function ($) {
+                            
+                            //console.log('autocomplele load');
+                            
                             var availableTags = ['<?php echo implode("','", $availableTags); ?>'];
                             $("#adv_location").autocomplete({
                                 source: availableTags

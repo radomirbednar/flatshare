@@ -87,6 +87,7 @@ if( !isset($_GET['is2']) ){
 
 if(!isset($_GET['filter_search_action'])){
     unset($args['meta_query']);
+    unset($mapargs['meta_query']);
 }
 
 

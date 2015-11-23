@@ -7469,8 +7469,8 @@ table tbody tr td {
 }
 
 .search_wr_1 .adv_extended_class .adv1-holder{
-    height:181px;
-    min-height: 181px;
+    height: 191px;
+    min-height: 191px;
     /*height: auto;*/
 }
 
@@ -7481,7 +7481,7 @@ table tbody tr td {
 
 .adv_extended_class #advanced_submit_2{
     padding: 41px 45px 37px 45px;
-    height: 144px;
+    height: 154px;
 }
 
 
