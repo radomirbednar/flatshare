@@ -333,7 +333,7 @@ small, .small {
 }
 
 label{
-    margin-bottom: 7px; 
+    margin-bottom: 6px; 
     color: #768082;
     font-size: 13px;
     font-weight: normal;
@@ -7564,6 +7564,7 @@ table tbody tr td {
     float: left;
     margin-right: 6px;
 }
+#adv_extended_close_mobile,
 .adv_extended_close_adv,
 #adv_extended_close_adv{
     top: 0px;
@@ -7583,6 +7584,7 @@ table tbody tr td {
     margin-bottom: 10px;
 }
 
+/*
 #adv_extended_close_mobile{
     position: absolute;
     top: 0px;
@@ -7590,7 +7592,7 @@ table tbody tr td {
     color: #99a3b1;
     display: none;
     cursor: pointer;
-}
+}*/
 
 #adv-search-mobile .extended_search_checker{
     width:100%;
@@ -12802,7 +12804,7 @@ span.sub{
     height: 34px;
     display: table-cell;
     vertical-align: bottom;   
-    padding-bottom: 8px;
+    padding-bottom: 7px;
 }
 .header-image .form-in {
 
