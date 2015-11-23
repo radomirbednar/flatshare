@@ -339,6 +339,12 @@
         margin-top: 10px;
     }
 
+    .header_media label {
+        margin-bottom: 4px;
+    }
+    .header_media .two-label {
+        padding-bottom: 4px;
+    }
 }
 
 @media only screen and  (max-width: 992px) and (min-width: 700px){
