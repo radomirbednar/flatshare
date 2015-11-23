@@ -615,12 +615,16 @@
     }
 
     .adv_extended_class #advanced_submit_2 {
-        width: 185px;
-        float: right;
+        width: 112px;
+        /*float: right;
         position: relative;
+        */
         padding: 0px 0 0 3px;
         height: 40px;        
         margin-right: 5px;
+        position: absolute;
+        right: 33px;
+        bottom: 0px;
     }
 
     .header_media .adv1-holder {
