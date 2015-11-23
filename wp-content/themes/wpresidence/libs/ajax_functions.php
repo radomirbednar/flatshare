@@ -1400,6 +1400,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         $user_origin    =   esc_attr( $data['user_origin'] );
                 
                 
+        
         if($firstname==''){
             $has_errors=true;
             $errors[]=__('Please submit a First Name','wpestate');
@@ -1419,6 +1420,13 @@ if( !function_exists('wpestate_ajax_update_profile') ):
             $has_errors=true;
             $errors[]=__('Please submit a mobile phone','wpestate');
         }
+                
+        if($data['birthdate']==''){
+            $has_errors=true;
+            $errors[]=__('Please submit a birthdate','wpestate');      
+        }
+        
+                
                 
         if($has_errors){
             foreach($errors as $key=>$value){   
