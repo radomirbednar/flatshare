@@ -88,6 +88,17 @@ if ($extended_search == 'yes') {
         //]]>
     </script>
 
+    
+    <?php
+    $template = get_page_template();
+    
+    // jsem na strance properties, defaultne necham aktivni rental tab
+    if(is_page_template('advanced_search_results.php') && empty($_GET['tab'])){
+        $_GET['tab'] = 2;
+    }
+    
+    ?>
+    
     <!-- Nav tabs -->
     <ul id="what-lookup" class="nav nav-tabs" role="tablist">
         <li role="presentation" class="<?php echo!isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>">
@@ -111,19 +122,22 @@ if ($extended_search == 'yes') {
                 <div class="adv1-holder">
 
                     <?php
-                    $availableTags = '';
+                    $availableTags = array();
                     $args = array('hide_empty=0');
                     $terms = get_terms('property_city', $args);
                     foreach ($terms as $term) {
-                        $availableTags.= '"' . esc_attr($term->name) . '",';
+                        $availableTags[] = esc_attr($term->name);
                     }
                     ?>
 
                     <script type="text/javascript">
                         //<![CDATA[
-                        jQuery(document).ready(function () {
-                            var availableTags = [<?php echo $availableTags ?>];
-                            jQuery("#adv_location").autocomplete({
+                        jQuery(document).ready(function ($) {
+                            
+                            //console.log('autocomplele load');
+                            
+                            var availableTags = ['<?php echo implode("','", $availableTags); ?>'];
+                            $("#adv_location").autocomplete({
                                 source: availableTags
                             });
                         });

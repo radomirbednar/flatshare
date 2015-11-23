@@ -273,6 +273,9 @@ function custom_get_filtering_ajax_result() {
 function start_filtering_ajax(newpage) {
     "use strict";
         
+        
+    console.log('start_filtering_ajax');    
+        
     var action, category, city, area, rooms, baths, min_price, price_max, ajaxurl,postid,halfmap, all_checkers;
     action      =   jQuery('#adv_actions').attr('data-value');
     category    =   jQuery('#adv_categ').attr('data-value');

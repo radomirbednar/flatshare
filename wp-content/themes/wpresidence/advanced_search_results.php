@@ -85,6 +85,12 @@ if( !isset($_GET['is2']) ){
 }
 
 
+if(!isset($_GET['filter_search_action'])){
+    unset($args['meta_query']);
+    unset($mapargs['meta_query']);
+}
+
+
 if( !empty($id_array)){
     $args=  array(  'post_type'     => 'estate_property',
                     'p'           =>    $id_array
