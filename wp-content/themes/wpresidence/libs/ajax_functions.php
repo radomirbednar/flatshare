@@ -48,6 +48,9 @@ if( !function_exists('wpestate_ajax_filter_invoices') ):
 
         $meta_query=array();
 
+        
+        
+        
         if( isset($_POST['type']) &&  $_POST['type']!='' ){
             $temp_arr             =   array();
             $type                 =   esc_html($_POST['type']);
@@ -90,9 +93,7 @@ if( !function_exists('wpestate_ajax_filter_invoices') ):
             'meta_query'       => $meta_query,
             'date_query'       => $date_query
         );
-
-
-
+                
         $prop_selection = new WP_Query($args);
         $total_confirmed = 0;
         $total_issued=0;
@@ -1350,14 +1351,12 @@ function wpestate_tg_validate_url($post_id,$type) {
 }
 
 endif; // end   wpestate_tg_validate_url
-
-
-
-
-
+       
+                
 ////////////////////////////////////////////////////////////////////////////////
 /// Ajax  Forgot Pass function
 ////////////////////////////////////////////////////////////////////////////////
+
 add_action( 'wp_ajax_nopriv_wpestate_ajax_update_profile', 'wpestate_ajax_update_profile' );
 add_action( 'wp_ajax_wpestate_ajax_update_profile', 'wpestate_ajax_update_profile' );
 
@@ -1368,15 +1367,18 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         /**
          * serializovane inputy poslane ajaxem
          */
-        parse_str ( $_POST['data'], $data);
-
+    
+        parse_str ( $_POST['data'], $data); 
         global $current_user;
         get_currentuserinfo();
         $userID         =   $current_user->ID;
         check_ajax_referer( 'profile_ajax_nonce', 'security-profile' );
-        $allowed_html   =   array();
-        
+        $allowed_html   =   array();     
         //check obligatory in form
+        
+        $errors         =   array();        
+        $has_errors     =   false;   
+        
         
         $firstname      =   wp_kses( $_POST['firstname'] ,$allowed_html) ;
         $secondname     =   wp_kses( $_POST['secondname'] ,$allowed_html) ;
@@ -1396,7 +1398,41 @@ if( !function_exists('wpestate_ajax_update_profile') ):
 
         $looking_where  =   esc_attr(trim($data['looking_where']));
         $user_origin    =   esc_attr( $data['user_origin'] );
-
+                
+                
+        
+        if($firstname==''){
+            $has_errors=true;
+            $errors[]=__('Please submit a First Name','wpestate');
+        }
+        
+        if($secondname==''){
+            $has_errors=true;
+            $errors[]=__('Please submit a Last Name','wpestate');
+        }
+        
+        if($useremail==''){
+            $has_errors=true;
+            $errors[]=__('Please submit a email','wpestate');
+        }
+        
+        if($usermobile==''){
+            $has_errors=true;
+            $errors[]=__('Please submit a mobile phone','wpestate');
+        }
+                
+        if($data['birthdate']==''){
+            $has_errors=true;
+            $errors[]=__('Please submit a birthdate','wpestate');      
+        }
+                
+        if($has_errors){
+            foreach($errors as $key=>$value){   
+                echo $value.'</br>'; 
+            }    
+         die();    
+        } 
+                
         update_user_meta( $userID, 'first_name', $firstname ) ;
         update_user_meta( $userID, 'last_name',  $secondname) ;
         update_user_meta( $userID, 'phone' , $userphone) ;
@@ -1413,15 +1449,9 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         update_user_meta( $userID, 'website' , $userurl) ;
         update_user_meta( $userID, 'user_origin' , $user_origin) ;
         update_user_meta( $userID, 'looking_where' , $looking_where) ;
-        
-        
-        
-        
-        
-
+                
         /**
          * Update user integer values
-         */
         /*
         $user_data = array(
             'how_long',
@@ -1447,8 +1477,8 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                 delete_user_meta_int($userID, $key);
             }
         }*/
-
-
+                
+        
         /**
          * update our new user data
          */
@@ -1465,10 +1495,8 @@ if( !function_exists('wpestate_ajax_update_profile') ):
          * Update user skills
          */
         fl_update_user_skill($userID, empty($data['skill']) ? array() : $data['skill']);
-
-
-
-
+                
+        
         $agent_id=get_user_meta( $userID, 'user_agent_id',true);
         if('yes' ==  esc_html ( get_option('wp_estate_user_agent','') )){
             wpestate_update_user_agent ($userurl,$agent_id, $firstname ,$secondname ,$useremail,$userphone,$userskype,$usertitle,$profile_image_url,$usermobile,$about_me,$profile_image_url_small,$userfacebook,$usertwitter,$userlinkedin,$userpinterest) ;
@@ -1486,10 +1514,7 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                  wp_update_user( $args );
             }
         }
-
-
-
-
+                
         _e('Profile updated','wpestate');
         die();
    }
@@ -1615,11 +1640,7 @@ if( !function_exists('wpestate_ajax_add_fav') ):
         die();
    }
  endif; // end   wpestate_ajax_add_fav
-
-
-
-
-
+                
 ////////////////////////////////////////////////////////////////////////////////
 /// Ajax  Show login form
 ////////////////////////////////////////////////////////////////////////////////

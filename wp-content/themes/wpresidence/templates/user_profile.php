@@ -77,11 +77,11 @@ if ($user_custom_picture == '') {
     <div class="add-estate profile-page row">
         <div class="profile_div col-md-4" id="profile-div">
             <?php
-            print '<img id="profile-image" src="' . $user_custom_picture . '" alt="user image" data-profileurl="' . $user_custom_picture . '" data-smallprofileurl="' . $image_id . '" >';
-
+            
+                print '<img id="profile-image" src="' . $user_custom_picture . '" alt="user image" data-profileurl="' . $user_custom_picture . '" data-smallprofileurl="' . $image_id . '" >';
+            
             //print '/ '.$user_small_picture;
-            ?>
-
+            ?> 
             <div id="upload-container">
                 <div id="aaiu-upload-container">
 
@@ -92,54 +92,43 @@ if ($user_custom_picture == '') {
                 </div>
             </div>
             <span class="upload_explain"><?php _e('*minimum 314px x 180px', 'wpestate'); ?></span>
-        </div>
-
+        </div> 
+        
         <div class="col-md-4">
             <p>
                 <label for="firstname"><?php _e('* First Name (mandatory)', 'wpestate'); ?></label>
-                <input type="text" id="firstname" class="form-control" value="<?php echo $first_name; ?>"  name="firstname">
-            </p>
-
+                <input type="text" id="firstname" class="form-control" value="<?php echo $first_name; ?>"  name="firstname" required>
+            </p> 
             <p>
                 <label for="secondname"><?php _e('* Last Name (mandatory)', 'wpestate'); ?></label>
-                <input type="text" id="secondname" class="form-control" value="<?php echo $last_name; ?>"  name="firstname">
-            </p>
-
+                <input type="text" id="secondname" class="form-control" value="<?php echo $last_name; ?>"  name="firstname" required>
+            </p> 
             <p>
                 <label for="useremail"><?php _e('* Email (mandatory)', 'wpestate'); ?></label>
-                <input type="text" id="useremail"  class="form-control" value="<?php echo $user_email; ?>"  name="useremail">
-            </p>
-
+                <input type="email" id="useremail"  class="form-control" value="<?php echo $user_email; ?>"  name="useremail" required>
+            </p> 
         </div>
-
-
-        <div class="col-md-4">
-
-
+ 
+        <div class="col-md-4"> 
             <p>
                 <label for="userphone"><?php _e('Phone', 'wpestate'); ?></label>
                 <input type="text" id="userphone" class="form-control" value="<?php echo $user_phone; ?>"  name="userphone">
             </p>
             <p>
                 <label for="usermobile"><?php _e('* Mobile (mandatory)', 'wpestate'); ?></label>
-                <input type="text" id="usermobile" class="form-control" value="<?php echo $user_mobile; ?>"  name="usermobile">
-            </p>
-
+                <input type="text" id="usermobile" class="form-control" value="<?php echo $user_mobile; ?>"  name="usermobile" required>
+            </p> 
             <p>
                 <label for="userskype"><?php _e('Skype', 'wpestate'); ?></label>
                 <input type="text" id="userskype" class="form-control" value="<?php echo $user_skype; ?>"  name="userskype">
-            </p>
-
-            <?php wp_nonce_field('profile_ajax_nonce', 'security-profile'); ?>
-
-
+            </p> 
+            <?php wp_nonce_field('profile_ajax_nonce', 'security-profile'); ?> 
         </div>
+        
     </div>
 
-    <h3><?php _e('Personal information', 'wpestate'); ?></h3>
-
-    <div class="add-user-personal profile-page row border-radius">
-
+    <h3><?php _e('Personal information', 'wpestate'); ?></h3> 
+    <div class="add-user-personal profile-page row border-radius"> 
         <div class="col-xs-12">
             <?php
             /*
@@ -149,10 +138,8 @@ if ($user_custom_picture == '') {
                 2 => __('Looking for a roommate', 'wpestate'),
                     //   4 => __('Landlord', 'wpestate'),
             );
-            */
-            
-            $arr = fl_user_statuses();
-            
+            */ 
+            $arr = fl_user_statuses(); 
             ?>
             <label for="user_status"><?php _e('Your status:', 'wpestate'); ?></label>
             <select id="user_status" name="user_status" class="w100">
@@ -160,23 +147,17 @@ if ($user_custom_picture == '') {
                     <option value="<?php echo $key ?>" <?php echo $user_status == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
                 <?php endforeach; ?>
             </select>    
-        </div>
-
-        <div class="col-md-6">
-
-            <div class="switcher fl-row">
-
-                <label><?php _e('For how long', 'wpestate'); ?></label>
-
+        </div> 
+        <div class="col-md-6"> 
+            <div class="switcher fl-row"> 
+                <label><?php _e('For how long', 'wpestate'); ?></label> 
                 <div class="value-row">
                     <input id="how_long-1" name="how_long" type="radio" value="1" class="hidden" <?php echo isset($how_long) && 1 == $how_long ? ' checked="checked" ' : '' ?>>
                     <input id="how_long-2" name="how_long" type="radio" value="2" class="hidden" <?php echo isset($how_long) && 2 == $how_long ? ' checked="checked" ' : '' ?>>
                     <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo empty($how_long) || 1 == $how_long ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Short term', 'wpestate'); ?></label>
                     <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($how_long) && 2 == $how_long ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Long term', 'wpestate'); ?></label>
-                </div>                
-
-            </div>
-
+                </div>                 
+            </div> 
             <div class="switcher fl-row">
                 <!--<input type="hidden" id="looking_for" name="looking_for" value="<?php echo (int) $looking_for ?>">-->
                 <label><?php _e('Looking for', 'wpestate'); ?></label>
@@ -499,18 +480,15 @@ if ($user_custom_picture == '') {
             <p>
                 <label for="userfacebook"><?php _e('Facebook Url', 'wpestate'); ?></label>
                 <input type="text" id="userfacebook" class="form-control" value="<?php echo $facebook; ?>"  name="userfacebook">
-            </p>
-
+            </p> 
             <p>
                 <label for="usertwitter"><?php _e('Twitter Url', 'wpestate'); ?></label>
                 <input type="text" id="usertwitter" class="form-control" value="<?php echo $twitter; ?>"  name="usertwitter">
-            </p>
-
+            </p> 
             <p>
                 <label for="userlinkedin"><?php _e('Linkedin Url', 'wpestate'); ?></label>
                 <input type="text" id="userlinkedin" class="form-control"  value="<?php echo $linkedin; ?>"  name="userlinkedin">
-            </p>
-
+            </p> 
             <p>
                 <label for="userpinterest"><?php _e('Pinterest Url', 'wpestate'); ?></label>
                 <input type="text" id="userpinterest" class="form-control" value="<?php echo $pinterest; ?>"  name="userpinterest">
@@ -529,8 +507,7 @@ if ($user_custom_picture == '') {
             <p>
                 <label for="about_me"><?php _e('About Me', 'wpestate'); ?></label>
                 <textarea id="about_me" class="form-control" name="about_me"><?php echo $about_me; ?></textarea>
-            </p>
-
+            </p> 
         </div>
 
         <p class="fullp-button">
@@ -559,4 +536,4 @@ if ($user_custom_picture == '') {
             <button class="wpb_button  wpb_btn-info wpb_btn-large vc_button" id="change_pass"><?php _e('Reset Password', 'wpestate'); ?></button>
         </p>
     </div>
-</div>
+</div> 
