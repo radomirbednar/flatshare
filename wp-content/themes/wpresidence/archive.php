@@ -9,7 +9,17 @@ $blog_unit  =   esc_html ( get_option('wp_estate_blog_unit','') );
 
 <div class="row"> 
     <?php get_template_part('templates/breadcrumbs'); ?>
-    <div class=" <?php print $options['content_class'];?> ">
+    
+    <?php
+    $classes = $options['content_class'];
+    
+    if(is_category(41)){
+        $classes = 'col-md-12 rightmargin ';
+    }
+    
+    ?>
+    
+    <div class="<?php print $classes;  ?> ">
           <?php get_template_part('templates/ajax_container'); ?>
           <h1 class="entry-title">
              <?php 
@@ -29,10 +39,14 @@ $blog_unit  =   esc_html ( get_option('wp_estate_blog_unit','') );
           </h1>
           <div class="blog_list_wrapper">
           <?php   
-           while (have_posts()) : the_post();
-                if($blog_unit=='list'){
+           while (have_posts()) : the_post();           
+                if(is_category(41)){
+                    get_template_part('templates/blog_unit3');
+                } 
+                else if($blog_unit=='list'){
                     get_template_part('templates/blog_unit');
-                }else{
+                }
+                else{
                     get_template_part('templates/blog_unit2');
                 }       
            endwhile;
@@ -47,7 +61,7 @@ $blog_unit  =   esc_html ( get_option('wp_estate_blog_unit','') );
 
     if(!is_category(41))
     {
-        include(locate_template('sidebar.php'));
+       include(locate_template('sidebar.php'));
     }
 
 ?>
