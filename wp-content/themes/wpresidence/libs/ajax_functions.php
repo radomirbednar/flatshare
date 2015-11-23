@@ -1375,6 +1375,9 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         $userID         =   $current_user->ID;
         check_ajax_referer( 'profile_ajax_nonce', 'security-profile' );
         $allowed_html   =   array();
+        
+        //check obligatory in form
+        
         $firstname      =   wp_kses( $_POST['firstname'] ,$allowed_html) ;
         $secondname     =   wp_kses( $_POST['secondname'] ,$allowed_html) ;
         $useremail      =   wp_kses( $_POST['useremail'] ,$allowed_html) ;
@@ -1937,14 +1940,13 @@ if( !function_exists('get_filtering_ajax_result') ):
         $area_array =
         $city_array =
         $action_array               = '';
-        $categ_array                = '';
-
+        $categ_array                = ''; 
         $options        =   wpestate_page_details(intval($_POST['postid']));
-
-
+                
         //////////////////////////////////////////////////////////////////////////////////////
         ///// category filters
         //////////////////////////////////////////////////////////////////////////////////////
+        
         $allowed_html   =   array();
         if (isset($_POST['category_values']) && trim($_POST['category_values']) != 'all' ){
             $taxcateg_include   =   sanitize_title ( wp_kses(  $_POST['category_values'] ,$allowed_html ) );
@@ -1955,8 +1957,7 @@ if( !function_exists('get_filtering_ajax_result') ):
             );
         }
 
-
-
+                
         //////////////////////////////////////////////////////////////////////////////////////
         ///// action  filters
         //////////////////////////////////////////////////////////////////////////////////////

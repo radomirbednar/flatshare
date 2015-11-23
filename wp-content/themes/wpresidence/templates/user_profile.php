@@ -536,10 +536,7 @@ if ($user_custom_picture == '') {
         <p class="fullp-button">
             <button class="wpb_button  wpb_btn-info wpb_btn-large" id="update_profile"><?php _e('Update profile', 'wpestate'); ?></button>
         </p>
-    </div>
-
-
-
+    </div> 
     <h3><?php _e('Change Password', 'wpestate'); ?> </h3> 
     <div class="profile-page row">
         <div class="pass_note"> <?php _e('*After you change the password you will have to login again.', 'wpestate') ?></div>
