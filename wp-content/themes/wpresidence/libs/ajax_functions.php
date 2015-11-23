@@ -1425,8 +1425,6 @@ if( !function_exists('wpestate_ajax_update_profile') ):
             $has_errors=true;
             $errors[]=__('Please submit a birthdate','wpestate');      
         }
-        
-                
                 
         if($has_errors){
             foreach($errors as $key=>$value){   
@@ -1479,8 +1477,8 @@ if( !function_exists('wpestate_ajax_update_profile') ):
                 delete_user_meta_int($userID, $key);
             }
         }*/
-
-
+                
+        
         /**
          * update our new user data
          */
@@ -1642,11 +1640,7 @@ if( !function_exists('wpestate_ajax_add_fav') ):
         die();
    }
  endif; // end   wpestate_ajax_add_fav
-
-
-
-
-
+                
 ////////////////////////////////////////////////////////////////////////////////
 /// Ajax  Show login form
 ////////////////////////////////////////////////////////////////////////////////
