@@ -35,7 +35,7 @@ if(17745 == $p_id):
             //e.preventDefault();            
             var target = $("#scroll-to").offset().top;            
             
-            console.log(target);
+            //console.log(target);
             
             if(target > 100){            
                 $('html, body').animate({
