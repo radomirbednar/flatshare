@@ -7035,11 +7035,11 @@ table tbody tr td {
 
 .search-tab,
 #adv-search-header-1{
-    background-color: #fff;
+    /*background-color: #fff;*/
     height: 40px;
     margin: 0px;
     /*padding: 13px 15px 10px 15px;*/
-    color: #555;
+    /*color: #555;*/
     cursor: pointer;
     /*
     position: absolute;
@@ -7049,6 +7049,8 @@ table tbody tr td {
     border-top-right-radius: 4px;
     font-size: 15px;
     width: 228px;
+    background-color: #3C90BE;
+    color: white;
 }
 /*
 #adv-search-header-1:after{
@@ -12470,9 +12472,11 @@ span.wpcf7-form-control-wrap {
 .search_wrapper .nav-tabs > li.active > a,
 .search_wrapper .nav > li > a:hover, 
 .search_wrapper .nav > li > a:focus {
-    background-color: #3C90BE;
+    /*background-color: #3C90BE;*/
+    background-color: #fff;
+    color: #555;
     text-decoration: none;
-    color: white;
+    /*color: white;*/
     border-color: transparent;
 }
 .search_wrapper a {
@@ -12795,9 +12799,16 @@ span.sub{
 
 .adv-search-mobile .nav-tabs > li > a,
 .search_wrapper .nav-tabs > li > a {
+    /*
     border-top: 1px solid #f0f0f0;
     border-right: 1px solid #f0f0f0;
     border-left: 1px solid #f0f0f0;
+    */
+    border-top: 1px solid #3C90BE;
+    border-right: 1px solid #3C90BE;
+    border-left: 1px solid #3C90BE;    
+    
+    
 }
 
 .two-label {        
