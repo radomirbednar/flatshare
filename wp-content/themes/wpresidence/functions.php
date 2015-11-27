@@ -811,15 +811,13 @@ if( !function_exists('wpestate_show_search_field_classic_form') ):
     }
 endif;     
 
-/*
-            
+/* 
 function restrict_admin(){
 //if not administrator, kill WordPress execution and provide a message
     if ( ! current_user_can( 'delete_others_posts' ) ) {
         wp_die( __('You are not allowed to access this part of the site') );
     }
 }
-add_action( 'admin_init', 'restrict_admin', 1 );
-
+add_action( 'admin_init', 'restrict_admin', 1 ); 
 */
             
