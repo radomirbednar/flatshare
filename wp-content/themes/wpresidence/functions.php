@@ -823,4 +823,3 @@ add_action( 'admin_init', 'restrict_admin', 1 );
 
 */
             
-?> 
