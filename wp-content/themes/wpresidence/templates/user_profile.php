@@ -367,7 +367,7 @@ if ($user_custom_picture == '') {
                     }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');
 
                     jQuery("#birthdate").datepicker({
-                        yearRange: '<?php echo DATE('Y') - 99  ?>:<?php echo DATE('Y')  ?>',
+                        yearRange: '<?php echo DATE('Y') - 99  ?>:<?php echo DATE('Y') - 18  ?>',
                         changeYear: true,
                         dateFormat: "<?php echo DATEPICKER_FORMAT ?>",
                     }, jQuery.datepicker.regional[control_vars.datepick_lang]).datepicker('widget').wrap('<div class="ll-skin-melon"/>');

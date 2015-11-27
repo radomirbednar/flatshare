@@ -23,13 +23,31 @@ if ($extended_search == 'yes') {
         $close_class = 'adv-search-1-close-extended';
     }
 }
+
+
+$p_id = get_the_ID();
+
+// 17745 = roomate search result page
+if(17745 == $p_id):
 ?>
-
-
-
+<script>    
+        jQuery(document).ready(function ($) {        
+            //e.preventDefault();            
+            var target = $("#scroll-to").offset().top;            
+            
+            //console.log(target);
+            
+            if(target > 100){            
+                $('html, body').animate({
+                    scrollTop: target
+                }, 2000);
+            }
+        });
+</script>    
+<?php endif; ?>
 
 <div class="adv-search-1 <?php echo $close_class . ' ' . $extended_class; ?>" id="adv-search-1" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : '' ?>>
-
+<div class="scroll-to-wrap"><div id="scroll-to"></div></div>
 
     <?php
     global $wpdb;
@@ -70,7 +88,7 @@ if ($extended_search == 'yes') {
             /*
              $('#what-lookup a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
              var tab = $(e.target).attr('aria-controls');
-
+             
              switch(tab){
              case 'roommate':
              $('#video-wrap').show();
@@ -81,24 +99,23 @@ if ($extended_search == 'yes') {
              $('#gmap_wrapper').show();
              break;
              }
-
+             
              })*/
 
         });
         //]]>
     </script>
 
-    
+
     <?php
     $template = get_page_template();
-    
+
     // jsem na strance properties, defaultne necham aktivni rental tab
-    if(is_page_template('advanced_search_results.php') && empty($_GET['tab'])){
+    if (is_page_template('advanced_search_results.php') && empty($_GET['tab'])) {
         $_GET['tab'] = 2;
     }
-    
     ?>
-    
+
     <!-- Nav tabs -->
     <ul id="what-lookup" class="nav nav-tabs" role="tablist">
         <li role="presentation" class="<?php echo!isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>">
@@ -113,7 +130,7 @@ if ($extended_search == 'yes') {
     <div class="tab-content">
 
         <div role="tabpanel" class="tab-pane <?php echo!isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>" id="roommate"><!-- search roommate panel -->
-            <?php include(locate_template('templates/form_roomate_search.php'));  ?>
+            <?php include(locate_template('templates/form_roomate_search.php')); ?>
         </div><!-- /search roommate panel -->
 
         <div role="tabpanel" class="tab-pane <?php echo isset($_GET['tab']) && 2 == $_GET['tab'] ? 'active' : '' ?>" id="rental"><!-- rental search -->
@@ -133,9 +150,9 @@ if ($extended_search == 'yes') {
                     <script type="text/javascript">
                         //<![CDATA[
                         jQuery(document).ready(function ($) {
-                            
+
                             //console.log('autocomplele load');
-                            
+
                             var availableTags = ['<?php echo implode("','", $availableTags); ?>'];
                             $("#adv_location").autocomplete({
                                 source: availableTags
