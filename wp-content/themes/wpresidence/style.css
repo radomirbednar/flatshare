@@ -12880,4 +12880,7 @@ span.sub{
     position: absolute;
     left: 0;
     bottom: 126px;    
-}
+} 
+.profile-page label.wpb_btn-large, .profile-page button.wpb_btn-large, .profile-page span.wpb_btn-large{  
+    min-width: 32%; 
+} 

@@ -312,9 +312,6 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {
         }else{
             $property_county_state  =   wp_kses($_POST['property_county'],$allowed_html);
         }
-       
-        
-        
         
                 
         $show_err                       =   '';
@@ -361,7 +358,8 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {
         $errors                         =   array();
         
         $moving_array=array();
-        foreach($feature_list_array as $key => $value){
+        foreach($feature_list_array as $key => $value) {
+            
             $post_var_name    =   str_replace(' ','_', trim($value) );
             $post_var_name    =   wpestate_limit45(sanitize_title( $post_var_name ));
             $post_var_name    =   sanitize_key($post_var_name);
@@ -414,6 +412,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {
      
         $i=0;
         if( !empty($custom_fields)){  
+            
             while($i< count($custom_fields) ){
                $name =   $custom_fields[$i][0];
                $type =   $custom_fields[$i][1];
@@ -552,12 +551,10 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {
                 }
                 
             }
-          
-   
+           
             update_post_meta($post_id, 'sidebar_agent_option', 'global');
             update_post_meta($post_id, 'local_pgpr_slider_type', 'global');
-            update_post_meta($post_id, 'local_pgpr_content_type', 'global');
-       
+            update_post_meta($post_id, 'local_pgpr_content_type', 'global'); 
             update_post_meta($post_id, 'prop_featured', 0);
             update_post_meta($post_id, 'property_address', $property_address);
             update_post_meta($post_id, 'property_county', $property_county);
@@ -596,7 +593,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {
            
             // save custom fields
             $custom_fields = get_option( 'wp_estate_custom_fields', true);  
-     
+             
             $i=0;
             if( !empty($custom_fields)){  
                 while($i< count($custom_fields) ){
@@ -621,10 +618,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {
                    $i++;
                 }
             }
-            
-            
-            
-            
+             
             foreach($feature_list_array as $key => $value){
                 $post_var_name      =   str_replace(' ','_', trim($value) );
                 $post_var_name      =   wpestate_limit45(sanitize_title( $post_var_name ));
@@ -634,8 +628,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='view' ) {
                     $feature_value  =   wp_kses( $_POST[$post_var_name] ,$allowed_html);
                     update_post_meta($post_id, $post_var_name, $feature_value);
                 }
-                
-                
+ 
                 $moving_array[] =   $post_var_name;
             }
    
@@ -733,9 +726,8 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='edit' ) {
             $property_county_state  =   wp_kses($_POST['property_county'],$allowed_html);
         }
         
-     
-            
-       
+        
+        
         
         $submit_title                   =   wp_kses( $_POST['title'] ,$allowed_html); 
         $submit_description             =   wp_filter_nohtml_kses( $_POST['description']);
@@ -852,10 +844,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='edit' ) {
             $edited=1;
         }
         
-      
-     
-     
-
+ 
         if( $edited==1) {
             //uploaded images
             $attchs=explode(',',$_POST['attachid']);
@@ -949,15 +938,13 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='edit' ) {
                     $t_id=$terms->term_id;
                     $term_meta=array('cityparent'=>$property_city);
                     add_option( "taxonomy_$t_id", $term_meta );
-                }
-               
-            }
-          
-          
+                }    
+            } 
+            
             update_post_meta($post_id, 'property_address', $property_address);
             update_post_meta($post_id, 'property_county', $property_county);
             update_post_meta($post_id, 'property_zip', $property_zip);
-         //   update_post_meta($post_id, 'property_state', $property_state);
+            //update_post_meta($post_id, 'property_state', $property_state);
             update_post_meta($post_id, 'property_country', $country_selected);
             update_post_meta($post_id, 'property_size', $property_size);
             update_post_meta($post_id, 'owner_notes', $owner_notes);
@@ -985,8 +972,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='edit' ) {
                     update_post_meta($post_id, $post_var_name, $feature_value);
                 }
             }
-        
-    
+         
             // save custom fields
             $i=0;
             if( !empty($custom_fields)){  
@@ -1009,7 +995,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='edit' ) {
                         $custom_fields_array[$slug]= wp_kses( $_POST[$slug],$allowed_html); ;
                     $i++;
                 }
-            }
+            } 
             // get user dashboard link
             $redirect = get_dashboard_link();
             wp_reset_query();
@@ -1023,48 +1009,28 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action']=='edit' ) {
             wp_redirect( $redirect);
             exit;
         }// end if edited
-}
-
-
-
-
-get_header();
-$options=wpestate_page_details($post->ID);
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////
-/////// Html Form Code below
-///////////////////////////////////////////////////////////////////////////////////////////
-?> 
-
-
+} 
+    get_header();    
+    $options = wpestate_page_details( $post->ID );
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    /////// Html Form Code below
+    ///////////////////////////////////////////////////////////////////////////////////////////
+?>  
 <div id="cover"></div>
 <div class="row">
-    <?php get_template_part('templates/breadcrumbs'); ?>
-
+    <?php get_template_part('templates/breadcrumbs'); ?> 
     <div class="col-md-3">
        <?php  get_template_part('templates/user_menu');  ?>
-    </div>  
-    
-    <div class="col-md-9 dashboard-margin">
-        
-        <?php get_template_part('templates/ajax_container'); ?>
-        
+    </div>   
+    <div class="col-md-9 dashboard-margin"> 
+        <?php get_template_part('templates/ajax_container'); ?> 
         <?php while (have_posts()) : the_post(); ?>
-            <?php if (esc_html( get_post_meta($post->ID, 'page_show_title', true) ) != 'no') { ?>
-                <h1 class="entry-title"><?php the_title(); ?></h1>
-            <?php } ?>
-         
-         
-
-           <?php endwhile; // end of the loop. ?>
-           <?php  get_template_part('templates/front_end_submission');  ?> 
-    </div>
-    
-
-</div>   
-
-
-
+        <?php if (esc_html( get_post_meta($post->ID, 'page_show_title', true) ) != 'no') { ?>
+              <h1 class="entry-title"><?php the_title(); ?></h1>
+        <?php } ?> 
+        <?php endwhile; // end of the loop. ?>
+        <?php  get_template_part('templates/front_end_submission');  ?>  
+    </div> 
+</div>    
 <?php get_footer();?>

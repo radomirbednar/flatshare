@@ -64,7 +64,7 @@ if ($user_custom_picture == '') {
 <h3><?php _e('Personal Information', 'wpestate') ?></h3>
 <table class="form-table">
 
-    
+ 
     <tr>
         <th>
             <?php _e('Profile image', 'wpestate') ?>

@@ -356,8 +356,7 @@ if ($user_custom_picture == '') {
                 <div id="slider_rent" class="fl-slider"></div>
                 <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $user_rent; ?>">
             </div>
-
-
+ 
             <script>
 
                 jQuery(document).ready(function ($) {
