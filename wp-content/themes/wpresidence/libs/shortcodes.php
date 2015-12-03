@@ -133,7 +133,6 @@ if (!function_exists('wpestate_list_users_function')):
             $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
             $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
             $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
- 
             $description = get_the_author_meta('description', $q->ID); 
               
             
