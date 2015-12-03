@@ -1,4 +1,4 @@
-<?php
+<?php 
 global $property_address;
 global $country_selected;
 global $property_state;
@@ -12,20 +12,14 @@ global $google_camera_angle;
 global $property_area;
 global $property_city;
 global $property_county_state;
-
-
 ?>
-
-
+ 
 <div class="submit_container">
-<div class="submit_container_header"><?php _e('Listing Location','wpestate');?></div>
-
+<div class="submit_container_header"><?php _e('Listing Location','wpestate');?></div> 
     <p class="full_form">
         <label for="property_address"><?php _e('*Address (mandatory) ','wpestate');?></label>
-        <textarea type="text" placeholder="<?php _e('Enter address','wpestate')?>" id="property_address" class="form-control" size="40" name="property_address" rows="3" cols="42"><?php print $property_address; ?></textarea>
-    </p>
-
-  
+        <input type="text" placeholder="<?php _e('Enter address','wpestate')?>" id="property_address" class="form-control" size="40" name="property_address" value="<?php print $property_address; ?>" rows="3" cols="42"/>
+    </p> 
         <div class="advanced_city_div half_form">
         <label for="property_city"><?php  _e('City','wpestate');?></label>
             <?php 
@@ -58,15 +52,11 @@ global $property_county_state;
             <?php
             }
             ?>
-        </div>
-
-
+        </div> 
         <div class="advanced_area_div half_form half_form_last">
         <label for="property_area"><?php _e('Neighborhood','wpestate');?></label>
-        <?php 
- 
-        if($enable_autocomplete_status=='no'){
-            
+        <?php  
+        if($enable_autocomplete_status=='no'){            
             $select_area='';
             $taxonomy = 'property_area';
             $args_tax = array('hide_empty'        => false );
@@ -79,16 +69,13 @@ global $property_county_state;
                           $select_area.= ' selected="selected" ';
                     }
                 $select_area.= '>' . $tax_term->name . '</option>';
-            }
-          
-        ?>
-      
+            } 
+        ?> 
             <select id="property_area_submit" name="property_area"  class="cd-select">
                <option data-parentcity="none" value="none"><?php  _e('None','wpestate'); ?></option>
                <option data-parentcity="all" value="all"><?php   _e('All Areas','wpestate'); ?></option>
                <?php  echo $select_area; ?>
-            </select>
-        
+            </select> 
             <select id="property_area_submit_hidden" name="property_area_hidden"  class="cd-select">
                 <option data-parentcity="none" value="none"><?php  _e('None','wpestate'); ?></option>
                 <option data-parentcity="all" value="all"><?php  _e('All Areas','wpestate'); ?></option>
@@ -96,37 +83,29 @@ global $property_county_state;
             </select>
         <?php } else{ ?>
             <input type="text" id="property_area" name="property_area" class="form-control" size="40" value="<?php print $property_area;?>">
-        <?php } ?>
-    
-        </div> 
-
-
+        <?php } ?> 
+        </div>  
     <p class="half_form">
         <label for="property_zip"><?php _e('Zip ','wpestate');?></label>
         <input type="text" id="property_zip" class="form-control" size="40" name="property_zip" value="<?php print $property_zip;?>">
     </p>
-<!--
+    <!--
     <p class="half_form ">
         <label for="property_state"><?php _e('State ','wpestate');?></label>
         <input type="text" id="property_state" class="form-control" size="40" name="property_state" value="<?php print $property_state;?>">
-    </p>-->
-    
+    </p>--> 
     <p class="half_form  half_form_last" style="margin-bottom: 16px;">
         <label for="property_county"><?php _e('County / State','wpestate');?></label>
         <?php  
         if($enable_autocomplete_status=='no'){
-            $selected_county_id=-1;
-     
+            $selected_county_id=-1; 
             /*  if($property_county_state!=''){
                 $term_county = get_term_by( 'name', $property_county_state, 'property_county_state');
                 $selected_county_id = $term_county->term_id;
-            }
-           */  
-            
+            }*/  
             $select_state='';
             $taxonomy = 'property_county_state';
             $tax_terms = get_terms($taxonomy,$args);
- 
             $args=array(
                 'class'       => 'select-submit2',
                 'hide_empty'  => false,
@@ -141,7 +120,6 @@ global $property_county_state;
                 'value_field' => 'name'
               );
               wp_dropdown_categories( $args );
-       
         }else{
         ?>
             <input type="text" id="property_county" class="form-control"  size="40" name="property_county" value="<?php print $property_county;?>">

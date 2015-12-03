@@ -37,8 +37,7 @@ if( isset($post->ID) && !wpestate_half_map_conditions ($post->ID) ){
             $place_id   =   $term_data->term_id;
             $term_meta  =   get_option( "taxonomy_$place_id");
             
-      }
-      
+      }  
     }
      
     if (!$header_type==0){  // is not global settings
@@ -64,10 +63,7 @@ if( isset($post->ID) && !wpestate_half_map_conditions ($post->ID) ){
             case 7://google maps
                 get_template_part('templates/header_taxonomy'); 
                 break;
-          }
-        
-         
-            
+          }            
     }else{    // we don't have particular settings - applt global header
           switch ($global_header_type) {
             case 0://image
@@ -90,18 +86,10 @@ if( isset($post->ID) && !wpestate_half_map_conditions ($post->ID) ){
             case 5://video 
                 get_template_part('templates/video_base'); 
                 break;
-          }
-    
+          } 
     } // end if header
 }
-    
-
-    
-    
-    
-
-    
-                     
+            
 ?>
     
 <?php
@@ -147,10 +135,8 @@ if($show_adv_search_general ==  'yes' && !is_404() && !is_page_template('propert
     }
 }
 ?>   
-</div>
-
-<?php 
-
+</div> 
+<?php  
 if( $show_mobile == 1 ){
     get_template_part('templates/adv_search_mobile');
 }
