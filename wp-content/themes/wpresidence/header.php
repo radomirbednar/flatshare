@@ -28,10 +28,10 @@
             echo '<link rel="shortcut icon" href="' . $favicon . '" type="image/x-icon" />';
         } else {
             echo '<link rel="shortcut icon" href="' . get_template_directory_uri() . '/img/favicon.gif" type="image/x-icon" />';
-        } 
-        
-        wp_head(); 
-        
+        }
+
+        wp_head();
+
         if (is_tax()) {
             echo '<meta name="description" content="' . strip_tags(term_description('', get_query_var('taxonomy'))) . '" >';
         }
@@ -99,7 +99,8 @@
         <?php get_template_part('templates/mobile_menu'); ?>  
         <div class="website-wrapper" id="all_wrapper" >
             <div class="container main_wrapper <?php print $wide_class;
-        print 'has_header_' . $logo_header_type . ' ' . $header_transparent_class; ?> ">
+        print 'has_header_' . $logo_header_type . ' ' . $header_transparent_class;
+        ?> ">
 
                 <div class="master_header <?php print $wide_class . ' ' . $header_transparent_class; ?>">
 
@@ -111,6 +112,12 @@
                     ?>  
                     <div class="header_wrapper <?php echo 'header_' . $logo_header_type; ?> ">
                         <div class="header_wrapper_inside">
+
+                            <div class="flags_language_selector">
+                                <?php
+                                fl_languages_list();
+                                ?>
+                            </div>
 
                             <div class="logo" >
                                 <a href="<?php echo home_url('', 'login'); ?>">
@@ -139,10 +146,8 @@
                         </div>
                     </div> 
                 </div>   
-                <?php 
-                 
-                if (!is_author() && !is_category(41)): ?>   
-                <?php get_template_part('header_media'); ?>     
+                <?php if (!is_author() && !is_category(41)): ?>   
+                    <?php get_template_part('header_media'); ?>     
                 <?php else: ?> 
                     <div class="header_media with_search_1"> </div> 
                 <?php endif; ?>     
