@@ -25,13 +25,13 @@ global $property_county_state;
             <?php 
              $enable_autocomplete_status= esc_html ( get_option('wp_estate_enable_autocomplete','') );
              if($enable_autocomplete_status=='no'){
-                $selected_city_id=-1;
+                $selected_city_id=-1; 
                 /*
                 if($property_city!=''){
                     $term_city = get_term_by( 'name', $property_city, 'property_city');
                     $selected_city_id = $term_city->term_id;
                 }
-                */     
+                */ 
                 $args=array(
                     'class'       => 'select-submit2',
                     'hide_empty'  => false,
@@ -45,7 +45,7 @@ global $property_county_state;
                     'hierarchical'=> true,
                     'value_field' => 'name'
                 );
-                wp_dropdown_categories( $args );
+                wp_dropdown_categories( $args ); 
             }else{
             ?>
                 <input type="text" id="property_city_submit" name="property_city" class="form-control" placeholder="<?php _e('Enter city','wpestate')?>" size="40" value="<?php print $property_city;?>" >

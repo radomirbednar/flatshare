@@ -95,35 +95,35 @@ endif;
 if (!function_exists('wpestate_list_users_function')):
 
     function wpestate_list_users_function() {
-     
+
         $sql = 'SELECT * FROM w4a_users AS u JOIN fl_user_data as fud ON fud.id_user = u.ID WHERE fud.user_status IN (1,2) GROUP BY u.ID LIMIT 4;';
-         
+
         global $wpdb;
-             
+
         $query = $wpdb->get_results($sql);
-         
+
         $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
         $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
-         
-        ob_start(); 
-        foreach ($query as $q) { 
-        $fl_user_data = get_fl_data($q->ID);
-        $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
-        $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
-        $user_facebook = get_the_author_meta('facebook', $q->ID);
-        
-        /*$user_twitter = get_the_author_meta('twitter', $q->ID);
-        $user_linkedin = get_the_author_meta('linkedin', $q->ID);
-        $user_pinterest = get_the_author_meta('pinterest', $q->ID);
-        */
-        
-        $photo_url = get_the_author_meta('custom_picture', $q->ID);  
-        $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
-        $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
-        $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : ''; 
-        $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
-        
- 
+
+        ob_start();
+        foreach ($query as $q) {
+            $fl_user_data = get_fl_data($q->ID);
+            $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
+            $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
+            $user_facebook = get_the_author_meta('facebook', $q->ID);
+
+            /* $user_twitter = get_the_author_meta('twitter', $q->ID);
+              $user_linkedin = get_the_author_meta('linkedin', $q->ID);
+              $user_pinterest = get_the_author_meta('pinterest', $q->ID);
+             */
+
+            $photo_url = get_the_author_meta('custom_picture', $q->ID);
+            $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
+            $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
+            $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
+            $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
+
+
             $sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
             $sleeping_span = !empty($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
             $couple = !empty($fl_user_data->couple) ? $fl_user_data->couple : '';
@@ -133,112 +133,122 @@ if (!function_exists('wpestate_list_users_function')):
             $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
             $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
             $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
-        
+            $description = get_the_author_meta('description', $q->ID); 
+              
             
-            
-            
-         $sexual_preference_array = array( 
+            //prvni vetastr_word_count
+             
+            preg_match('/^([^.!?]*[\.!?]+){0,2}/', strip_tags($description), $abstract);            
+            if($abstract != ''){  
+                $description = $abstract[0];  
+            }else{ 
+                $description = wp_trim_words( wp_trim_words( $text, $num_words = 12, $more = null )); 
+            } 
+             
+             
+            $sexual_preference_array = array(
                 '1' => array(
-                      '<i class="icon-icon_sex-straight" data-toggle="tooltip" data-placement="top" title="straight"></i>',
+                    '<i class="icon-icon_sex-straight" data-toggle="tooltip" data-placement="top" title="straight"></i>',
                     __('straight', 'wpestate'))
                 ,
                 '2' => array(
                     '<i class="icon-icon_sex-gay" data-toggle="tooltip" data-placement="top" title="BI/GAY"> </i>',
-                    __('BI/GAY', 'wpestate')  
-                ) 
+                    __('BI/GAY', 'wpestate')
+                )
             );
-            
-            $sleeping_span_array = array(              
+
+            $sleeping_span_array = array(
                 '1' => array(
-                      '<i class="icon-icon_sleep" data-toggle="tooltip" data-placement="top" title="Before 11PM"></i>',
+                    '<i class="icon-icon_sleep" data-toggle="tooltip" data-placement="top" title="Before 11PM"></i>',
                     __('Before 11PM', 'wpestate'))
                 ,
                 '2' => array(
                     '<i class="icon-icon_sleep" data-toggle="tooltip" data-placement="top" title="After 11PM"></i>',
-                    __('After 11PM', 'wpestate')  
-                ) 
+                    __('After 11PM', 'wpestate')
+                )
             );
-             
-            $couple_array = array(              
+
+            $couple_array = array(
                 '1' => array(
-                      '<i class="icon-icon_single" data-toggle="tooltip" data-placement="top" title="single"> </i>',
+                    '<i class="icon-icon_single" data-toggle="tooltip" data-placement="top" title="single"> </i>',
                     __('single', 'wpestate'))
                 ,
                 '2' => array(
                     '<i class="icon-icon_couple" data-toggle="tooltip" data-placement="top" title="in couple"> </i>',
-                    __('in couple', 'wpestate')  
-                ) 
+                    __('in couple', 'wpestate')
+                )
             );
-             
-            $pets_array = array( 
+
+            $pets_array = array(
                 '1' => array(
-                      '<i class="icon-icon_no-pets" data-toggle="tooltip" data-placement="top" title="No pets"> </i>',
+                    '<i class="icon-icon_no-pets" data-toggle="tooltip" data-placement="top" title="No pets"> </i>',
                     __('No pets', 'wpestate'))
                 ,
                 '2' => array(
                     '<i class="icon-icon_pets" data-toggle="tooltip" data-placement="top" title="Pets"> </i>',
-                    __('Pets', 'wpestate')  
-                ) 
-            );       
-            $smoker_array = array( 
+                    __('Pets', 'wpestate')
+                )
+            );
+            $smoker_array = array(
                 '1' => array(
-                      '<i class="icon-icon_smoking" data-toggle="tooltip" data-placement="top" title="Non-smoker"> </i>',
+                    '<i class="icon-icon_smoking" data-toggle="tooltip" data-placement="top" title="Non-smoker"> </i>',
                     __('Non-smoker', 'wpestate'))
                 ,
                 '2' => array(
                     '<i class="icon-icon_smoking" data-toggle="tooltip" data-placement="top" title="Smoker"> </i>',
-                    __('Smoker', 'wpestate')  
-                )   
+                    __('Smoker', 'wpestate')
+                )
             );
-            
-            $party_array = array (  
+
+            $party_array = array(
                 '1' => array(
-                      '<i class="icon-icon_party-often" data-toggle="tooltip" data-placement="top" title="Often"> </i>',
+                    '<i class="icon-icon_party-often" data-toggle="tooltip" data-placement="top" title="Often"> </i>',
                     __('Often', 'wpestate'))
                 ,
                 '2' => array(
                     '<i class="icon-icon_party-less" data-toggle="tooltip" data-placement="top" title="Not often"> </i>',
-                    __('Not often', 'wpestate')  
-                )     
+                    __('Not often', 'wpestate')
+                )
             );
-             
-            $looking_for_array = array(    
+
+            $looking_for_array = array(
                 '1' => array(
                     '<i class="icon-icon_roommate" data-toggle="tooltip" data-placement="top" title="roomate"></i>',
                     __('roomate', 'wpestate'))
                 ,
                 '2' => array(
                     '<i class="icon-icon_flat" data-toggle="tooltip" data-placement="top" title="flat"> </i>',
-                    __('flat', 'wpestate')  
+                    __('flat', 'wpestate')
                 )
-                );
-       
-         
-            $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : ''; 
+            );
+
+
+            $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
             $user_gender_array = array(
                 '2' => __('female', 'wpestate'),
                 '1' => __('male', 'wpestate')
-            ); 
+            );
             $author_url = esc_url(get_author_posts_url($q->ID));
             $thumb_prop = '<img src="' . $photo_url . '" alt="agent-images">';
 
             if ($photo_url == '') {
                 $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
-            } 
- 
-        ?> 
-        
-        <div id="listing_ajax_container_agent">
-            <?php  
-                include('user_unit.php');  
+            }
             ?> 
-        </div> 
 
-         <script> 
-        jQuery(document).ready(function ($) { 
-            $('[data-toggle="tooltip"]').tooltip() 
-        }); 
-        </script> 
+            <div id="listing_ajax_container_agent">
+                <?php
+                
+                 
+                include('user_unit.php');
+                ?> 
+            </div> 
+
+            <script>
+                jQuery(document).ready(function ($) {
+                    $('[data-toggle="tooltip"]').tooltip()
+                });
+            </script> 
 
 
             <?php
@@ -249,7 +259,8 @@ if (!function_exists('wpestate_list_users_function')):
         wp_reset_query();
         $is_shortcode = 0;
         return $return_string;
-    } 
+    }
+
 endif;
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -1415,7 +1426,7 @@ if (!function_exists('wpestate_featured_property')):
             'post_status' => 'publish',
             'p' => $prop_id
         );
- 
+
         $my_query = new WP_Query($args);
         if ($my_query->have_posts()) {
             while ($my_query->have_posts()) {
@@ -1436,17 +1447,17 @@ if (!function_exists('wpestate_featured_property')):
 
                 if (function_exists('icl_translate')) {
                     $prop_stat = icl_translate('wpestate', 'wp_estate_property_status_sh_' . $prop_stat, $prop_stat);
-                } 
-                
-                $featured = intval(get_post_meta($prop_id, 'prop_featured', true));               
+                }
+
+                $featured = intval(get_post_meta($prop_id, 'prop_featured', true));
                 $agent_id = intval(get_post_meta($prop_id, 'property_agent', true));
-                
-                 
+
+
                 $thumb_id = get_post_thumbnail_id($agent_id);
-                      
-                $user_ID = get_the_author_meta( 'ID' );   
+
+                $user_ID = get_the_author_meta('ID');
                 $photo_url = get_the_author_meta('custom_picture', $user_ID);
-                
+
                 $agent_face = wp_get_attachment_image_src($thumb_id, 'agent_picture_thumb');
                 $agent_posit = esc_html(get_post_meta($agent_id, 'agent_position', true));
                 $agent_permalink = get_permalink($agent_id);
@@ -1454,7 +1465,7 @@ if (!function_exists('wpestate_featured_property')):
                 $agent_mobile = esc_html(get_post_meta($agent_id, 'agent_mobile', true));
                 $agent_email = esc_html(get_post_meta($agent_id, 'agent_email', true));
 
-                  
+
                 if ($price != 0) {
                     $price = wpestate_show_price($prop_id, $currency, $where_currency, 1);
                 } else {
@@ -1540,27 +1551,28 @@ if (!function_exists('wpestate_featured_property')):
                                 </div>
                             </div>';
                 }
- 
+
                 if ($featured == 1) {
                     $return_string .= '<div class="featured_div"></div>';
                 }
                 $return_string .= '<h2><a href="' . $link . '">';
- 
+
                 $return_string .= mb_substr($title, 0, 27);
                 if (mb_strlen($title) > 27) {
                     $return_string .= '...';
-                } 
+                }
                 $return_string.='</a></h2>
                         <div class="sale_line">' . $sale_line . '</div>
                         <div class="featured_prop_price">' . $price . ' </div>      
-                 </div>'; 
+                 </div>';
                 $return_string .='
                 </div>';
             }
-        } 
+        }
         wp_reset_query();
         return $return_string;
-    } 
+    }
+
 endif; // end   wpestate_featured_property
 ////////////////////////////////////////////////////////////////////////////////////
 /// featured agent
@@ -1572,7 +1584,7 @@ if (!function_exists('wpestate_featured_agent')):
         global $notes;
         $return_string = '';
         $notes = '';
- 
+
         $attributes = shortcode_atts(
                 array(
             'id' => 0,
