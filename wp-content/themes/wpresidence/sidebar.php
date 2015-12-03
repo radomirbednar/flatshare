@@ -6,8 +6,36 @@ $sidebar_name = $options['sidebar_name'];
 $sidebar_class = $options['sidebar_class'];
 
 if (('no sidebar' != $options['sidebar_class']) && ('' != $options['sidebar_class'] ) && ('none' != $options['sidebar_class'])) {
-    ?>     
+
+    global $post;
+    $property_date = esc_html(get_post_meta($post->ID, 'from', true));
+    $property_date_text = esc_html(get_post_meta($post->ID, 'property-date', true));
+    ?>
+
+
     <div class="col-xs-12 <?php print $options['sidebar_class']; ?> widget-area-sidebar" id="primary" >
+
+        <?php if(!empty($property_date_text) && !empty($property_date)): ?>     
+        <div class="availability-box">
+            <h2><?php _e('Disponible','wpestate') ?></h2>
+
+            <?php
+            if (!empty($property_date)):
+                //&& $property_date_date = DATETIME::createFromFormat("Y-m-d", $property_date)
+                ?>        
+                <div class="fl-property-date">
+                    <?php echo mysql2date(get_option('date_format'), $property_date, true); ?>
+                </div>    
+            <?php endif; ?>
+
+            <?php if(!empty($property_date_text)): ?>
+            <div class="fl-property-from">
+                <?php echo $property_date_text; ?>
+            </div>            
+            <?php endif; ?>
+        </div>    
+        <?php endif; ?>        
+
         <?php
         if ('estate_property' == get_post_type() && !is_tax()) {
 
@@ -27,29 +55,28 @@ if (('no sidebar' != $options['sidebar_class']) && ('' != $options['sidebar_clas
 
             //show user in sidebar - always when is it post type estate_property
             //get_template_part('/templates/property_list_agent');
-        ?>
-         
+            ?>
+
             <div class="agent_contanct_form_sidebar">     
-               <?php
+                <?php
                 wp_reset_query();
-            
+
                 get_template_part('templates/author_unit_widget');
                 get_template_part('templates/author_contact');
-             
                 ?> 
-                
+
             </div> 
-        <?php
-    }
-    ?>
+            <?php
+        }
+        ?>
 
         <ul class="xoxo">
-        <?php generated_dynamic_sidebar($options['sidebar_name']); ?>
+            <?php generated_dynamic_sidebar($options['sidebar_name']); ?>
         </ul>
 
     </div>   
 
-            <?php
-        }
-        ?>
+    <?php
+}
+?>
 <!-- end sidebar -->
