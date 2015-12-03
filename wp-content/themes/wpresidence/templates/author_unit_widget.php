@@ -130,7 +130,7 @@ if ($photo_url == '') {
  
 
     <div class="listing_wrapper">
-    <div class="agent_unit" data-link="<?php print $author_url; ?>"> 
+    <div class="agent_unit" data-link="<?php print $author_url; ?>">         
         <div class="agent-unit-img-wrapper person-<?php echo (int) $q->ID ?>">
             <?php           
             print $thumb_prop;

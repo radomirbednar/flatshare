@@ -69,12 +69,10 @@
     }
 
     $logo_header_type = get_option('wp_estate_logo_header_type', '');
-    $header_transparent_class = '';
-
+    $header_transparent_class = ''; 
     $header_transparent = get_option('wp_estate_header_transparent', '');
-
-
-//  $header_transparent_class=' header_transparent '; 
+ 
+    //$header_transparent_class=' header_transparent '; 
 
     if (isset($post->ID) && !is_tax() && !is_category()) {
         $header_transparent_page = get_post_meta($post->ID, 'header_transparent', true);
@@ -89,8 +87,7 @@
         if ($header_transparent == 'yes') {
             $header_transparent_class = ' header_transparent ';
         }
-    }
-
+    } 
     $logo = get_option('wp_estate_logo_image', '');
     $logo_margin = intval(get_option('wp_estate_logo_margin', ''));
     ?>
