@@ -796,12 +796,8 @@ function estate_box($post) {
             <label for="property_state">'.__('State:: ','wpestate').'</label><br />
             <input type="text" id="property_state" size="40" name="property_state" value="' . esc_html(get_post_meta($mypost, 'property_state', true)) . '">
             </p>
-        </td>
-    -->
-
-    
-    </tr>
-
+        </td> 
+    </tr> 
     <tr>';
     $status_values          =   esc_html( get_option('wp_estate_status_list') );
     $status_values_array    =   explode(",",$status_values);
@@ -873,13 +869,7 @@ function estate_box($post) {
     ';
 }
 endif; // end   estate_box 
-
-
-
-
-
-
-
+ 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///  Country list function
@@ -908,11 +898,7 @@ function wpestate_country_list($selected,$class='') {
 }
 endif; // end   wpestate_country_list 
 
-
-
-
-
-
+ 
 
 if( !function_exists('wpestate_country_list_search') ): 
 function wpestate_country_list_search($selected) {
@@ -921,9 +907,7 @@ function wpestate_country_list_search($selected) {
     foreach ($countries as $country) {
         $country_select_list.='<li role="presentation" data-value="'.$country.'">'.$country.'</li>';
     }
-    
-
-
+ 
     return $country_select_list;
 }
 endif; // end   wpestate_country_list 
@@ -993,10 +977,7 @@ function wpestate_populate_columns( $column ) {
         echo $estate_category ;
     }
     
-    
-    
-    
-    
+ 
     if ( 'estate_price' == $column ) {
         $currency                   =   esc_html( get_option('wp_estate_currency_symbol', '') );
         $where_currency             =   esc_html( get_option('wp_estate_where_currency_symbol', '') );
@@ -1016,9 +997,7 @@ function wpestate_populate_columns( $column ) {
         
         echo get_post_meta(get_the_ID(), 'property_label_before', true).' '.$price.' '. get_post_meta(get_the_ID(), 'property_label', true);
     }
-    
-    
-    
+ 
     
     if ( 'estate_featured' == $column ) {
         $estate_featured = get_post_meta(get_the_ID(), 'prop_featured', true); 
@@ -1049,13 +1028,7 @@ function wpestate_sort_me( $columns ) {
     return $columns;
 }
 endif; // end   wpestate_sort_me 
-
-
-
-
-
-
-
+ 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tie area with city
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////

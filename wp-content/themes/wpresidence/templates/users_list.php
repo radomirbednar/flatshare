@@ -2,8 +2,9 @@
 <?php
 // Template Name: Users list
 // Wp Estate Pack
-
+ 
 get_header();
+ 
 wp_suspend_cache_addition(true);
 $options = wpestate_page_details($post->ID);
 $col_class = 4; 

@@ -109,9 +109,7 @@ function estate_listing_features($post_id){
 
         
      $show_no_features= esc_html ( get_option('wp_estate_show_no_features','') );
-
-             
-             
+   
         if($show_no_features!='no'){
             foreach($feature_list_array as $checker => $value){
                     $counter++;
@@ -127,7 +125,7 @@ function estate_listing_features($post_id){
                     if (esc_html( get_post_meta($post_id, $input_name, true) ) == 1) {
                          $return_string .= '<div class="listing_detail col-md-4"><i class="fa fa-check"></i>' . trim($value) . '</div>';
                     }else{
-                        $return_string  .=  '<div class="listing_detail col-md-4"><i class="fa fa-times"></i>' . trim($value). '</div>';
+                        $return_string  .=  '<div class="listing_detail col-md-4 overline"><i class="fa fa-times"></i>' . trim($value). '</div>';
                     }
               }
         }else{
@@ -144,8 +142,7 @@ function estate_listing_features($post_id){
                 if ($input_name!='' && esc_html( get_post_meta($post_id, $input_name, true) ) == 1) {
                     $return_string .=  '<div class="listing_detail col-md-4"><i class="fa fa-check"></i>' . trim($value) . '</div>';
                 }
-            }
-           
+            }    
        }
     
     return $return_string;
@@ -237,15 +234,11 @@ function estate_listing_address_print($post_id){
     }  
     if ($property_country != '') {
         $return_string.= '<div class="listing_detail col-md-4"><strong>'.__('Country','wpestate').':</strong> ' . $property_country . '</div>'; 
-    } 
-    
+    }  
     return  $return_string;
 }
 endif; // end   estate_listing_address  
-
-
-
-
+ 
 
 
 if( !function_exists('estate_listing_details') ):
@@ -327,14 +320,9 @@ function estate_listing_details($post_id){
            }
            $i++;       
         }
-    }
-
-     //END Custom Fields 
-
-         
-         
+    } 
+     //END Custom Fields   
     return $return_string;
 }
-endif; // end   estate_listing_details  
-
+endif; // end   estate_listing_details   
 ?>

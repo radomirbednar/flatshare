@@ -66,25 +66,19 @@ if ($user_custom_picture == '') {
 
 
 <div id="user_profile_div" class="user_profile_div">
-    <h3><?php
-        _e('Welcome back, ', 'wpestate');
+    <h3><?php _e('Welcome back, ', 'wpestate');
         echo $user_login . '!';
-        ?></h3>
-    <div id="profile_message">
-    </div>
-
-
+        ?>
+    </h3> 
+    <div id="profile_message"></div> 
     <div class="add-estate profile-page row">
         <div class="profile_div col-md-4" id="profile-div">
-            <?php
-            
+            <?php 
                 print '<img id="profile-image" src="' . $user_custom_picture . '" alt="user image" data-profileurl="' . $user_custom_picture . '" data-smallprofileurl="' . $image_id . '" >';
-            
             //print '/ '.$user_small_picture;
             ?> 
             <div id="upload-container">
                 <div id="aaiu-upload-container">
-
                     <button id="aaiu-uploader" class="wpb_button  wpb_btn-success wpb_btn-large vc_button"><?php _e('Upload Profile Image', 'wpestate'); ?></button>
                     <div id="aaiu-upload-imagelist">
                         <ul id="aaiu-ul-list" class="aaiu-upload-list"></ul>
@@ -92,8 +86,7 @@ if ($user_custom_picture == '') {
                 </div>
             </div>
             <span class="upload_explain"><?php _e('*minimum 314px x 180px', 'wpestate'); ?></span>
-        </div> 
-        
+        </div>  
         <div class="col-md-4">
             <p>
                 <label for="firstname"><?php _e('* First Name (mandatory)', 'wpestate'); ?></label>
@@ -123,8 +116,7 @@ if ($user_custom_picture == '') {
                 <input type="text" id="userskype" class="form-control" value="<?php echo $user_skype; ?>"  name="userskype">
             </p> 
             <?php wp_nonce_field('profile_ajax_nonce', 'security-profile'); ?> 
-        </div>
-        
+        </div> 
     </div>
 
     <h3><?php _e('Personal information', 'wpestate'); ?></h3> 
@@ -268,12 +260,10 @@ if ($user_custom_picture == '') {
                 <button class="wpb_button wpb_btn-large <?php echo $smoker == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#smoker" data-value="1"><?php _e('Non-smoker', 'wpestate'); ?></button>
                 <button class="wpb_button wpb_btn-large <?php echo $smoker == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#smoker" data-value="2"><?php _e('Smoker', 'wpestate'); ?></button>
                 -->
-            </div>
-
+            </div> 
             <div class="switcher fl-row">
                 <!--<input type="hidden" id="party" name="party" value="<?php echo (int) $party ?>">-->
-                <label><?php _e('Party', 'wpestate'); ?></label>
-
+                <label><?php _e('Party', 'wpestate'); ?></label> 
                 <div class="value-row">
                     <input id="party-1" name="party" type="radio" value="1" class="hidden" <?php echo empty($party) || 1 == $party ? ' checked="checked" ' : '' ?>>
                     <input id="party-2" name="party" type="radio" value="2" class="hidden" <?php echo isset($party) && 2 == $party ? ' checked="checked" ' : '' ?>>
@@ -287,14 +277,13 @@ if ($user_custom_picture == '') {
             </div> 
         </div>
  
-        <div class="col-md-6"> 
+        <div class="col-md-6">  
             <div class="fl-row">
-                <label><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
+                <label><?php _e('Where would you like to live', 'wpestate'); ?></label>
                 <div class="value-row">
                     <input  data-value="all" type="text" id="looking_where" class="form-control" value="<?php echo esc_attr($looking_where) ?>"  name="looking_where">
                 </div>
-            </div>
-
+            </div> 
             <script> 
                 function loadScript(src, callback) {
                     var script = document.createElement("script");
@@ -322,10 +311,8 @@ if ($user_custom_picture == '') {
                     }); 
                 } 
                 //ONLY CITY - RESTRICT TO THE LANGUAGE  
-            </script>
-
-            <div class="fl-row adv_search_slider">
-
+            </script> 
+            <div class="fl-row adv_search_slider"> 
                 <script>
                     
                     jQuery(document).ready(function ($) {
@@ -343,20 +330,17 @@ if ($user_custom_picture == '') {
                             }
                         });
                     });
-                </script>
-                
+                </script> 
                 <?php
                 $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
                 ?>
                 <p>
                     <label for="rent_amount" class="wauto"><?php _e('How much do you want to pay?:', 'wpestate'); ?></label>
                     <span id="rent_label_text" class="slide-label"><?php printf(__('%s', 'dokan'), (int) $user_rent); ?> <?php echo esc_html($currency) ?></span>
-                </p>
-
+                </p> 
                 <div id="slider_rent" class="fl-slider"></div>
                 <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $user_rent; ?>">
-            </div>
- 
+            </div> 
             <script>
 
                 jQuery(document).ready(function ($) {
@@ -375,12 +359,11 @@ if ($user_custom_picture == '') {
             </script>
  
             <div class="fl-row">
-                <label><?php _e('Disponibility', 'wpestate'); ?></label>
+                <label><?php _e('Available from', 'wpestate'); ?></label>
                 <div class="value-row">
                     <input type="text" id="when_move" class="form-control" value="<?php echo empty($when_move) ? '' : $when_move->format(PHP_DATEPICKER_FORMAT); ?>"  name="when_move">
                 </div>
-            </div>
-
+            </div> 
             <div class="fl-row">
                 <?php
                 $coutnries = fl_get_countries();
@@ -400,20 +383,16 @@ if ($user_custom_picture == '') {
                         ?>
                     </select>
                 </div>
-            </div>
-
+            </div> 
             <div class="fl-row">
                 <label for="user_age"><?php _e('* Birthdate (mandatory)', 'wpestate'); ?></label>
                 <div class="value-row">
                     <input type="text" id="birthdate" class="form-control" value="<?php echo empty($birthdate) ? '' : $birthdate->format(PHP_DATEPICKER_FORMAT); ?>"  name="birthdate">
                 </div>
-            </div>
-
+            </div> 
             <div class="switcher fl-row">
-                <!--<input type="hidden" id="activity" name="activity" value="<?php echo (int) $activity ?>">-->
-
-                <label><?php _e('Activity', 'wpestate'); ?></label>
-
+                <!--<input type="hidden" id="activity" name="activity" value="<?php echo (int) $activity ?>">--> 
+                <label><?php _e('Activity', 'wpestate'); ?></label> 
                 <div class="value-row">
                     <input id="activity-1" name="activity" type="radio" value="1" class="hidden" <?php echo empty($activity) || 1 == $activity ? ' checked="checked" ' : '' ?>>
                     <input id="activity-2" name="activity" type="radio" value="2" class="hidden" <?php echo isset($activity) && 2 == $activity ? ' checked="checked" ' : '' ?>>
@@ -424,9 +403,7 @@ if ($user_custom_picture == '') {
                 <button class="wpb_button wpb_btn-large <?php echo $activity == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="1"><?php _e('Student', 'wpestate'); ?></button>
                 <button class="wpb_button wpb_btn-large <?php echo $activity == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="2"><?php _e('Professional', 'wpestate'); ?></button>
                 -->
-            </div>
-
-
+            </div> 
             <div class="fl-row">
                 <label><?php _e('House skills', 'wpestate'); ?></label>
                 <p class="inline-checkboxes">                
@@ -453,11 +430,9 @@ if ($user_custom_picture == '') {
         <div class="col-xs-12">
             <div class="fl-row">
                 <label><?php _e('Language skills', 'wpestate'); ?></label>
-                <p class="inline-checkboxes">                
-
+                <p class="inline-checkboxes">                 
                     <?php
-                    $languages = fl_get_languages();
-
+                    $languages = fl_get_languages(); 
                     if (!empty($languages)):
                         foreach ($languages as $lang):
                             $selected = in_array($lang->id_lang, (array) $user_language_ids) ? ' checked ' : '';
@@ -513,6 +488,7 @@ if ($user_custom_picture == '') {
             <button class="wpb_button  wpb_btn-info wpb_btn-large" id="update_profile"><?php _e('Update profile', 'wpestate'); ?></button>
         </p>
     </div> 
+    
     <h3><?php _e('Change Password', 'wpestate'); ?> </h3> 
     <div class="profile-page row">
         <div class="pass_note"> <?php _e('*After you change the password you will have to login again.', 'wpestate') ?></div>

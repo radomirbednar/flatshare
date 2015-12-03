@@ -13,18 +13,15 @@ $home_small_map_status = esc_html(get_option('wp_estate_home_small_map', ''));
 $show_adv_search_map_close = esc_html(get_option('wp_estate_show_adv_search_map_close', ''));
 $class = 'hidden';
 $class_close = '';
-?>
+?> 
 
-<!--<div id="adv-search-mobile-wrap">-->
-
+<!--<div id="adv-search-mobile-wrap">--> 
 <div id="adv-search-header-mobile">
     <i class="fa fa-search"></i>
-    <?php _e('Advanced Search', 'wpestate'); ?>
+        <?php _e('Advanced Search', 'wpestate'); ?>
 </div>
 
 <div class="adv-search-mobile"  id="adv-search-mobile">
-
-
     <!-- Nav tabs -->
     <ul id="mobile-what-lookup" class="nav nav-tabs" role="tablist">
         <li role="presentation" class="<?php echo!isset($_GET['mobile-tab']) || 1 == $_GET['mobile-tab'] ? 'active' : '' ?>">
@@ -32,19 +29,18 @@ $class_close = '';
         </li>
         <li role="presentation" class="<?php echo isset($_GET['mobile-tab']) && 2 == $_GET['mobile-tab'] ? 'active' : '' ?>">
             <a class="search-tab" href="#mobile-rental" aria-controls="mobile-rental" role="tab" data-toggle="tab"><?php _e('Rental listings', 'wpestate'); ?></a>
-        </li>
-    </ul>
-
-
-    <div class="tab-content"><!-- Tab panes -->
-
+        </li> 
+        <li role="close" class="close">
+            <span>close</span>
+        </li> 
+    </ul>  
+    <div class="tab-content"><!-- Tab panes --> 
         <div role="tabpanel" class="tab-pane <?php echo!isset($_GET['mobile-tab']) || 1 == $_GET['mobile-tab'] ? 'active' : '' ?>" id="mobile-roommate"><!-- search roommate panel -->
             <?php 
             $prefix = "mo_";
             include(locate_template('templates/form_roomate_search.php')); 
             ?>
-        </div><!-- /search roommate panel -->
-
+        </div><!-- /search roommate panel --> 
         <div role="tabpanel" class="tab-pane <?php echo isset($_GET['mobile-tab']) && 2 == $_GET['mobile-tab'] ? 'active' : '' ?>" id="mobile-rental"><!-- rental search -->
             <form role="search" method="get"   action="<?php print $adv_submit; ?>" >
 

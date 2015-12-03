@@ -879,10 +879,7 @@ jQuery(document).ready(function ($) {
         $('.adv_extended_class .adv1-holder').removeAttr('style');
         $(this).parent().find('.ra').val(0);
     });
-    
-    
-
-
+ 
     //////////////////////////////////////////////////////////////
 
     $('#adv_extended_options_text_widget').click(function () {
@@ -1439,20 +1436,18 @@ jQuery(document).ready(function ($) {
 
     adv_search_click();
 
-    $('#adv-search-header-1').click(function () {
-        if (document.getElementById("adv_extended_options_text_adv") !== null) {
-            $(this).parent().toggleClass('adv-search-1-close-extended');
-        } else {
-            $(this).parent().toggleClass('adv-search-1-close');
-        }
+    $('#adv-search-header-1').click(function () { 
+        if (document.getElementById("adv_extended_options_text_adv") !== null) {   
+            $("#adv-search-1").toggleClass('adv-search-1-close-extended');  
+        } else {  
+            $("#adv-search-1").toggleClass('adv-search-1-close'); 
+        } 
     });
 
     $('#adv-search-header-3').click(function () {
         $(this).parent().parent().toggleClass(' search_wrapper-close-extended');
     });
-
-
-
+ 
     ///////////////////////////////////////////////////////////////////////////////////////////
     ///////   tool tips on prop unit
     ///////////////////////////////////////////////////////////////////////////////////////////	       

@@ -141,12 +141,7 @@
                 </div>   
                 <?php 
                  
-                if(is_category(41))
-                {  
-                    echo "test";   
-                }
-                 
-                if (!is_author() && !is_category(41)): ?>  
+                if (!is_author() && !is_category(41)): ?>   
                 <?php get_template_part('header_media'); ?>     
                 <?php else: ?> 
                     <div class="header_media with_search_1"> </div> 

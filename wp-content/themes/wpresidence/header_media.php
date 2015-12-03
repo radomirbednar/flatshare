@@ -11,12 +11,18 @@ if ( is_category() || is_tax() || is_archive() || is_search() ){
 }    
 elseif('estate_property' == get_post_type()){ 
     $header_type=5;     
-}                 
+}   
+
+elseif( is_page_template( 'users_list.php' )){
+    $header_type=6;     
+}   
+            
 else{
     $header_type  =   get_post_meta ( $post->ID, 'header_type', true);
             
 }
 
+            
 if( isset($post->ID) && !wpestate_half_map_conditions ($post->ID) ){
     $custom_image               =   esc_html( esc_html(get_post_meta($post->ID, 'page_custom_image', true)) );  
     $rev_slider                 =   esc_html( esc_html(get_post_meta($post->ID, 'rev_slider', true)) ); 
@@ -47,11 +53,14 @@ if( isset($post->ID) && !wpestate_half_map_conditions ($post->ID) ){
                 wpestate_present_theme_slider();
                 break;
             case 4://revolutin slider
-                putRevSlider($rev_slider);
+                 get_template_part('templates/video_base'); 
                 break;
             case 5://google maps
                 get_template_part('templates/google_maps_base'); 
                 break;
+            case 6:
+                get_template_part('templates/video_base'); 
+                break; 
             case 7://google maps
                 get_template_part('templates/header_taxonomy'); 
                 break;
@@ -78,8 +87,7 @@ if( isset($post->ID) && !wpestate_half_map_conditions ($post->ID) ){
             case 4://google maps                
                 get_template_part('templates/google_maps_base'); 
                 break;
-            case 5://video
-            
+            case 5://video 
                 get_template_part('templates/video_base'); 
                 break;
           }

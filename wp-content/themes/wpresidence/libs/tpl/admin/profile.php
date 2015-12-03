@@ -273,7 +273,7 @@ if ($user_custom_picture == '') {
 
     <tr>
         <th>
-            <?php _e('Where would you like to do your flatshare', 'wpestate'); ?>
+            <?php _e('Where would you like to live', 'wpestate'); ?>
         </th>
         <td>
             <div class="value-row">
@@ -471,6 +471,5 @@ if ($user_custom_picture == '') {
                 </p>
             </div>
         </td>
-    </tr>
-
+    </tr> 
 </table>

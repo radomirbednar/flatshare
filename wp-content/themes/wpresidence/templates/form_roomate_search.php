@@ -15,7 +15,7 @@ if (!isset($prefix)) {
 
                 <div class="form-control-where pull-left clearfix">
                     <div class="form-control-in">
-                        <label class="two-label"><?php _e('Where would you like to do your flatshare', 'wpestate'); ?></label>
+                        <label class="two-label"><?php _e('Where would you like to live', 'wpestate'); ?></label>
                         <div class="value-row clearfix">
                             <input type="text" id="<?php echo $prefix ?>looking_where" name="looking_where" class="form-control w100" placeholder="<?php _e('City', 'wpestate') ?>"  value="<?php echo esc_attr(isset($_GET['looking_where']) ? esc_attr($_GET['looking_where']) : '') ?>">
                         </div>
@@ -24,13 +24,12 @@ if (!isset($prefix)) {
 
                 <div class="form-control-disponibility pull-left clearfix">
                     <div class="form-control-in">
-                        <label class="two-label"><?php _e('Disponibility from', 'wpestate'); ?></label>
+                        <label class="two-label"><?php _e('Available from', 'wpestate'); ?></label>
                         <div class="value-row clearfix">
                             <input type="text" id="<?php echo $prefix ?>disponibility" name="disponibility" class="form-control w100" value="<?php echo esc_attr(isset($_GET['disponibility']) ? esc_attr($_GET['disponibility']) : '') ?>">
                         </div>
                     </div>
-                </div>
-
+                </div> 
             </div>
 
             <div class="form-control-half">
