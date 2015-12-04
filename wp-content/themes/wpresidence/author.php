@@ -82,12 +82,14 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                 '1' => __('short term', 'wpestate'),
                 '2' => __('long term', 'wpestate')
             );
-
+ 
             $looking_for_array = array(
+                
                 '1' => array(
-                    '<i class="icon-icon_roommate"></i>',
+                    '<i class="icon-icon_roommate"> </i>',
                     __('roomate', 'wpestate'))
                 ,
+                
                 '2' => array(
                     '<i class="icon-icon_flat"> </i>',
                     __('flat', 'wpestate')
@@ -171,14 +173,12 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                 
                 if ($user_gender) {
                     print ''.$user_gender_array[$user_gender].' <img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="">';
-                }
-                
+                } 
                 if ($year_old) {
                     print ' | ' . __('Age', 'wpestate') . ': '.$year_old.' years | ';
-                }
-                 
+                } 
                 ?>  
-                <?php echo __(' Looking for ', 'wpestate') . esc_attr(isset($looking_for_array[$looking_for][1])) . ' in ' . esc_attr($looking_where); ?>  
+                <?php echo __(' Looking for ', 'wpestate') . esc_attr($looking_for_array[$looking_for][1]) . ' in ' . esc_attr($looking_where); ?>  
  
                 <div class="prop_social_single">  
                     <?php
@@ -212,11 +212,8 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             include('templates/user_listings.php');
             ?>   
         </div> 
-    </div><!-- end 9col container-->     
-
-    
-    <?php if($user_status!=3): ?>  
-    
+    </div><!-- end 9col container-->      
+    <?php if($user_status!=3): ?>   
     <div class="col-md-3">   
         <div class="mydetails"> 
             <?php _e('My Details', 'wpestate'); ?>
@@ -264,8 +261,8 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             <?php print $how_long_array[$how_long]; ?> 
         </div>  
         <div class="sub_block">
-            <span class="sub"><?php print __('Looking for: ', 'wpestate'); ?> </span>
-            <?php print isset($looking_for_array[$looking_for][0]) . isset($looking_for_array[$looking_for][1]); ?> 
+            <span class="sub"><?php print __('Looking for: ', 'wpestate'); ?></span> 
+            <?php print ($looking_for_array[$looking_for][0]) . isset($looking_for_array[$looking_for][1]); ?> 
         </div>          
         <div class="sub_block">
             <span class="sub"><?php print __('Sexual preferences: ', 'wpestate'); ?></span> 

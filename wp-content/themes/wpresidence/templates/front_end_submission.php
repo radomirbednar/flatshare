@@ -40,7 +40,6 @@ global $current_user;
 global $custom_fields_array;
 global $option_slider;
 
- 
 global $how_long;
 global $sexual_preference;
 global $user_gender;
@@ -319,14 +318,12 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
             <div class="fl-row">
                 <label><?php _e('House skills', 'wpestate'); ?></label>
                 <p class="inline-checkboxes">                
-                    <?php
-                    
+                    <?php 
                     $skills = fl_get_house_skills(); 
-                    $user_skill_ids = $skill;
-                     
+                    $skill; 
                     if (!empty($skills)):
                         foreach ($skills as $skill):
-                            $selected = in_array($skill->id_skill, (array) $user_skill_ids) ? ' checked ' : '';
+                            $selected = in_array($skill->id_skill, (array)$skill[0]) ? ' checked ' : '';
                             ?>
                             <span class="flcheckbox">
                                 <label>
@@ -339,23 +336,18 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                     ?>
                 </p>
                 <div class="clearfix"></div>
-            </div> 
-            
-            
-            
-            
+            </div>   
             <div class="col-xs-12">
                 <div class="fl-row">
                     <label><?php _e('Language skills', 'wpestate'); ?></label>
                     <p class="inline-checkboxes">                 
-                        <?php
-    
-                        $user_language_ids = $language;
-     
+                        <?php              
                         $languages = fl_get_languages();
+ 
                         if (!empty($languages)):
-                            foreach ($languages as $lang):
-                                $selected = in_array($lang->id_lang, (array) $user_language_ids) ? ' checked ' : '';
+                            foreach ($languages as $lang): 
+                                $selected = in_array($lang->id_lang, (array)$language[0]) ? ' checked ' : '';
+                                 
                                 ?>
                                 <span class="flcheckbox">
                                     <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>" <?php echo $selected ?>><?php esc_attr_e($lang->name) ?></label>

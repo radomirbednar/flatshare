@@ -77,20 +77,18 @@ if (isset($_GET['listing_edit']) && is_numeric($_GET['listing_edit'])) {
     $rent_amount = esc_html(get_post_meta($edit_id, 'rent_amount', true));
     $user_origin = esc_html(get_post_meta($edit_id, 'user_origin', true));
     $activity = esc_html(get_post_meta($edit_id, 'activity', true));
-    $language = esc_html(get_post_meta($edit_id, 'language', true));
-    $skill = esc_html(get_post_meta($edit_id, 'skill', true));
-   
-    
-    
+
+    $language = get_post_meta($edit_id, 'language', true);
+    $skill = get_post_meta($edit_id, 'skill', true);
+
     $property_address = esc_html(get_post_meta($edit_id, 'property_address', true));
     $property_county = esc_html(get_post_meta($edit_id, 'property_county', true));
     // $property_state                 =   esc_html( get_post_meta($edit_id, 'property_state', true) );
     $property_zip = esc_html(get_post_meta($edit_id, 'property_zip', true));
     $country_selected = esc_html(get_post_meta($edit_id, 'property_country', true));
-    
- 
+
+
     $prop_stat = esc_html(get_post_meta($edit_id, 'property_status', true));
-    
     $property_status = '';
 
 
@@ -274,8 +272,7 @@ if (isset($_GET['listing_edit']) && is_numeric($_GET['listing_edit'])) {
 
 
 if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'view') {
-
-
+ 
     $paid_submission_status = esc_html(get_option('wp_estate_paid_submission', ''));
 
     if ($paid_submission_status != 'membership' || ( $paid_submission_status == 'membership' || wpestate_get_current_user_listings($userID) > 0)) { // if user can submit
@@ -313,23 +310,23 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'view') {
             $property_county_state = wp_kses($_POST['property_county'], $allowed_html);
         }
 
- 
+
         $show_err = '';
         $post_id = '';
         $submit_title = wp_kses($_POST['title'], $allowed_html);
         $submit_description = wp_filter_nohtml_kses($_POST['description']);
         $property_address = wp_kses($_POST['property_address'], $allowed_html);
         $property_county = wp_kses($_POST['property_county'], $allowed_html);
-        
+
         //    $property_state                 =   wp_kses( $_POST['property_state'],$allowed_html);
-         
+
         $property_zip = wp_kses($_POST['property_zip'], $allowed_html);
-        $country_selected = wp_kses($_POST['property_country'], $allowed_html); 
-        $prop_stat = wp_kses($_POST['property_status'], $allowed_html); 
-        $property_status = ''; 
-        
-        
-        
+        $country_selected = wp_kses($_POST['property_country'], $allowed_html);
+        $prop_stat = wp_kses($_POST['property_status'], $allowed_html);
+        $property_status = '';
+
+
+
         foreach ($status_values_array as $key => $value) {
             $value = trim($value);
             $value_wpml = $value;
@@ -360,7 +357,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'view') {
         $google_camera_angle = wp_kses($_POST['google_camera_angle'], $allowed_html);
         $has_errors = false;
         $errors = array();
- 
+
         $moving_array = array();
         foreach ($feature_list_array as $key => $value) {
 
@@ -605,22 +602,25 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'view') {
             if (!isset($_POST['activity'])) {
                 $activity = 3;
             } else {
-                $activity = (int) ( $_POST['activity'] );
+                $activity = (int)( $_POST['activity'] );
             }
- 
-            
+  
             if (!isset($_POST['language'])) {
                 $language = array();
             } else {
-                $language = ( $_POST['language'] );
+                $language = ($_POST['language']);
             }
-            
+            //esc
+            $language = array_map( 'esc_attr', $language ); 
+             
             if (!isset($_POST['skill'])) {
                 $skill = array();
             } else {
-                $skill = ( $_POST['skill'] );
+                $skill = ($_POST['skill']);
             }
- 
+            //esc
+            $skill = array_map( 'esc_attr', $skill ); 
+             
             update_post_meta($post_id, 'how_long', $how_long);
             update_post_meta($post_id, 'sexual_preference', $sexual_preference);
             update_post_meta($post_id, 'user_gender', $user_gender);
@@ -632,9 +632,9 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'view') {
             update_post_meta($post_id, 'rent_amount', $rent_amount);
             update_post_meta($post_id, 'user_origin', $user_origin);
             update_post_meta($post_id, 'activity', $activity);
-            update_post_meta($post_id, 'language', $language); 
+            update_post_meta($post_id, 'language', $language);
             update_post_meta($post_id, 'skill', $skill);
-             
+ 
             update_post_meta($post_id, 'sidebar_agent_option', 'global');
             update_post_meta($post_id, 'local_pgpr_slider_type', 'global');
             update_post_meta($post_id, 'local_pgpr_content_type', 'global');
@@ -642,7 +642,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'view') {
             update_post_meta($post_id, 'property_address', $property_address);
             update_post_meta($post_id, 'property_county', $property_county);
             update_post_meta($post_id, 'property_zip', $property_zip);
-            //    update_post_meta($post_id, 'property_state', $property_state);
+            //update_post_meta($post_id, 'property_state', $property_state);
             update_post_meta($post_id, 'property_country', $country_selected);
             update_post_meta($post_id, 'property_size', $property_size);
             update_post_meta($post_id, 'owner_notes', $owner_notes);
@@ -737,7 +737,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
     if (!isset($_POST['new_estate']) || !wp_verify_nonce($_POST['new_estate'], 'submit_new_estate')) {
         exit('Sorry, your not submiting from site');
     }
-      
+
     $has_errors = false;
     $show_err = '';
     $edited = 0;
@@ -799,8 +799,8 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
     } else {
         $property_county_state = wp_kses($_POST['property_county'], $allowed_html);
     }
- 
-    
+
+
     /*
       $how_long = (int)($_POST['how_long']);
       $sexual_preference = (int) ( $_POST['sexual_preference'] );
@@ -816,7 +816,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
       $language = ($_POST['language']);
      */
 
- 
+
     $submit_title = wp_kses($_POST['title'], $allowed_html);
     $submit_description = wp_filter_nohtml_kses($_POST['description']);
     $property_address = wp_kses($_POST['property_address'], $allowed_html);
@@ -902,9 +902,9 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
         $has_errors = true;
         $errors[] = __('*Please submit an address for your property', 'wpestate');
     }
- 
-    
-    
+
+
+
 
     if (!isset($_POST['how_long'])) {
         $how_long = 3;
@@ -960,21 +960,27 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
         $activity = 3;
     } else {
         $activity = (int) ( $_POST['activity'] );
-    } 
-    if (!isset($_POST['language'])) {
-        $language = array();
-    } else {
-        $language = $_POST['language'];
     }
-    if (!isset($_POST['skill'])) {
+
+
+     if (!isset($_POST['language'])) {
+                $language = array();
+            } else {
+                $language = ($_POST['language']);
+            }
+            //esc
+            $language = array_map( 'esc_attr', $language ); 
+            
+              
+            if (!isset($_POST['skill'])) {
                 $skill = array();
             } else {
-                $skill = ( $_POST['skill'] );
+                $skill = ($_POST['skill']);
             }
-    
-    
-    
-   
+            //esc
+            $skill = array_map( 'esc_attr', $skill ); 
+
+
     if ($has_errors) {
         foreach ($errors as $key => $value) {
             $show_err.=$value . '</br>';
@@ -987,7 +993,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
         if ($admin_submission_status == 'no') {
             $new_status = get_post_status($edit_id);
         }
- 
+
         $post = array(
             'ID' => $edit_id,
             'post_title' => $submit_title,
@@ -1113,9 +1119,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
         update_post_meta($post_id, 'property_latitude', $property_latitude);
         update_post_meta($post_id, 'property_longitude', $property_longitude);
         update_post_meta($post_id, 'property_google_view', $google_view);
-        update_post_meta($post_id, 'google_camera_angle', $google_camera_angle);
-
-  
+        update_post_meta($post_id, 'google_camera_angle', $google_camera_angle); 
         update_post_meta($post_id, 'how_long', $how_long);
         update_post_meta($post_id, 'sexual_preference', $sexual_preference);
         update_post_meta($post_id, 'user_gender', $user_gender);
@@ -1126,12 +1130,11 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
         update_post_meta($post_id, 'party', $party);
         update_post_meta($post_id, 'rent_amount', $rent_amount);
         update_post_meta($post_id, 'user_origin', $user_origin);
-        update_post_meta($post_id, 'activity', $activity);  
-        update_post_meta($post_id, 'language', $language); 
+        update_post_meta($post_id, 'activity', $activity); 
+        update_post_meta($post_id, 'language', $language);  
         update_post_meta($post_id, 'skill', $skill);
-        
-         
-          
+ 
+
         foreach ($feature_list_array as $key => $value) {
             $post_var_name = str_replace(' ', '_', trim(wp_kses($value, $allowed_html)));
             $post_var_name = wpestate_limit45(sanitize_title($post_var_name));
@@ -1141,7 +1144,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
                 update_post_meta($post_id, $post_var_name, $feature_value);
             }
         }
-  
+
         // save custom fields
         $i = 0;
         if (!empty($custom_fields)) {
