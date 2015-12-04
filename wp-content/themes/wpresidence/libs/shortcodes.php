@@ -116,7 +116,7 @@ if (!function_exists('wpestate_list_users_function')):
               $user_pinterest = get_the_author_meta('pinterest', $q->ID);
              */
 
-            $photo_url = get_the_author_meta('custom_picture', $q->ID);
+            $photo_url = get_the_author_meta('custom_picture', $q->ID); 
             $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
             $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
             $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : ''; 

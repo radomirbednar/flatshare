@@ -4,8 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-?>
-
+?> 
 <div class="col-md-3 listing_wrapper">
     <div class="agent_unit" data-link="<?php print $author_url; ?>"> 
         <div class="agent-unit-img-wrapper person-<?php echo (int) $q->ID ?>">
@@ -33,7 +32,7 @@
                 print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
             }
             ?>
-            <div class="agent_position">
+            <div class="agent_position author_desc">
             <?php echo $description; ?> 
             </div>     
         </div> 
