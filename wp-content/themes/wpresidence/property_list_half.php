@@ -173,8 +173,7 @@ switch ($order){
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 if( is_front_page() ){
      $paged= (get_query_var('page')) ? get_query_var('page') : 1;
-}
-            
+}            
             
 $args = array(
     'post_type'         => 'estate_property',
@@ -192,7 +191,7 @@ $args = array(
                                 $city_array,
                                 $area_array
                             )
-);
+    );
 
 
 

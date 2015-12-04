@@ -13,7 +13,7 @@ global $prop_unit_class;
 global $property_unit_slider;
 
 
-$args2 = wpestate_get_select_arguments();
+$args2                      =   wpestate_get_select_arguments();
 $action_select_list         =   wpestate_get_action_select_list($args2);
 $categ_select_list          =   wpestate_get_category_select_list($args2);
 $select_city_list           =   wpestate_get_city_select_list($args2); 

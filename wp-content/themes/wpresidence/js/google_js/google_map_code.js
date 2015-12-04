@@ -27,11 +27,15 @@ var idx_place;
 function initialize(){
     "use strict";
 
+
+    //console.log('zoom ' + googlecode_regular_vars.page_custom_zoom);
+
     //var map_type='google.maps.MapTypeId.'+googlecode_regular_vars.type;
     var mapOptions = {
         flat:false,
         noClear:false,
         zoom: parseInt(googlecode_regular_vars.page_custom_zoom),
+        //zoom: 10,
         scrollwheel: false,
         draggable: true,
         center: new google.maps.LatLng(googlecode_regular_vars.general_latitude, googlecode_regular_vars.general_longitude),
@@ -56,6 +60,7 @@ function initialize(){
 
     if(mapfunctions_vars.map_style !==''){
        var styles = JSON.parse ( mapfunctions_vars.map_style );
+       //console.log('styles ' + styles);
        map.setOptions({styles: styles});
     }
   
@@ -85,7 +90,7 @@ function initialize(){
 
     
     if (markers.length>0){
-        setMarkers(map, markers);
+        //setMarkers(map, markers);
     }
    
     if(googlecode_regular_vars.idx_status==='1'){
