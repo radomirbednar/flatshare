@@ -12,6 +12,9 @@ global $google_camera_angle;
 global $property_area;
 global $property_city;
 global $property_county_state;
+
+global $edit_id;
+
 ?>
  
 <div class="submit_container">
@@ -148,7 +151,14 @@ global $property_county_state;
     <p class="half_form">
         <label for="property_google_view"><?php _e('Enable Google Street View','wpestate');?></label>
         <input type="hidden"    name="property_google_view" value="">
-        <input type="checkbox"  id="property_google_view"  name="property_google_view" value="1" <?php print $google_view_check;?> >                           
+        
+        <?php        
+        if(empty($edit_id)){
+            $google_view_check = ' checked="checked" ';
+        }
+        ?>
+        
+        <input type="checkbox"  id="property_google_view"  name="property_google_view" value="1" <?php print $google_view_check;?>>
     </p></br> 
     <p class="half_form half_form_last">
         <label for="google_camera_angle"><?php _e('Google Street View - Camera Angle (value from 0 to 360)','wpestate');?></label>
