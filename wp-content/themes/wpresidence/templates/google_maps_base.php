@@ -2,8 +2,6 @@
 <?php
 global $post;
 
-
-
 if( !is_tax() && !is_category() && isset($post->ID) ){
     $gmap_lat           =   esc_html( get_post_meta($post->ID, 'property_latitude', true));
     $gmap_long          =   esc_html( get_post_meta($post->ID, 'property_longitude', true));
@@ -22,8 +20,6 @@ if( !is_tax() && !is_category() && isset($post->ID) ){
 }
 
 ?>
-
-
 
 <div id="gmap_wrapper"  <?php print $property_add_on; ?> style="height:<?php print $closed_height;?>px;">
     <div id="googleMap"  style="height:<?php print $closed_height;?>px"></div>   

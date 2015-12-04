@@ -21,9 +21,9 @@ $taxonomy                   =   'property_action_category';
 $tax_terms                  =   get_terms($taxonomy);
 $taxonomy_cat               =   'property_category';
 $categories                 =   get_terms($taxonomy_cat);
-$show_compare=1;
-$prop_unit          =   esc_html ( get_option('wp_estate_prop_unit','') );
-$prop_unit_class    =   '';
+$show_compare               =   1;
+$prop_unit                  =   esc_html ( get_option('wp_estate_prop_unit','') );
+$prop_unit_class            =   '';
 if($prop_unit=='list'){
     $prop_unit_class="ajax12";
     $align_class=   'the_list_view';
@@ -173,8 +173,7 @@ switch ($order){
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 if( is_front_page() ){
      $paged= (get_query_var('page')) ? get_query_var('page') : 1;
-}
-            
+}            
             
 $args = array(
     'post_type'         => 'estate_property',
@@ -192,7 +191,7 @@ $args = array(
                                 $city_array,
                                 $area_array
                             )
-);
+    );
 
 
 
@@ -211,5 +210,3 @@ get_template_part('templates/half_map_core');
 //$selected_pins = wpestate_listing_pins($args);//call the new pins  
 //wp_localize_script('googlecode_regular', 'googlecode_regular_vars2', array('markers2'           =>  $selected_pins,));
 get_footer(); 
-
-?>

@@ -118,7 +118,21 @@ if( !empty($id_array)){
 // print_r($prop_selection);
 $num = $prop_selection->found_posts;
 $selected_pins  =   wpestate_listing_pins($mapargs,1);//call the new pins  
-   
+
+
+
+if($selected_pins):
+?>
+<script>  
+jQuery(document).ready(function ($) {    
+    markers = jQuery.parseJSON('<?php echo $selected_pins ?>');  
+    //console.log(markers);
+    setMarkers(map, markers);
+})
+</script>
+<?php
+endif;
+
 $property_list_type_status =    esc_html(get_option('wp_estate_property_list_type_adv',''));
 $half_map_results = 0;
 

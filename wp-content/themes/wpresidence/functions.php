@@ -821,3 +821,20 @@ function restrict_admin(){
 add_action( 'admin_init', 'restrict_admin', 1 ); 
 */
             
+
+
+function fl_languages_list(){
+    $languages = icl_get_languages('skip_missing=0&orderby=code');    
+    if(!empty($languages)){
+        
+        echo '<ul>';
+        
+        foreach($languages as $l){
+            if(!$l['active']) echo '<a href="'.$l['url'].'">';
+            echo '<li class="' . ($l['active'] ? 'active' : 'noactive') . '"><img src="'.$l['country_flag_url'].'" height="12" alt="'.$l['language_code'].'" width="18" /></li>';
+            if(!$l['active']) echo '</a>';
+        }
+        
+        echo '</ul>';
+    }
+}

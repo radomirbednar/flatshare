@@ -11165,7 +11165,7 @@ label.wpb_btn-large,
 button.wpb_btn-large,
 span.wpb_btn-large {
     text-align: center;
-    padding: 9px 0px !important;
+    padding: 9px 6px !important;
     font-size: 13px !important;
     text-transform: uppercase;
     line-height: normal!important;
@@ -12879,9 +12879,90 @@ span.sub{
     content:  "\f077";
 }
 .clear{
-    clear: both;
+    clear: both; 
 }
-.author_desc{
-    min-height: 40px;
+/**/
+.flags_language_selector img{
+      margin:1px;      
+      border: 1px solid #f0f0f0;
+}
+.header_wrapper_inside .flags_language_selector {
+    position: absolute;
+    right: 0;
+    top: 0;    
+    margin-right: 45px;
+}
+.flags_language_selector_phone ul,
+.header_wrapper_inside .flags_language_selector ul {
+    margin: 0;
+    padding: 0;
+}
+.flags_language_selector_phone ul li,
+.header_wrapper_inside .flags_language_selector ul li {
+    list-style-type: none;
+    float: left;
+}
+.flags_language_selector ul li.noactive {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;    
+}
+.flags_language_selector ul li.noactive:hover {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;        
+}
+/**/
+.flags_language_selector_phone {
+    position: absolute;
+    top: 10px;
+    left: 28px;
+}
+.flags_language_selector_phone img{      
+      border: 1px solid #555;
+      margin: 2px;
+}
+.mobilewrapper .flags_language_selector ul li {
+    
+}
 
+
+/**/
+.availability-box {
+    border: 1px solid #f0f0f0;
+    padding: 15px;
+}
+
+.availability-box h2 {
+    font-size: 16px;
+} 
+.availability-box p {
+    font-size: 15px;
+}
+.fl-property-from {
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #f0f0f0;
+}
+.availability-box {    
+    padding: 15px;
+    margin-bottom: 30px!important;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 2px 0px 0px rgba(227, 228, 231, 1);
+    box-shadow: 0px 2px 0px 0px rgba(227, 228, 231, 1);    
+    position: relative;    
+    background-color: #fdfdfd;    
+    /*
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    padding-bottom: 50px;
+    */
 }
