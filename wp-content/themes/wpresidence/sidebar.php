@@ -24,13 +24,13 @@ if (('no sidebar' != $options['sidebar_class']) && ('' != $options['sidebar_clas
                 //&& $property_date_date = DATETIME::createFromFormat("Y-m-d", $property_date)
                 ?>        
                 <div class="fl-property-date">
-                    <?php echo mysql2date(get_option('date_format'), $property_date, true); ?>
+                    <p><?php echo mysql2date(get_option('date_format'), $property_date, true); ?></p>
                 </div>    
             <?php endif; ?>
 
             <?php if(!empty($property_date_text)): ?>
             <div class="fl-property-from">
-                <?php echo $property_date_text; ?>
+                <p><?php echo $property_date_text; ?></p>
             </div>            
             <?php endif; ?>
         </div>    

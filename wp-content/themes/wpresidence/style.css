@@ -12947,3 +12947,40 @@ span.sub{
 .mobilewrapper .flags_language_selector ul li {
     
 }
+
+
+/**/
+.availability-box {
+    border: 1px solid #f0f0f0;
+    padding: 15px;
+}
+
+.availability-box h2 {
+    font-size: 16px;
+} 
+.availability-box p {
+    font-size: 15px;
+}
+.fl-property-from {
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #f0f0f0;
+}
+.availability-box {    
+    padding: 15px;
+    margin-bottom: 30px!important;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 2px 0px 0px rgba(227, 228, 231, 1);
+    box-shadow: 0px 2px 0px 0px rgba(227, 228, 231, 1);    
+    position: relative;    
+    background-color: #fdfdfd;    
+    /*
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    padding-bottom: 50px;
+    */
+}
