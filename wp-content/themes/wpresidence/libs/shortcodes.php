@@ -96,10 +96,9 @@ if (!function_exists('wpestate_list_users_function')):
 
     function wpestate_list_users_function() {
 
-        $sql = 'SELECT * FROM w4a_users AS u JOIN fl_user_data as fud ON fud.id_user = u.ID WHERE fud.user_status IN (1,2) GROUP BY u.ID LIMIT 4;';
+        $sql = 'SELECT * FROM w4a_users AS u JOIN fl_user_data as fud ON fud.id_user = u.ID WHERE fud.user_status IN (1,2) GROUP BY u.ID ORDER BY u.user_registered DESC LIMIT 4;';
 
-        global $wpdb;
-
+        global $wpdb; 
         $query = $wpdb->get_results($sql);
 
         $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
@@ -117,13 +116,11 @@ if (!function_exists('wpestate_list_users_function')):
               $user_pinterest = get_the_author_meta('pinterest', $q->ID);
              */
 
-            $photo_url = get_the_author_meta('custom_picture', $q->ID);
+            $photo_url = get_the_author_meta('custom_picture', $q->ID); 
             $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
             $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
-            $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
-            $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
-
-
+            $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : ''; 
+            $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : ''; 
             $sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
             $sleeping_span = !empty($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
             $couple = !empty($fl_user_data->couple) ? $fl_user_data->couple : '';
@@ -131,11 +128,9 @@ if (!function_exists('wpestate_list_users_function')):
             $pets = !empty($fl_user_data->pets) ? $fl_user_data->pets : '';
             $user_origin = !empty($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
             $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
-            $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
-            $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : '';
+            $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : ''; 
             $description = get_the_author_meta('description', $q->ID); 
-              
-            
+               
             //prvni vetastr_word_count
              
             preg_match('/^([^.!?]*[\.!?]+){0,2}/', strip_tags($description), $abstract);            
@@ -212,6 +207,7 @@ if (!function_exists('wpestate_list_users_function')):
             );
 
             $looking_for_array = array(
+                 
                 '1' => array(
                     '<i class="icon-icon_roommate" data-toggle="tooltip" data-placement="top" title="roomate"></i>',
                     __('roomate', 'wpestate'))

@@ -168,14 +168,11 @@ if ($options['content_class'] == 'col-md-12') {
                 $sql .= " AND rent_amount BETWEEN " . (int) $rent_low . " AND " . (int) $rent_max;
             }
 
-            $sql .= " GROUP BY u.ID ";
-
-            $sql .= " LIMIT " . (int) $offset . ", " . (int) $total_query;
-
+            $sql .= " GROUP BY u.ID ORDER BY u.user_registered DESC"; 
+            $sql .= " LIMIT " . (int) $offset . ", " . (int) $total_query; 
             global $wpdb;
 
-            $query = $wpdb->get_results($sql);
-
+            $query = $wpdb->get_results($sql); 
             $total_users = $wpdb->get_var("SELECT FOUND_ROWS() cnt");
             $total_pages = ceil($total_users / $total_query);
 
@@ -200,18 +197,25 @@ if ($options['content_class'] == 'col-md-12') {
                     '2' => __('female', 'wpestate'),
                     '1' => __('male', 'wpestate')
                 );
-                
-                
-                
-            $sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
-            $sleeping_span = !empty($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
-            $couple = !empty($fl_user_data->couple) ? $fl_user_data->couple : '';
-            $smoker = !empty($fl_user_data->smoker) ? $fl_user_data->smoker : '';
-            $pets = !empty($fl_user_data->pets) ? $fl_user_data->pets : '';
-            $user_origin = !empty($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
-            $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
-            $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
-   
+                 
+                $description = get_the_author_meta('description', $q->ID);  
+                //prvni vetastr_word_count 
+                preg_match('/^([^.!?]*[\.!?]+){0,2}/', strip_tags($description), $abstract);            
+                if($abstract != ''){  
+                $description = $abstract[0];  
+                }else{ 
+                $description = wp_trim_words( wp_trim_words( $text, $num_words = 12, $more = null )); 
+                } 
+                 
+                $sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
+                $sleeping_span = !empty($fl_user_data->sleeping_span) ? $fl_user_data->sleeping_span : '';
+                $couple = !empty($fl_user_data->couple) ? $fl_user_data->couple : '';
+                $smoker = !empty($fl_user_data->smoker) ? $fl_user_data->smoker : '';
+                $pets = !empty($fl_user_data->pets) ? $fl_user_data->pets : '';
+                $user_origin = !empty($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
+                $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
+                $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
+    
          $sexual_preference_array = array( 
                 '1' => array(
                       '<i class="icon-icon_sex-straight" data-toggle="tooltip" data-placement="top" title="straight"></i>',
