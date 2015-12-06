@@ -59,13 +59,13 @@ if (!isset($prefix)) {
                 <div class="form-control-in">
                     <div class="adv_search_slider"><!-- age slider -->
 
-<?php
-$age_min = 0;
-$age_max = 99;
+                        <?php
+                        $age_min = 0;
+                        $age_max = 99;
 
-$age_min_val = isset($_GET['age_low']) ? $_GET['age_low'] : $age_min;
-$age_max_val = isset($_GET['age_max']) ? $_GET['age_max'] : $age_max;
-?>
+                        $age_min_val = isset($_GET['age_low']) ? $_GET['age_low'] : $age_min;
+                        $age_max_val = isset($_GET['age_max']) ? $_GET['age_max'] : $age_max;
+                        ?>
 
                         <script>
                             jQuery(document).ready(function ($) {
@@ -97,28 +97,28 @@ $age_max_val = isset($_GET['age_max']) ? $_GET['age_max'] : $age_max;
             <div class="form-control-half">
                 <div class="form-control-in">
                     <div class="adv_search_slider"><!-- price slider -->
-<?php
-$roommate_price_low = $current_price_low = 0;
-$roommate_price_max = $current_price_max = 1200;
+                        <?php
+                        $roommate_price_low = $current_price_low = 0;
+                        $roommate_price_max = $current_price_max = 1200;
 
-$where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
-$currency = esc_html(get_option('wp_estate_currency_symbol', ''));
+                        $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
+                        $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
 
 
 
 //$min_price_slider= ( floatval(get_option('wp_estate_show_slider_min_price','')) );
 //$max_price_slider= ( floatval(get_option('wp_estate_show_slider_max_price','')) );
 
-if (isset($_GET['rent_low'])) {
-    $current_price_low = floatval($_GET['rent_low']);
-}
+                        if (isset($_GET['rent_low'])) {
+                            $current_price_low = floatval($_GET['rent_low']);
+                        }
 
-if (isset($_GET['rent_max'])) {
-    $current_price_max = floatval($_GET['rent_max']);
-}
+                        if (isset($_GET['rent_max'])) {
+                            $current_price_max = floatval($_GET['rent_max']);
+                        }
 
-$price_slider_label = wpestate_show_price_label_slider($current_price_low, $current_price_max, $currency, $where_currency);
-?>
+                        $price_slider_label = wpestate_show_price_label_slider($current_price_low, $current_price_max, $currency, $where_currency);
+                        ?>
                         <p>
                             <label for="<?php echo $prefix ?>roommate_amount" class="wauto"><?php _e('Price range:', 'wpestate'); ?></label>
                             <span id="<?php echo $prefix ?>roommate_amount" class="slide-label"><?php echo $price_slider_label ?></span>
@@ -134,26 +134,26 @@ $price_slider_label = wpestate_show_price_label_slider($current_price_low, $curr
             <div class="clearfix"></div>
 
             <div id="<?php echo $prefix ?>roommate-advance" class="form-control-full tpadding adv_extended_options_text" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: none;"' : '' ?>>
-<?php _e('More search options', 'wpestate'); ?>
+                <?php _e('More search options', 'wpestate'); ?>
             </div> 
 
             <div id="<?php echo $prefix ?>more-search-options" class="extended_search_check_wrapper" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: block;"' : '' ?>><!-- advance search block -->
 
                 <div class="form-control-half">
                     <div class="form-control-in">
-<?php
-$arr = array(
-    1 => __('a flat', 'wpestate'),
-    2 => __('a roommate', 'wpestate'),
-        //3 => __('Real estate', 'wpestate'),
-        //4 => __('Landlord', 'wpestate'),
-);
-?>
+                        <?php
+                        $arr = array(
+                            1 => __('a flat', 'wpestate'),
+                            2 => __('a roommate', 'wpestate'),
+                                //3 => __('Real estate', 'wpestate'),
+                                //4 => __('Landlord', 'wpestate'),
+                        );
+                        ?>
                         <label for="<?php echo $prefix ?>status"><?php _e('Someone looking for:', 'wpestate'); ?></label>
                         <div class="value-row clearfix"> 
                             <select id="<?php echo $prefix ?>status" class="form-control w100" name="status" class="w100"> 
                                 <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option> 
-<?php foreach ($arr as $key => $val): ?>
+                                <?php foreach ($arr as $key => $val): ?>
                                     <option value="<?php echo $key ?>" <?php echo isset($_GET['status']) && $_GET['status'] == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
                                 <?php endforeach; ?> 
                             </select> 
@@ -290,25 +290,25 @@ $arr = array(
                             <div class="form-control-in">
                                 <label><?php _e('House skills', 'wpestate'); ?></label>
                                 <p class="inline-checkboxes">
-<?php
-$skills = fl_get_house_skills();
-if (!empty($skills)):
-    foreach ($skills as $skill):
+                                    <?php
+                                    $skills = fl_get_house_skills();
+                                    if (!empty($skills)):
+                                        foreach ($skills as $skill):
 
-        $selected = '';
-        if (isset($_GET['skill']) && is_array($_GET['skill'])) {
-            $selected = in_array($skill->id_skill, $_GET['skill']) ? ' checked ' : '';
-        }
-        ?>
+                                            $selected = '';
+                                            if (isset($_GET['skill']) && is_array($_GET['skill'])) {
+                                                $selected = in_array($skill->id_skill, $_GET['skill']) ? ' checked ' : '';
+                                            }
+                                            ?>
                                             <span class="flcheckbox">
                                                 <label>
                                                     <input name="skill[]" type="checkbox" value="<?php echo (int) $skill->id_skill ?>" <?php echo $selected ?>><?php esc_attr_e($skill->name) ?>
                                                 </label>
                                             </span>
-        <?php
-    endforeach;
-endif;
-?>
+                                            <?php
+                                        endforeach;
+                                    endif;
+                                    ?>
                                 </p>
                             </div>
                         </div>
@@ -317,17 +317,17 @@ endif;
                         <div class="form-control-origin no-label pull-left clearfix">
                             <!--<div class="form-control-in">-->
 
-<?php
-$coutnries = fl_get_countries();
-?>
+                            <?php
+                            $coutnries = fl_get_countries();
+                            ?>
                             <p>
                                 <select id="<?php echo $prefix ?>user_origin" name="origin" class="form-control">
                                     <option value=""><?php _e('Country of origin', 'wpestate'); ?></option>
-<?php
-if (!empty($coutnries)):
-    foreach ($coutnries as $country):
-        ?>
-                                            <option value="<?php echo esc_attr($country->iso) ?>" <?php echo isset($_GET['origin']) && $_GET['origin'] == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
+                                    <?php
+                                    if (!empty($coutnries)):
+                                        foreach ($coutnries as $country):
+                                            ?>
+                                            <option value="<?php echo $country ?>" <?php echo isset($_GET['origin']) && $_GET['origin'] == $country ? ' selected="selected" ' : ''; ?>><?php esc_attr_e($country); ?></option>
                                             <?php
                                         endforeach;
                                     endif;
@@ -363,24 +363,24 @@ if (!empty($coutnries)):
                     <div class="form-control-in">
                         <label><?php _e('Language skills', 'wpestate'); ?></label>
                         <p class="inline-checkboxes">
-<?php
-$languages = fl_get_languages();
+                            <?php
+                            $languages = fl_get_languages();
 
-if (!empty($languages)):
-    foreach ($languages as $lang):
+                            if (!empty($languages)):
+                                foreach ($languages as $lang):
 
-        $selected = '';
-        if (isset($_GET['language']) && is_array($_GET['language'])) {
-            $selected = in_array($lang->id_lang, $_GET['language']) ? ' checked ' : '';
-        }
-        ?>
+                                    $selected = '';
+                                    if (isset($_GET['language']) && is_array($_GET['language'])) {
+                                        $selected = in_array($lang->id_lang, $_GET['language']) ? ' checked ' : '';
+                                    }
+                                    ?>
                                     <span class="flcheckbox">
                                         <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>" <?php echo $selected ?>><?php esc_attr_e($lang->name) ?></label>
                                     </span>
-        <?php
-    endforeach;
-endif;
-?>
+                                    <?php
+                                endforeach;
+                            endif;
+                            ?>
                         </p>
                     </div>
                 </div> 
@@ -390,32 +390,32 @@ endif;
                 <input class="ra" name="ra" type="hidden" value="<?php echo isset($_GET['ra']) ? (int) $_GET['ra'] : 0 ?>">
             </div><!-- /advance search block -->
 
-<?php
-/*
-  $custom_advanced_search = get_option('wp_estate_custom_advanced_search', '');
-  if ($custom_advanced_search == 'yes') {
-  foreach ($adv_search_what as $key => $search_field) {
-  wpestate_show_search_field('mainform', $search_field, $action_select_list, $categ_select_list, $select_city_list, $select_area_list, $key, $select_county_state_list);
-  }
-  } else {
-  $search_form = wpestate_show_search_field_classic_form('main', $action_select_list, $categ_select_list, $select_city_list, $select_area_list);
-  print $search_form;
-  }
+            <?php
+            /*
+              $custom_advanced_search = get_option('wp_estate_custom_advanced_search', '');
+              if ($custom_advanced_search == 'yes') {
+              foreach ($adv_search_what as $key => $search_field) {
+              wpestate_show_search_field('mainform', $search_field, $action_select_list, $categ_select_list, $select_city_list, $select_area_list, $key, $select_county_state_list);
+              }
+              } else {
+              $search_form = wpestate_show_search_field_classic_form('main', $action_select_list, $categ_select_list, $select_city_list, $select_area_list);
+              print $search_form;
+              }
 
-  if ($extended_search == 'yes') {
-  show_extended_search('adv');
-  } */
-?>
+              if ($extended_search == 'yes') {
+              show_extended_search('adv');
+              } */
+            ?>
         </div> 
 
     </div>
 
     <input name="submit" type="submit" class="wpb_button  wpb_btn_adv_submit wpb_btn-large btn-action border-radius" id="<?php echo $prefix ?>advanced_submit_2" value="<?php _e('Search', 'wpestate'); ?>">
-<?php if ($adv_search_type != 2) { ?>
+    <?php if ($adv_search_type != 2) { ?>
         <div id="<?php echo $prefix ?>results">
-        <?php _e('We found ', 'wpestate'); ?> <span id="<?php echo $prefix ?>results_no">0</span> <?php _e('results.', 'wpestate'); ?>
+            <?php _e('We found ', 'wpestate'); ?> <span id="<?php echo $prefix ?>results_no">0</span> <?php _e('results.', 'wpestate'); ?>
             <span id="<?php echo $prefix ?>showinpage"> <?php _e('Do you want to load the results now ?', 'wpestate'); ?> </span>
         </div>
-<?php } ?>
+    <?php } ?>
     <div class="clearfix"></div>
 </form> 

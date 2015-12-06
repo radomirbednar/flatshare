@@ -377,7 +377,7 @@ if ($user_custom_picture == '') {
                     if (!empty($coutnries)):
                         foreach ($coutnries as $country):
                     ?>
-                    <option value="<?php echo esc_attr($country->iso) ?>" <?php echo $user_origin == $country->iso ? ' selected="selected" ' : ''; ?>><?php _e($country->name); ?></option>
+                    <option value="<?php echo $country ?>" <?php echo $user_origin == $country ? ' selected="selected" ' : ''; ?>><?php esc_attr_e($country); ?></option>
                     <?php
                         endforeach;
                     endif;
