@@ -175,7 +175,7 @@ if( $property_unit_slider==1){
                 print '<div class="featured_div"></div>';
             }
               print   '</div>';
-            if ($prop_stat != 'normal') {
+            if ($prop_stat != 'normal' && !empty($prop_stat)) {
                 $ribbon_class = str_replace(' ', '-', $prop_stat);
                 if (function_exists('icl_translate') ){
                     $prop_stat     =   icl_translate('wpestate','wp_estate_property_status'.$prop_stat, $prop_stat );

@@ -791,13 +791,14 @@ function estate_box($post) {
             </p>
         </td>
         
-
+        <!--
         <td align="left" valign="top">   
             <p class="meta-options">
             <label for="property_state">'.__('State:: ','wpestate').'</label><br />
             <input type="text" id="property_state" size="40" name="property_state" value="' . esc_html(get_post_meta($mypost, 'property_state', true)) . '">
             </p>
         </td> 
+        -->
     </tr> 
     <tr>';
     $status_values          =   esc_html( get_option('wp_estate_status_list') );
