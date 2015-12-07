@@ -105,6 +105,14 @@ if (!function_exists('wpestate_list_users_function')):
         $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
 
         ob_start();
+        ?>
+        
+            <script>
+                jQuery(document).ready(function ($) {
+                    $('[data-toggle="tooltip"]').tooltip()
+                });
+            </script> 
+        <?php
         foreach ($query as $q) {
             $fl_user_data = get_fl_data($q->ID);
             $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
@@ -244,11 +252,7 @@ if (!function_exists('wpestate_list_users_function')):
                 ?> 
             </div> 
 
-            <script>
-                jQuery(document).ready(function ($) {
-                    $('[data-toggle="tooltip"]').tooltip()
-                });
-            </script> 
+
 
 
             <?php
