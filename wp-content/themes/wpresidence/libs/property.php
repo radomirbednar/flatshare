@@ -892,7 +892,7 @@ function wpestate_country_list($selected,$class='') {
     }
     foreach ($countries as $iso => $country) {
         $country_select.='<option value="' . $iso . '"';
-        if ($selected == $country) {
+        if ($selected == $iso) {
             $country_select.='selected="selected"';
         }
         $country_select.='>' . esc_attr__($country) . '</option>';
