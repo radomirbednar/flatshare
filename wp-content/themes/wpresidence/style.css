@@ -12965,4 +12965,9 @@ span.sub{
     cursor: pointer;
     padding-bottom: 50px;
     */
-}
+} 
+.panel-body .sub_block{   
+    float: left;
+    width: 50%;
+    min-height: 75px; 
+} 
