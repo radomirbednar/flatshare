@@ -214,15 +214,8 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             ?>   
         </div> 
     </div><!-- end 9col container-->      
-    <?php if($user_status!=3): ?>   
-    <div class="col-md-3">   
-        <div class="mydetails"> 
-            <?php _e('My Details', 'wpestate'); ?>
-        </div>  
-        <?php
-        $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
-        $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
-        ?> 
+    
+
 
     <?php if ($user_status != 3): ?>  
 
@@ -326,62 +319,8 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                 <?php echo $user_origin; ?>     
             </div> 
         </div>  
-        <div class="sub_block"> 
-            <span class="sub"><?php print __('House Skills: ', 'wpestate'); ?></span>               
-            <?php
-            foreach ($houseskils as $skil) {
-                echo '<strong>' . $skil->name . '</strong>';
-            }
-            ?>     
-        </div>     
-        <div class="sub_block">
-            <span class="sub"><?php print __('For how long: ', 'wpestate'); ?></span> 
-            <i class="icon-icon_time"></i>
-            <?php print $how_long_array[$how_long]; ?> 
-        </div>  
-        <div class="sub_block">
-            <span class="sub"><?php print __('Looking for: ', 'wpestate'); ?></span> 
-            <?php print ($looking_for_array[$looking_for][0]) . isset($looking_for_array[$looking_for][1]); ?> 
-        </div>          
-        <div class="sub_block">
-            <span class="sub"><?php print __('Sexual preferences: ', 'wpestate'); ?></span> 
-            <?php print $sexual_preference_array[$sexual_preference][0] . $sexual_preference_array[$sexual_preference][1]; ?>  
-        </div>  
-        <div class="sub_block">         
-            <span class="sub"><?php print __('Sleep during week: ', 'wpestate'); ?></span>
-            <?php print $sleeping_span_array[$sleeping_span][0] . $sleeping_span_array[$sleeping_span][1]; ?> 
-        </div> 
-        <div class="sub_block">
-            <span class="sub"><?php print __('Couple: ', 'wpestate'); ?></span>   
-            <?php print $couple_array[$couple][0] . $couple_array[$couple][1]; ?>  
-        </div> 
-        <div class="sub_block">          
-            <span class="sub"><?php print __('Pets: ', 'wpestate'); ?></span> 
-            <?php print $pets_array[$pets][0] . $pets_array[$pets][1]; ?> 
-        </div> 
-        <div class="sub_block">          
-            <span class="sub"><?php print __('Smoker: ', 'wpestate'); ?></span> 
-            <?php print $smoker_array[$smoker][0] . $smoker_array[$smoker][1]; ?>  
-        </div> 
-        <div class="sub_block">           
-            <span class="sub"><?php print __('Party: ', 'wpestate'); ?></span>
-            <?php print $party_array[$party][0] . $party_array[$party][1]; ?>  
-        </div> 
-        <div class="sub_block">
-            <span class="sub"><?php print __('Language skills: ', 'wpestate'); ?></span>    
-            <?php
-            foreach ($user_language_ids as $lang) {
-                echo '<strong>' . $lang . '</strong>';
-            }
-            ?> 
-        </div>
-        <div class="sub_block"> 
-            <span class="sub">
-                <?php print __('Country of origin: ', 'wpestate'); ?> 
-            </span>    
-            <?php echo $user_origin; ?>     
-        </div> 
-    </div>  
+
+    
     <?php endif; ?> 
     <?php // include(locate_template('sidebar.php'));      ?>
 </div>    
