@@ -79,6 +79,6 @@
             
             include( 'userdetails.php' );  
             include('author_contact.php');    
-        
+         
         //} 
 ?>

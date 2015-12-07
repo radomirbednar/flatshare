@@ -55,27 +55,21 @@ if (('no sidebar' != $options['sidebar_class']) && ('' != $options['sidebar_clas
 
             //show user in sidebar - always when is it post type estate_property
             //get_template_part('/templates/property_list_agent');
-            ?>
-
+            ?> 
             <div class="agent_contanct_form_sidebar">     
                 <?php
-                wp_reset_query();
-
-                get_template_part('templates/author_unit_widget');
-                get_template_part('templates/author_contact');
-                ?> 
-
+                wp_reset_query(); 
+                get_template_part('templates/author_unit_widget'); 
+                include('templates/author_contact.php');
+                ?>            
             </div> 
             <?php
         }
-        ?>
-
+        ?> 
         <ul class="xoxo">
             <?php generated_dynamic_sidebar($options['sidebar_name']); ?>
-        </ul>
-
-    </div>   
-
+        </ul> 
+    </div>    
     <?php
 }
 ?>

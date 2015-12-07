@@ -197,7 +197,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
 
             <div class="single-content single-agent">      
                 <?php include( locate_template('templates/userdetails.php')); ?> 
-            </div>   
+            </div>            
             <?php
             $login_url = get_permalink(240);
 
