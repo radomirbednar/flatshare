@@ -38,8 +38,7 @@ global $user_pack;
 global $prop_featured;
 global $current_user;
 global $custom_fields_array;
-global $option_slider;
-
+global $option_slider; 
 global $how_long;
 global $sexual_preference;
 global $user_gender;

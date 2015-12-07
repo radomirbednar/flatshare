@@ -12956,7 +12956,7 @@ span.sub{
     -webkit-box-shadow: 0px 2px 0px 0px rgba(227, 228, 231, 1);
     box-shadow: 0px 2px 0px 0px rgba(227, 228, 231, 1);    
     position: relative;    
-    background-color: #fdfdfd;    
+    background-color: #fdfdfd;        
     /*
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -12964,7 +12964,7 @@ span.sub{
     transition: all 0.4s ease;
     cursor: pointer;
     padding-bottom: 50px;
-    */
+    */ 
 }  
 #primary.widget-area-sidebar .agent_unit {
     min-height: 0;
@@ -12973,4 +12973,4 @@ span.sub{
     float: left;
     width: 50%;
     min-height: 75px; 
-} 
+}  
