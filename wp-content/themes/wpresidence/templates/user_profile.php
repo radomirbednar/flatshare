@@ -374,9 +374,9 @@ if ($user_custom_picture == '') {
                         <option value=""><?php _e('Select country', 'wpestate'); ?></option>
                         <?php
                         if (!empty($coutnries)):
-                            foreach ($coutnries as $country):
+                            foreach ($coutnries as $iso => $country):
                                 ?>
-                                <option value="<?php echo $country ?>" <?php echo $user_origin == $country ? ' selected="selected" ' : ''; ?>><?php esc_attr_e($country); ?></option>
+                                <option value="<?php echo $iso ?>" <?php echo $user_origin == $iso ? ' selected="selected" ' : ''; ?>><?php esc_attr_e($country); ?></option>
                                 <?php
                             endforeach;
                         endif;

@@ -132,7 +132,9 @@ global $edit_id;
     </p> 
     <p class="half_form ">
         <label for="property_country"><?php _e('Country ','wpestate'); ?></label>
-        <?php print wpestate_country_list($country_selected,'select-submit2'); ?>
+        <?php 
+        print wpestate_country_list($country_selected,'select-submit2'); 
+        ?>
     </p> 
     <p class="full_form" style="float:left;">
         <button id="google_capture"  class="wpb_button  wpb_btn-success wpb_btn-large vc_button"><?php _e('Place Pin with Property Address','wpestate');?></button>

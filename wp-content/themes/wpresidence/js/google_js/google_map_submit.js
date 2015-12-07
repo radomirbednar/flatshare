@@ -225,7 +225,7 @@ jQuery(document).ready(function ($) {
         locality: 'long_name',
         administrative_area_level_1: 'long_name',
         administrative_area_level_2: 'long_name',
-        country: 'long_name',
+        country: 'short_name',
         postal_code: 'short_name',
         postal_code_prefix:'short_name',
         neighborhood:'long_name'
@@ -272,10 +272,10 @@ jQuery(document).ready(function ($) {
         for (var i = 0; i < place.address_components.length; i++) {
           var addressType = place.address_components[i].types[0];
        
+            //console.log(addressType);
+       
             var temp='';
-            var val = place.address_components[i][componentForm[addressType]];
-           
-      
+            var val = place.address_components[i][componentForm[addressType]];            
                 
             if(addressType=== 'street_number' || addressType=== 'route'){
               //  document.getElementById('property_address').value =  document.getElementById('property_address').value +', '+ val;
@@ -294,6 +294,7 @@ jQuery(document).ready(function ($) {
             }else if(addressType=== 'locality'){
                 $('#property_city_submit').val(val);
             }else if(addressType=== 'country'){
+                console.log(val);
                 $('#property_country').val(val);
             }else{
                
