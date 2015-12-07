@@ -23,8 +23,15 @@
         </div> 
         <div class="user_unit_info">
             <?php 
+            
+            if(isset($looking_for_array[$looking_for][1])){ 
+                $looking_for = $looking_for_array[$looking_for][1]; 
+            }else{ 
+               $looking_for = '';  
+            }  
+       
             print '<h4> <a href="' . $author_url . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4> 
-                   <div class="agent_position"> ' .__('Looking for ', 'wpestate') .esc_attr( isset($looking_for_array[$looking_for][1])) .' in '. esc_attr( $looking_where ) . '</div>';   
+                   <div class="agent_position"> ' .__('Looking for ', 'wpestate') .esc_attr( $looking_for ) .' in '. esc_attr( $looking_where ) . '</div>';   
             if ($user_age) {
                 print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . esc_attr($user_age) . '</div>';
             }

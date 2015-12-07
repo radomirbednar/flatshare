@@ -131,6 +131,10 @@ if (!function_exists('wpestate_list_users_function')):
             $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : ''; 
             $description = get_the_author_meta('description', $q->ID); 
                
+            
+            
+            
+            
             //prvni vetastr_word_count
              
             preg_match('/^([^.!?]*[\.!?]+){0,2}/', strip_tags($description), $abstract);            

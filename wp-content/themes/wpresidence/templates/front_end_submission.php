@@ -321,6 +321,8 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                     <?php 
                     $skills = fl_get_house_skills(); 
                     $skillarray = $skill; 
+                    
+                    
                     if (!empty($skills)):
                         foreach ($skills as $skill):
                             $selected = in_array($skill->id_skill, (array)$skillarray[0]) ? ' checked ' : '';
