@@ -53,9 +53,7 @@ global $activity;
 global $language;
 global $skill;
  
-
-$images_to_show = '';
-
+$images_to_show = ''; 
 $remaining_listings = wpestate_get_remain_listing_user($userID, $user_pack);
 
 if ($remaining_listings === -1) {
@@ -67,16 +65,14 @@ $paid_submission_status = esc_html(get_option('wp_estate_paid_submission', ''));
 if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && $remaining_listings != -1 && $remaining_listings < 1) {
     print '<div class="user_profile_div"><h4>' . __('Your current package doesn\'t let you publish more properties! You need to upgrade your membership.', 'wpestate') . '</h4></div>';
 } else {
-    ?> 
-
+    ?>  
     <form id="new_post" name="new_post" method="post" action="" enctype="multipart/form-data" class="add-estate">
         <?php
         if (esc_html(get_option('wp_estate_paid_submission', '')) == 'yes') {
             print '<br>' . __('This is a paid submission.The listing will be live after payment is received.', 'wpestate');
         }
         ?>
-    </span>  
-
+    </span>   
     <?php
     if ($show_err) {
         print '<div class="alert alert-danger">' . $show_err . '</div>';
@@ -101,13 +97,10 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
 
             print '<div class="col-md-8 ">';
             get_template_part('templates/submit_templates/property_description');
-            include(locate_template('templates/submit_templates/property_images.php'));
-
+            include(locate_template('templates/submit_templates/property_images.php')); 
             get_template_part('templates/submit_templates/property_location');
-            get_template_part('templates/submit_templates/property_details');
-
-            print '</div>';
-
+            get_template_part('templates/submit_templates/property_details'); 
+            print '</div>'; 
             print '<div class="col-md-4">';
             get_template_part('templates/submit_templates/user_memebership_form');
             get_template_part('templates/submit_templates/property_featured');
@@ -319,12 +312,10 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                 <p class="inline-checkboxes">                
                     <?php 
                     $skills = fl_get_house_skills(); 
-                    $skillarray = $skill; 
-                    
-                    
+                    $skillarray = $skill;  
                     if (!empty($skills)):
                         foreach ($skills as $skill):
-                            $selected = in_array($skill->id_skill, (array)$skillarray[0]) ? ' checked ' : '';
+                            $selected = in_array($skill->id_skill, (array)$skillarray) ? ' checked ' : '';
                             ?>
                             <span class="flcheckbox">
                                 <label>
@@ -343,12 +334,10 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                     <label><?php _e('Language skills', 'wpestate'); ?></label>
                     <p class="inline-checkboxes">                 
                         <?php              
-                        $languages = fl_get_languages();
- 
+                        $languages = fl_get_languages(); 
                         if (!empty($languages)):
                             foreach ($languages as $lang): 
-                                $selected = in_array($lang->id_lang, (array)$language[0]) ? ' checked ' : '';
-                                 
+                                $selected = in_array($lang->id_lang, (array)$language) ? ' checked ' : ''; 
                                 ?>
                                 <span class="flcheckbox">
                                     <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>" <?php echo $selected ?>><?php esc_attr_e($lang->name) ?></label>
