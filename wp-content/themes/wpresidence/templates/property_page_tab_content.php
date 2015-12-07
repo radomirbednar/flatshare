@@ -21,10 +21,10 @@ $party = esc_html(get_post_meta($post->ID, 'party', true));
 $rent_amount = esc_html(get_post_meta($post->ID, 'rent_amount', true));
 $user_origin = esc_html(get_post_meta($post->ID, 'user_origin', true));
 $activity = esc_html(get_post_meta($post->ID, 'activity', true));
-$language = esc_html(get_post_meta($post->ID, 'language', true));
-
-
-
+$language = esc_html(get_post_meta($post->ID, 'language', true)); 
+$skill = get_post_meta($post->ID, 'skill', true);
+ 
+ 
 $activity_array = array(
     
     '1' => __('Student', 'wpestate'),
@@ -293,26 +293,26 @@ get_template_part('/templates/download_pdf');
 <?php } ?>
  
     <div role="tabpanel" class="tab-pane" id="preferences">
-        <div class="panel-body"> 
-  
-            
-             
+        <div class="panel-body">   
         <div class="sub_block">
-            <?php
-            if ($rent_amount != '') {
-
+            <?php 
+            $currency               =   esc_html( get_option('wp_estate_currency_symbol', '') );
+            $where_currency         =   esc_html( get_option('wp_estate_where_currency_symbol', '') ); 
+            if ($rent_amount != '') { 
                 print __('<span class="sub">Price: </span><i class="icon-icon_price"></i>', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
             }
             ?> 
         </div>        
-        <div class="sub_block">
-            <?php print __('<span class="sub">Disponibility: </span><i class="icon-icon_date"></i>', 'wpestate'); ?></span><?php
+        
+        <!--<div class="sub_block">
+            <?php /* print __('<span class="sub">Disponibility: </span><i class="icon-icon_date"></i>', 'wpestate'); ?></span><?php
             if ($disponibility != '') {
                 $date = new DateTime($disponibility);
                 print $date->format('d. m. Y');
-            }
+            }*/
             ?>
-        </div> 
+        </div>-->
+        
         <div class="sub_block"> 
             <?php print __('<span class="sub">Activity: </span>', 'wpestate'); ?><?php
             if ($activity != '') {
@@ -323,9 +323,11 @@ get_template_part('/templates/download_pdf');
         <div class="sub_block"> 
             <span class="sub"><?php print __('House Skills: ', 'wpestate'); ?></span>               
             <?php
-            foreach ($houseskils as $skil) {
-                echo '<strong>' . $skil->name . '</strong>';
-            }
+             
+            foreach ($skill as $skil) {
+                echo '<strong>' . $skil . '</strong>';
+            } 
+             
             ?>     
         </div>     
         <div class="sub_block">
@@ -333,39 +335,51 @@ get_template_part('/templates/download_pdf');
             <i class="icon-icon_time"></i>
             <?php print $how_long_array[$how_long]; ?> 
         </div>  
-        <div class="sub_block">
-            <span class="sub"><?php print __('Looking for: ', 'wpestate'); ?> </span>
-            <?php print $looking_for_array[$looking_for][0] . $looking_for_array[$looking_for][1]; ?> 
-        </div>          
+         
+        <!--<div class="sub_block">
+            <span class="sub"><?php //print __('Looking for: ', 'wpestate'); ?> </span>
+            <?php //print $looking_for_array[$looking_for][0] . $looking_for_array[$looking_for][1]; ?> 
+        </div>-->          
+   
         <div class="sub_block">
             <span class="sub"><?php print __('Sexual preferences: ', 'wpestate'); ?></span> 
             <?php print $sexual_preference_array[$sexual_preference][0] . $sexual_preference_array[$sexual_preference][1]; ?>  
         </div>  
+         
         <div class="sub_block">         
             <span class="sub"><?php print __('Sleep during week: ', 'wpestate'); ?></span>
             <?php print $sleeping_span_array[$sleeping_span][0] . $sleeping_span_array[$sleeping_span][1]; ?> 
         </div> 
+        
+        
         <div class="sub_block">
             <span class="sub"><?php print __('Couple: ', 'wpestate'); ?></span>   
             <?php print $couple_array[$couple][0] . $couple_array[$couple][1]; ?>  
         </div> 
+        
+        
         <div class="sub_block">          
             <span class="sub"><?php print __('Pets: ', 'wpestate'); ?></span> 
             <?php print $pets_array[$pets][0] . $pets_array[$pets][1]; ?> 
         </div> 
+        
+        
         <div class="sub_block">          
             <span class="sub"><?php print __('Smoker: ', 'wpestate'); ?></span> 
             <?php print $smoker_array[$smoker][0] . $smoker_array[$smoker][1]; ?>  
         </div> 
+        
+        
         <div class="sub_block">           
-            <span class="sub"><?php print __('Party: ', 'wpestate'); ?></span>
+            <span class="sub"><?php print __('Party: ', 'wpestate'); ?></span> 
             <?php print $party_array[$party][0] . $party_array[$party][1]; ?>  
         </div>
 
         <div class="sub_block">
             <span class="sub"><?php print __('Language skills: ', 'wpestate'); ?></span>    
             <?php
-            foreach ($user_language_ids as $lang) {
+        
+            foreach ($language as $lang) {
                 echo '<strong>' . $lang . '</strong>';
             }
             ?> 
