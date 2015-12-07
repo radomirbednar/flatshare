@@ -885,6 +885,8 @@ function wpestate_country_list($selected,$class='') {
 
     $country_select = '<select id="property_country"  name="property_country" class="'.$class.'">';
 
+    $country_select .= '<option value="">' . __("Select country", "wpestate") . '</option>';
+    
     if ($selected == '') {
         $selected = get_option('wp_estate_general_country');
     }
@@ -893,7 +895,7 @@ function wpestate_country_list($selected,$class='') {
         if ($selected == $country) {
             $country_select.='selected="selected"';
         }
-        $country_select.='>' . esc_attr_($country) . '</option>';
+        $country_select.='>' . esc_attr__($country) . '</option>';
     }
 
     $country_select.='</select>';
