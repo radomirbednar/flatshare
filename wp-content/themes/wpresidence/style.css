@@ -12966,3 +12966,7 @@ span.sub{
     padding-bottom: 50px;
     */
 }
+
+#primary.widget-area-sidebar .agent_unit {
+    min-height: 0;
+}
