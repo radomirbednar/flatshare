@@ -320,10 +320,12 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                 <p class="inline-checkboxes">                
                     <?php 
                     $skills = fl_get_house_skills(); 
-                    $skill; 
+                    $skillarray = $skill; 
+                    
+                    
                     if (!empty($skills)):
                         foreach ($skills as $skill):
-                            $selected = in_array($skill->id_skill, (array)$skill[0]) ? ' checked ' : '';
+                            $selected = in_array($skill->id_skill, (array)$skillarray[0]) ? ' checked ' : '';
                             ?>
                             <span class="flcheckbox">
                                 <label>
