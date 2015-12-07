@@ -324,7 +324,7 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                     
                     if (!empty($skills)):
                         foreach ($skills as $skill):
-                            $selected = in_array($skill->id_skill, (array)$skillarray[0]) ? ' checked ' : '';
+                            $selected = in_array($skill->id_skill, (array)$skillarray) ? ' checked ' : '';
                             ?>
                             <span class="flcheckbox">
                                 <label>
@@ -346,7 +346,7 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                         $languages = fl_get_languages(); 
                         if (!empty($languages)):
                             foreach ($languages as $lang): 
-                                $selected = in_array($lang->id_lang, (array)$language[0]) ? ' checked ' : ''; 
+                                $selected = in_array($lang->id_lang, (array)$language) ? ' checked ' : ''; 
                                 ?>
                                 <span class="flcheckbox">
                                     <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>" <?php echo $selected ?>><?php esc_attr_e($lang->name) ?></label>
