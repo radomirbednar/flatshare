@@ -790,7 +790,8 @@ function estate_box($post) {
             <input type="text" id="property_zip" size="40" name="property_zip" value="' . esc_html(get_post_meta($mypost, 'property_zip', true)) . '">
             </p>
         </td>
-        <!--
+        
+
         <td align="left" valign="top">   
             <p class="meta-options">
             <label for="property_state">'.__('State:: ','wpestate').'</label><br />
