@@ -8,8 +8,7 @@ global $property_description_text;
 global $post;
 $walkscore_api = esc_html(get_option('wp_estate_walkscore_api', ''));
 $show_graph_prop_page = esc_html(get_option('wp_estate_show_graph_prop_page', ''));
-
-
+ 
 $how_long = esc_html(get_post_meta($post->ID, 'how_long', true));
 $sexual_preference = esc_html(get_post_meta($post->ID, 'sexual_preference', true));
 $user_gender = esc_html(get_post_meta($post->ID, 'user_gender', true));
@@ -20,32 +19,26 @@ $smoker = esc_html(get_post_meta($post->ID, 'smoker', true));
 $party = esc_html(get_post_meta($post->ID, 'party', true));
 $rent_amount = esc_html(get_post_meta($post->ID, 'rent_amount', true));
 $user_origin = esc_html(get_post_meta($post->ID, 'user_origin', true));
-$activity = esc_html(get_post_meta($post->ID, 'activity', true));
+$activity = esc_html(get_post_meta($post->ID, 'activity', true)); 
 $language = esc_html(get_post_meta($post->ID, 'language', true)); 
 $skill = get_post_meta($post->ID, 'skill', true);
- 
- 
-$activity_array = array(
-    
+  
+$activity_array = array(    
     '1' => __('Student', 'wpestate'),
     '2' => __('Professional', 'wpestate'),
-    '3' => __('Never mind', 'wpestate')
-    
+    '3' => __('Never mind', 'wpestate') 
 );
 
 $user_gender_array = array(
     '2' => __('female', 'wpestate'),
     '1' => __('male', 'wpestate'),
-    '3' => __('Never mind', 'wpestate') 
- 
+    '3' => __('Never mind', 'wpestate')  
  );
 
-$how_long_array = array(
-    
+$how_long_array = array( 
     '1' => __('short term', 'wpestate'),
     '2' => __('long term', 'wpestate'),
-    '3' => __('Never mind', 'wpestate')
-    
+    '3' => __('Never mind', 'wpestate') 
 );
 
 $looking_for_array = array(
@@ -60,9 +53,7 @@ $looking_for_array = array(
     '3' => array(
         '<i class="icon-icon_flat"> </i>',
         __('Never mind', 'wpestate')
-    )
-    
-    
+    ) 
 );
 
 $sexual_preference_array = array(
@@ -107,8 +98,7 @@ $couple_array = array(
     '3' => array(
         '<i class="icon-icon_couple"> </i>',
         __('Never mind', 'wpestate')
-    )
-     
+    ) 
 );
 
 $pets_array = array(
@@ -123,10 +113,7 @@ $pets_array = array(
     '3' => array(
         '<i class="icon-icon_pets"> </i>',
         __('Never mind', 'wpestate')
-    )
-    
-    
-    
+    )  
 );
 $smoker_array = array(
     '1' => array(
@@ -172,8 +159,7 @@ if ($property_description_text != '') {
 }
 ?>
             </a>    
-        </li>
-
+        </li> 
         <li role="presentation">
             <a href="#address" aria-controls="address" role="tab" data-toggle="tab">
 <?php
@@ -184,8 +170,7 @@ if ($property_adr_text != '') {
 }
 ?>
             </a>
-        </li>
-
+        </li> 
         <li role="presentation">
             <a href="#details" aria-controls="details" role="tab" data-toggle="tab">
 <?php
@@ -209,9 +194,7 @@ if ($property_details_text == '') {
             ?>
                 </a>
             </li>
-                <?php } ?>
-
-
+                <?php } ?> 
 <?php if ($walkscore_api != '') { ?>
             <li role="presentation">
                 <a href="#walkscore" aria-controls="walkscore" role="tab" data-toggle="tab">
@@ -294,7 +277,8 @@ get_template_part('/templates/download_pdf');
  
     <div role="tabpanel" class="tab-pane" id="preferences">
         <div class="panel-body">   
-        <div class="sub_block">
+         
+        <!--<div class="sub_block">
             <?php 
             $currency               =   esc_html( get_option('wp_estate_currency_symbol', '') );
             $where_currency         =   esc_html( get_option('wp_estate_where_currency_symbol', '') ); 
@@ -302,7 +286,7 @@ get_template_part('/templates/download_pdf');
                 print __('<span class="sub">Price: </span><i class="icon-icon_price"></i>', 'wpestate') . ' ' . wpestate_show_price_floor($rent_amount, $currency, $where_currency, 1);
             }
             ?> 
-        </div>        
+        </div>-->        
         
         <!--<div class="sub_block">
             <?php /* print __('<span class="sub">Disponibility: </span><i class="icon-icon_date"></i>', 'wpestate'); ?></span><?php
@@ -344,44 +328,34 @@ get_template_part('/templates/download_pdf');
         <div class="sub_block">
             <span class="sub"><?php print __('Sexual preferences: ', 'wpestate'); ?></span> 
             <?php print $sexual_preference_array[$sexual_preference][0] . $sexual_preference_array[$sexual_preference][1]; ?>  
-        </div>  
-         
+        </div>   
         <div class="sub_block">         
             <span class="sub"><?php print __('Sleep during week: ', 'wpestate'); ?></span>
             <?php print $sleeping_span_array[$sleeping_span][0] . $sleeping_span_array[$sleeping_span][1]; ?> 
-        </div> 
-        
-        
+        </div>  
         <div class="sub_block">
             <span class="sub"><?php print __('Couple: ', 'wpestate'); ?></span>   
             <?php print $couple_array[$couple][0] . $couple_array[$couple][1]; ?>  
-        </div> 
-        
-        
+        </div>  
         <div class="sub_block">          
             <span class="sub"><?php print __('Pets: ', 'wpestate'); ?></span> 
             <?php print $pets_array[$pets][0] . $pets_array[$pets][1]; ?> 
-        </div> 
-        
-        
+        </div>  
         <div class="sub_block">          
             <span class="sub"><?php print __('Smoker: ', 'wpestate'); ?></span> 
             <?php print $smoker_array[$smoker][0] . $smoker_array[$smoker][1]; ?>  
-        </div> 
-        
-        
+        </div>  
         <div class="sub_block">           
             <span class="sub"><?php print __('Party: ', 'wpestate'); ?></span> 
             <?php print $party_array[$party][0] . $party_array[$party][1]; ?>  
-        </div>
-
+        </div> 
         <div class="sub_block">
+            
             <span class="sub"><?php print __('Language skills: ', 'wpestate'); ?></span>    
-            <?php
-        
-            foreach ($language as $lang) {
-                echo '<strong>' . $lang . '</strong>';
-            }
+            <?php 
+                foreach ($language as $lang) {
+                    echo '<strong>' . $lang . '</strong>';
+                } 
             ?> 
         </div>
         <div class="sub_block"> 
@@ -389,11 +363,7 @@ get_template_part('/templates/download_pdf');
                 <?php print __('Country of origin: ', 'wpestate'); ?> 
             </span>    
             <?php echo $user_origin; ?>     
-        </div> 
-            
-            
-          
-
+        </div>  
         </div>
         </div>    
     </div> 

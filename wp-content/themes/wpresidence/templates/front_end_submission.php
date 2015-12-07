@@ -343,12 +343,10 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                     <label><?php _e('Language skills', 'wpestate'); ?></label>
                     <p class="inline-checkboxes">                 
                         <?php              
-                        $languages = fl_get_languages();
- 
+                        $languages = fl_get_languages(); 
                         if (!empty($languages)):
                             foreach ($languages as $lang): 
-                                $selected = in_array($lang->id_lang, (array)$language[0]) ? ' checked ' : '';
-                                 
+                                $selected = in_array($lang->id_lang, (array)$language[0]) ? ' checked ' : ''; 
                                 ?>
                                 <span class="flcheckbox">
                                     <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>" <?php echo $selected ?>><?php esc_attr_e($lang->name) ?></label>
