@@ -325,9 +325,9 @@ if (!isset($prefix)) {
                                     <option value=""><?php _e('Country of origin', 'wpestate'); ?></option>
                                     <?php
                                     if (!empty($coutnries)):
-                                        foreach ($coutnries as $country):
+                                        foreach ($coutnries as $iso => $country):
                                             ?>
-                                            <option value="<?php echo $country ?>" <?php echo isset($_GET['origin']) && $_GET['origin'] == $country ? ' selected="selected" ' : ''; ?>><?php esc_attr_e($country); ?></option>
+                                            <option value="<?php echo $iso ?>" <?php echo isset($_GET['origin']) && $_GET['origin'] == $iso ? ' selected="selected" ' : ''; ?>><?php esc_attr_e($country); ?></option>
                                             <?php
                                         endforeach;
                                     endif;
