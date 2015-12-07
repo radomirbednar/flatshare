@@ -12965,6 +12965,9 @@ span.sub{
     cursor: pointer;
     padding-bottom: 50px;
     */
+}  
+#primary.widget-area-sidebar .agent_unit {
+    min-height: 0;
 } 
 .panel-body .sub_block{   
     float: left;
