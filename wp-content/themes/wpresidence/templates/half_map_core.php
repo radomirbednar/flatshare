@@ -72,7 +72,7 @@ get_template_part('templates/property_ajax_tax_hidden_filters');
                         print'</div>';
                         */
                         
-                        print '<div class="saved_search_wrapper"> <span id="save_search_notice">'.__('Save this Search?','wpestate').'</span>'; 
+                        /*print '<div class="saved_search_wrapper"> <span id="save_search_notice">'.__('Save this Search?','wpestate').'</span>'; 
                         print '<input type="text" id="search_name" class="new_search_name" placeholder="'.__('Search name','wpestate').'">';
                         print '<button class="wpb_button  wpb_btn-info wpb_btn-large" id="save_search_button">'.__('Save Search','wpestate').'</button>';
                         print  "<input type='hidden' id='search_args' value=' ";
@@ -80,7 +80,7 @@ get_template_part('templates/property_ajax_tax_hidden_filters');
                         print "'>";
                         print '<input type="hidden" name="save_search_nonce" id="save_search_nonce"  value="'. wp_create_nonce( 'save_search_nonce' ).'" />';
                         print '';
-                        print '</div>';
+                        print '</div>';*/
                     }else{
                         print '<div class="vc_row wpb_row vc_row-fluid vc_row">
                                 <div class="vc_col-sm-12 wpb_column vc_column_container vc_column">
