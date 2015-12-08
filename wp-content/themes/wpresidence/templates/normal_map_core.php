@@ -38,11 +38,11 @@ $property_unit_slider = get_option('wp_estate_prop_list_slider','');
     
                 if ($show_save_search=='yes' ){
                     if( is_user_logged_in() ){
-                        print '<div class="search_unit_wrapper advanced_search_notice">';
+                       /* print '<div class="search_unit_wrapper advanced_search_notice">';
                         print '<div class="search_param"><strong>'.__('Search Parameters: ','wpestate').'</strong>';
                             wpestate_show_search_params($args,$custom_advanced_search, $adv_search_what,$adv_search_how,$adv_search_label);
                         print'</div>';
-                        print'</div>';
+                        print'</div>';*/
 
 
                         print '<div class="saved_search_wrapper"> <span id="save_search_notice">'.__('Save this Search?','wpestate').'</span>'; 
