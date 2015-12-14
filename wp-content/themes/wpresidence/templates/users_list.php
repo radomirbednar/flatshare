@@ -300,7 +300,7 @@ if ($options['content_class'] == 'col-md-12') {
                 }
                 ?> 
                 <?php  
-                    include( trailingslashit( get_template_directory() ). 'libs/user_unit.php' );
+                    include( trailingslashit( get_template_directory() ). 'libs/user_unit_list.php' );
                 ?> 
                 <?php
             }

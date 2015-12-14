@@ -46,84 +46,67 @@ if (!function_exists('wpestate_places_list_function')):
             if ($attributes['align'] == 'vertical') {
                 $row_number_col = 0;
             }
-        }
-
-
+        } 
         if (isset($attributes['place_list'])) {
             $place_list = $attributes['place_list'];
         }
         if (isset($attributes['place_per_row'])) {
             $place_per_row = $attributes['place_per_row'];
-        }
-
+        } 
         if ($place_per_row > 5) {
             $place_per_row = 5;
-        }
-
+        } 
         if (isset($attributes['extra_class_name'])) {
             $extra_class_name = $attributes['extra_class_name'];
-        }
-
-
-
-        $all_places_array = explode(',', $place_list);
-
-
-
-
-        ob_start();
-
+        } 
+        $all_places_array = explode(',', $place_list); 
+        ob_start(); 
         foreach ($all_places_array as $place_id) {
             $place_id = intval($place_id);
             get_template_part('templates/places_unit');
-        }
-
+        } 
         $return_string = '<div class="article_container">' . ob_get_contents() . '</div>';
         ob_end_clean();
         return $return_string;
     }
 
 endif;
-
-
-
+ 
 ////////////////////////////////////////////////////////////////////////////////////////////
 ///  shortcode - users list
 ////////////////////////////////////////////////////////////////////////////////////////////
-
-
-if (!function_exists('wpestate_list_users_function')):
-
-    function wpestate_list_users_function() {
-
-        $sql = 'SELECT * FROM w4a_users AS u JOIN fl_user_data as fud ON fud.id_user = u.ID WHERE fud.user_status IN (1,2) GROUP BY u.ID ORDER BY u.user_registered DESC LIMIT 4;';
-
+ 
+if (!function_exists('wpestate_list_users_function')): 
+    function wpestate_list_users_function() {    
+        $sql = 'SELECT * FROM w4a_users AS u JOIN fl_user_data as fud ON fud.id_user = u.ID WHERE fud.user_status IN (1,2) GROUP BY u.ID ORDER BY u.user_registered DESC LIMIT 8;';
         global $wpdb; 
-        $query = $wpdb->get_results($sql);
-
+        $query = $wpdb->get_results($sql); 
         $currency = esc_html(get_option('wp_estate_currency_symbol', ''));
-        $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
-
+        $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', '')); 
         ob_start();
-        ?>
-        
+        ?> 
             <script>
                 jQuery(document).ready(function ($) {
                     $('[data-toggle="tooltip"]').tooltip()
                 });
-            </script> 
+            </script>
+            <div class="article_container slider_container bottom-estate_property nobutton member_container">
+                <div class="slider_control_left"><i class="fa fa-angle-left"></i></div>
+                <div class="slider_control_right"><i class="fa fa-angle-right"></i></div>                  
+                <div class="shortcode_slider_wrapper" data-auto="0">     
+                    <ul class="shortcode_slider_list">
+        
         <?php
         foreach ($query as $q) {
             $fl_user_data = get_fl_data($q->ID);
             $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
             $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
-            $user_facebook = get_the_author_meta('facebook', $q->ID);
-
-            /* $user_twitter = get_the_author_meta('twitter', $q->ID);
+            $user_facebook = get_the_author_meta('facebook', $q->ID);  
+            /* 
+             * $user_twitter = get_the_author_meta('twitter', $q->ID);
               $user_linkedin = get_the_author_meta('linkedin', $q->ID);
-              $user_pinterest = get_the_author_meta('pinterest', $q->ID);
-             */
-
+              $user_pinterest = get_the_author_meta('pinterest', $q->ID); 
+             */    
             $photo_url = get_the_author_meta('custom_picture', $q->ID); 
             $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
             $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
@@ -137,22 +120,15 @@ if (!function_exists('wpestate_list_users_function')):
             $user_origin = !empty($fl_user_data->user_origin) ? $fl_user_data->user_origin : '';
             $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
             $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : ''; 
-            $description = get_the_author_meta('description', $q->ID); 
-               
+            $description = get_the_author_meta('description', $q->ID);
+            //prvni vetastr_word_count 
             
-            
-            
-            
-            //prvni vetastr_word_count
-             
             preg_match('/^([^.!?]*[\.!?]+){0,2}/', strip_tags($description), $abstract);            
             if($abstract != ''){  
                 $description = $abstract[0];  
             }else{ 
                 $description = wp_trim_words( wp_trim_words( $text, $num_words = 12, $more = null )); 
-            } 
-             
-             
+            }  
             $sexual_preference_array = array(
                 '1' => array(
                     '<i class="icon-icon_sex-straight" data-toggle="tooltip" data-placement="top" title="straight"></i>',
@@ -162,8 +138,7 @@ if (!function_exists('wpestate_list_users_function')):
                     '<i class="icon-icon_sex-gay" data-toggle="tooltip" data-placement="top" title="BI/GAY"> </i>',
                     __('BI/GAY', 'wpestate')
                 )
-            );
-
+            ); 
             $sleeping_span_array = array(
                 '1' => array(
                     '<i class="icon-icon_sleep" data-toggle="tooltip" data-placement="top" title="Before 11PM"></i>',
@@ -173,8 +148,7 @@ if (!function_exists('wpestate_list_users_function')):
                     '<i class="icon-icon_sleep" data-toggle="tooltip" data-placement="top" title="After 11PM"></i>',
                     __('After 11PM', 'wpestate')
                 )
-            );
-
+            ); 
             $couple_array = array(
                 '1' => array(
                     '<i class="icon-icon_single" data-toggle="tooltip" data-placement="top" title="single"> </i>',
@@ -184,8 +158,7 @@ if (!function_exists('wpestate_list_users_function')):
                     '<i class="icon-icon_couple" data-toggle="tooltip" data-placement="top" title="in couple"> </i>',
                     __('in couple', 'wpestate')
                 )
-            );
-
+            ); 
             $pets_array = array(
                 '1' => array(
                     '<i class="icon-icon_no-pets" data-toggle="tooltip" data-placement="top" title="No pets"> </i>',
@@ -205,8 +178,7 @@ if (!function_exists('wpestate_list_users_function')):
                     '<i class="icon-icon_smoking" data-toggle="tooltip" data-placement="top" title="Smoker"> </i>',
                     __('Smoker', 'wpestate')
                 )
-            );
-
+            ); 
             $party_array = array(
                 '1' => array(
                     '<i class="icon-icon_party-often" data-toggle="tooltip" data-placement="top" title="Often"> </i>',
@@ -216,10 +188,8 @@ if (!function_exists('wpestate_list_users_function')):
                     '<i class="icon-icon_party-less" data-toggle="tooltip" data-placement="top" title="Not often"> </i>',
                     __('Not often', 'wpestate')
                 )
-            );
-
-            $looking_for_array = array(
-                 
+            ); 
+            $looking_for_array = array(   
                 '1' => array(
                     '<i class="icon-icon_roommate" data-toggle="tooltip" data-placement="top" title="roomate"></i>',
                     __('roomate', 'wpestate'))
@@ -229,8 +199,7 @@ if (!function_exists('wpestate_list_users_function')):
                     __('flat', 'wpestate')
                 )
             );
-
-
+ 
             $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
             $user_gender_array = array(
                 '2' => __('female', 'wpestate'),
@@ -242,29 +211,29 @@ if (!function_exists('wpestate_list_users_function')):
             if ($photo_url == '') {
                 $thumb_prop = '<img src="' . get_template_directory_uri() . '/img/default_user.png" alt="agent-images">';
             }
-            ?> 
-
-            <div id="listing_ajax_container_agent">
-                <?php
-                
-                 
-                include('user_unit.php');
-                ?> 
-            </div> 
-
-
-
-
+            ?>  
+            
+                <li>  
+                <?php 
+                    include('user_unit.php');
+                ?>  
+                </li> 
+          
             <?php
         } // end foreach 
+        ?>                     
+        </ul>
+        </div>
+        </div>
+        
+        <?php
         $templates = ob_get_contents();
         ob_end_clean();
         $return_string = $templates;
         wp_reset_query();
         $is_shortcode = 0;
         return $return_string;
-    }
-
+    } 
 endif;
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -286,15 +255,12 @@ if (!function_exists('wpestate_list_agents_function')):
         global $row_number_col;
         global $current_user;
         global $curent_fav;
-        global $property_unit_slider;
-
-        get_currentuserinfo();
-
+        global $property_unit_slider; 
+        get_currentuserinfo(); 
         $title = '';
         if (isset($attributes['title'])) {
             $title = $attributes['title'];
-        }
-
+        } 
         $attributes = shortcode_atts(
                 array(
             'title' => '',
@@ -309,17 +275,12 @@ if (!function_exists('wpestate_list_agents_function')):
             'link' => '',
             'show_featured_only' => 'no',
             'random_pick' => 'no'
-                ), $attributes);
-
-
-
-
+                ), $attributes); 
+        
         $userID = $current_user->ID;
         $user_option = 'favorites' . $userID;
         $curent_fav = get_option($user_option);
-        $property_unit_slider = get_option('wp_estate_prop_list_slider', '');
-
-
+        $property_unit_slider = get_option('wp_estate_prop_list_slider', ''); 
         $options = wpestate_page_details($post->ID);
         $return_string = '';
         $pictures = '';
@@ -705,8 +666,7 @@ if (!function_exists('wpestate_slider_recent_posts_pictures')):
                 $compare_array['type'] = 'numeric';
                 $compare_array['compare'] = '=';
                 $meta_query[] = $compare_array;
-            }
-
+            } 
             $args = array(
                 'post_type' => $type,
                 'post_status' => 'publish',
@@ -732,9 +692,7 @@ if (!function_exists('wpestate_slider_recent_posts_pictures')):
                 'posts_per_page' => $post_number_total,
                 'cat' => $category
             );
-        }
-
-
+        } 
         if (isset($attributes['link']) && $attributes['link'] != '') {
             if ($attributes['type'] == 'properties') {
                 $button .= '<div class="listinglink-wrapper">
@@ -747,13 +705,7 @@ if (!function_exists('wpestate_slider_recent_posts_pictures')):
             }
         } else {
             $class = "nobutton";
-        }
-
-
-
-
-
-
+        } 
         if ($attributes['type'] == 'properties') {
             add_filter('posts_orderby', 'wpestate_my_order');
             $recent_posts = new WP_Query($args);
@@ -762,8 +714,7 @@ if (!function_exists('wpestate_slider_recent_posts_pictures')):
         } else {
             $recent_posts = new WP_Query($args);
             $count = 1;
-        }
-
+        } 
         $return_string .= '<div class="article_container slider_container bottom-' . $type . ' ' . $class . '" >';
 
         $return_string .= '<div class="slider_control_left"><i class="fa fa-angle-left"></i></div>
@@ -773,14 +724,10 @@ if (!function_exists('wpestate_slider_recent_posts_pictures')):
             $return_string .= '<h2 class="shortcode_title title_slider">' . $title . '</h2>';
         }
 
-        $is_autoscroll = '';
-
-        $is_autoscroll = ' data-auto="' . $autoscroll . '" ';
-
-
+        $is_autoscroll = ''; 
+        $is_autoscroll = ' data-auto="' . $autoscroll . '" '; 
         $return_string .= '<div class="shortcode_slider_wrapper" ' . $is_autoscroll . '><ul class="shortcode_slider_list">';
-
-
+ 
         ob_start();
         while ($recent_posts->have_posts()): $recent_posts->the_post();
             print '<li>';
@@ -1455,8 +1402,7 @@ if (!function_exists('wpestate_featured_property')):
 
                 $featured = intval(get_post_meta($prop_id, 'prop_featured', true));
                 $agent_id = intval(get_post_meta($prop_id, 'property_agent', true));
-
-
+ 
                 $thumb_id = get_post_thumbnail_id($agent_id);
 
                 $user_ID = get_the_author_meta('ID');
@@ -1540,11 +1486,8 @@ if (!function_exists('wpestate_featured_property')):
                 $return_string.= ' <div class="featured_secondline" data-link="' . $link . '">';
                 if ($agent_id != '') {
                     $return_string.= '
-                            <div class="agent_face">
-                            
-                                <img src="' . $agent_face[0] . '" width="55" height="55" class="img-responsive" alt="agent_face">
-                               
-
+                            <div class="agent_face"> 
+                                <img src="' . $agent_face[0] . '" width="55" height="55" class="img-responsive" alt="agent_face"> 
                                 <div class="agent_face_details">
                                     <img src="' . $agent_face[0] . '" width="120" height="120" class="img-responsive" alt="agent_face">
                                     <h4><a href="' . $agent_permalink . '" >' . get_the_title($agent_id) . '</a></h4>   
@@ -1607,10 +1550,7 @@ if (!function_exists('wpestate_featured_agent')):
             'post_type' => 'estate_agent',
             'p' => $agent_id
         );
-
-
-
-
+ 
         $my_query = new WP_Query($args);
         ob_start();
         while ($my_query->have_posts()): $my_query->the_post();
@@ -1620,8 +1560,7 @@ if (!function_exists('wpestate_featured_agent')):
         ob_end_clean();
         wp_reset_query();
         return $return_string;
-    }
-
+    } 
 endif; // end   wpestate_featured_agent   
 ////////////////////////////////////////////////////////////////////////////////////////////
 ///  shortcode - recent post with picture
@@ -1642,8 +1581,7 @@ if (!function_exists('wpestate_recent_posts_pictures')):
         global $current_user;
         global $curent_fav;
         global $property_unit_slider;
-
-
+ 
         get_currentuserinfo();
 
         $title = '';
@@ -1667,15 +1605,12 @@ if (!function_exists('wpestate_recent_posts_pictures')):
             'random_pick' => 'no'
                 ), $attributes);
 
-
-
-
+ 
         $userID = $current_user->ID;
         $user_option = 'favorites' . $userID;
         $curent_fav = get_option($user_option);
         $property_unit_slider = get_option('wp_estate_prop_list_slider', '');
-
-
+ 
         $options = wpestate_page_details($post->ID);
         $return_string = '';
         $pictures = '';
@@ -1692,14 +1627,11 @@ if (!function_exists('wpestate_recent_posts_pictures')):
         $show_featured_only = '';
         $random_pick = '';
         $orderby = 'meta_value';
-
-
-
+ 
         if (isset($attributes['category_ids'])) {
             $category = $attributes['category_ids'];
         }
-
-
+ 
         if (isset($attributes['category_ids'])) {
             $category = $attributes['category_ids'];
         }
@@ -1777,8 +1709,7 @@ if (!function_exists('wpestate_recent_posts_pictures')):
                     'terms' => $category_of_tax
                 );
             }
-
-
+ 
             // build action array
             if ($action != '') {
                 $action_of_tax = array();
@@ -1811,8 +1742,7 @@ if (!function_exists('wpestate_recent_posts_pictures')):
                     'terms' => $area_of_tax
                 );
             }
-
-
+ 
             $meta_query = array();
             if ($show_featured_only == 'yes') {
                 $compare_array = array();
@@ -1822,8 +1752,7 @@ if (!function_exists('wpestate_recent_posts_pictures')):
                 $compare_array['compare'] = '=';
                 $meta_query[] = $compare_array;
             }
-
-
+ 
             $args = array(
                 'post_type' => $type,
                 'post_status' => 'publish',
@@ -1951,9 +1880,7 @@ if (!function_exists('wpestate_testimonial_function')):
             'imagelinks' => '',
             'testimonial_text' => ''
                 ), $attributes);
-
-
-
+ 
         if ($attributes['client_name']) {
             $client_name = $attributes['client_name'];
         }

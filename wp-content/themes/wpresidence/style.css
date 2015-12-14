@@ -2847,11 +2847,16 @@ input.form-control::-moz-placeholder {
     padding-bottom: 50px;
     min-width: 248px;
 }
-
+.property_listing_agent{ 
+    min-width: 255px;
+    border:none; 
+}
+.member_container .slider_control_left, .member_container .slider_control_right{ 
+    top: 0; 
+} 
 .property_listing.places_listing{
     min-height: 350px;
-}
-
+} 
 .property_listing .carousel{
     float:left;
 }
@@ -2989,20 +2994,20 @@ input.form-control::-moz-placeholder {
 
 .col-md-12.shortcode-col{
     width: 100%;
-}
-
-
-
-.shortcode-col .featured_div{
-
+} 
+.shortcode-col .featured_div{ 
 }
 .property_listing img{
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom: 3px solid #3C90BE;
     width:100%;
-}
+} 
 
+.property_listing .agent_unit img{   
+ width: auto;    
+}
+ 
 .the_list_view{
     display:none;
 }
