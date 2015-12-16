@@ -1,16 +1,13 @@
 <?php
 
 global $agent_email;
-global $propid;
-
+global $propid; 
 $contact_form_7_agent   =   stripslashes( ( get_option('wp_estate_contact_form_7_agent','') ) );
-$contact_form_7_contact =   stripslashes( ( get_option('wp_estate_contact_form_7_contact','') ) );
-  
+$contact_form_7_contact =   stripslashes( ( get_option('wp_estate_contact_form_7_contact','') ) ); 
 ?>
   
 <div class="agent_contanct_form">
     <?php 
-     
     if ( basename(get_page_template())!='contact_page.php') { ?>
              <h4 id="show_contact"><?php _e('Contact Me', 'wpestate'); ?></h4>
      <?php 
@@ -18,8 +15,7 @@ $contact_form_7_contact =   stripslashes( ( get_option('wp_estate_contact_form_7
      ?>
              <h4 id="show_contact"><?php _e('Contact Us', 'wpestate'); ?></h4>
      <?php } ?>               
-    <?php if ( ($contact_form_7_agent =='' && basename(get_page_template())!='contact_page.php') || ( $contact_form_7_contact=='' && basename(get_page_template())=='contact_page.php')) { ?>
-           
+    <?php if ( ($contact_form_7_agent =='' && basename(get_page_template())!='contact_page.php') || ( $contact_form_7_contact=='' && basename(get_page_template())=='contact_page.php')) { ?>  
         <div class="alert-box error">
             <div class="alert-message" id="alert-agent-contact"></div>
         </div>  

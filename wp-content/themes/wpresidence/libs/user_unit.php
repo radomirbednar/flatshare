@@ -40,7 +40,7 @@
                         print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
                     }
                     ?>
-                    <div class="agent_position author_desc">
+                    <div class="agent_position author_desc"> 
                         <?php echo $description; ?> 
                     </div>     
                 </div> 

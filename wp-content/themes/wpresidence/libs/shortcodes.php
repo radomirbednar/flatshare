@@ -90,9 +90,9 @@ if (!function_exists('wpestate_list_users_function')):
                     $('[data-toggle="tooltip"]').tooltip()
                 });
             </script>
-            <div class="article_container slider_container bottom-estate_property nobutton member_container">
-                <div class="slider_control_left"><i class="fa fa-angle-left"></i></div>
-                <div class="slider_control_right"><i class="fa fa-angle-right"></i></div>                  
+            <div class="article_container slider_container slider_container_members bottom-estate_property nobutton member_container">
+                <div class="slider_control_left slider_control_left_member"><i class="fa fa-angle-left"></i></div>
+                <div class="slider_control_right slider_control_right_member"><i class="fa fa-angle-right"></i></div>                  
                 <div class="shortcode_slider_wrapper" data-auto="0">     
                     <ul class="shortcode_slider_list">
         
@@ -123,12 +123,14 @@ if (!function_exists('wpestate_list_users_function')):
             $description = get_the_author_meta('description', $q->ID);
             //prvni vetastr_word_count 
             
-            preg_match('/^([^.!?]*[\.!?]+){0,2}/', strip_tags($description), $abstract);            
-            if($abstract != ''){  
-                $description = $abstract[0];  
-            }else{ 
-                $description = wp_trim_words( wp_trim_words( $text, $num_words = 12, $more = null )); 
-            }  
+            preg_match('/^([^.!?]*[\.!?]+){0,2}/', strip_tags($description), $abstract);  
+                   
+            if($abstract[0] !=""){   
+            $description = $abstract[0];  
+            }else{  
+            $description =  wp_trim_words( $description, $num_words = 12, $more = null ); 
+            } 
+              
             $sexual_preference_array = array(
                 '1' => array(
                     '<i class="icon-icon_sex-straight" data-toggle="tooltip" data-placement="top" title="straight"></i>',
@@ -715,10 +717,10 @@ if (!function_exists('wpestate_slider_recent_posts_pictures')):
             $recent_posts = new WP_Query($args);
             $count = 1;
         } 
-        $return_string .= '<div class="article_container slider_container bottom-' . $type . ' ' . $class . '" >';
+        $return_string .= '<div class="article_container slider_container slider_container_article bottom-' . $type . ' ' . $class . '" >';
 
-        $return_string .= '<div class="slider_control_left"><i class="fa fa-angle-left"></i></div>
-                       <div class="slider_control_right"><i class="fa fa-angle-right"></i></div>';
+        $return_string .= '<div class="slider_control_left slider_control_left_prop"><i class="fa fa-angle-left"></i></div>
+                       <div class="slider_control_right slider_control_right_prop"><i class="fa fa-angle-right"></i></div>';
 
         if ($title != '') {
             $return_string .= '<h2 class="shortcode_title title_slider">' . $title . '</h2>';

@@ -65,31 +65,22 @@ if($options['content_class']=='col-md-12'){
                 print '<div class="agent_detail"><i class="fa fa-skype"></i>' . $agent_skype . '</div>';
             }
             ?>
-        </div> 
-    
-        
+        </div>  
         <div class="agent_unit_social">
-           <div class="social-wrapper"> 
-               
-               <?php
-               
+           <div class="social-wrapper">
+               <?php 
                 if($agent_facebook!=''){
                     print ' <a href="'. $agent_facebook.'"><i class="fa fa-facebook"></i></a>';
-                }
-
+                } 
                 if($agent_twitter!=''){
                     print ' <a href="'.$agent_twitter.'"><i class="fa fa-twitter"></i></a>';
-                }
-                
+                } 
                 if($agent_linkedin!=''){
                     print ' <a href="'.$agent_linkedin.'"><i class="fa fa-linkedin"></i></a>';
-                }
-                
+                } 
                 if($agent_pinterest!=''){
                      print ' <a href="'. $agent_pinterest.'"><i class="fa fa-pinterest"></i></a>';
-                }
-
-               
+                } 
                ?>
               
             </div>

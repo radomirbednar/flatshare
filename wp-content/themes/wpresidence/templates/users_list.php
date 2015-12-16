@@ -198,13 +198,15 @@ if ($options['content_class'] == 'col-md-12') {
                     '1' => __('male', 'wpestate')
                 );
                  
-                $description = get_the_author_meta('description', $q->ID);  
+                $description = get_the_author_meta('description', $q->ID); 
+                  
                 //prvni vetastr_word_count 
-                preg_match('/^([^.!?]*[\.!?]+){0,2}/', strip_tags($description), $abstract);            
-                if($abstract != ''){  
+                preg_match('/^([^.!?]*[\.!?]+){0,2}/', strip_tags($description), $abstract);  
+                   
+                if($abstract[0] !=""){   
                 $description = $abstract[0];  
-                }else{ 
-                $description = wp_trim_words( wp_trim_words( $text, $num_words = 12, $more = null )); 
+                }else{  
+                $description =  wp_trim_words( $description, $num_words = 12, $more = null ); 
                 } 
                  
                 $sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
