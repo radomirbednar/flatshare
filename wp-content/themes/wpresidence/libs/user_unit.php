@@ -31,11 +31,14 @@
                     } else {
                         $looking_for = '';
                     }
-                    print '<h4><a href="' . $author_url . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4> 
-                   <div class="agent_position"> ' . __('Looking for ', 'wpestate') . esc_attr($looking_for) . ' in ' . esc_attr($looking_where) . '</div>';
-                    if ($user_age) {
-                        print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . esc_attr($user_age) . '</div>';
+                    print '<h4><a href="' . $author_url . '">' . esc_attr($first_name) . ' ' . esc_attr($last_name) . '</a></h4>'; 
+                    
+                    if (isset($year_old)) {
+                        print '<div class="agent_detail">' . __('Age', 'wpestate') . ': ' . esc_attr($year_old) . '</div>';
                     }
+
+                    print '<div class="agent_position"> ' . __('Looking for ', 'wpestate') . esc_attr($looking_for) . ' in ' . esc_attr($looking_where) . '</div>';
+                    
                     if ($user_gender) {
                         print '<img src="' . get_bloginfo('template_url') . '/img/' . $user_gender_array[$user_gender] . '.png" class="user_gender_image">';
                     }

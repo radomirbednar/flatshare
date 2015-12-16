@@ -190,6 +190,15 @@ if ($options['content_class'] == 'col-md-12') {
                 $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
                 $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
                 $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
+                
+                $birthdate = !empty($fl_user_data->birthdate) ? $fl_user_data->birthdate : ''; 
+            if($birthdate){
+            $date = new DateTime($birthdate);
+            $now = new DateTime();
+            $interval = $now->diff($date);
+            $year_old = $interval->y;
+            } 
+                
 
                 $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
 

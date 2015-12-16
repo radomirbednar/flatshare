@@ -858,12 +858,19 @@ jQuery(document).ready(function ($) {
     $('#adv_extended_options_text_adv, #roommate-advance, #mo_roommate-advance').click(function (e) { 
           
         e.preventDefault();
-         
+        
+        
+        
+          
         $('.adv-search-1.adv_extended_class').css('height', 'auto');
-        $('.adv_extended_class .adv1-holder').css('height', 'auto');
-         
-        $(this).parent().find('.adv_extended_options_text').hide();
-         
+        
+        $('.adv_extended_class .adv1-holder').css('height', 'auto'); 
+        
+        $('#adv-search-1').addClass('opened'); 
+        
+        
+        
+        $(this).parent().find('.adv_extended_options_text').hide(); 
         $(this).parent().find('.extended_search_check_wrapper').slideDown();
         $(this).parent().find('#adv_extended_close_adv, .adv_extended_close_adv').show();
         $(this).parent().find('.ra').val(1);
@@ -871,7 +878,13 @@ jQuery(document).ready(function ($) {
     });
 
     $('#adv_extended_close_adv, #roommate_extended_close_adv, #mo_roommate_extended_close_adv').click(function () {
-        $(this).parents('#adv-search-1').find('.extended_search_check_wrapper').slideUp();
+        
+         
+        $(this).parents('#adv-search-1').find('.extended_search_check_wrapper').slideUp(); 
+        
+        $('#adv-search-1').removeClass('opened'); 
+        
+        
         //$(this).hide();
         $('#adv_extended_close_adv, #roommate_extended_close_adv, #mo_roommate_extended_close_adv').hide();
         $(this).parents('#adv-search-1').find('.adv_extended_options_text').show();
@@ -1437,10 +1450,12 @@ jQuery(document).ready(function ($) {
     adv_search_click();
 
     $('#adv-search-header-1').click(function () { 
-        if (document.getElementById("adv_extended_options_text_adv") !== null) {   
+        if (document.getElementById("adv_extended_options_text_adv") !== null) {        
             $("#adv-search-1").toggleClass('adv-search-1-close-extended');  
         } else {  
             $("#adv-search-1").toggleClass('adv-search-1-close'); 
+            
+            
         } 
     });
 

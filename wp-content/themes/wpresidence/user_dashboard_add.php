@@ -1,11 +1,12 @@
 <?php
+
 // Template Name: User Dashboard Submit
 // Wp Estate Pack
 
 if (!is_user_logged_in()) {
     wp_redirect(home_url('url'));
 }
-set_time_limit(600);
+
 
 global $current_user;
 get_currentuserinfo();
@@ -19,15 +20,12 @@ $feature_list_array = explode(',', $feature_list);
 $allowed_html = array();
 
 global $show_err;
-
-
-
+ 
 if (isset($_GET['listing_edit']) && is_numeric($_GET['listing_edit'])) {
     ///////////////////////////////////////////////////////////////////////////////////////////
     /////// If we have edit load current values
     ///////////////////////////////////////////////////////////////////////////////////////////
-    $edit_id = intval($_GET['listing_edit']);
-
+    $edit_id = intval($_GET['listing_edit']); 
     $the_post = get_post($edit_id);
     if ($current_user->ID != $the_post->post_author) {
         exit('You don\'t have the rights to edit this');
@@ -36,9 +34,7 @@ if (isset($_GET['listing_edit']) && is_numeric($_GET['listing_edit'])) {
     $action = 'edit';
     $submit_title = get_the_title($edit_id);
     $submit_description = get_post_field('post_content', $edit_id);
-
-
-
+ 
     $prop_category_array = get_the_terms($edit_id, 'property_category');
     if (isset($prop_category_array[0])) {
         $prop_category_selected = $prop_category_array[0]->term_id;
@@ -272,7 +268,7 @@ if (isset($_GET['listing_edit']) && is_numeric($_GET['listing_edit'])) {
 
 
 if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'view') {
- 
+    
     $paid_submission_status = esc_html(get_option('wp_estate_paid_submission', ''));
 
     if ($paid_submission_status != 'membership' || ( $paid_submission_status == 'membership' || wpestate_get_current_user_listings($userID) > 0)) { // if user can submit
@@ -734,6 +730,8 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'view') {
 /////// Edit Part Code
 ///////////////////////////////////////////////////////////////////////////////////////////
 if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
+     
+    
     if (!isset($_POST['new_estate']) || !wp_verify_nonce($_POST['new_estate'], 'submit_new_estate')) {
         exit('Sorry, your not submiting from site');
     }
@@ -1178,11 +1176,13 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
             'editing_listing_title' => $submit_title
         );
         wpestate_select_email_type(get_option('admin_email'), 'listing_edit', $arguments);
-
+ 
         wp_redirect($redirect);
         exit;
     }// end if edited
 }
+
+
 get_header();
 $options = wpestate_page_details($post->ID);
 

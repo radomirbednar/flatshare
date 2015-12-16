@@ -7142,6 +7142,10 @@ table tbody tr td {
     bottom: -190px;
 }
 
+.adv-search-1-close-extended.opened{
+    
+   bottom: -576px;
+} 
 .adv_extended_class.adv-search-1-close{
     /* bottom: -141px;*/
 }
