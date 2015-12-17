@@ -12997,3 +12997,6 @@ span.sub{
 #google_map_prop_list_sidebar .save-search #search_name {
     margin-right: 0;
 }
+.control-checkboxes {
+    padding-top: 10px;
+}

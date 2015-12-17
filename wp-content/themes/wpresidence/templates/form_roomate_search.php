@@ -286,10 +286,10 @@ if (!isset($prefix)) {
 
                 <div class="form-control-half">
                     <div class="form-control-in">                        
-                        <div class="form-control-skills no-label pull-left">
+                        <div class="form-control-skills pull-left">
                             <div class="form-control-in">
                                 <label><?php _e('House skills', 'wpestate'); ?></label>
-                                <p class="inline-checkboxes">
+                                <p class="inline-checkboxes control-checkboxes">
                                     <?php
                                     $skills = fl_get_house_skills();
                                     if (!empty($skills)):
