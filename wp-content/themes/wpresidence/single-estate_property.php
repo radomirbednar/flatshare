@@ -113,7 +113,7 @@ if ($options['content_class'] == 'col-md-12') {
                 <div class="notice_area">           
 
                     <div class="property_categs">
-    <?php print $property_category . ' ' . __('in', 'wpestate') . ' ' . $property_action ?>
+                        <?php print $property_category . ' ' . __('in', 'wpestate') . ' ' . $property_action ?>
                     </div>  
 
                     <span class="adres_area"><?php print esc_html(get_post_meta($post->ID, 'property_address', true)) . ', ' . $property_city . ', ' . $property_area; ?></span>   
@@ -126,34 +126,34 @@ if ($options['content_class'] == 'col-md-12') {
                         <a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo urlencode(get_the_title()); ?>" target="_blank" class="share_facebook"><i class="fa fa-facebook fa-2"></i></a>
                         <a href="http://twitter.com/home?status=<?php echo urlencode(get_the_title() . ' ' . get_permalink()); ?>" class="share_tweet" target="_blank"><i class="fa fa-twitter fa-2"></i></a>
                         <a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
-                            return false;" target="_blank" class="share_google"><i class="fa fa-google-plus fa-2"></i></a> 
-    <?php if (isset($pinterest[0])) { ?>
+                                    return false;" target="_blank" class="share_google"><i class="fa fa-google-plus fa-2"></i></a> 
+                           <?php if (isset($pinterest[0])) { ?>
                             <a href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&amp;media=<?php echo $pinterest[0]; ?>&amp;description=<?php echo urlencode(get_the_title()); ?>" target="_blank" class="share_pinterest"> <i class="fa fa-pinterest fa-2"></i> </a>      
-                            <?php } ?>
+                        <?php } ?>
 
                     </div>
                 </div>    
 
-    <?php //print 'Status:'.$status.'</br>';  ?>
+                <?php //print 'Status:'.$status.'</br>';  ?>
 
-    <?php
-    //get_template_part('templates/listingslider');
-    // slider type -> vertical or horizinalt
-    $local_pgpr_slider_type_status = get_post_meta($post->ID, 'local_pgpr_slider_type', true);
+                <?php
+                //get_template_part('templates/listingslider');
+                // slider type -> vertical or horizinalt
+                $local_pgpr_slider_type_status = get_post_meta($post->ID, 'local_pgpr_slider_type', true);
 
-    if ($local_pgpr_slider_type_status == 'global') {
-        $prpg_slider_type_status = esc_html(get_option('wp_estate_global_prpg_slider_type', ''));
-        if ($prpg_slider_type_status == 'vertical') {
-            get_template_part('templates/listingslider-vertical');
-        } else {
-            get_template_part('templates/listingslider');
-        }
-    } elseif ($local_pgpr_slider_type_status == 'vertical') {
-        get_template_part('templates/listingslider-vertical');
-    } else {
-        get_template_part('templates/listingslider');
-    }
-    ?>
+                if ($local_pgpr_slider_type_status == 'global') {
+                    $prpg_slider_type_status = esc_html(get_option('wp_estate_global_prpg_slider_type', ''));
+                    if ($prpg_slider_type_status == 'vertical') {
+                        get_template_part('templates/listingslider-vertical');
+                    } else {
+                        get_template_part('templates/listingslider');
+                    }
+                } elseif ($local_pgpr_slider_type_status == 'vertical') {
+                    get_template_part('templates/listingslider-vertical');
+                } else {
+                    get_template_part('templates/listingslider');
+                }
+                ?>
 
                 <?php
                 // content type -> tabs or accordion
@@ -172,24 +172,21 @@ if ($options['content_class'] == 'col-md-12') {
                     get_template_part('/templates/property_page_acc_content');
                 }
                 ?>    
-
                 <?php
                 wp_reset_query();
-                ?>  
-
+                ?>   
                 <?php
             endwhile; // end of the loop
-            $show_compare = 1;
-
+            $show_compare = 1; 
             $sidebar_agent_option_value = get_post_meta($post->ID, 'sidebar_agent_option', true);
-            $enable_global_property_page_agent_sidebar = esc_html(get_option('wp_estate_global_property_page_agent_sidebar', ''));
-
-            //get_template_part ('/templates/author_area');
-
+            $enable_global_property_page_agent_sidebar = esc_html(get_option('wp_estate_global_property_page_agent_sidebar', '')); 
+            //get_template_part ('/templates/author_area'); 
             get_template_part('/templates/similar_listings');
             ?>
         </div><!-- end single content -->
     </div><!-- end 9col container-->      
-            <?php include(locate_template('sidebar.php')); ?>
+  
+    
+    <?php include(locate_template('sidebar.php')); ?>
 </div>    
-            <?php get_footer(); ?>
+<?php get_footer(); ?>

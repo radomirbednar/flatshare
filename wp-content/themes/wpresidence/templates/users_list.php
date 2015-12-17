@@ -190,6 +190,15 @@ if ($options['content_class'] == 'col-md-12') {
                 $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
                 $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
                 $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
+                
+                $birthdate = !empty($fl_user_data->birthdate) ? $fl_user_data->birthdate : ''; 
+            if($birthdate){
+            $date = new DateTime($birthdate);
+            $now = new DateTime();
+            $interval = $now->diff($date);
+            $year_old = $interval->y;
+            } 
+                
 
                 $rent_amount = !empty($fl_user_data->rent_amount) ? $fl_user_data->rent_amount : '';
 
@@ -198,13 +207,15 @@ if ($options['content_class'] == 'col-md-12') {
                     '1' => __('male', 'wpestate')
                 );
                  
-                $description = get_the_author_meta('description', $q->ID);  
+                $description = get_the_author_meta('description', $q->ID); 
+                  
                 //prvni vetastr_word_count 
-                preg_match('/^([^.!?]*[\.!?]+){0,2}/', strip_tags($description), $abstract);            
-                if($abstract != ''){  
+                preg_match('/^([^.!?]*[\.!?]+){0,2}/', strip_tags($description), $abstract);  
+                   
+                if($abstract[0] !=""){   
                 $description = $abstract[0];  
-                }else{ 
-                $description = wp_trim_words( wp_trim_words( $text, $num_words = 12, $more = null )); 
+                }else{  
+                $description =  wp_trim_words( $description, $num_words = 12, $more = null ); 
                 } 
                  
                 $sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';
@@ -300,7 +311,7 @@ if ($options['content_class'] == 'col-md-12') {
                 }
                 ?> 
                 <?php  
-                    include( trailingslashit( get_template_directory() ). 'libs/user_unit.php' );
+                    include( trailingslashit( get_template_directory() ). 'libs/user_unit_list.php' );
                 ?> 
                 <?php
             }
