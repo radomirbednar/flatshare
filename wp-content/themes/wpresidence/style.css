@@ -12997,3 +12997,10 @@ span.sub{
 #google_map_prop_list_sidebar .save-search #search_name {
     margin-right: 0;
 }
+ 
+.shortcode_slider_wrapper .has_prop_slider {
+  display: inline-block;
+  white-space: normal;
+  max-width: 285px;
+}
+

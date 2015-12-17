@@ -5,8 +5,7 @@
  * and open the template in the editor.
  */
 ?>  
-<div class="">
-
+<div class=""> 
     <div class="col-md- shortcode-col has_prop_slider"> 
         <div class="property_listing_agent"> 
             <div class="agent_unit" data-link="<?php print $author_url; ?>"> 
