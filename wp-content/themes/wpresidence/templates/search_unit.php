@@ -17,10 +17,10 @@ global $adv_search_label;
     //print  json_last_error();
     //print_r($search_arguments_decoded);
     
-    /* print '<div class="search_param"><strong>'.__('Search Parameters: ','wpestate').'</strong>';
+    print '<div class="search_param"><strong>'.__('Search Parameters: ','wpestate').'</strong>';
     wpestate_show_search_params($search_arguments_decoded,$custom_advanced_search, $adv_search_what,$adv_search_how,$adv_search_label);
     print '</div>';
-    */
+    
     
     ?>
 </div>

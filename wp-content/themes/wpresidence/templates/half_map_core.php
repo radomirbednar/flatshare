@@ -66,8 +66,7 @@ get_template_part('templates/property_ajax_tax_hidden_filters');
    
                 if ($show_save_search=='yes' ){
                     if( is_user_logged_in() ){
-                        /*
-                         * print '<div class="search_unit_wrapper advanced_search_notice">';  
+                        print '<div class="search_unit_wrapper advanced_search_notice">';  
                         print '<div class="search_param"><strong>'.__('Search Parameters: ','wpestate').'</strong>';
 
                         wpestate_show_search_params($search_args,$custom_advanced_search, $adv_search_what,$adv_search_how,$adv_search_label);
@@ -92,7 +91,7 @@ get_template_part('templates/property_ajax_tax_hidden_filters');
                         print "'>";
                         print '<input type="hidden" name="save_search_nonce" id="save_search_nonce"  value="'. wp_create_nonce( 'save_search_nonce' ).'" />';
                         print '';
-                        print '</div>';*/
+                        print '</div>';
                     }else{
                         print '<div class="vc_row wpb_row vc_row-fluid vc_row">
                                 <div class="vc_col-sm-12 wpb_column vc_column_container vc_column">
