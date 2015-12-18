@@ -24,7 +24,7 @@ if (!isset($prefix)) {
 
                 <div class="form-control-disponibility pull-left clearfix">
                     <div class="form-control-in">
-                        <label class="two-label"><?php _e('Available from', 'wpestate'); ?></label>
+                        <label class="two-label"><?php _e('From', 'wpestate'); ?></label>
                         <div class="value-row clearfix">
                             <input type="text" id="<?php echo $prefix ?>disponibility" name="disponibility" class="form-control w100" value="<?php echo esc_attr(isset($_GET['disponibility']) ? esc_attr($_GET['disponibility']) : '') ?>">
                         </div>
@@ -149,7 +149,7 @@ if (!isset($prefix)) {
                                 //4 => __('Landlord', 'wpestate'),
                         );
                         ?>
-                        <label for="<?php echo $prefix ?>status"><?php _e('Someone looking for:', 'wpestate'); ?></label>
+                        <label for="<?php echo $prefix ?>status"><?php _e('Someone:', 'wpestate'); ?></label>
                         <div class="value-row clearfix"> 
                             <select id="<?php echo $prefix ?>status" class="form-control w100" name="status" class="w100"> 
                                 <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option> 
