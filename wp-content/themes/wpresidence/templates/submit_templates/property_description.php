@@ -29,7 +29,10 @@ global $property_label_before;
     </p>
 
     <p class="half_form half_form_last">
-        <label for="property_label"><?php _e('After Price Label (ex: "per month")', 'wpestate'); ?></label>
+        <label for="property_label">
+            <!--<?php _e('After Price Label (ex: "per month")', 'wpestate'); ?>-->
+            <?php _e('Every', 'wpestate'); ?>
+        </label>
 
         <select class="form-control" id="property_label" name="property_label" >             
             <?php
@@ -46,7 +49,10 @@ global $property_label_before;
         <!--<input type="text" id="property_label" class="form-control" size="40" name="property_label" value="<?php print $property_label; ?>">--> 
     </p>  
     <p class="half_form clear clearfix">    
-        <label for="property_label_before"><?php _e('Before Price Label (ex: "from ")', 'wpestate'); ?></label>
+        <label for="property_label_before">
+            <!--<?php _e('Before Price Label (ex: "from ")', 'wpestate'); ?>-->
+            <?php _e('Charges', 'wpestate'); ?>
+        </label>
         <!--input type="text" id="property_label_before" class="form-control" size="40" name="property_label_before" value="<?php print $property_label_before; ?>"-->
  
         <select class="form-control" id="property_label_before" name="property_label_before" >  
