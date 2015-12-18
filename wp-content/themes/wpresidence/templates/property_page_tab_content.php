@@ -346,6 +346,8 @@ $party_array = array(
                     <?php print $rent_amount; ?>  
                 </div>   
                  
+                
+                
                 <div class="sub_block">
                     <span class="sub"><?php print __('Sexual preferences: ', 'wpestate'); ?></span> 
                     <?php print $sexual_preference_array[$sexual_preference][0] . $sexual_preference_array[$sexual_preference][1]; ?>  
