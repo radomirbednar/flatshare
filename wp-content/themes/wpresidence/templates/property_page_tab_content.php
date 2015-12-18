@@ -27,6 +27,9 @@ $skill = get_post_meta($post->ID, 'skill', true);
 
 
 
+
+
+
 $activity_array = array(
     '1' => __('Student', 'wpestate'),
     '2' => __('Professional', 'wpestate'),
@@ -337,6 +340,12 @@ $party_array = array(
                 <?php //print $looking_for_array[$looking_for][0] . $looking_for_array[$looking_for][1]; ?> 
                 </div>-->          
 
+                
+                <div class="sub_block">
+                    <span class="sub"><?php print __('Age: ', 'wpestate'); ?></span> 
+                    <?php print $rent_amount; ?>  
+                </div>   
+                 
                 <div class="sub_block">
                     <span class="sub"><?php print __('Sexual preferences: ', 'wpestate'); ?></span> 
                     <?php print $sexual_preference_array[$sexual_preference][0] . $sexual_preference_array[$sexual_preference][1]; ?>  
