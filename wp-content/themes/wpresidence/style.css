@@ -13000,3 +13000,10 @@ span.sub{
 .control-checkboxes {
     padding-top: 10px;
 }
+ 
+.shortcode_slider_wrapper .has_prop_slider {
+  display: inline-block;
+  white-space: normal;
+  max-width: 285px;
+}
+
