@@ -339,15 +339,12 @@ $party_array = array(
                     <span class="sub"><?php //print __('Looking for: ', 'wpestate');   ?> </span>
                 <?php //print $looking_for_array[$looking_for][0] . $looking_for_array[$looking_for][1]; ?> 
                 </div>-->          
-
                 
                 <div class="sub_block">
                     <span class="sub"><?php print __('Age: ', 'wpestate'); ?></span> 
                     <?php print $rent_amount; ?>  
                 </div>   
-                 
-                
-                
+  
                 <div class="sub_block">
                     <span class="sub"><?php print __('Sexual preferences: ', 'wpestate'); ?></span> 
                     <?php print $sexual_preference_array[$sexual_preference][0] . $sexual_preference_array[$sexual_preference][1]; ?>  
