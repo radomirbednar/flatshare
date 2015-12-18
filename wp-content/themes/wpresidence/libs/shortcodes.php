@@ -102,11 +102,13 @@ if (!function_exists('wpestate_list_users_function')):
             $first_name = esc_attr(get_the_author_meta('first_name', $q->ID));
             $last_name = esc_attr(get_the_author_meta('last_name', $q->ID));
             $user_facebook = get_the_author_meta('facebook', $q->ID);  
+             
             /* 
              * $user_twitter = get_the_author_meta('twitter', $q->ID);
               $user_linkedin = get_the_author_meta('linkedin', $q->ID);
               $user_pinterest = get_the_author_meta('pinterest', $q->ID); 
-             */    
+             */ 
+            
             $photo_url = get_the_author_meta('custom_picture', $q->ID); 
             $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
             $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
@@ -118,8 +120,7 @@ if (!function_exists('wpestate_list_users_function')):
             $interval = $now->diff($date);
             $year_old = $interval->y;
             } 
-            
-            
+ 
             $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : ''; 
             $looking_for = !empty($fl_user_data->looking_for) ? $fl_user_data->looking_for : ''; 
             $sexual_preference = !empty($fl_user_data->sexual_preference) ? $fl_user_data->sexual_preference : '';

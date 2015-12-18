@@ -109,14 +109,15 @@ if ($options['content_class'] == 'col-md-12') {
                 }
                 ?>
  
-                <div class="notice_area">           
- 
+                <div class="notice_area">            
                     <?php if( $property_category ): ?>
                     <div class="property_categs">
                         <?php print $property_category . ' ' . __('in', 'wpestate') . ' ' . $property_action ?>
                     </div>  
-                    <?php endif; ?>
+                    <?php else: ?>
                     
+                    <div class="property_categs"> </div> 
+                    <?php endif; ?> 
                      <span class="adres_area"><?php print esc_html(get_post_meta($post->ID, 'property_address', true)) . ', ' . $property_city . ', ' . $property_area; ?></span>   
                     <div id="add_favorites" class="<?php print $favorite_class; ?>" data-postid="<?php the_ID(); ?>"><?php echo $favorite_text; ?></div>                 
                     <div class="download_pdf"></div>
@@ -133,15 +134,12 @@ if ($options['content_class'] == 'col-md-12') {
                         <?php } ?>
 
                     </div>
-                </div>    
-
-                <?php //print 'Status:'.$status.'</br>';  ?>
-
+                </div>     
+                <?php //print 'Status:'.$status.'</br>';  ?> 
                 <?php
                 //get_template_part('templates/listingslider');
                 // slider type -> vertical or horizinalt
-                $local_pgpr_slider_type_status = get_post_meta($post->ID, 'local_pgpr_slider_type', true);
-
+                $local_pgpr_slider_type_status = get_post_meta($post->ID, 'local_pgpr_slider_type', true); 
                 if ($local_pgpr_slider_type_status == 'global') {
                     $prpg_slider_type_status = esc_html(get_option('wp_estate_global_prpg_slider_type', ''));
                     if ($prpg_slider_type_status == 'vertical') {

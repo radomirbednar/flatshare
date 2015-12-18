@@ -3,21 +3,16 @@
 <?php
 //print $options['sidebar_name'].' / '.$options['sidebar_class']  ;
 $sidebar_name = $options['sidebar_name'];
-$sidebar_class = $options['sidebar_class'];
-
-if (('no sidebar' != $options['sidebar_class']) && ('' != $options['sidebar_class'] ) && ('none' != $options['sidebar_class'])) {
-
+$sidebar_class = $options['sidebar_class']; 
+if (('no sidebar' != $options['sidebar_class']) && ('' != $options['sidebar_class'] ) && ('none' != $options['sidebar_class'])) { 
     global $post;
     $property_date = esc_html(get_post_meta($post->ID, 'from', true));
     $property_date_text = esc_html(get_post_meta($post->ID, 'property-date', true));
-    ?>
-
-
-    <div class="col-xs-12 <?php print $options['sidebar_class']; ?> widget-area-sidebar" id="primary" >
-
+    ?> 
+    <div class="col-xs-12 <?php print $options['sidebar_class']; ?> widget-area-sidebar" id="primary" > 
         <?php if(!empty($property_date_text) || !empty($property_date)): ?>     
         <div class="availability-box">
-            <h2><?php _e('Disponible','wpestate') ?></h2>
+            <h2><?php _e('Available','wpestate') ?></h2>
 
             <?php
             if (!empty($property_date)):
@@ -35,12 +30,10 @@ if (('no sidebar' != $options['sidebar_class']) && ('' != $options['sidebar_clas
             <?php endif; ?>
         </div>    
         <?php endif; ?>        
-
         <?php
         if ('estate_property' == get_post_type() && !is_tax()) {
 
-            /* $sidebar_agent_option_value=    get_post_meta($post->ID, 'sidebar_agent_option', true);
-
+            /* $sidebar_agent_option_value=    get_post_meta($post->ID, 'sidebar_agent_option', true); 
               if($sidebar_agent_option_value =='global'){
               $enable_global_property_page_agent_sidebar= esc_html ( get_option('wp_estate_global_property_page_agent_sidebar','') );
 
