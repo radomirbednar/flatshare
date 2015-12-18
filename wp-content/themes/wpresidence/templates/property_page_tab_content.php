@@ -225,8 +225,8 @@ $party_array = array(
         <?php } ?>
 
         <li role="presentation">
-            <a href="#preferences" aria-controls="preferences" role="tab" data-toggle="tab">
-                <?php _e('Preferences', 'wpestate'); ?>  
+            <a href="#perfect-flatmate" aria-controls="perfect-flatmate" role="tab" data-toggle="tab">
+                <?php _e('Perfect flatmate', 'wpestate'); ?>  
             </a>
         </li> 
     </ul>
@@ -279,7 +279,7 @@ $party_array = array(
             </div>
         <?php } ?>
 
-        <div role="tabpanel" class="tab-pane" id="preferences">
+        <div role="tabpanel" class="tab-pane" id="perfect-flatmate">
             <div class="panel-body">   
 
                 <!--<div class="sub_block">
