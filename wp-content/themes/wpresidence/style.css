@@ -408,7 +408,7 @@ input.form-control::-moz-placeholder {
     display: inline-block;
     height: 69px;
     float: right;
-    margin: 11px 28px 0px 0px;
+    margin: 19px 28px 0px 0px;
     max-width: 800px;
 }
 
@@ -741,17 +741,17 @@ input.form-control::-moz-placeholder {
     display:inline;
 }
 
-
-.top_bar .widget-container{
+.headline .widget-container,
+.top_bar .widget-container {
     display:inline;
     margin-bottom: 0px;
 }
-
+.headline .widget-container ul,
 .top_bar .widget-container ul{
     list-style: none;
 }
-
-.top_bar .widget-container ul li{
+.headline .widget-container ul li,
+.top_bar .widget-container ul li {
     display: inline;
 }
 
@@ -762,7 +762,7 @@ input.form-control::-moz-placeholder {
     padding-top: 3px;
     width: 100%;
     margin: 0px auto;
-    height: 90px;
+    height: 96px;
     -webkit-transition: height 0.3s ease;
     -moz-transition: height 0.3s ease;
     -o-transition: height 0.3s ease;
@@ -2113,7 +2113,7 @@ input.form-control::-moz-placeholder {
 .user_menu {
     display: inline-block;
     float: right;
-    margin-right: 45px;
+    margin-right: 4px;
     margin-top: 35px;
     /*background-color: #fff;*/
     color: #3C90BE;
@@ -2126,7 +2126,7 @@ input.form-control::-moz-placeholder {
 .user_loged{
     background-color: transparent;
     margin-top: 3px;
-    padding: 9px 0px 9px 11px;
+    padding: 18px 0px 9px 11px;
 }
 
 .customnav .user_menu{
@@ -10247,17 +10247,18 @@ blockquote cite, blockquote small {
 #list_sidebar_curr{
     width:255px;
 }
-
-.top_bar .sidebar_filter_menu{
+.headline .sidebar_filter_menu,
+.top_bar .sidebar_filter_menu {
     font-size: 12px;
     padding: 2px 12px;
 }
-
+.headline .multiple_currency_widget,
 .top_bar .multiple_currency_widget{
     width: 160px;
     height: 20px;
 }
 
+.headline .filter_menu li,
 .top_bar .filter_menu li{
     height: 30px;
     padding: 7px 0px 3px 13px;
@@ -10266,11 +10267,13 @@ blockquote cite, blockquote small {
     min-width: 140px;
 }
 
+.headline .caret_sidebar,
 .top_bar .caret_sidebar {
     top:9px;
 }
 
-.top_bar #list_sidebar_curr{
+.headline #list_sidebar_curr,
+.top_bar #list_sidebar_curr {
     width:160px;
     margin-left: 0px;
 }
@@ -10286,6 +10289,7 @@ blockquote cite, blockquote small {
     margin-left:0px;
 }
 
+.headline .form-control,
 .top_bar .form-control{
     height:25px;
 }
@@ -12897,9 +12901,13 @@ span.sub{
       border: 1px solid #f0f0f0;
 }
 .header_wrapper_inside .flags_language_selector {
+    /*
     position: absolute;
     right: 0;
     top: 0;    
+    margin-right: 45px;
+    */
+    margin-top: 34px;
     margin-right: 45px;
 }
 .flags_language_selector_phone ul,
@@ -13040,4 +13048,15 @@ span.sub{
 .half-map .form-control-skills.pull-left {
     width: 100%;
     float: right !important;
+}
+
+#headline-sidebar {
+    position: absolute;
+    right: 46px;
+    top: 0;
+    width: 160px;
+}
+.headline ul {
+    padding: 0;
+    margin: 0;
 }
