@@ -29,10 +29,7 @@ global $property_label_before;
     </p>
 
     <p class="half_form half_form_last">
-        <label for="property_label">
-            <!--<?php _e('After Price Label (ex: "per month")', 'wpestate'); ?>-->
-            <?php _e('Every', 'wpestate'); ?>
-        </label>
+        <label for="property_label"><?php _e('Every', 'wpestate'); ?></label>
 
         <select class="form-control" id="property_label" name="property_label" >             
             <?php
