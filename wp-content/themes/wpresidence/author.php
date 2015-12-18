@@ -315,8 +315,16 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             <div class="sub_block"> 
                 <span class="sub">
                     <?php print __('Country of origin: ', 'wpestate'); ?> 
-                </span>    
-                <?php echo $user_origin; ?>     
+                </span>   
+                
+                <?php 
+                $coutnries = fl_get_countries();
+                
+                if(isset($coutnries[$user_origin])){
+                    echo $coutnries[$user_origin];
+                }                
+                
+                ?>     
             </div> 
         </div>  
 
