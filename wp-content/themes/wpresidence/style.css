@@ -13024,7 +13024,15 @@ span.sub{
 .search_wrapper.half-map .nav > li > a:focus {
     border-top: 1px solid #f0f0f0;
     border-right: 1px solid #f0f0f0;
-    border-left: 1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0;    
+}
+
+.adv-search-mobile .nav-tabs > li.active > a, 
+.adv-search-mobile .nav > li > a:hover, 
+.adv-search-mobile .nav > li > a:focus, 
+.search_wrapper .nav-tabs > li.active > a, 
+.search_wrapper .nav > li > a:hover, 
+.search_wrapper .nav > li > a:focus {
     background-color: #fdfdfd;
 }
 
