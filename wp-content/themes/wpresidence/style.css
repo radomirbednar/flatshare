@@ -12843,6 +12843,13 @@ span.sub{
     margin-right: 0;
 }
 
+.add_prop.adv_search_slider{
+    width: 100%;
+    max-width: 100%; 
+    
+}
+
+
 .adv-search-mobile .adv_search_slider {
     width: 100%;
     max-width: 100%;

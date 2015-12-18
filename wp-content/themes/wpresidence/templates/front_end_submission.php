@@ -240,35 +240,30 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                     <button class="wpb_button wpb_btn-large <?php echo $party == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#party" data-value="2"><?php _e('Not often', 'wpestate'); ?></button>
                     -->
                 </div> 
-            </div>      
-            <div class="half_form">
-                <div class="fl-row adv_search_slider"> 
-                    <script>
-                        jQuery(document).ready(function ($) {
-                            jQuery("#slider_rent").slider({
-                                //range: true,
-                                "value": <?php echo (int) $rent_amount ?>,
-                                min: parseInt(0),
-                                max: parseInt(<?php echo MAX_RENT ?>),
-                                //values: [$('#age_low').val(), $('#age_max').val()], // defaultni hodnoty
-                                slide: function (event, ui) {
-                                    //console.log(ui);
-                                    //jQuery('#rent_label_text').val(ui.values[0]);
-                                    jQuery('#rent_amount').val(ui.value);
-                                    jQuery("#rent_label_text").text(ui.value.format());
-                                }
-                            });
-                        });
-                    </script>  
-                    <?php $currency = esc_html(get_option('wp_estate_currency_symbol', '')); ?> 
-                    <p>
-                        <label for="rent_amount" class="wauto"><?php _e('How much do you want to pay?:', 'wpestate'); ?></label>
-                        <span id="rent_label_text" class="slide-label"><?php printf(__('%s', 'wpestate'), (int) $rent_amount); ?> <?php echo esc_html($currency); ?></span>
-                    </p>  
-                    <div id="slider_rent" class="fl-slider"></div>
-                    <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $rent_amount; ?>">
+            </div>    
+            
+            
+            
+               <div class="half_form">
+                <div class="switcher fl-row">
+                    <!--<input type="hidden" id="activity" name="activity" value="<?php echo (int) $activity ?>">--> 
+                    <label><?php _e('Activity', 'wpestate'); ?></label> 
+                    <div class="value-row">
+                        <input id="activity-1" name="activity" type="radio" value="1" class="hidden" <?php echo empty($activity) || 1 == $activity ? ' checked="checked" ' : '' ?>>
+                        <input id="activity-2" name="activity" type="radio" value="2" class="hidden" <?php echo isset($activity) && 2 == $activity ? ' checked="checked" ' : '' ?>> 
+                        <input id="activity-3" name="activity" type="radio" value="3" class="hidden" <?php echo isset($activity) && 3 == $activity ? ' checked="checked" ' : '' ?>> 
+                        <label for="activity-1" class="wpb_button wpb_btn-large <?php echo empty($activity) || 1 == $activity ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Student', 'wpestate'); ?></label>
+                        <label for="activity-2" class="wpb_button wpb_btn-large <?php echo isset($activity) && 2 == $activity ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Professional', 'wpestate'); ?></label> 
+                        <label for="activity-3" class="wpb_button wpb_btn-large <?php echo isset($activity) && 3 == $activity ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Never mind', 'wpestate'); ?></label> 
+                    </div> 
+                    <!--
+                    <button class="wpb_button wpb_btn-large <?php echo $activity == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="1"><?php _e('Student', 'wpestate'); ?></button>
+                    <button class="wpb_button wpb_btn-large <?php echo $activity == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="2"><?php _e('Professional', 'wpestate'); ?></button>
+                    -->
                 </div>
             </div> 
+            
+            
             <div class="half_form">
                 <div class="fl-row"> 
                     <?php $coutnries = fl_get_countries(); ?> 
@@ -288,26 +283,37 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                         </select>
                     </div>
                 </div>
-            </div>    
-            <div class="half_form">
-                <div class="switcher fl-row">
-                    <!--<input type="hidden" id="activity" name="activity" value="<?php echo (int) $activity ?>">--> 
-                    <label><?php _e('Activity', 'wpestate'); ?></label> 
-                    <div class="value-row">
-                        <input id="activity-1" name="activity" type="radio" value="1" class="hidden" <?php echo empty($activity) || 1 == $activity ? ' checked="checked" ' : '' ?>>
-                        <input id="activity-2" name="activity" type="radio" value="2" class="hidden" <?php echo isset($activity) && 2 == $activity ? ' checked="checked" ' : '' ?>> 
-                        <input id="activity-3" name="activity" type="radio" value="3" class="hidden" <?php echo isset($activity) && 3 == $activity ? ' checked="checked" ' : '' ?>> 
-                        <label for="activity-1" class="wpb_button wpb_btn-large <?php echo empty($activity) || 1 == $activity ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Student', 'wpestate'); ?></label>
-                        <label for="activity-2" class="wpb_button wpb_btn-large <?php echo isset($activity) && 2 == $activity ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Professional', 'wpestate'); ?></label> 
-                        <label for="activity-3" class="wpb_button wpb_btn-large <?php echo isset($activity) && 3 == $activity ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Never mind', 'wpestate'); ?></label> 
-                    </div> 
-                    <!--
-                    <button class="wpb_button wpb_btn-large <?php echo $activity == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="1"><?php _e('Student', 'wpestate'); ?></button>
-                    <button class="wpb_button wpb_btn-large <?php echo $activity == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="2"><?php _e('Professional', 'wpestate'); ?></button>
-                    -->
+            </div>   
+            
+            <div class="half_form clearfix clear">
+                <div class="adv_search_slider add_prop"> 
+                    <script>
+                        jQuery(document).ready(function ($) {
+                            jQuery("#slider_rent").slider({
+                                //range: true,
+                                "value": <?php echo (int) $rent_amount ?>,
+                                min: parseInt(0),
+                                max: parseInt(99),
+                                //values: [$('#age_low').val(), $('#age_max').val()], // defaultni hodnoty
+                                slide: function (event, ui) {
+                                    //console.log(ui);
+                                    //jQuery('#rent_label_text').val(ui.values[0]);
+                                    jQuery('#rent_amount').val(ui.value);
+                                    jQuery("#rent_label_text").text(ui.value.format());
+                                }
+                            });
+                        });
+                    </script>   
+                    <p>
+                        <label for="rent_amount" class="wauto"><?php _e('Age:', 'wpestate'); ?></label>
+                        <span id="rent_label_text" class="slide-label"><?php printf(__('%s', 'wpestate'), (int) $rent_amount); ?> </span>
+                    </p>  
+                    <div id="slider_rent" class="fl-slider"></div>
+                    <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $rent_amount; ?>">
                 </div>
-            </div>  
-            <div class="fl-row">
+            </div> 
+          
+            <div class="half_form">
                 <label><?php _e('House skills', 'wpestate'); ?></label>
                 <p class="inline-checkboxes">                
                     <?php 

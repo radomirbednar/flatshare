@@ -586,7 +586,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'view') {
                 $party = (int) ( $_POST['party'] );
             }
             if (!isset($_POST['rent_amount'])) {
-                $rent_amount = 3;
+                $rent_amount = 18;
             } else {
                 $rent_amount = (int) ( $_POST['rent_amount'] );
             }

@@ -167,46 +167,37 @@ if (!isset($prefix)) {
                         <div class="value-row clearfix">
                             <input id="<?php echo $prefix ?>how_long-0" name="how_long" type="radio" value="" class="hidden">
                             <input id="<?php echo $prefix ?>how_long-1" name="how_long" type="radio" value="1" class="hidden" >
-                            <input id="<?php echo $prefix ?>how_long-2" name="how_long" type="radio" value="2" class="hidden">
-
+                            <input id="<?php echo $prefix ?>how_long-2" name="how_long" type="radio" value="2" class="hidden"> 
                             <label for="<?php echo $prefix ?>how_long-0" class="wpb_button wpb_btn-large <?php echo empty($_GET['how_long']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                             <label for="<?php echo $prefix ?>how_long-1" class="wpb_button wpb_btn-large <?php echo isset($_GET['how_long']) && 1 == $_GET['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Short term', 'wpestate'); ?></label>
                             <label for="<?php echo $prefix ?>how_long-2" class="wpb_button wpb_btn-large <?php echo isset($_GET['how_long']) && 2 == $_GET['how_long'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Long term'); ?></label>
                         </div>
                     </div>
-                </div>                        
-
-                <div class="clearfix"></div>                        
-
+                </div>                         
+                <div class="clearfix"></div>                         
                 <div class="form-control-half">
                     <div class="form-control-in">
                         <div class="switcher">
-                            <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
-
+                            <label><?php _e('Sexual preferences', 'wpestate'); ?></label> 
                             <div class="value-row clearfix">
                                 <input id="<?php echo $prefix ?>sexual_preference-nevermind" name="sexual_preference" type="radio" value="" class="hidden">
                                 <input id="<?php echo $prefix ?>sexual_preference-straight" name="sexual_preference" type="radio" value="1" class="hidden" >
-                                <input id="<?php echo $prefix ?>sexual_preference-bi" name="sexual_preference" type="radio" value="2" class="hidden">
-
+                                <input id="<?php echo $prefix ?>sexual_preference-bi" name="sexual_preference" type="radio" value="2" class="hidden"> 
                                 <label for="<?php echo $prefix ?>sexual_preference-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['sexual_preference']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                 <label for="<?php echo $prefix ?>sexual_preference-straight" class="wpb_button wpb_btn-large <?php echo isset($_GET['sexual_preference']) && 1 == $_GET['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Straight', 'wpestate'); ?></label>
                                 <label for="<?php echo $prefix ?>sexual_preference-bi" class="wpb_button wpb_btn-large <?php echo isset($_GET['sexual_preference']) && 2 == $_GET['sexual_preference'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Bi / Gay', 'wpestate'); ?></label>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                </div> 
                 <div class="form-control-half">
                     <div class="form-control-in">
                         <div class="switcher">
-                            <label><?php _e('Sleep during week', 'wpestate'); ?></label>
-
-                            <div class="value-row clearfix">
-
+                            <label><?php _e('Sleep during week', 'wpestate'); ?></label> 
+                            <div class="value-row clearfix"> 
                                 <input id="<?php echo $prefix ?>sleeping_span-nevermind" name="sleeping_span" type="radio" value="" class="hidden">
                                 <input id="<?php echo $prefix ?>sleeping_span-before" name="sleeping_span" type="radio" value="1" class="hidden" >
-                                <input id="<?php echo $prefix ?>sleeping_span-after" name="sleeping_span" type="radio" value="2" class="hidden">
-
+                                <input id="<?php echo $prefix ?>sleeping_span-after" name="sleeping_span" type="radio" value="2" class="hidden"> 
                                 <label for="<?php echo $prefix ?>sleeping_span-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['sleeping_span']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
                                 <label for="<?php echo $prefix ?>sleeping_span-before" class="wpb_button wpb_btn-large <?php echo isset($_GET['sleeping_span']) && 1 == $_GET['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Before 11PM', 'wpestate'); ?></label>
                                 <label for="<?php echo $prefix ?>sleeping_span-after" class="wpb_button wpb_btn-large <?php echo isset($_GET['sleeping_span']) && 2 == $_GET['sleeping_span'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('After 11PM', 'wpestate'); ?></label>
