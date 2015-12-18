@@ -12998,6 +12998,7 @@ span.sub{
 #google_map_prop_list_sidebar .save-search #search_name {
     margin-right: 0;
 }
+.half-map .language-skill .inline-checkboxes, 
 .control-checkboxes {
     padding-top: 10px;
 }
@@ -13025,4 +13026,10 @@ span.sub{
     border-right: 1px solid #f0f0f0;
     border-left: 1px solid #f0f0f0;
     background-color: #fdfdfd;
+}
+
+.form-control-origin.pull-left,
+.form-control-skills.pull-left {
+    width: 100%;
+    float: right !important;
 }
