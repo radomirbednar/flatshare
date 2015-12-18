@@ -10257,6 +10257,9 @@ blockquote cite, blockquote small {
     width: 160px;
     height: 20px;
 }
+.headline .multiple_currency_widget {
+    width: 100%;
+}
 
 .headline .filter_menu li,
 .top_bar .filter_menu li{
@@ -13061,7 +13064,7 @@ span.sub{
     position: absolute;
     right: 46px;
     top: 0;
-    width: 160px;
+    width: 204px;
 }
 .headline ul {
     padding: 0;
