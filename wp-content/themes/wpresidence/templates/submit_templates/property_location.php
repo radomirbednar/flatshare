@@ -161,9 +161,7 @@ global $edit_id;
         ?>
         
         <input type="checkbox"  id="property_google_view"  name="property_google_view" value="1" <?php print $google_view_check;?>>
-    </p></br> 
-    
-    
+    </p></br>  
    <!-- <p class="half_form half_form_last">
         <label for="google_camera_angle"><?php // _e('Google Street View - Camera Angle (value from 0 to 360)','wpestate');?></label>
         <input type="text" id="google_camera_angle" class="form-control" style="margin-right:0px;" size="5" name="google_camera_angle" value="<?php // print $google_camera_angle;?>">
