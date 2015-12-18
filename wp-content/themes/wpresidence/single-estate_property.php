@@ -108,15 +108,16 @@ if ($options['content_class'] == 'col-md-12') {
                     $status = icl_translate('wpestate', 'wp_estate_property_status_' . $status, $status);
                 }
                 ?>
-
-
+ 
                 <div class="notice_area">           
-
+ 
+                    <?php if( $property_category ): ?>
                     <div class="property_categs">
                         <?php print $property_category . ' ' . __('in', 'wpestate') . ' ' . $property_action ?>
                     </div>  
-
-                    <span class="adres_area"><?php print esc_html(get_post_meta($post->ID, 'property_address', true)) . ', ' . $property_city . ', ' . $property_area; ?></span>   
+                    <?php endif; ?>
+                    
+                     <span class="adres_area"><?php print esc_html(get_post_meta($post->ID, 'property_address', true)) . ', ' . $property_city . ', ' . $property_area; ?></span>   
                     <div id="add_favorites" class="<?php print $favorite_class; ?>" data-postid="<?php the_ID(); ?>"><?php echo $favorite_text; ?></div>                 
                     <div class="download_pdf"></div>
 
