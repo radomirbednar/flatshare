@@ -23,10 +23,10 @@ $activity = esc_html(get_post_meta($post->ID, 'activity', true));
 $language = get_post_meta($post->ID, 'language', true);
 $skill = get_post_meta($post->ID, 'skill', true);
 
- 
 
 
-    
+
+
 $activity_array = array(
     '1' => __('Student', 'wpestate'),
     '2' => __('Professional', 'wpestate'),
@@ -333,7 +333,7 @@ $party_array = array(
                 </div>  
 
                 <!--<div class="sub_block">
-                    <span class="sub"><?php //print __('Looking for: ', 'wpestate');  ?> </span>
+                    <span class="sub"><?php //print __('Looking for: ', 'wpestate');   ?> </span>
                 <?php //print $looking_for_array[$looking_for][0] . $looking_for_array[$looking_for][1]; ?> 
                 </div>-->          
 
@@ -361,16 +361,23 @@ $party_array = array(
                     <span class="sub"><?php print __('Party: ', 'wpestate'); ?></span> 
                     <?php print $party_array[$party][0] . $party_array[$party][1]; ?>  
                 </div> 
-                 <div class="sub_block"> 
+                <div class="sub_block"> 
                     <span class="sub">
                         <?php print __('Country of origin: ', 'wpestate'); ?> 
                     </span>    
-                    <?php echo $user_origin; ?>     
+                    <?php
+                    //echo $user_origin; 
+                    $coutnries = fl_get_countries();
+
+                    if (isset($coutnries[$user_origin])) {
+                        echo $coutnries[$user_origin];
+                    }
+                    ?>     
                 </div>  
                 <div class="sub_block"> 
                     <span class="sub"><?php print __('Language skills: ', 'wpestate'); ?></span>     
                     <?php
-                    $languages = fl_get_languages(); 
+                    $languages = fl_get_languages();
                     if (!empty($languages)):
                         foreach ($languages as $lang):
                             if (in_array($lang->id_lang, (array) $language)):
