@@ -13014,3 +13014,15 @@ span.sub{
 .form-control-skills .inline-checkboxes .flcheckbox:last-child {
     margin-right: 0;
 }
+
+.adv-search-mobile .nav-tabs > li.active > a, 
+.adv-search-mobile .nav > li > a:hover, 
+.adv-search-mobile .nav > li > a:focus, 
+.search_wrapper.half-map .nav-tabs > li.active > a, 
+.search_wrapper.half-map .nav > li > a:hover, 
+.search_wrapper.half-map .nav > li > a:focus {
+    border-top: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0;
+    background-color: #fdfdfd;
+}

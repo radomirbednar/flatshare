@@ -632,6 +632,10 @@ if (!function_exists('wpestate_admin')):
         global $typenow;
         $date_lang_status = esc_html(get_option('wp_estate_date_lang', ''));
         if ($date_lang_status != 'xx') {
+            
+            //jquery-ui-datepicker
+            wp_enqueue_script('jquery-ui-datepicker');
+            
             $handle = "datepicker-" . $date_lang_status;
             $name = "datepicker-" . $date_lang_status . ".js";
             wp_enqueue_script($handle, get_template_directory_uri() . '/js/i18n/' . $name, array('jquery'), '1.0', true);

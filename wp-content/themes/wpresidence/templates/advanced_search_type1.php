@@ -108,9 +108,22 @@ if(17745 == $p_id):
     <?php
     $template = get_page_template(); 
     // jsem na strance properties, defaultne necham aktivni rental tab
-    if (is_page_template('advanced_search_results.php') && empty($_GET['tab'])) {
+    if (is_page_template('advanced_search_results.php') && empty($_GET['tab'])):
         $_GET['tab'] = 2;
-    }
+    ?>
+    <ul id="what-lookup" class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="<?php echo isset($_GET['tab']) && 2 == $_GET['tab'] ? 'active' : '' ?>">
+            <a class="search-tab" href="#rental" aria-controls="rental" role="tab" data-toggle="tab"><?php _e('Rental listings', 'wpestate'); ?></a>
+        </li>         
+        <li role="presentation" class="<?php echo!isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>">
+            <a class="search-tab" href="#roommate" aria-controls="roommate" role="tab" data-toggle="tab"><?php _e('Roommate listings', 'wpestate'); ?></a>
+        </li> 
+        <li id="adv-search-header-1"> 
+            <span><?php _e('', 'wpestate'); ?></span>
+        </li> 
+    </ul>      
+    <?php
+    else:
     ?> 
     <!-- Nav tabs -->
     <ul id="what-lookup" class="nav nav-tabs" role="tablist">
@@ -124,7 +137,7 @@ if(17745 == $p_id):
             <span><?php _e('', 'wpestate'); ?></span>
         </li> 
     </ul>  
-    
+    <?php endif; ?>
     <!-- Tab panes -->
     <div class="tab-content"> 
         <div role="tabpanel" class="tab-pane <?php echo!isset($_GET['tab']) || 1 == $_GET['tab'] ? 'active' : '' ?>" id="roommate"><!-- search roommate panel -->
