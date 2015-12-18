@@ -143,16 +143,16 @@ if (!isset($prefix)) {
                     <div class="form-control-in">
                         <?php
                         $arr = array(
-                            1 => __('a flat', 'wpestate'),
-                            2 => __('a roommate', 'wpestate'),
+                            1 => __('Posting a property', 'wpestate'),
+                            2 => __('Looking for a property', 'wpestate'),
                                 //3 => __('Real estate', 'wpestate'),
                                 //4 => __('Landlord', 'wpestate'),
                         );
                         ?>
-                        <label for="<?php echo $prefix ?>status"><?php _e('Someone:', 'wpestate'); ?></label>
+                        <label for="<?php echo $prefix ?>status"><?php _e('Someone :', 'wpestate'); ?></label>
                         <div class="value-row clearfix"> 
                             <select id="<?php echo $prefix ?>status" class="form-control w100" name="status" class="w100"> 
-                                <option value=""><?php _e('Flat / Roommate', 'wpestate'); ?></option> 
+                                <option value=""><?php _e('Never mind', 'wpestate'); ?></option> 
                                 <?php foreach ($arr as $key => $val): ?>
                                     <option value="<?php echo $key ?>" <?php echo isset($_GET['status']) && $_GET['status'] == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
                                 <?php endforeach; ?> 
