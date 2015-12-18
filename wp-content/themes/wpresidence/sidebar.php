@@ -15,7 +15,7 @@ if (('no sidebar' != $options['sidebar_class']) && ('' != $options['sidebar_clas
 
     <div class="col-xs-12 <?php print $options['sidebar_class']; ?> widget-area-sidebar" id="primary" >
 
-        <?php if(!empty($property_date_text) && !empty($property_date)): ?>     
+        <?php if(!empty($property_date_text) || !empty($property_date)): ?>     
         <div class="availability-box">
             <h2><?php _e('Disponible','wpestate') ?></h2>
 
