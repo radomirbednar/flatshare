@@ -7063,7 +7063,8 @@ table tbody tr td {
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
     /*height: 121px;*/
-    bottom: 19px;
+    /*bottom: 19px;*/
+    bottom: 11px;
     left: 50%;
     margin-left: -555px;
     -webkit-transition: all 0.4s ease;
@@ -11139,7 +11140,7 @@ ul.wpb_thumbnails-fluid > li,
 .last_toggle_el_margin,
 */
 .wpb_button {
-    margin-bottom: 13px!important;
+    margin-bottom: 11px!important;
 }
 
 
@@ -13007,3 +13008,9 @@ span.sub{
   max-width: 285px;
 }
 
+.form-control-skills .inline-checkboxes .flcheckbox {
+    margin-right: 45px;
+}
+.form-control-skills .inline-checkboxes .flcheckbox:last-child {
+    margin-right: 0;
+}
