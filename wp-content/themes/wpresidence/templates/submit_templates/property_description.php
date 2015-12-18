@@ -11,7 +11,7 @@ global $property_label_before;
 
     <p class="full_form">
         <label for="title"><?php _e('*Title (mandatory)', 'wpestate'); ?> </label>
-        <input type="text" id="title" class="form-control" value="<?php print $submit_title; ?>" size="20" name="title" />
+        <input type="text" id="title" class="form-control" value="<?php print $submit_title; ?>" size="20" name="property_title" />
     </p>
 
     <p class="full_form">

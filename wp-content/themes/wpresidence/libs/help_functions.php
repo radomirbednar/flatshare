@@ -823,7 +823,6 @@ if( !function_exists('get_dashboard_link') ):
         }else{
             $dash_link=home_url();
         }  
-
         return $dash_link;
     }
 endif; // end   get_dashboard_link  

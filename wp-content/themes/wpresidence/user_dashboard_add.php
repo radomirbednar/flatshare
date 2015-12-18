@@ -309,7 +309,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'view') {
 
         $show_err = '';
         $post_id = '';
-        $submit_title = wp_kses($_POST['title'], $allowed_html);
+        $submit_title = wp_kses($_POST['property_title'], $allowed_html);
         $submit_description = wp_filter_nohtml_kses($_POST['description']);
         $property_address = wp_kses($_POST['property_address'], $allowed_html);
         $property_county = wp_kses($_POST['property_county'], $allowed_html);
@@ -714,6 +714,9 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'view') {
             // get user dashboard link
             $redirect = get_dashboard_link();
 
+            
+            //var_dump($redirect); exit;
+            
             $arguments = array(
                 'new_listing_url' => get_permalink($post_id),
                 'new_listing_title' => $submit_title
@@ -815,7 +818,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
      */
 
 
-    $submit_title = wp_kses($_POST['title'], $allowed_html);
+    $submit_title = wp_kses($_POST['property_title'], $allowed_html);
     $submit_description = wp_filter_nohtml_kses($_POST['description']);
     $property_address = wp_kses($_POST['property_address'], $allowed_html);
     $property_county = wp_kses($_POST['property_county'], $allowed_html);
