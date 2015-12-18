@@ -13028,8 +13028,8 @@ span.sub{
     background-color: #fdfdfd;
 }
 
-.form-control-origin.pull-left,
-.form-control-skills.pull-left {
+.half-map .form-control-origin.pull-left,
+.half-map .form-control-skills.pull-left {
     width: 100%;
     float: right !important;
 }
