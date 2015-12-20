@@ -2,7 +2,7 @@
 $current_user = wp_get_current_user();
 $user_custom_picture = get_the_author_meta('small_custom_picture', $current_user->ID);
 $user_small_picture_id = get_the_author_meta('small_custom_picture', $current_user->ID);
-if ($user_small_picture_id == '') { 
+if ($user_small_picture_id == '') {
     $user_small_picture[0] = get_template_directory_uri() . '/img/default_user_small.png';
 } else {
     $user_small_picture = wp_get_attachment_image_src($user_small_picture_id, 'user_thumb');
@@ -10,6 +10,13 @@ if ($user_small_picture_id == '') {
 ?> 
 <?php if (is_user_logged_in()) { ?>   
     <div class="user_menu user_loged" id="user_menu_u">
+
+        <div class="flags_language_selector pull-right">
+            <?php
+            fl_languages_list();
+            ?>
+        </div>         
+
         <a class="menu_user_tools dropdown" id="user_menu_trigger" data-toggle="dropdown"> 
             <a class="navicon-button x">
                 <div class="navicon"></div>
@@ -17,12 +24,23 @@ if ($user_small_picture_id == '') {
             <div class="menu_user_picture" style="background-image: url('<?php print $user_small_picture[0]; ?>');"></div>
         <?php } else { ?>
             <div class="user_menu" id="user_menu_u">   
+
+                <div class="flags_language_selector pull-right">
+                    <?php
+                    fl_languages_list();
+                    ?>
+                </div>         
+
+
                 <a class="menu_user_tools dropdown" id="user_menu_trigger" data-toggle="dropdown">  
                     <a class="navicon-button x">
                         <div class="navicon"></div>
                     </a>
                     <div class="submit_action"><?php _e('Submit Property', 'wpestate'); ?></div>
                 <?php } ?> 
+
+
+
         </div>  
         <?php
         if (0 != $current_user->ID && is_user_logged_in()) {
@@ -71,6 +89,8 @@ if ($user_small_picture_id == '') {
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><a href="<?php echo wp_logout_url(); ?>" title="Logout" class="menulogout"><i class="fa fa-power-off"></i><?php _e('Log Out', 'wpestate'); ?></a></li>
             </ul>
+
+
 
             <?php
         } else {
@@ -152,7 +172,8 @@ if ($user_small_picture_id == '') {
                             <a href="#" id="return_login_topbar"><?php _e('Return to Login', 'wpestate'); ?></a>
                         </div>
                     </div>
-                </div>
+                </div>                
+
             </div>
             <?php
         }?>

@@ -408,7 +408,7 @@ input.form-control::-moz-placeholder {
     display: inline-block;
     height: 69px;
     float: right;
-    margin: 19px 28px 0px 0px;
+    margin: 11px 28px 0px 0px;
     max-width: 800px;
 }
 
@@ -762,7 +762,7 @@ input.form-control::-moz-placeholder {
     padding-top: 3px;
     width: 100%;
     margin: 0px auto;
-    height: 96px;
+    height: 90px;
     -webkit-transition: height 0.3s ease;
     -moz-transition: height 0.3s ease;
     -o-transition: height 0.3s ease;
@@ -2114,7 +2114,7 @@ input.form-control::-moz-placeholder {
     display: inline-block;
     float: right;
     margin-right: 4px;
-    margin-top: 44px;
+    margin-top: 35px;
     /*background-color: #fff;*/
     color: #3C90BE;
     padding: 0px 0px 0px 0px;
@@ -2126,7 +2126,7 @@ input.form-control::-moz-placeholder {
 .user_loged{
     background-color: transparent;
     margin-top: 3px;
-    padding: 18px 0px 9px 11px;
+    padding: 9px 0px 9px 11px;
 }
 
 .customnav .user_menu{
@@ -12917,9 +12917,15 @@ span.sub{
     top: 0;    
     margin-right: 45px;
     */
-    margin-top: 43px;
+    /*margin-top: 43px;*/
     margin-right: 45px;
+    margin-left: 10px;
 }
+
+.user_loged .flags_language_selector {
+    margin-top: 22px;
+}
+
 .flags_language_selector_phone ul,
 .header_wrapper_inside .flags_language_selector ul {
     margin: 0;

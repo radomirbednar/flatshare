@@ -102,6 +102,24 @@
 
                 <div class="master_header <?php print $wide_class . ' ' . $header_transparent_class; ?>">
 
+                    <!--
+                    <div class="top_bar_wrapper">
+                        <div class="top_bar">        
+                            <div class="left-top-widet">
+
+                            </div>  
+                            <div class="right-top-widet">
+                    <?php if (is_active_sidebar('headline')) : ?>                                    
+                                            <ul class="xoxo">
+                        <?php dynamic_sidebar('headline'); ?>
+                                            </ul>                                    
+                    <?php endif; ?>   
+                            </div> 
+                        </div>    
+                    </div>      
+                    -->
+
+
                     <?php
                     if (esc_html(get_option('wp_estate_show_top_bar_user_menu', '')) == "yes") {
                         get_template_part('templates/top_bar');
@@ -110,17 +128,6 @@
                     ?>  
                     <div class="header_wrapper <?php echo 'header_' . $logo_header_type; ?> ">
                         <div class="header_wrapper_inside">
-
-                            <?php if (is_active_sidebar('headline')) : ?>
-                                <div id="headline-sidebar" class="primary-sidebar widget-area headline left-top-widet" role="complementary">
-                                    <ul class="xoxo">
-                                        <?php dynamic_sidebar('headline'); ?>
-                                    </ul>
-                                </div><!-- #primary-sidebar -->
-                            <?php endif; ?>                            
-
-
-
 
 
                             <div class="logo" >
@@ -135,11 +142,14 @@
                                 </a>
                             </div>    
 
+
+                            <!--
                             <div class="flags_language_selector pull-right">
-                                <?php
-                                fl_languages_list();
-                                ?>
-                            </div>                              
+                            <?php
+                            fl_languages_list();
+                            ?>
+                            </div>    
+                            -->
 
                             <?php
                             if (esc_html(get_option('wp_estate_show_top_bar_user_login', '')) == "yes") {

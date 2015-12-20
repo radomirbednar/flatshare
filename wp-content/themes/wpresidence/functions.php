@@ -839,6 +839,7 @@ function fl_languages_list(){
 
 
 /**/
+/*
 function headline_widgets_init() {
 
 	register_sidebar( array(
@@ -852,3 +853,4 @@ function headline_widgets_init() {
 
 }
 add_action( 'widgets_init', 'headline_widgets_init' );
+*/
