@@ -117,7 +117,8 @@ if (!isset($prefix)) {
                             $current_price_max = floatval($_GET['rent_max']);
                         }
 
-                        $price_slider_label = wpestate_show_price_label_slider($current_price_low, $current_price_max, $currency, $where_currency);
+                        $custom_fields = get_option( 'wp_estate_multi_curr', true);
+                        $price_slider_label = wpestate_show_price_label_slider($current_price_low, $current_price_max, $currency, $where_currency);                        
                         ?>
                         <p>
                             <label for="<?php echo $prefix ?>roommate_amount" class="wauto"><?php _e('Price range:', 'wpestate'); ?></label>
