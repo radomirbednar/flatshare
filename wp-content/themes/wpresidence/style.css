@@ -12450,8 +12450,8 @@ span.wpcf7-form-control-wrap {
     margin-top: -40px;
 }
 
-.half_no_top_bar .search_wrapper .nav-tabs {
-    margin-top: auto;
+.half-map.search_wrapper .nav-tabs {
+    margin-top: 0;
 }
 .adv-search-mobile .nav-tabs > li > a:hover,
 .search_wrapper .nav-tabs > li > a:hover {

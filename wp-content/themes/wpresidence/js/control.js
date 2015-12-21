@@ -720,8 +720,8 @@ jQuery(document).ready(function ($) {
 
 
 
-        console.log('slider_min: ' + slider_min + ' - slider_max: ' + slider_max);
-        console.log('price_low_val: ' + price_low_val + ' - price_max_val: ' + price_max_val);
+        //console.log('slider_min: ' + slider_min + ' - slider_max: ' + slider_max);
+        //console.log('price_low_val: ' + price_low_val + ' - price_max_val: ' + price_max_val);
 
         jQuery("#" + slider_name).slider({
             range: true,

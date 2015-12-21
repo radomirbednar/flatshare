@@ -163,6 +163,10 @@ function estate_listing_address($post_id){
  //   $property_state     = esc_html(get_post_meta($post_id, 'property_state', true) );
     $property_country   = esc_html(get_post_meta($post_id, 'property_country', true) );
     
+    $countries = fl_get_countries();
+    
+    $property_country = isset($countries[$property_country]) ? $countries[$property_country] : $property_country;
+    
     $return_string='';
     
     if ($property_address != ''){
