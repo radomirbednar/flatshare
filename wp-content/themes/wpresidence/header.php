@@ -69,9 +69,9 @@
     }
 
     $logo_header_type = get_option('wp_estate_logo_header_type', '');
-    $header_transparent_class = ''; 
+    $header_transparent_class = '';
     $header_transparent = get_option('wp_estate_header_transparent', '');
- 
+
     //$header_transparent_class=' header_transparent '; 
 
     if (isset($post->ID) && !is_tax() && !is_category()) {
@@ -87,7 +87,7 @@
         if ($header_transparent == 'yes') {
             $header_transparent_class = ' header_transparent ';
         }
-    } 
+    }
     $logo = get_option('wp_estate_logo_image', '');
     $logo_margin = intval(get_option('wp_estate_logo_margin', ''));
     ?>
@@ -95,11 +95,30 @@
     <body <?php body_class($halfmap_body_class); ?>>   
         <?php get_template_part('templates/mobile_menu'); ?>  
         <div class="website-wrapper" id="all_wrapper" >
-            <div class="container main_wrapper <?php print $wide_class;
-        print 'has_header_' . $logo_header_type . ' ' . $header_transparent_class;
-        ?> ">
+            <div class="container main_wrapper <?php
+            print $wide_class;
+            print 'has_header_' . $logo_header_type . ' ' . $header_transparent_class;
+            ?> ">
 
                 <div class="master_header <?php print $wide_class . ' ' . $header_transparent_class; ?>">
+
+                    <!--
+                    <div class="top_bar_wrapper">
+                        <div class="top_bar">        
+                            <div class="left-top-widet">
+
+                            </div>  
+                            <div class="right-top-widet">
+                    <?php if (is_active_sidebar('headline')) : ?>                                    
+                                            <ul class="xoxo">
+                        <?php dynamic_sidebar('headline'); ?>
+                                            </ul>                                    
+                    <?php endif; ?>   
+                            </div> 
+                        </div>    
+                    </div>      
+                    -->
+
 
                     <?php
                     if (esc_html(get_option('wp_estate_show_top_bar_user_menu', '')) == "yes") {
@@ -110,11 +129,6 @@
                     <div class="header_wrapper <?php echo 'header_' . $logo_header_type; ?> ">
                         <div class="header_wrapper_inside">
 
-                            <div class="flags_language_selector">
-                                <?php
-                                fl_languages_list();
-                                ?>
-                            </div>
 
                             <div class="logo" >
                                 <a href="<?php echo home_url('', 'login'); ?>">
@@ -127,6 +141,16 @@
                                     ?>
                                 </a>
                             </div>    
+
+
+                            <!--
+                            <div class="flags_language_selector pull-right">
+                            <?php
+                            fl_languages_list();
+                            ?>
+                            </div>    
+                            -->
+
                             <?php
                             if (esc_html(get_option('wp_estate_show_top_bar_user_login', '')) == "yes") {
                                 get_template_part('templates/top_user_menu');
@@ -140,6 +164,9 @@
                                 ));
                                 ?>
                             </nav><!-- #access -->
+
+
+
                         </div>
                     </div> 
                 </div>   

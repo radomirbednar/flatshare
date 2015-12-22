@@ -835,3 +835,22 @@ function fl_languages_list(){
         echo '</ul>';
     }
 }
+
+
+
+/**/
+/*
+function headline_widgets_init() {
+
+	register_sidebar( array(
+		'name'          => 'Headline',
+		'id'            => 'headline',
+                'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+                'after_widget' => '</li>',
+		//'before_title'  => '<h2 class="rounded">',
+		//'after_title'   => '</h2>',
+	) );
+
+}
+add_action( 'widgets_init', 'headline_widgets_init' );
+*/

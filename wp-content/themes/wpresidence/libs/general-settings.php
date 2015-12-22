@@ -9,7 +9,14 @@ function wpestate_show_price_label_slider($min_price_slider,$max_price_slider,$c
         
     $custom_fields = get_option( 'wp_estate_multi_curr', true);
     //print_r($_COOKIE);
-    if( !empty($custom_fields) && isset($_COOKIE['my_custom_curr']) &&  isset($_COOKIE['my_custom_curr_pos']) &&  isset($_COOKIE['my_custom_curr_symbol']) && $_COOKIE['my_custom_curr_pos']!=-1){
+    if( 
+        !empty($custom_fields) 
+        && isset($_COOKIE['my_custom_curr']) 
+        &&  isset($_COOKIE['my_custom_curr_pos']) 
+        &&  isset($_COOKIE['my_custom_curr_symbol']) 
+        && $_COOKIE['my_custom_curr_pos']!=-1
+    ){
+        
         $i=intval($_COOKIE['my_custom_curr_pos']);
         
         if( !isset($_GET['price_low']) && !isset($_GET['price_max'])  ){

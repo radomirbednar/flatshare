@@ -107,13 +107,13 @@ jQuery(document).ready(function ($) {
     /*
      $('.property_unit_carousel').on('slide.bs.carousel', function (e) {
      var cHeight, $activeItem ,$nextImage,$nextImage = null;
-     
+
      $activeItem = $('.active.item', this);
-     
+
      if (e.direction == 'left'){
      $nextImage = $activeItem.next('.item').find('img');
-     } 
-     else 
+     }
+     else
      {
      if ($activeItem.index() == 0){
      $nextImage = $('img:last', $activeItem.parent());
@@ -121,33 +121,33 @@ jQuery(document).ready(function ($) {
      $nextImage = $activeItem.prev('.item').find('img');
      }
      }
-     
+
      // prevents the slide decrease in height
      if (cHeight == 0) {
      cHeight = $(this).height();
      $activeItem.next('.item').height(cHeight);
      }
-     
+
      // prevents the loaded image if it is already loaded
      var src = $nextImage.data('lazy-load-src');
-     
+
      if (typeof src !== "undefined" && src != "") {
      $nextImage.attr('src', src)
      $nextImage.data('lazy-load-src', '');
      }
      });
-     
+
      */
     /*
      $(function() {
      var new_height=$('#all_wrapper').innerHeight()-$('.header_media').innerHeight()-70-40;
-     
-     
+
+
      screen_height= $( window ).height()
      new_height=screen_height-$('.header_media').innerHeight()-$('#colophon').innerHeight()-70-40-20;
-     
+
      if ( $('.content_wrapper').innerHeight() < new_height ){
-     
+
      $('.content_wrapper').css('min-height',new_height );
      }
      });
@@ -156,7 +156,7 @@ jQuery(document).ready(function ($) {
 
     /*  $(document).click(function(event) {
      var text = $(event.target).text();
-     
+
      alert(text);
      });
      */
@@ -219,7 +219,7 @@ jQuery(document).ready(function ($) {
     });
 
     ////////////////////////////////////////////////////////////////////////////
-    //new mobile menu 1.10 
+    //new mobile menu 1.10
     ////////////////////////////////////////////////////////////////////////////
 
     $('.all-elements').animate({
@@ -362,7 +362,7 @@ jQuery(document).ready(function ($) {
             },
             error: function (errorThrown) {
             }
-        });//end ajax     
+        });//end ajax
 
     });
 
@@ -500,7 +500,7 @@ jQuery(document).ready(function ($) {
                 },
                 error: function (errorThrown) {
                 }
-            });//end ajax  
+            });//end ajax
 
         });
 
@@ -528,7 +528,7 @@ jQuery(document).ready(function ($) {
                 },
                 error: function (errorThrown) {
                 }
-            });//end ajax  
+            });//end ajax
 
 
 
@@ -599,7 +599,7 @@ jQuery(document).ready(function ($) {
 
 
     ////////////////////////////////////////////////////////////////////////////
-    /// slider price 
+    /// slider price
     ////////////////////////////////////////////////////////////////////////////
 
     var price_low_val = parseInt($('#price_low').val());
@@ -616,7 +616,7 @@ jQuery(document).ready(function ($) {
                 return c.substring(name.length, c.length);
         }
         return "";
-    }    
+    }
 
     var my_custom_curr_symbol = decodeURI(getCookie('my_custom_curr_symbol'));
     var my_custom_curr_coef = parseFloat(getCookie('my_custom_curr_coef'));
@@ -624,12 +624,12 @@ jQuery(document).ready(function ($) {
     var my_custom_curr_cur_post = getCookie('my_custom_curr_cur_post');
 
     wpestate_enable_slider('slider_price', 'price_low', 'price_max', 'amount', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
-    
+
     // price slider in roomamate listing tab filter
-    
+
     fl_enable_slider('mo_slider_roommate_price', 'mo_roommate_price_low', 'mo_roommate_price_max', 'mo_roommate_amount', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
     fl_enable_slider('slider_roommate_price', 'roommate_price_low', 'roommate_price_max', 'roommate_amount', my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef);
-    
+
     $("#slider_price").slider({
         stop: function (event, ui) {
             if (typeof (show_pins) !== "undefined") {
@@ -659,7 +659,7 @@ jQuery(document).ready(function ($) {
 
         slider_min = control_vars.slider_min;
         slider_max = control_vars.slider_max;
-        
+
         if (!isNaN(my_custom_curr_pos) && my_custom_curr_pos !== -1) {
             slider_min = slider_min * my_custom_curr_coef;
             slider_max = slider_max * my_custom_curr_coef;
@@ -673,7 +673,7 @@ jQuery(document).ready(function ($) {
             slide: function (event, ui) {
 
                 if (!isNaN(my_custom_curr_pos) && my_custom_curr_pos !== -1) {
-                    
+
                     jQuery("#" + price_low).val(ui.values[0]);
                     jQuery("#" + price_max).val(ui.values[1]);
 
@@ -698,21 +698,30 @@ jQuery(document).ready(function ($) {
             }
         });
     }
-    
+
     function fl_enable_slider(slider_name, price_low, price_max, amount, my_custom_curr_pos, my_custom_curr_symbol, my_custom_curr_cur_post, my_custom_curr_coef) {
         "use strict";
         var price_low_val, price_max_val, temp_min, temp_max, slider_min, slider_max;
-        
+
         price_low_val = parseInt(jQuery('#' + price_low).val(), 10);
         price_max_val = parseInt(jQuery('#' + price_max).val(), 10);
 
         slider_min = parseInt(jQuery('#' + slider_name).data('bound_min'));
         slider_max = parseInt(jQuery('#' + slider_name).data('bound_max'));
-        
+
         if (!isNaN(my_custom_curr_pos) && my_custom_curr_pos !== -1) {
             slider_min = slider_min * my_custom_curr_coef;
             slider_max = slider_max * my_custom_curr_coef;
+
+            price_low_val *= my_custom_curr_coef;
+            price_max_val *= my_custom_curr_coef;
         }
+
+
+
+
+        //console.log('slider_min: ' + slider_min + ' - slider_max: ' + slider_max);
+        //console.log('price_low_val: ' + price_low_val + ' - price_max_val: ' + price_max_val);
 
         jQuery("#" + slider_name).slider({
             range: true,
@@ -745,7 +754,7 @@ jQuery(document).ready(function ($) {
                 }
             }
         });
-    }    
+    }
 
 
 
@@ -780,7 +789,7 @@ jQuery(document).ready(function ($) {
             error: function (errorThrown) {
             }
 
-        });//end ajax  var ajaxurl      =   control_vars.admin_url+'admin-ajax.php';     
+        });//end ajax  var ajaxurl      =   control_vars.admin_url+'admin-ajax.php';
     });
 
 
@@ -853,38 +862,38 @@ jQuery(document).ready(function ($) {
         }
 
     });
- 
-    //////////////////////////////////////////////////////////////////////////// 
-    $('#adv_extended_options_text_adv, #roommate-advance, #mo_roommate-advance').click(function (e) { 
-          
+
+    ////////////////////////////////////////////////////////////////////////////
+    $('#adv_extended_options_text_adv, #roommate-advance, #mo_roommate-advance').click(function (e) {
+
         e.preventDefault();
-        
-        
-        
-          
+
+
+
+
         $('.adv-search-1.adv_extended_class').css('height', 'auto');
-        
-        $('.adv_extended_class .adv1-holder').css('height', 'auto'); 
-        
-        $('#adv-search-1').addClass('opened'); 
-        
-        
-        
-        $(this).parent().find('.adv_extended_options_text').hide(); 
+
+        $('.adv_extended_class .adv1-holder').css('height', 'auto');
+
+        $('#adv-search-1').addClass('opened');
+
+
+
+        $(this).parent().find('.adv_extended_options_text').hide();
         $(this).parent().find('.extended_search_check_wrapper').slideDown();
         $(this).parent().find('#adv_extended_close_adv, .adv_extended_close_adv').show();
         $(this).parent().find('.ra').val(1);
-    
+
     });
 
     $('#adv_extended_close_adv, #roommate_extended_close_adv, #mo_roommate_extended_close_adv').click(function () {
-        
-         
-        $(this).parents('#adv-search-1').find('.extended_search_check_wrapper').slideUp(); 
-        
-        $('#adv-search-1').removeClass('opened'); 
-        
-        
+
+
+        $(this).parents('#adv-search-1').find('.extended_search_check_wrapper').slideUp();
+
+        $('#adv-search-1').removeClass('opened');
+
+
         //$(this).hide();
         $('#adv_extended_close_adv, #roommate_extended_close_adv, #mo_roommate_extended_close_adv').hide();
         $(this).parents('#adv-search-1').find('.adv_extended_options_text').show();
@@ -892,7 +901,7 @@ jQuery(document).ready(function ($) {
         $('.adv_extended_class .adv1-holder').removeAttr('style');
         $(this).parent().find('.ra').val(0);
     });
- 
+
     //////////////////////////////////////////////////////////////
 
     $('#adv_extended_options_text_widget').click(function () {
@@ -1032,7 +1041,7 @@ jQuery(document).ready(function ($) {
             area_value = $(this).attr('data-parentcity');
 
             if (city_value === area_value || area_value === 'all') {
-                //  $(this).show();        
+                //  $(this).show();
             } else {
                 //$(this).hide();
                 $(this).remove();
@@ -1190,9 +1199,9 @@ jQuery(document).ready(function ($) {
         $(this).find('h4').addClass('carusel_closed');
     })
 
-    ///////////////////////////////////////////////////////////////////////////////////////////  
+    ///////////////////////////////////////////////////////////////////////////////////////////
     //////// advanced search filters
-    ////////////////////////////////////////////////////////////////////////////////////////////    
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
     var elems = ['#adv-search-3', '#adv-search-1 .tab-content', '#advanced_search_shortcode', '#adv-search-2', '#advanced_search_shortcode_2', '.adv-search-mobile .tab-content', '.advanced_search_sidebar'];
 
@@ -1213,9 +1222,9 @@ jQuery(document).ready(function ($) {
 
             pick = $(this).text();
             value = $(this).attr('data-value');
-            
+
            // console.log(value);
-            
+
             parent = $(this).parent().parent();
             parent.find(parent_replace).text(pick).append('<span class="caret caret_filter"></span>').attr('data-value', value);
             parent.find('input').val(value);
@@ -1265,9 +1274,9 @@ jQuery(document).ready(function ($) {
 
 
     /// ******************** end check
-    ///////////////////////////////////////////////////////////////////////////////////////////  
+    ///////////////////////////////////////////////////////////////////////////////////////////
     //////// advanced search filters
-    ////////////////////////////////////////////////////////////////////////////////////////////    
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
     $('#openmap').click(function () {
 
@@ -1287,9 +1296,9 @@ jQuery(document).ready(function ($) {
     });
 
 
-    ///////////////////////////////////////////////////////////////////////////////////////////  
+    ///////////////////////////////////////////////////////////////////////////////////////////
     //////// full screen map
-    ////////////////////////////////////////////////////////////////////////////////////////////    
+    ////////////////////////////////////////////////////////////////////////////////////////////
     var wrap_h;
     var map_h;
 
@@ -1415,7 +1424,7 @@ jQuery(document).ready(function ($) {
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     ///////     caption-wrapper
-    ///////////////////////////////////////////////////////////////////////////////////////////	       
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     $('.caption-wrapper').click(function () {
         $(this).toggleClass('closed');
@@ -1449,23 +1458,23 @@ jQuery(document).ready(function ($) {
 
     adv_search_click();
 
-    $('#adv-search-header-1').click(function () { 
-        if (document.getElementById("adv_extended_options_text_adv") !== null) {        
-            $("#adv-search-1").toggleClass('adv-search-1-close-extended');  
-        } else {  
-            $("#adv-search-1").toggleClass('adv-search-1-close'); 
-            
-            
-        } 
+    $('#adv-search-header-1').click(function () {
+        if (document.getElementById("adv_extended_options_text_adv") !== null) {
+            $("#adv-search-1").toggleClass('adv-search-1-close-extended');
+        } else {
+            $("#adv-search-1").toggleClass('adv-search-1-close');
+
+
+        }
     });
 
     $('#adv-search-header-3').click(function () {
         $(this).parent().parent().toggleClass(' search_wrapper-close-extended');
     });
- 
+
     ///////////////////////////////////////////////////////////////////////////////////////////
     ///////   tool tips on prop unit
-    ///////////////////////////////////////////////////////////////////////////////////////////	       
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     $(".share_list, .icon-fav, .compare-action, .dashboad-tooltip").hover(
             function () {
@@ -1485,7 +1494,7 @@ jQuery(document).ready(function ($) {
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     ///////   back to top
-    ///////////////////////////////////////////////////////////////////////////////////////////	       
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
 
     $('.backtop').click(function (event) {
@@ -1499,7 +1508,7 @@ jQuery(document).ready(function ($) {
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     ///////    footer contact
-    ///////////////////////////////////////////////////////////////////////////////////////////	       
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     $('.contact-box ').click(function (event) {
         event.preventDefault();
@@ -1511,7 +1520,7 @@ jQuery(document).ready(function ($) {
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     ///////    add pretty photo
-    ///////////////////////////////////////////////////////////////////////////////////////////	
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -1585,7 +1594,7 @@ jQuery(document).ready(function ($) {
     });
 
     /////////////////////////////////////////////////////////////////////////////////////////
-    ////// idx widget 
+    ////// idx widget
     /////////////////////////////////////////////////////////////////////////////////////////
 
     $('.dsidx-controls a').click(function () {
@@ -1609,7 +1618,7 @@ jQuery(document).ready(function ($) {
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////
-    /// adding total for featured listings  
+    /// adding total for featured listings
     ///////////////////////////////////////////////////////////////////////////////////////////
     $('.extra_featured').change(function () {
         var parent = $(this).parent();
