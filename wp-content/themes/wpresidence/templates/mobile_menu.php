@@ -15,13 +15,13 @@ if ($user_small_picture_id == '') {
         <!-- Left Sidebar-->
         <div class="snap-drawer snap-drawer-left">
             <div class="mobilemenu-close"><i class="fa fa-times"></i></div>
-            
+
             <div class="flags_language_selector_phone">
                 <?php
                 fl_languages_list();
                 ?>
             </div>                
-            
+
             <?php
             wp_nav_menu(array(
                 'menu' => 'Main Menu',
@@ -32,8 +32,15 @@ if ($user_small_picture_id == '') {
             ));
             ?>
 
+            <div class="mobile-currency">
+                <?php
+                if (esc_html(get_option('wp_estate_show_top_bar_user_menu', '')) == "yes") {
+                    get_template_part('templates/top_bar');
+                }
+                ?>
+            </div>                
 
-        
+
 
         </div>
     </div>

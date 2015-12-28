@@ -110,9 +110,9 @@
                             </div>  
                             <div class="right-top-widet">
                     <?php if (is_active_sidebar('headline')) : ?>                                    
-                                            <ul class="xoxo">
+                                                <ul class="xoxo">
                         <?php dynamic_sidebar('headline'); ?>
-                                            </ul>                                    
+                                                </ul>                                    
                     <?php endif; ?>   
                             </div> 
                         </div>    
@@ -121,9 +121,10 @@
 
 
                     <?php
-                    if (esc_html(get_option('wp_estate_show_top_bar_user_menu', '')) == "yes") {
-                        get_template_part('templates/top_bar');
-                    }
+                    /*
+                      if (esc_html(get_option('wp_estate_show_top_bar_user_menu', '')) == "yes") {
+                      get_template_part('templates/top_bar');
+                      } */
                     get_template_part('templates/mobile_menu_header');
                     ?>  
                     <div class="header_wrapper <?php echo 'header_' . $logo_header_type; ?> ">
@@ -155,7 +156,12 @@
                             if (esc_html(get_option('wp_estate_show_top_bar_user_login', '')) == "yes") {
                                 get_template_part('templates/top_user_menu');
                             }
+
+                            if (esc_html(get_option('wp_estate_show_top_bar_user_menu', '')) == "yes") {
+                                get_template_part('templates/top_bar');
+                            }
                             ?>    
+
                             <nav id="access">
                                 <?php
                                 wp_nav_menu(array(
