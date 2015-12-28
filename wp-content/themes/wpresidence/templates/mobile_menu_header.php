@@ -7,7 +7,7 @@
             if ( $mobilelogo!='' ){
                print '<img src="'.$mobilelogo.'" class="img-responsive retina_ready " alt="logo"/>';	
             } else {
-               print '<img class="img-responsive retina_ready" src="'. get_template_directory_uri().'/img/logo_mobile.png" alt="logo"/>';
+              // print '<img class="img-responsive retina_ready" src="'. get_template_directory_uri().'/img/logo_mobile.png" alt="logo"/>';
             }
         ?>
         </a>
