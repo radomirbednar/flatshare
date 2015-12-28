@@ -4908,6 +4908,13 @@ iframe .player .video-wrapper{
     padding: 11px 19px;
 }
 
+@media (max-width: 992px) {
+    #tab_prpg li a{
+    color:#fff;
+    padding: 11px 11px;
+}
+}
+ 
 #tab_prpg .nav-tabs > li > a {
     margin-right: 0px;
     height: 45px;
