@@ -343,7 +343,7 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                 </p>
                 <div class="clearfix"></div>
             </div>   
-            <div class="col-xs-12">
+            <!--<div class="col-xs-12">-->
                 <div class="fl-row">
                     <label><?php _e('Language skills', 'wpestate'); ?></label>
                     <p class="inline-checkboxes">                 
@@ -362,7 +362,7 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                         ?>
                     </p>
                 </div>
-            </div>  
+            <!--</div>-->  
         </div>  
         <input type="hidden" name="action" value="<?php print $action; ?>">
         <div class="submit_form_row">
