@@ -754,6 +754,9 @@ input.form-control::-moz-placeholder {
     margin-top: 30px;
     margin-right: 10px;
 }
+.customnav .right-top-widet {
+    margin-top: 22px;
+}
 
 .left-top-widet li,
 .right-top-widet li{
@@ -802,7 +805,7 @@ input.form-control::-moz-placeholder {
 }
 
 .has_top_bar  .master_header_sticky {
-    top: -40px;
+    /*top: -40px;*/
 }
 
 .admin-bar.has_top_bar  .master_header_sticky {
@@ -818,7 +821,7 @@ input.form-control::-moz-placeholder {
 }
 
 .has_top_bar .has_header_type1 .header_media{
-    padding-top: 130px;
+   /* padding-top: 130px;*/
     /*
     padding-top: 130px;
     min-height: 650px;
@@ -838,7 +841,7 @@ input.form-control::-moz-placeholder {
 }
 
 .admin-bar.has_top_bar .has_header_type1 .header_media{
-    padding-top: 164px;
+   padding-top: 164px;
 }
 
 @media (min-width: 992px) {
