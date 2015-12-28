@@ -5,6 +5,9 @@
      "use strict";
   
       if (typeof(plupload) !== 'undefined') {
+          
+            console.log(ajax_vars.plupload);
+          
             var uploader = new plupload.Uploader(ajax_vars.plupload);
             uploader.init();
             uploader.bind('FilesAdded', function (up, files) {
