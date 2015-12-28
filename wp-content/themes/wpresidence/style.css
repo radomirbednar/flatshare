@@ -809,7 +809,8 @@ input.form-control::-moz-placeholder {
 }
 
 .admin-bar.has_top_bar  .master_header_sticky {
-    top: -8px;
+   /* top: -8px;*/
+   top: 32px;
 }
 
 
@@ -841,7 +842,7 @@ input.form-control::-moz-placeholder {
 }
 
 .admin-bar.has_top_bar .has_header_type1 .header_media{
-   padding-top: 164px;
+   /*padding-top: 164px;*/
 }
 
 @media (min-width: 992px) {
