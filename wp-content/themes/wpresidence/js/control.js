@@ -866,19 +866,11 @@ jQuery(document).ready(function ($) {
     ////////////////////////////////////////////////////////////////////////////
     $('#adv_extended_options_text_adv, #roommate-advance, #mo_roommate-advance').click(function (e) {
 
-        e.preventDefault();
-
-
-
-
-        $('.adv-search-1.adv_extended_class').css('height', 'auto');
-
-        $('.adv_extended_class .adv1-holder').css('height', 'auto');
-
+        e.preventDefault(); 
+        $('.adv-search-1.adv_extended_class').css('height', 'auto'); 
+        $('.adv_extended_class .adv1-holder').css('height', 'auto'); 
         $('#adv-search-1').addClass('opened');
-
-
-
+    
         $(this).parent().find('.adv_extended_options_text').hide();
         $(this).parent().find('.extended_search_check_wrapper').slideDown();
         $(this).parent().find('#adv_extended_close_adv, .adv_extended_close_adv').show();
@@ -886,14 +878,9 @@ jQuery(document).ready(function ($) {
 
     });
 
-    $('#adv_extended_close_adv, #roommate_extended_close_adv, #mo_roommate_extended_close_adv').click(function () {
-
-
-        $(this).parents('#adv-search-1').find('.extended_search_check_wrapper').slideUp();
-
-        $('#adv-search-1').removeClass('opened');
-
-
+    $('#adv_extended_close_adv, #roommate_extended_close_adv, #mo_roommate_extended_close_adv').click(function () { 
+        $(this).parents('#adv-search-1').find('.extended_search_check_wrapper').slideUp(); 
+        $('#adv-search-1').removeClass('opened'); 
         //$(this).hide();
         $('#adv_extended_close_adv, #roommate_extended_close_adv, #mo_roommate_extended_close_adv').hide();
         $(this).parents('#adv-search-1').find('.adv_extended_options_text').show();
@@ -901,6 +888,24 @@ jQuery(document).ready(function ($) {
         $('.adv_extended_class .adv1-holder').removeAttr('style');
         $(this).parent().find('.ra').val(0);
     });
+     
+    $('#adv_extended_options_text_adv').click(function (e) { 
+        e.preventDefault(); 
+        $('#adv-search-1').addClass('opened-extra'); 
+    });
+    
+    
+    $('#adv_extended_close_adv').click(function (e){ 
+        e.preventDefault(); 
+        $('#adv-search-1').removeClass('opened-extra'); 
+    });
+    
+     
+    $('#what-lookup li a').click(function(){      
+        $('#adv-search-1').removeClass('opened'); 
+    });
+    
+     
 
     //////////////////////////////////////////////////////////////
 
