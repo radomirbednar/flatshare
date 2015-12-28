@@ -4193,38 +4193,32 @@ listing_actions a{
     float: left;
     max-width:250px;
 
-}
-
+} 
 .meta-element{
     display:inline;
-}
-
+} 
 .navnav{
     width:auto;
-}
-
+} 
 .prop_social_single{
     width: 100%;
     padding-bottom: 10px;
     text-align: right;
     margin-top: -15px;
     float: right;
-}
-
+    margin-right: 30px;   
+} 
 .prop_social_single a{
     color: #99a3b1;
     font-size: 17px;
     margin-left: 13px;
     display: inline;
-}
-
+} 
 /* =Carousel vertical
 ----------------------------------------------- */
 .carouselvertical .carousel-inner{
     max-width: 680px;
-}
-
-
+} 
 #carousel-indicators-vertical{
     width: 143px;
     right: 0px;
@@ -13082,4 +13076,7 @@ span.sub{
 .headline ul {
     padding: 0;
     margin: 0;
+}
+.add_slide{ 
+    width: 100%; 
 }

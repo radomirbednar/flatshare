@@ -1,4 +1,7 @@
 <?php
+if (!isset($prefix)) {
+    $prefix = '';
+} 
 global $submit_title;
 global $submit_description;
 global $prop_category;
@@ -38,7 +41,7 @@ global $user_pack;
 global $prop_featured;
 global $current_user;
 global $custom_fields_array;
-global $option_slider; 
+global $option_slider;
 global $how_long;
 global $sexual_preference;
 global $user_gender;
@@ -52,8 +55,8 @@ global $user_origin;
 global $activity;
 global $language;
 global $skill;
- 
-$images_to_show = ''; 
+
+$images_to_show = '';
 $remaining_listings = wpestate_get_remain_listing_user($userID, $user_pack);
 
 if ($remaining_listings === -1) {
@@ -61,7 +64,7 @@ if ($remaining_listings === -1) {
 }
 
 $paid_submission_status = esc_html(get_option('wp_estate_paid_submission', ''));
- 
+
 if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && $remaining_listings != -1 && $remaining_listings < 1) {
     print '<div class="user_profile_div"><h4>' . __('Your current package doesn\'t let you publish more properties! You need to upgrade your membership.', 'wpestate') . '</h4></div>';
 } else {
@@ -97,10 +100,10 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
 
             print '<div class="col-md-8 ">';
             get_template_part('templates/submit_templates/property_description');
-            include(locate_template('templates/submit_templates/property_images.php')); 
+            include(locate_template('templates/submit_templates/property_images.php'));
             get_template_part('templates/submit_templates/property_location');
-            get_template_part('templates/submit_templates/property_details'); 
-            print '</div>'; 
+            get_template_part('templates/submit_templates/property_details');
+            print '</div>';
             print '<div class="col-md-4">';
             get_template_part('templates/submit_templates/user_memebership_form');
             get_template_part('templates/submit_templates/property_featured');
@@ -111,8 +114,8 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
             get_template_part('templates/submit_templates/property_video');
             print '</div>';
         }
-        ?>
-
+        ?> 
+        
         <div class="submit_container">  
             <div class="submit_container_header"><?php _e('Preferences', 'wpestate'); ?></div>  
             <div class="half_form">  
@@ -241,10 +244,10 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                     -->
                 </div> 
             </div>    
-            
-            
-            
-               <div class="half_form">
+
+
+
+            <div class="half_form">
                 <div class="switcher fl-row">
                     <!--<input type="hidden" id="activity" name="activity" value="<?php echo (int) $activity ?>">--> 
                     <label><?php _e('Activity', 'wpestate'); ?></label> 
@@ -262,8 +265,8 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                     -->
                 </div>
             </div> 
-            
-            
+
+
             <div class="half_form">
                 <div class="fl-row"> 
                     <?php $coutnries = fl_get_countries(); ?> 
@@ -284,44 +287,49 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                     </div>
                 </div>
             </div>   
-            
-            <div class="half_form clearfix clear">
-                <div class="adv_search_slider add_prop"> 
+ 
+            <div class="half_form clearfix clear"> 
+                <div class="adv_search_slider add_slide"><!-- age slider --> 
+                    <?php
+                    $age_min = 0;
+                    $age_max = 99;
+                    $age_min_val = isset($_GET['age_low']) ? $_GET['age_low'] : $age_min;
+                    $age_max_val = isset($_GET['age_max']) ? $_GET['age_max'] : $age_max;
+                    ?> 
                     <script>
                         jQuery(document).ready(function ($) {
-                            jQuery("#slider_rent").slider({
-                                //range: true,
-                                "value": <?php echo (int) $rent_amount ?>,
-                                min: parseInt(0),
-                                max: parseInt(99),
-                                //values: [$('#age_low').val(), $('#age_max').val()], // defaultni hodnoty
+                            jQuery("#<?php echo $prefix ?>slider_age").slider({
+                                range: true,
+                                min: <?php echo (int) $age_min ?>,
+                                max: <?php echo (int) $age_max ?>,
+                                values: [<?php echo (int) $age_min_val ?>, <?php echo (int) $age_max_val ?>], // defaultni hodnoty
                                 slide: function (event, ui) {
-                                    //console.log(ui);
-                                    //jQuery('#rent_label_text').val(ui.values[0]);
-                                    jQuery('#rent_amount').val(ui.value);
-                                    jQuery("#rent_label_text").text(ui.value.format());
+                                    jQuery('#<?php echo $prefix ?>age_low').val(ui.values[0]);
+                                    jQuery('#<?php echo $prefix ?>age_max').val(ui.values[1]);
+                                    jQuery("#<?php echo $prefix ?>age_label_text").text(ui.values[0].format() + " " + control_vars.to + " " + ui.values[1].format());
                                 }
                             });
                         });
-                    </script>   
+                    </script> 
                     <p>
-                        <label for="rent_amount" class="wauto"><?php _e('Age:', 'wpestate'); ?></label>
-                        <span id="rent_label_text" class="slide-label"><?php printf(__('%s', 'wpestate'), (int) $rent_amount); ?> </span>
-                    </p>  
-                    <div id="slider_rent" class="fl-slider"></div>
-                    <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $rent_amount; ?>">
-                </div>
+                        <label for="<?php echo $prefix ?>age" class="wauto"><?php _e('Between Age:', 'wpestate'); ?></label>
+                        <span id="<?php echo $prefix ?>age_label_text"><?php printf(__('%s to %s', 'wpestate'), (int) $age_min_val, (int) $age_max_val); ?></span>
+                    </p>
+                    <div id="<?php echo $prefix ?>slider_age" class="fl-slider"></div>
+                    <input type="hidden" id="<?php echo $prefix ?>age_low"  name="age_low"  value="<?php echo (int) $age_min_val; ?>" />
+                    <input type="hidden" id="<?php echo $prefix ?>age_max"  name="age_max"  value="<?php echo (int) $age_max_val; ?>" />
+                </div><!-- /age slider --> 
             </div> 
-          
+
             <div class="half_form">
                 <label><?php _e('House skills', 'wpestate'); ?></label>
                 <p class="inline-checkboxes">                
-                    <?php 
-                    $skills = fl_get_house_skills(); 
-                    $skillarray = $skill;  
+                    <?php
+                    $skills = fl_get_house_skills();
+                    $skillarray = $skill;
                     if (!empty($skills)):
                         foreach ($skills as $skill):
-                            $selected = in_array($skill->id_skill, (array)$skillarray) ? ' checked ' : '';
+                            $selected = in_array($skill->id_skill, (array) $skillarray) ? ' checked ' : '';
                             ?>
                             <span class="flcheckbox">
                                 <label>
@@ -339,11 +347,11 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
                 <div class="fl-row">
                     <label><?php _e('Language skills', 'wpestate'); ?></label>
                     <p class="inline-checkboxes">                 
-                        <?php              
-                        $languages = fl_get_languages(); 
+                        <?php
+                        $languages = fl_get_languages();
                         if (!empty($languages)):
-                            foreach ($languages as $lang): 
-                                $selected = in_array($lang->id_lang, (array)$language) ? ' checked ' : ''; 
+                            foreach ($languages as $lang):
+                                $selected = in_array($lang->id_lang, (array) $language) ? ' checked ' : '';
                                 ?>
                                 <span class="flcheckbox">
                                     <label><input name="language[]" type="checkbox" value="<?php echo (int) $lang->id_lang ?>" <?php echo $selected ?>><?php esc_attr_e($lang->name) ?></label>

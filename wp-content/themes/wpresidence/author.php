@@ -12,9 +12,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
 <div class="row"> 
     <?php //get_template_part('templates/breadcrumbs'); ?>
     <!--<div class=" <?php print $options['content_class']; ?> "> -->
-    <div class="col-md-9 rightmargin">
-    
-     
+    <div class="col-md-9 rightmargin"> 
         <?php get_template_part('templates/ajax_container'); ?>
         <div id="content_container">  
             <?php
@@ -29,8 +27,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $user_small_picture = get_the_author_meta('small_custom_picture', $userID);  
             $user_custom_picture = wp_get_attachment_url( $user_small_picture ); 
             $image_id = get_the_author_meta('small_custom_picture', $userID);  
-            $about_me = get_the_author_meta('description', $userID);
-
+            $about_me = get_the_author_meta('description', $userID); 
             $first_name = esc_attr(get_the_author_meta('first_name', $userID));
             $last_name = esc_attr(get_the_author_meta('last_name', $userID));
             $user_facebook = get_the_author_meta('facebook', $userID);
@@ -44,8 +41,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
             $user_description = esc_attr(get_the_author_meta('description', $userID));
             $user_skype = get_the_author_meta('skype', $userID);
             $website = get_the_author_meta('website', $userID);
-            $fl_user_data = get_fl_data($userID);
-
+            $fl_user_data = get_fl_data($userID); 
             $user_gender = !empty($fl_user_data->user_gender) ? $fl_user_data->user_gender : '';
             $user_age = !empty($fl_user_data->user_age) ? $fl_user_data->user_age : '';
             $looking_where = !empty($fl_user_data->looking_where) ? $fl_user_data->looking_where : '';
@@ -91,8 +87,7 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                 '1' => array(
                     '<i class="icon-icon_roommate"> </i>',
                     __('roomate', 'wpestate'))
-                ,
-                
+                ,   
                 '2' => array(
                     '<i class="icon-icon_flat"> </i>',
                     __('flat', 'wpestate')
@@ -179,8 +174,11 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                     print ' | ' . __('Age', 'wpestate') . ': '.$year_old.' years | ';
                 } 
                 ?>  
-                <?php echo __(' Looking for ', 'wpestate') . esc_attr($looking_for_array[$looking_for][1]) . ' in ' . esc_attr($looking_where); ?>  
-
+                 
+                <?php if (isset($looking_for_array[$looking_for][1])): ?> 
+                <?php echo __(' Looking for ', 'wpestate') . esc_attr($looking_for_array[$looking_for][1]) . ' in ' . esc_attr($looking_where); ?>
+                <?php endif; ?>
+                
                 <div class="prop_social_single">  
                     <?php
                     $link = esc_url(get_author_posts_url($userID));
@@ -262,17 +260,25 @@ $where_currency = esc_html(get_option('wp_estate_where_currency_symbol', ''));
                 }
                 ?>     
             </div>     
+            
+            
+            <?php if (isset($how_long_array[$how_long])): ?> 
             <div class="sub_block">
                 <span class="sub"><?php print __('For how long: ', 'wpestate'); ?></span> 
-                <i class="icon-icon_time"></i>
-                <?php print $how_long_array[$how_long]; ?> 
+                <i class="icon-icon_time"></i> 
+                <?php print $how_long_array[$how_long]; ?>
             </div> 
-
+            <?php endif; ?>
+            
+            
+            <?php if(isset($looking_for_array[$looking_for][0] ) && isset($looking_for_array[$looking_for][1])): ?>
             <div class="sub_block">
                 <span class="sub"><?php print __('Looking for: ', 'wpestate'); ?> </span>
-                <?php print $looking_for_array[$looking_for][0] . $looking_for_array[$looking_for][1]; ?> 
+                <?php print $looking_for_array[$looking_for][0] . $looking_for_array[$looking_for][1]; ?>  
             </div>         
-
+            <?php endif; ?>
+            
+            
             <div class="sub_block">
                 <span class="sub"><?php print __('Sexual preferences: ', 'wpestate'); ?></span> 
                 <?php print $sexual_preference_array[$sexual_preference][0] . $sexual_preference_array[$sexual_preference][1]; ?>  

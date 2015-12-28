@@ -852,6 +852,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
     $video_type = wp_kses($_POST['embed_video_type'], $allowed_html);
     $google_camera_angle = wp_kses($_POST['google_camera_angle'], $allowed_html);
 
+    
     foreach ($video_values as $value) {
         $option_video.='<option value="' . $value . '"';
         if ($value == $video_type) {
@@ -862,8 +863,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
 
     $option_slider = '';
     $slider_values = array('full top slider', 'small slider');
-
-
+ 
     $embed_video_id = wp_kses($_POST['embed_video_id'], $allowed_html);
     $property_latitude = floatval($_POST['property_latitude']);
     $property_longitude = floatval($_POST['property_longitude']);
@@ -874,16 +874,12 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['action'] == 'edit') {
     } else {
         $google_view_check = ' ';
     }
-
-
-
+ 
     $google_camera_angle = intval($_POST['google_camera_angle']);
     $prop_category = get_term($prop_category, 'property_category');
     $prop_action_category = get_term($prop_action_category, 'property_action_category');
 
-
-
-
+ 
     if ($submit_title == '') {
         $has_errors = true;
         $errors[] = __('Please submit a title for your property', 'wpestate');
