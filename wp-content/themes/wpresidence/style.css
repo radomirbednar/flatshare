@@ -7176,6 +7176,16 @@ table tbody tr td {
     /* bottom: -141px;*/
 }
 
+
+
+
+
+
+
+
+
+
+
 .adv_search_internal,
 .advanced_action_div,
 .advanced_categ_div,
@@ -12528,7 +12538,7 @@ span.wpcf7-form-control-wrap {
 .inline-checkboxes .flcheckbox {
     float: left;
     margin-bottom: 5px;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 .flcheckbox input {
     margin-right: 5px;
