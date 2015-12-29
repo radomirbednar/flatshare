@@ -1737,6 +1737,7 @@ input.form-control::-moz-placeholder {
     float: left;
     width: 100%;
     background-color: #fff;
+    margin-bottom: 15px;
 }
 
 #adv-search-mobile .dropdown.form-control{
@@ -7222,7 +7223,7 @@ table tbody tr td {
     /*background-color: #fdfdfd;*/
     /*height: 120px;*/
     border-bottom-left-radius: 4px;
-    border-left: 1px solid #f0f0f0;
+   /* border-left: 1px solid #f0f0f0;*/
 }
 
 .header_media .adv1-holder {
