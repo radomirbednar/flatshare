@@ -1737,6 +1737,7 @@ input.form-control::-moz-placeholder {
     float: left;
     width: 100%;
     background-color: #fff;
+    margin-bottom: 15px;
 }
 
 #adv-search-mobile .dropdown.form-control{
@@ -4230,7 +4231,7 @@ listing_actions a{
     text-align: right;
     margin-top: -15px;
     float: right;
-    margin-right: 30px;   
+    /*margin-right: 30px;   */
 } 
 .prop_social_single a{
     color: #99a3b1;
@@ -4910,7 +4911,7 @@ iframe .player .video-wrapper{
     color:#fff;
     border:none;
     border-radius:0px;
-    font-size:15px;
+    font-size:14px;
     margin-bottom:0px;
     border-right:1px solid #3D89B2;
 }
@@ -5025,8 +5026,8 @@ iframe .player .video-wrapper{
 .agent_meta{
     font-size: 13px;
     line-height: 22px;
-    width: 100%;
-    margin: 0px 10px 23px 15px;
+    /*width: 100%;*/
+    margin: 0px 15px 23px 15px;
     color: #99a3b1;
 }
 
@@ -7221,7 +7222,7 @@ table tbody tr td {
     /*background-color: #fdfdfd;*/
     /*height: 120px;*/
     border-bottom-left-radius: 4px;
-    border-left: 1px solid #f0f0f0;
+   /* border-left: 1px solid #f0f0f0;*/
 }
 
 .header_media .adv1-holder {
@@ -12022,6 +12023,16 @@ select.dsidx-resp-select {
     padding: 0px 5px !important;
 }
 
+#adv-search-mobile #mobile-rental .adv_search_slider{    
+    padding: 0px 25px !important;
+}
+#adv-search-mobile #mobile-rental .adv_search_slider #slider_price_mobile {
+    margin-top: 7px;
+}
+#mobile-rental .adv_search_slider p {    
+    margin-left: -9px;
+}
+
 #advanced_search_shortcode .adv_search_slider{
     display: inline-block;
     width: 48%;
@@ -13138,4 +13149,15 @@ span.sub{
 }
 .add_slide{ 
     width: 100%;  
+}
+.no-margin {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+.mobile-row {
+    margin-bottom: 20px;
+}
+#mobile-what-lookup {
+    margin-left: 0;
+    
 }

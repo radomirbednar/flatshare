@@ -117,8 +117,8 @@ if (!isset($prefix)) {
                             $current_price_max = floatval($_GET['rent_max']);
                         }
 
-                        $custom_fields = get_option( 'wp_estate_multi_curr', true);
-                        $price_slider_label = wpestate_show_price_label_slider($current_price_low, $current_price_max, $currency, $where_currency);                        
+                        $custom_fields = get_option('wp_estate_multi_curr', true);
+                        $price_slider_label = wpestate_show_price_label_slider($current_price_low, $current_price_max, $currency, $where_currency);
                         ?>
                         <p>
                             <label for="<?php echo $prefix ?>roommate_amount" class="wauto"><?php _e('Price range:', 'wpestate'); ?></label>
@@ -275,82 +275,87 @@ if (!isset($prefix)) {
                     </div>
                 </div>
 
+                <div class="mobile-filter-row">
+                    <div class="form-control-half control-skill">
+                        <div class="form-control-in">                        
+                            <div class="form-control-skills pull-left">
+                                <div class="form-control-in">
+                                    <label><?php _e('House skills', 'wpestate'); ?></label>
+                                    <p class="inline-checkboxes control-checkboxes">
+                                        <?php
+                                        $skills = fl_get_house_skills();
+                                        if (!empty($skills)):
+                                            foreach ($skills as $skill):
 
-                <div class="form-control-half">
-                    <div class="form-control-in">                        
-                        <div class="form-control-skills pull-left">
-                            <div class="form-control-in">
-                                <label><?php _e('House skills', 'wpestate'); ?></label>
-                                <p class="inline-checkboxes control-checkboxes">
-                                    <?php
-                                    $skills = fl_get_house_skills();
-                                    if (!empty($skills)):
-                                        foreach ($skills as $skill):
+                                                $selected = '';
+                                                if (isset($_GET['skill']) && is_array($_GET['skill'])) {
+                                                    $selected = in_array($skill->id_skill, $_GET['skill']) ? ' checked ' : '';
+                                                }
+                                                ?>
+                                                <span class="flcheckbox">
+                                                    <label>
+                                                        <input name="skill[]" type="checkbox" value="<?php echo (int) $skill->id_skill ?>" <?php echo $selected ?>><?php esc_attr_e($skill->name) ?>
+                                                    </label>
+                                                </span>
+                                                <?php
+                                            endforeach;
+                                        endif;
+                                        ?>
+                                    </p>
+                                </div>
+                            </div>
 
-                                            $selected = '';
-                                            if (isset($_GET['skill']) && is_array($_GET['skill'])) {
-                                                $selected = in_array($skill->id_skill, $_GET['skill']) ? ' checked ' : '';
-                                            }
-                                            ?>
-                                            <span class="flcheckbox">
-                                                <label>
-                                                    <input name="skill[]" type="checkbox" value="<?php echo (int) $skill->id_skill ?>" <?php echo $selected ?>><?php esc_attr_e($skill->name) ?>
-                                                </label>
-                                            </span>
-                                            <?php
-                                        endforeach;
-                                    endif;
-                                    ?>
+
+                            <div class="form-control-origin no-label pull-left clearfix">
+                                <!--<div class="form-control-in">-->
+
+                                <?php
+                                $coutnries = fl_get_countries();
+                                ?>
+                                <p>
+                                    <select id="<?php echo $prefix ?>user_origin" name="origin" class="form-control">
+                                        <option value=""><?php _e('Country of origin', 'wpestate'); ?></option>
+                                        <?php
+                                        if (!empty($coutnries)):
+                                            foreach ($coutnries as $iso => $country):
+                                                ?>
+                                                <option value="<?php echo $iso ?>" <?php echo isset($_GET['origin']) && $_GET['origin'] == $iso ? ' selected="selected" ' : ''; ?>><?php esc_attr_e($country); ?></option>
+                                                <?php
+                                            endforeach;
+                                        endif;
+                                        ?>
+                                    </select>
                                 </p>
-                            </div>
+
+                                <!--</div>-->
+                            </div> 
+
                         </div>
+                    </div>                                
 
 
-                        <div class="form-control-origin no-label pull-left clearfix">
-                            <!--<div class="form-control-in">-->
+                    <div class="form-control-half control-party">
+                        <div class="form-control-in">
+                            <div class="switcher">
+                                <div class="clearfix"></div>
+                                <!--<input type="hidden" value="<?php echo isset($_GET['party']) ? (int) $_GET['party'] : '' ?>" name="party" id="<?php echo $prefix ?>party">-->
+                                <label><?php _e('Party', 'wpestate'); ?></label>
 
-                            <?php
-                            $coutnries = fl_get_countries();
-                            ?>
-                            <p>
-                                <select id="<?php echo $prefix ?>user_origin" name="origin" class="form-control">
-                                    <option value=""><?php _e('Country of origin', 'wpestate'); ?></option>
-                                    <?php
-                                    if (!empty($coutnries)):
-                                        foreach ($coutnries as $iso => $country):
-                                            ?>
-                                            <option value="<?php echo $iso ?>" <?php echo isset($_GET['origin']) && $_GET['origin'] == $iso ? ' selected="selected" ' : ''; ?>><?php esc_attr_e($country); ?></option>
-                                            <?php
-                                        endforeach;
-                                    endif;
-                                    ?>
-                                </select>
-                            </p>
-
-                            <!--</div>-->
+                                <div class="value-row clearfix">
+                                    <input id="<?php echo $prefix ?>party-nevermind" name="party" type="radio" value="" class="hidden">
+                                    <input id="<?php echo $prefix ?>party-often" name="party" type="radio" value="1" class="hidden" >
+                                    <input id="<?php echo $prefix ?>party-not-often" name="party" type="radio" value="2" class="hidden">
+                                    <label for="<?php echo $prefix ?>party-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['party']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
+                                    <label for="<?php echo $prefix ?>party-often" class="wpb_button wpb_btn-large <?php echo isset($_GET['party']) && 1 == $_GET['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Often', 'wpestate'); ?></label>
+                                    <label for="<?php echo $prefix ?>party-not-often" class="wpb_button wpb_btn-large <?php echo isset($_GET['party']) && 2 == $_GET['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Not often', 'wpestate'); ?></label>
+                                </div>
+                            </div>
                         </div> 
-
                     </div>
-                </div>                                
 
-                <div class="form-control-half">
-                    <div class="form-control-in">
-                        <div class="switcher">
-                            <!--<input type="hidden" value="<?php echo isset($_GET['party']) ? (int) $_GET['party'] : '' ?>" name="party" id="<?php echo $prefix ?>party">-->
-                            <label><?php _e('Party', 'wpestate'); ?></label>
+                </div> 
 
-                            <div class="value-row clearfix">
-                                <input id="<?php echo $prefix ?>party-nevermind" name="party" type="radio" value="" class="hidden">
-                                <input id="<?php echo $prefix ?>party-often" name="party" type="radio" value="1" class="hidden" >
-                                <input id="<?php echo $prefix ?>party-not-often" name="party" type="radio" value="2" class="hidden">
-                                <label for="<?php echo $prefix ?>party-nevermind" class="wpb_button wpb_btn-large <?php echo empty($_GET['party']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label>
-                                <label for="<?php echo $prefix ?>party-often" class="wpb_button wpb_btn-large <?php echo isset($_GET['party']) && 1 == $_GET['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Often', 'wpestate'); ?></label>
-                                <label for="<?php echo $prefix ?>party-not-often" class="wpb_button wpb_btn-large <?php echo isset($_GET['party']) && 2 == $_GET['party'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Not often', 'wpestate'); ?></label>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="clearfix"></div>
+                <!--<div class="clearfix"></div>-->
                 <div class="form-control-full clearfix language-skill">
                     <div class="form-control-in">
                         <label><?php _e('Language skills', 'wpestate'); ?></label>
@@ -375,7 +380,8 @@ if (!isset($prefix)) {
                             ?>
                         </p>
                     </div>
-                </div> 
+
+                </div>
                 <span id="<?php echo $prefix ?>roommate_extended_close_adv" class="adv_extended_close_adv" style="display: <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'inline' : 'none' ?>;">
                     <i class="fa fa-times"> </i> <?php _e('Less search options', 'wpestate'); ?>
                 </span> 

@@ -854,3 +854,12 @@ function headline_widgets_init() {
 }
 add_action( 'widgets_init', 'headline_widgets_init' );
 */
+
+
+add_action('init', 'fl_author_base');
+
+function fl_author_base() {
+    global $wp_rewrite;
+    $author_slug = 'member'; // change slug name
+    $wp_rewrite->author_base = $author_slug;
+}

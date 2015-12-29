@@ -26,7 +26,7 @@ if (get_post_type($prop_id) == 'estate_property') {
 $link = esc_url(get_author_posts_url($userID));
  
 ?> 
-<div class="col-md-8 ?> agentpic-wrapper">
+<div class="col-md-8 agentpic-wrapper">
     <div class="agent-listing-img-wrapper" data-link="<?php echo $link; ?>">  
         <a href="<?php print $link; ?>">
             <img src="<?php print $user_custom_picture; ?>"  alt="agent picture" class="img-responsive agentpict"/>
