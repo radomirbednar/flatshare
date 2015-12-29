@@ -72,7 +72,7 @@ if ($user_custom_picture == '') {
     </h3> 
     <div id="profile_message"></div> 
     <div class="add-estate profile-page row">
-        <div class="profile_div col-md-4" id="profile-div">
+        <div class="col-xs-12 profile_div col-md-4 mobile-row" id="profile-div">
             <?php
             print '<img id="profile-image" src="' . $user_custom_picture . '" alt="user image" data-profileurl="' . $user_custom_picture . '" data-smallprofileurl="' . $image_id . '" >';
             //print '/ '.$user_small_picture;
@@ -87,7 +87,7 @@ if ($user_custom_picture == '') {
             </div>
             <span class="upload_explain"><?php _e('*minimum 314px x 180px', 'wpestate'); ?></span>
         </div>  
-        <div class="col-md-4">
+        <div class="col-xs-12 col-md-4">
             <p>
                 <label for="firstname"><?php _e('* First Name (mandatory)', 'wpestate'); ?></label>
                 <input type="text" id="firstname" class="form-control" value="<?php echo $first_name; ?>"  name="firstname" required>
@@ -119,7 +119,7 @@ if ($user_custom_picture == '') {
         </div> 
     </div>
 
-    <div class="row">
+    <div class="row no-margin">
         <h3><?php _e('Personal information', 'wpestate'); ?></h3> 
         <div class="col-xs-12">            
             <div class="add-user-personal profile-page border-radius"> 
@@ -144,7 +144,9 @@ if ($user_custom_picture == '') {
                             <?php endforeach; ?>
                         </select>    
                     </div> 
+                    
                 </div>
+                
 
                 <div class="row">
                     <div class="col-md-6"> 

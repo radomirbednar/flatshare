@@ -13140,3 +13140,10 @@ span.sub{
 .add_slide{ 
     width: 100%;  
 }
+.no-margin {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+.mobile-row {
+    margin-bottom: 20px;
+}
