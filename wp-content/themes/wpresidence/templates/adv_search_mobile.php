@@ -30,9 +30,11 @@ $class_close = '';
         <li role="presentation" class="<?php echo isset($_GET['mobile-tab']) && 2 == $_GET['mobile-tab'] ? 'active' : '' ?>">
             <a class="search-tab" href="#mobile-rental" aria-controls="mobile-rental" role="tab" data-toggle="tab"><?php _e('Rental listings', 'wpestate'); ?></a>
         </li> 
+        <!--
         <li role="close" class="close">
             <span>close</span>
         </li> 
+        -->
     </ul>  
     <div class="tab-content"><!-- Tab panes --> 
         <div role="tabpanel" class="tab-pane <?php echo!isset($_GET['mobile-tab']) || 1 == $_GET['mobile-tab'] ? 'active' : '' ?>" id="mobile-roommate"><!-- search roommate panel -->

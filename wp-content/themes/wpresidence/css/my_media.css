@@ -8,6 +8,7 @@
 
 
 
+
 @media only screen and (max-width: 1200px) and (min-width: 992px){   
 
     #access {
@@ -48,7 +49,7 @@
         width: 370px;
     }
 
-    
+
     //#roommate .adv1-holder .adv_search_slider,
     #rental .adv1-holder .adv_search_slider {
         width: 394px;
@@ -76,7 +77,7 @@
     .adv-search-1 .form-control-half {
         width: 50%;
     }
-    
+
     .header_media .adv1-holder {
         width: 814px;
     }
@@ -636,7 +637,7 @@
     .header_media .adv1-holder {
         width: 100%;
     }
-    
+
     .adv_extended_close_adv, #adv_extended_close_adv {
         right: 24px;
     }
@@ -647,10 +648,10 @@
     .adv-search-1 .wpb_button {
         margin-bottom: 10px !important;
     }
-/*
-    #adv_location {
-        width: 374px;
-    }*/
+    /*
+        #adv_location {
+            width: 374px;
+        }*/
 
 
     .logo {
@@ -1068,7 +1069,12 @@
     #google_map_prop_list_sidebar .adv-search-1{
         display: block;
         padding: 15px 30px 0px 30px;
+        
     }
+    /*
+    #google_map_prop_list_sidebar .single-content{
+        padding: 0px 0px;
+    }   */ 
 
 
 
@@ -1499,7 +1505,24 @@
 
 }
 
-
+@media only screen and (max-width: 768px){
+    #tab_prpg li{
+        width:100%;
+    }
+    
+    #google_map_prop_list_sidebar .adv-search-1{
+        display: block;
+        /*padding: 15px 30px 0px 30px;*/
+        padding: 15px 0px 0px 0px;
+    }
+    #google_map_prop_list_sidebar .single-content{
+        padding: 0px 0px;
+    }   
+    #google_map_prop_list_sidebar #listing_ajax_container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
 
 @media only screen and (max-width: 640px){
 
@@ -1843,11 +1866,6 @@
     .carouselvertical .carousel-inner{
         padding-right: 0px;
     } 
-
-    #tab_prpg li{
-        width:100%;
-    }
-
     .carouselvertical {
         height: auto!important;
     }
@@ -2063,6 +2081,8 @@
     .listing_wrapper {
         margin: 0px auto;
         float: none;
+        padding-left: 0;
+        padding-right: 0;
 
     }
     .listinglink-wrapper{
@@ -2259,7 +2279,7 @@
         width: 100%;
         max-width: 100%;
     }
-    
+
     #google_map_prop_list_sidebar .adv-search-1 .form-control-half {
         width: 100%;
     }
@@ -2268,15 +2288,15 @@
     #google_map_prop_list_sidebar .triple-switch .switcher span.wpb_btn-large {        
         min-width: 32.6%;
     }  
-    
+
     #google_map_prop_list_sidebar .adv-search-1 .form-control-two {
         width: 70%;
     }
-    
+
     #google_map_prop_list_sidebar .adv-search-1 .form-control-one {
         width: 30%;
     }
-    
+
 }
 
 @media only screen and (min-width: 640px) and (max-width: 1375px){   
@@ -2350,5 +2370,5 @@
 }*/
 
 #advanced_submit_2 {
-    
+
 }
