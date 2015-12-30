@@ -7184,7 +7184,7 @@ table tbody tr td {
 .adv-search-1-close-extended.flatmate-active{ 
     bottom: -190px; 
 } 
- 
+
 .adv_search_internal,
 .advanced_action_div,
 .advanced_categ_div,
@@ -13169,7 +13169,7 @@ span.sub{
 }
 #mobile-what-lookup {
     margin-left: 0;
-    
+
 }
 
 .user_profile_div .adv_search_slider #slider_rent {
@@ -13178,7 +13178,21 @@ span.sub{
 .birthdate-row {
     margin-top: 15px;
 }
+
+
 .success-alert {
     background-color: #dff0d8;
     color: #3c763d;
+}
+.member-image-wrap {
+    /*text-align: center;*/
+    width: 100%;
+    position: relative;
+    padding: 20px;
+    background: red;    
+}
+
+.member-image-wrap-in {
+    float: left;
+    width: 100%;
 }

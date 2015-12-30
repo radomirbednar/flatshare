@@ -10,7 +10,7 @@
 
 
 @media only screen and (max-width: 1200px) and (min-width: 992px){
-    
+
     .form-control-skills .inline-checkboxes .flcheckbox {
         margin-right: 20px;
     }    
@@ -1512,9 +1512,9 @@
 
 
 @media only screen and (max-width: 768px){
-    
 
-    
+
+
     #tab_prpg li{
         width:100%;
     }
@@ -2352,6 +2352,9 @@
         width: 100%;
     }
 }
+
+
+
 /*
 @media only screen and (max-width: 991px) {
     .adv1-holder {
@@ -2439,8 +2442,15 @@
 }*/
 
 
-@media only screen and (min-width: 768px){
+/*
+@media only screen and (min-width: 600px){
     .member-image-wrap {
         float: left;
+    }
+}*/
+
+@media only screen and (max-width: 992px) {
+    .agentpic-wrapper {
+        padding-right: 0;
     }
 }
