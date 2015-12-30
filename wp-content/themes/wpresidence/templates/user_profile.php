@@ -153,30 +153,24 @@ if ($user_custom_picture == '') {
                         <div class="switcher fl-row"> 
                             <label><?php _e('For how long', 'wpestate'); ?></label> 
                             <div class="value-row">
-                                <input id="how_long-1" name="how_long" type="radio" value="1" class="hidden" <?php echo isset($how_long) && 1 == $how_long ? ' checked="checked" ' : '' ?>>
+                                <input id="how_long-1" name="how_long" type="radio" value="1" class="hidden" <?php echo empty($how_long) || 1 == $how_long ? ' checked="checked" ' : '' ?>>
                                 <input id="how_long-2" name="how_long" type="radio" value="2" class="hidden" <?php echo isset($how_long) && 2 == $how_long ? ' checked="checked" ' : '' ?>>
                                 <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo empty($how_long) || 1 == $how_long ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Short term', 'wpestate'); ?></label>
                                 <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($how_long) && 2 == $how_long ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Long term', 'wpestate'); ?></label>
                             </div>                 
                         </div> 
-                        <div class="switcher fl-row">
-                            <!--<input type="hidden" id="looking_for" name="looking_for" value="<?php echo (int) $looking_for ?>">-->
+                        <div class="switcher fl-row">                            
                             <label><?php _e('Looking for', 'wpestate'); ?></label>
 
                             <div class="value-row">
-                                <input id="looking_for-1" name="looking_for" type="radio" value="1" class="hidden" <?php echo isset($looking_for) && 1 == $looking_for ? ' checked="checked" ' : '' ?>>
+                                <input id="looking_for-1" name="looking_for" type="radio" value="1" class="hidden" <?php echo empty($looking_for) || 1 == $looking_for ? ' checked="checked" ' : '' ?>>
                                 <input id="looking_for-2" name="looking_for" type="radio" value="2" class="hidden" <?php echo isset($looking_for) && 2 == $looking_for ? ' checked="checked" ' : '' ?>>
                                 <label for="looking_for-1" class="wpb_button wpb_btn-large <?php echo empty($looking_for) || 1 == $looking_for ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Room', 'wpestate'); ?></label>
                                 <label for="looking_for-2" class="wpb_button wpb_btn-large <?php echo isset($looking_for) && 2 == $looking_for ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Flat', 'wpestate'); ?></label>
                             </div>
-                            <!--
-                            <button class="wpb_button wpb_btn-large <?php echo $looking_for == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#looking_for" data-value="1"><?php _e('Room', 'wpestate'); ?></button>
-                            <button class="wpb_button wpb_btn-large <?php echo $looking_for == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#looking_for" data-value="2"><?php _e('Flat', 'wpestate'); ?></button>
-                            -->
                         </div>
 
-                        <div class="switcher fl-row">
-                            <!--<input type="hidden" id="sexual_preference" name="sexual_preference" value="<?php echo (int) $sexual_preference ?>">-->
+                        <div class="switcher fl-row">                            
                             <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
 
                             <div class="value-row">
@@ -185,30 +179,19 @@ if ($user_custom_picture == '') {
                                 <label for="sexual_preference-1" class="wpb_button wpb_btn-large <?php echo empty($sexual_preference) || 1 == $sexual_preference ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Straight', 'wpestate'); ?></label>
                                 <label for="sexual_preference-2" class="wpb_button wpb_btn-large <?php echo isset($sexual_preference) && 2 == $sexual_preference ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Bi / Gay', 'wpestate'); ?></label>
                             </div>
-                            <!--
-                            <button class="wpb_button wpb_btn-large <?php echo $sexual_preference == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sexual_preference" data-value="1"><?php _e('Straight', 'wpestate'); ?></button>
-                            <button class="wpb_button wpb_btn-large <?php echo $sexual_preference == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sexual_preference" data-value="2"><?php _e('Bi / Gay', 'wpestate'); ?></button>
-                            -->
                         </div>
 
-                        <div class="switcher fl-row">
-                            <!--<input type="hidden" id="user_gender" name="user_gender" value="<?php echo (int) $user_gender ?>">-->
+                        <div class="switcher fl-row">                            
                             <label><?php _e('Gender', 'wpestate'); ?></label>
-
                             <div class="value-row">
                                 <input id="user_gender-1" name="user_gender" type="radio" value="1" class="hidden" <?php echo isset($user_gender) && 1 == $user_gender ? ' checked="checked" ' : '' ?>>
                                 <input id="user_gender-2" name="user_gender" type="radio" value="2" class="hidden" <?php echo empty($user_gender) || 2 == $user_gender ? ' checked="checked" ' : '' ?>>
                                 <label for="user_gender-2" class="wpb_button wpb_btn-large <?php echo empty($user_gender) || 2 == $user_gender ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Female', 'wpestate'); ?></label>
                                 <label for="user_gender-1" class="wpb_button wpb_btn-large <?php echo isset($user_gender) && 1 == $user_gender ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Male', 'wpestate'); ?></label>                    
                             </div>
-                            <!--
-                            <button class="wpb_button wpb_btn-large <?php echo $user_gender == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#user_gender" data-value="1"><?php _e('Male', 'wpestate'); ?></button>
-                            <button class="wpb_button wpb_btn-large <?php echo $user_gender == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#user_gender" data-value="2"><?php _e('Female', 'wpestate'); ?></button>
-                            -->
                         </div>
 
-                        <div class="switcher fl-row">
-                            <!--<input type="hidden" id="sleeping_span" name="sleeping_span" value="<?php echo (int) $sleeping_span ?>">-->
+                        <div class="switcher fl-row">                            
                             <label><?php _e('Sleep during week', 'wpestate'); ?></label>
 
                             <div class="value-row">
@@ -217,14 +200,9 @@ if ($user_custom_picture == '') {
                                 <label for="sleeping_span-1" class="wpb_button wpb_btn-large <?php echo empty($sleeping_span) || 1 == $sleeping_span ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Before 11PM', 'wpestate'); ?></label>
                                 <label for="sleeping_span-2" class="wpb_button wpb_btn-large <?php echo isset($sleeping_span) && 2 == $sleeping_span ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('After 11PM', 'wpestate'); ?></label>
                             </div>
-                            <!--
-                            <button class="wpb_button wpb_btn-large <?php echo $sleeping_span == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sleeping_span" data-value="1"><?php _e('Before 11PM', 'wpestate'); ?></button>
-                            <button class="wpb_button wpb_btn-large <?php echo $sleeping_span == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#sleeping_span" data-value="2"><?php _e('After 11PM', 'wpestate'); ?></button>
-                            -->
                         </div>
 
-                        <div class="switcher fl-row">
-                            <!--<input type="hidden" id="couple" name="couple" value="<?php echo (int) $couple ?>">-->
+                        <div class="switcher fl-row">                            
                             <label><?php _e('Couple', 'wpestate'); ?></label>
 
                             <div class="value-row">
@@ -233,14 +211,9 @@ if ($user_custom_picture == '') {
                                 <label for="couple-1" class="wpb_button wpb_btn-large <?php echo empty($couple) || 1 == $couple ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Single', 'wpestate'); ?></label>
                                 <label for="couple-2" class="wpb_button wpb_btn-large <?php echo isset($couple) && 2 == $couple ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('In couple', 'wpestate'); ?></label>
                             </div>
-                            <!--
-                            <button class="wpb_button wpb_btn-large <?php echo $couple == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#couple" data-value="1"><?php _e('Alone', 'wpestate'); ?></button>
-                            <button class="wpb_button wpb_btn-large <?php echo $couple == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#couple" data-value="2"><?php _e('In couple', 'wpestate'); ?></button>
-                            -->
                         </div>
 
-                        <div class="switcher fl-row">
-                            <!--<input type="hidden" id="pets" name="pets" value="<?php echo (int) $pets ?>">-->
+                        <div class="switcher fl-row">                            
                             <label><?php _e('Pets', 'wpestate'); ?></label>
 
                             <div class="value-row">
@@ -249,14 +222,9 @@ if ($user_custom_picture == '') {
                                 <label for="pets-1" class="wpb_button wpb_btn-large <?php echo empty($pets) || 1 == $pets ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('No pets', 'wpestate'); ?></label>
                                 <label for="pets-2" class="wpb_button wpb_btn-large <?php echo isset($pets) && 2 == $pets ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Pets', 'wpestate'); ?></label>
                             </div>
-                            <!--
-                            <button class="wpb_button wpb_btn-large <?php echo $pets == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#pets" data-value="1"><?php _e('No pets', 'wpestate'); ?></button>
-                            <button class="wpb_button wpb_btn-large <?php echo $pets == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#pets" data-value="2"><?php _e('Pets', 'wpestate'); ?></button>
-                            -->
                         </div>
 
-                        <div class="switcher fl-row">
-                            <!--<input type="hidden" id="smoker" name="smoker" value="<?php echo (int) $smoker ?>">-->
+                        <div class="switcher fl-row">                            
                             <label><?php _e('Smoker', 'wpestate'); ?></label>
 
                             <div class="value-row">
@@ -265,13 +233,8 @@ if ($user_custom_picture == '') {
                                 <label for="smoker-1" class="wpb_button wpb_btn-large <?php echo empty($smoker) || 1 == $smoker ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Non-smoker', 'wpestate'); ?></label>
                                 <label for="smoker-2" class="wpb_button wpb_btn-large <?php echo isset($smoker) && 2 == $smoker ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Smoker', 'wpestate'); ?></label>
                             </div>
-                            <!--
-                            <button class="wpb_button wpb_btn-large <?php echo $smoker == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#smoker" data-value="1"><?php _e('Non-smoker', 'wpestate'); ?></button>
-                            <button class="wpb_button wpb_btn-large <?php echo $smoker == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#smoker" data-value="2"><?php _e('Smoker', 'wpestate'); ?></button>
-                            -->
                         </div> 
-                        <div class="switcher fl-row">
-                            <!--<input type="hidden" id="party" name="party" value="<?php echo (int) $party ?>">-->
+                        <div class="switcher fl-row">                            
                             <label><?php _e('Party', 'wpestate'); ?></label> 
                             <div class="value-row">
                                 <input id="party-1" name="party" type="radio" value="1" class="hidden" <?php echo empty($party) || 1 == $party ? ' checked="checked" ' : '' ?>>
@@ -279,10 +242,6 @@ if ($user_custom_picture == '') {
                                 <label for="party-1" class="wpb_button wpb_btn-large <?php echo empty($party) || 1 == $party ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Often', 'wpestate'); ?></label>
                                 <label for="party-2" class="wpb_button wpb_btn-large <?php echo isset($party) && 2 == $party ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Not often', 'wpestate'); ?></label>
                             </div>
-                            <!--
-                            <button class="wpb_button wpb_btn-large <?php echo $party == 1 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#party" data-value="1"><?php _e('Often', 'wpestate'); ?></button>
-                            <button class="wpb_button wpb_btn-large <?php echo $party == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#party" data-value="2"><?php _e('Not often', 'wpestate'); ?></button>
-                            -->
                         </div> 
                     </div>
 
