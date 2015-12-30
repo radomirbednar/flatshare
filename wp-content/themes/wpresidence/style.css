@@ -3182,7 +3182,8 @@ input.form-control::-moz-placeholder {
     right: 15px;
     height: auto;
     border-top: 1px solid #f0f0f0;
-    color: #3C90BE;    
+    color: #3C90BE;
+    font-size: 16px;
     padding-top: 10px;
     padding-bottom: 10px;
     line-height: 20px;
@@ -3192,6 +3193,7 @@ input.form-control::-moz-placeholder {
 .listing_unit_price_wrapper .price_label {
     font-size: 14px;
 }
+
 
 
 
@@ -7156,29 +7158,28 @@ table tbody tr td {
 }
 .btn-action:hover {
     background-color: #ff5342;
-}
-
+} 
 #google_map_prop_list_sidebar #advanced_submit_2:hover {
     background: #ff5342;
-}
+} 
 
-
+//both ok 
 .adv-search-1-close{
     bottom: -121px;
-}
-
+} 
 .adv-search-1-close-extended{
     bottom: -190px;
-}
-
-.adv-search-1-close-extended.opened{
-
-    bottom: -576px;
+}  
+.adv-search-1-close-extended.opened{ 
+    bottom: -566px;
+}     
+.adv-search-1-close-extended.opened-special.flatmate-active{
+    bottom: -375px; 
 } 
-.adv_extended_class.adv-search-1-close{
-    /* bottom: -141px;*/
-}
-
+.adv-search-1-close-extended.flatmate-active{ 
+    bottom: -190px; 
+} 
+ 
 .adv_search_internal,
 .advanced_action_div,
 .advanced_categ_div,
@@ -7225,7 +7226,7 @@ table tbody tr td {
     /*background-color: #fdfdfd;*/
     /*height: 120px;*/
     border-bottom-left-radius: 4px;
-   /* border-left: 1px solid #f0f0f0;*/
+    /*border-left: 1px solid #f0f0f0;*/
 }
 
 .header_media .adv1-holder {
@@ -12025,7 +12026,6 @@ select.dsidx-resp-select {
     float: none;
     padding: 0px 5px !important;
 }
-
 #adv-search-mobile #mobile-rental .adv_search_slider{    
     padding: 0px 25px !important;
 }
@@ -12035,6 +12035,7 @@ select.dsidx-resp-select {
 #mobile-rental .adv_search_slider p {    
     margin-left: -9px;
 }
+
 
 #advanced_search_shortcode .adv_search_slider{
     display: inline-block;
@@ -12541,7 +12542,7 @@ span.wpcf7-form-control-wrap {
 .inline-checkboxes .flcheckbox {
     float: left;
     margin-bottom: 5px;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 .flcheckbox input {
     margin-right: 5px;
@@ -13164,3 +13165,4 @@ span.sub{
     margin-left: 0;
     
 }
+
