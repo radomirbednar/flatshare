@@ -2,7 +2,7 @@
 <a href="#" class="contact-box "><i class="fa fa-envelope-o"></i></a>
  
 <div class="contactformwrapper hidden"> 
-       
+ 
    
         <div id="footer-contact-form">
         <h4><?php _e('Contact Us','wpestate')?></h4>
