@@ -5,78 +5,69 @@
 
 function wpestate_load_stats_tabs(listing_id) {
     "use strict";
-    var ajaxurl     =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    var ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
 
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         dataType: 'json',
         data: {
-            'action'            :   'wpestate_load_stats_property',
-            'postid'            :   listing_id
+            'action': 'wpestate_load_stats_property',
+            'postid': listing_id
         },
-        success: function (data) {  
-            wpestate_show_prop_stat_graph_tab (data.array_values , data.labels,listing_id);
+        success: function (data) {
+            wpestate_show_prop_stat_graph_tab(data.array_values, data.labels, listing_id);
         },
-        error: function (errorThrown) {}
+        error: function (errorThrown) {
+        }
     });//end ajax     
 }
 
-function wpestate_show_prop_stat_graph_tab(values,labels ,listing_id){
-    var ctx         =   jQuery("#myChartacc").get(0).getContext('2d');
-    var myNewChart  =   new Chart(ctx);
-   
-   
+function wpestate_show_prop_stat_graph_tab(values, labels, listing_id) {
+    var ctx = jQuery("#myChartacc").get(0).getContext('2d');
+    var myNewChart = new Chart(ctx);
+
+
     var data = {
-    labels:labels ,
-    datasets: [
-         {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
-            strokeColor: "rgba(220,220,220,0.8)",
-            highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
-            data: values
-        },
-    ]
+        labels: labels,
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(220,220,220,0.5)",
+                strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data: values
+            },
+        ]
     };
-    
+
     var options = {
-       //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-       scaleBeginAtZero : true,
-
-       //Boolean - Whether grid lines are shown across the chart
-       scaleShowGridLines : true,
-
-       //String - Colour of the grid lines
-       scaleGridLineColor : "rgba(0,0,0,.05)",
-
-       //Number - Width of the grid lines
-       scaleGridLineWidth : 1,
-
-       //Boolean - Whether to show horizontal lines (except X axis)
-       scaleShowHorizontalLines: true,
-
-       //Boolean - Whether to show vertical lines (except Y axis)
-       scaleShowVerticalLines: true,
-
-       //Boolean - If there is a stroke on each bar
-       barShowStroke : true,
-
-       //Number - Pixel width of the bar stroke
-       barStrokeWidth : 2,
-
-       //Number - Spacing between each of the X value sets
-       barValueSpacing : 5,
-
-       //Number - Spacing between data sets within X values
-       barDatasetSpacing : 1,
-
-       //String - A legend template
-       legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+        //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+        scaleBeginAtZero: true,
+        //Boolean - Whether grid lines are shown across the chart
+        scaleShowGridLines: true,
+        //String - Colour of the grid lines
+        scaleGridLineColor: "rgba(0,0,0,.05)",
+        //Number - Width of the grid lines
+        scaleGridLineWidth: 1,
+        //Boolean - Whether to show horizontal lines (except X axis)
+        scaleShowHorizontalLines: true,
+        //Boolean - Whether to show vertical lines (except Y axis)
+        scaleShowVerticalLines: true,
+        //Boolean - If there is a stroke on each bar
+        barShowStroke: true,
+        //Number - Pixel width of the bar stroke
+        barStrokeWidth: 2,
+        //Number - Spacing between each of the X value sets
+        barValueSpacing: 5,
+        //Number - Spacing between data sets within X values
+        barDatasetSpacing: 1,
+        //String - A legend template
+        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 
     }
- 
+
     var myBarChart = new Chart(ctx).Bar(data, options);
 }
 
@@ -84,77 +75,68 @@ function wpestate_show_prop_stat_graph_tab(values,labels ,listing_id){
 
 function wpestate_load_stats(listing_id) {
     "use strict";
-    ajaxurl     =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         dataType: 'json',
         data: {
-            'action'            :   'wpestate_load_stats_property',
-            'postid'            :   listing_id
+            'action': 'wpestate_load_stats_property',
+            'postid': listing_id
         },
-        success: function (data) {  
-            wpestate_show_prop_stat_graph (data.array_values , data.labels,listing_id);
+        success: function (data) {
+            wpestate_show_prop_stat_graph(data.array_values, data.labels, listing_id);
         },
-        error: function (errorThrown) {}
+        error: function (errorThrown) {
+        }
     });//end ajax     
 }
 
-function wpestate_show_prop_stat_graph(values,labels ,listing_id){
-    var ctx         =   jQuery("#myChart_"+listing_id).get(0).getContext('2d');
-    var myNewChart  =   new Chart(ctx);
-   
-   
+function wpestate_show_prop_stat_graph(values, labels, listing_id) {
+    var ctx = jQuery("#myChart_" + listing_id).get(0).getContext('2d');
+    var myNewChart = new Chart(ctx);
+
+
     var data = {
-    labels:labels ,
-    datasets: [
-         {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
-            strokeColor: "rgba(220,220,220,0.8)",
-            highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
-            data: values
-        },
-    ]
+        labels: labels,
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(220,220,220,0.5)",
+                strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data: values
+            },
+        ]
     };
-    
+
     var options = {
-       //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-       scaleBeginAtZero : true,
-
-       //Boolean - Whether grid lines are shown across the chart
-       scaleShowGridLines : true,
-
-       //String - Colour of the grid lines
-       scaleGridLineColor : "rgba(0,0,0,.05)",
-
-       //Number - Width of the grid lines
-       scaleGridLineWidth : 1,
-
-       //Boolean - Whether to show horizontal lines (except X axis)
-       scaleShowHorizontalLines: true,
-
-       //Boolean - Whether to show vertical lines (except Y axis)
-       scaleShowVerticalLines: true,
-
-       //Boolean - If there is a stroke on each bar
-       barShowStroke : true,
-
-       //Number - Pixel width of the bar stroke
-       barStrokeWidth : 2,
-
-       //Number - Spacing between each of the X value sets
-       barValueSpacing : 5,
-
-       //Number - Spacing between data sets within X values
-       barDatasetSpacing : 1,
-
-       //String - A legend template
-       legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+        //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+        scaleBeginAtZero: true,
+        //Boolean - Whether grid lines are shown across the chart
+        scaleShowGridLines: true,
+        //String - Colour of the grid lines
+        scaleGridLineColor: "rgba(0,0,0,.05)",
+        //Number - Width of the grid lines
+        scaleGridLineWidth: 1,
+        //Boolean - Whether to show horizontal lines (except X axis)
+        scaleShowHorizontalLines: true,
+        //Boolean - Whether to show vertical lines (except Y axis)
+        scaleShowVerticalLines: true,
+        //Boolean - If there is a stroke on each bar
+        barShowStroke: true,
+        //Number - Pixel width of the bar stroke
+        barStrokeWidth: 2,
+        //Number - Spacing between each of the X value sets
+        barValueSpacing: 5,
+        //Number - Spacing between data sets within X values
+        barDatasetSpacing: 1,
+        //String - A legend template
+        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 
     }
- 
+
     var myBarChart = new Chart(ctx).Bar(data, options);
 }
 
@@ -164,17 +146,17 @@ function wpestate_show_prop_stat_graph(values,labels ,listing_id){
 function get_filtering_ajax_result() {
     "use strict";
 
-    var action, category, city, area, rooms, baths, min_price, price_max, ajaxurl,postid;
-    action      =   jQuery('#adv_actions').attr('data-value');
-    category    =   jQuery('#adv_categ').attr('data-value');
-    city        =   jQuery('#advanced_city').attr('data-value');
-    area        =   jQuery('#advanced_area').attr('data-value');
-    rooms       =   parseInt(jQuery('#adv_rooms').val(), 10);
-    baths       =   parseInt(jQuery('#adv_bath').val(), 10);
-    min_price   =   parseInt(jQuery('#price_low').val(), 10);
-    price_max   =   parseInt(jQuery('#price_max').val(), 10);
-    postid      =   parseInt(jQuery('#adv-search-1').attr('data-postid'), 10);
-    ajaxurl     =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    var action, category, city, area, rooms, baths, min_price, price_max, ajaxurl, postid;
+    action = jQuery('#adv_actions').attr('data-value');
+    category = jQuery('#adv_categ').attr('data-value');
+    city = jQuery('#advanced_city').attr('data-value');
+    area = jQuery('#advanced_area').attr('data-value');
+    rooms = parseInt(jQuery('#adv_rooms').val(), 10);
+    baths = parseInt(jQuery('#adv_bath').val(), 10);
+    min_price = parseInt(jQuery('#price_low').val(), 10);
+    price_max = parseInt(jQuery('#price_max').val(), 10);
+    postid = parseInt(jQuery('#adv-search-1').attr('data-postid'), 10);
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
 
 
 
@@ -182,23 +164,24 @@ function get_filtering_ajax_result() {
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'            :   'get_filtering_ajax_result',
-            'action_values'     :   action,
-            'category_values'   :   category,
-            'city'              :   city,
-            'area'              :   area,
-            'advanced_rooms'    :   rooms,
-            'advanced_bath'     :   baths,
-            'price_low'         :   min_price,
-            'price_max'         :   price_max,
-            'postid'            :   postid
+            'action': 'get_filtering_ajax_result',
+            'action_values': action,
+            'category_values': category,
+            'city': city,
+            'area': area,
+            'advanced_rooms': rooms,
+            'advanced_bath': baths,
+            'price_low': min_price,
+            'price_max': price_max,
+            'postid': postid
         },
-        success: function (data) {     
+        success: function (data) {
             jQuery("#mo_results ,#results, #showinpage,#showinpage_mobile").show();
-            jQuery("#mo_results_no ,#results_no").show().empty().append(data); 
-          
+            jQuery("#mo_results_no ,#results_no").show().empty().append(data);
+
         },
-        error: function (errorThrown) {}
+        error: function (errorThrown) {
+        }
     });//end ajax     
 }
 
@@ -208,62 +191,63 @@ function get_filtering_ajax_result() {
 function custom_get_filtering_ajax_result() {
     "use strict";
 
-    var  newpage, halfmap, val1, val2, val3, val4, val5, val6, val7, val8, ajaxurl, postid, slider_min, slider_max, all_checkers;
-    newpage =0;
-    val1 =  get_custom_value (mapfunctions_vars.slugs[0]);
-    val2 =  get_custom_value (mapfunctions_vars.slugs[1]);
-    val3 =  get_custom_value (mapfunctions_vars.slugs[2]);
-    val4 =  get_custom_value (mapfunctions_vars.slugs[3]);
-    val5 =  get_custom_value (mapfunctions_vars.slugs[4]);
-    val6 =  get_custom_value (mapfunctions_vars.slugs[5]);
-    val7 =  get_custom_value (mapfunctions_vars.slugs[6]);
-    val8 =  get_custom_value (mapfunctions_vars.slugs[7]);
- 
-    
-    postid      =   parseInt(jQuery('#adv-search-1').attr('data-postid'), 10);
-    ajaxurl     =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
-    slider_min  =   parseFloat ( jQuery('#price_low').val() );
-    slider_max  =   parseFloat ( jQuery('#price_max').val() );
-    
-    halfmap    = 0;
-    if( jQuery('#google_map_prop_list_sidebar').length ){
-        halfmap    = 1;
-    } 
-    
+    var newpage, halfmap, val1, val2, val3, val4, val5, val6, val7, val8, ajaxurl, postid, slider_min, slider_max, all_checkers;
+    newpage = 0;
+    val1 = get_custom_value(mapfunctions_vars.slugs[0]);
+    val2 = get_custom_value(mapfunctions_vars.slugs[1]);
+    val3 = get_custom_value(mapfunctions_vars.slugs[2]);
+    val4 = get_custom_value(mapfunctions_vars.slugs[3]);
+    val5 = get_custom_value(mapfunctions_vars.slugs[4]);
+    val6 = get_custom_value(mapfunctions_vars.slugs[5]);
+    val7 = get_custom_value(mapfunctions_vars.slugs[6]);
+    val8 = get_custom_value(mapfunctions_vars.slugs[7]);
+
+
+    postid = parseInt(jQuery('#adv-search-1').attr('data-postid'), 10);
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    slider_min = parseFloat(jQuery('#price_low').val());
+    slider_max = parseFloat(jQuery('#price_max').val());
+
+    halfmap = 0;
+    if (jQuery('#google_map_prop_list_sidebar').length) {
+        halfmap = 1;
+    }
+
     all_checkers = '';
     jQuery('.halfsearch  input[type="checkbox"]').each(function () {
         if (jQuery(this).is(":checked")) {
             all_checkers = all_checkers + "," + jQuery(this).attr("name");
         }
     });
-    
+
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'            :   'custom_adv_get_filtering_ajax_result',
-            'val1'              :   val1,
-            'val2'              :   val2,
-            'val3'              :   val3,
-            'val4'              :   val4,
-            'val5'              :   val5,
-            'val6'              :   val6,
-            'val7'              :   val7,
-            'val8'              :   val8,
-            'newpage'           :   newpage,
-            'postid'            :   postid,
-            'slider_min'        :   slider_min,
-            'slider_max'        :   slider_max,
-            'halfmap'           :   halfmap,
-            'all_checkers'      :   all_checkers
+            'action': 'custom_adv_get_filtering_ajax_result',
+            'val1': val1,
+            'val2': val2,
+            'val3': val3,
+            'val4': val4,
+            'val5': val5,
+            'val6': val6,
+            'val7': val7,
+            'val8': val8,
+            'newpage': newpage,
+            'postid': postid,
+            'slider_min': slider_min,
+            'slider_max': slider_max,
+            'halfmap': halfmap,
+            'all_checkers': all_checkers
         },
-        success: function (data) {  
-            
+        success: function (data) {
+
             jQuery("#mo_results, #results, #showinpage,#showinpage_mobile").show();
-            jQuery("#mo_results_no, #results_no").show().empty().append(data); 
-          
+            jQuery("#mo_results_no, #results_no").show().empty().append(data);
+
         },
-        error: function (errorThrown) {}
+        error: function (errorThrown) {
+        }
     });//end ajax     
 }
 
@@ -272,87 +256,88 @@ function custom_get_filtering_ajax_result() {
 ////////////////////////////////////////////////////////////////////////////////////////////
 function start_filtering_ajax(newpage) {
     "use strict";
-        
-        
-    console.log('start_filtering_ajax');    
-        
-    var action, category, city, area, rooms, baths, min_price, price_max, ajaxurl,postid,halfmap, all_checkers;
-    action      =   jQuery('#adv_actions').attr('data-value');
-    category    =   jQuery('#adv_categ').attr('data-value');
-    city        =   jQuery('#advanced_city').attr('data-value');
-    area        =   jQuery('#advanced_area').attr('data-value');
-    rooms       =   parseInt(jQuery('#adv_rooms').val(), 10);
-    baths       =   parseInt(jQuery('#adv_bath').val(), 10);
-    min_price   =   parseInt(jQuery('#price_low').val(), 10);
-    price_max   =   parseInt(jQuery('#price_max').val(), 10);
-    postid      =   parseInt(jQuery('#adv-search-1').attr('data-postid'), 10);
-    ajaxurl     =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
-    
-    halfmap    = 0;
-  
-    if( jQuery('#google_map_prop_list_sidebar').length ){
-        halfmap    = 1;
-    }   
-  
-    postid=1;
-    if(  document.getElementById('search_wrapper') ){
-        postid      =   parseInt(jQuery('#search_wrapper').attr('data-postid'), 10);
+
+
+    console.log('start_filtering_ajax');
+
+    var action, category, city, area, rooms, baths, min_price, price_max, ajaxurl, postid, halfmap, all_checkers;
+    action = jQuery('#adv_actions').attr('data-value');
+    category = jQuery('#adv_categ').attr('data-value');
+    city = jQuery('#advanced_city').attr('data-value');
+    area = jQuery('#advanced_area').attr('data-value');
+    rooms = parseInt(jQuery('#adv_rooms').val(), 10);
+    baths = parseInt(jQuery('#adv_bath').val(), 10);
+    min_price = parseInt(jQuery('#price_low').val(), 10);
+    price_max = parseInt(jQuery('#price_max').val(), 10);
+    postid = parseInt(jQuery('#adv-search-1').attr('data-postid'), 10);
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
+
+    halfmap = 0;
+
+    if (jQuery('#google_map_prop_list_sidebar').length) {
+        halfmap = 1;
     }
-    
+
+    postid = 1;
+    if (document.getElementById('search_wrapper')) {
+        postid = parseInt(jQuery('#search_wrapper').attr('data-postid'), 10);
+    }
+
     all_checkers = '';
     jQuery('.halfsearch  input[type="checkbox"]').each(function () {
         if (jQuery(this).is(":checked")) {
             all_checkers = all_checkers + "," + jQuery(this).attr("name");
         }
     });
-    
-    halfmap    = 0;
-    
-    if( jQuery('#google_map_prop_list_sidebar').length ){
-        halfmap    = 1;
-    }   
-    
+
+    halfmap = 0;
+
+    if (jQuery('#google_map_prop_list_sidebar').length) {
+        halfmap = 1;
+    }
+
     jQuery('#listing_ajax_container').empty();
     jQuery('#listing_loader').show();
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'            :   'wpestate_ajax_filter_listings_search',
-            'action_values'     :   action,
-            'category_values'   :   category,
-            'city'              :   city,
-            'area'              :   area,
-            'advanced_rooms'    :   rooms,
-            'advanced_bath'     :   baths,
-            'price_low'         :   min_price,
-            'price_max'         :   price_max,
-            'newpage'           :   newpage,
-            'postid'            :   postid,
-            'halfmap'           :   halfmap,
-            'all_checkers'      :   all_checkers
+            'action': 'wpestate_ajax_filter_listings_search',
+            'action_values': action,
+            'category_values': category,
+            'city': city,
+            'area': area,
+            'advanced_rooms': rooms,
+            'advanced_bath': baths,
+            'price_low': min_price,
+            'price_max': price_max,
+            'newpage': newpage,
+            'postid': postid,
+            'halfmap': halfmap,
+            'all_checkers': all_checkers
         },
-        success: function (data) {      
+        success: function (data) {
             jQuery('#listing_loader').hide();
             jQuery('.listing_loader_title').show();
             jQuery('.pagination_nojax').hide();
             jQuery('#listing_ajax_container').empty().append(data);
-        
+
             restart_js_after_ajax();
-          
+
         },
-        error: function (errorThrown) {}
+        error: function (errorThrown) {
+        }
     });//end ajax     
 }
 
 
 
-function typeof_value(val1){
+function typeof_value(val1) {
     "use strict";
-    if( typeof(val1)!=="undefined"){
-        val1=val1.replace("-"," ");
-    }else{
-        val1='';
+    if (typeof (val1) !== "undefined") {
+        val1 = val1.replace("-", " ");
+    } else {
+        val1 = '';
     }
     return val1;
 }
@@ -361,107 +346,108 @@ function typeof_value(val1){
 /// ajax filtering on header search ; jslint checked
 ////////////////////////////////////////////////////////////////////////////////////////////
 function custom_search_start_filtering_ajax(newpage) {
-    
-    
+
+
     //return;
-    
-    
+
+
     "use strict";
-    var   val1, val2, val3, val4, val5, val6, val7, val8, ajaxurl,postid , slider_min, slider_max, halfmap, all_checkers;
-    
+    var val1, val2, val3, val4, val5, val6, val7, val8, ajaxurl, postid, slider_min, slider_max, halfmap, all_checkers;
+
     //    console.log('custom_search_start_filtering_ajax');
-    val1 =  get_custom_value (mapfunctions_vars.slugs[0]);
-    val2 =  get_custom_value (mapfunctions_vars.slugs[1]);
-    val3 =  get_custom_value (mapfunctions_vars.slugs[2]);
-    val4 =  get_custom_value (mapfunctions_vars.slugs[3]);
-    val5 =  get_custom_value (mapfunctions_vars.slugs[4]);
-    val6 =  get_custom_value (mapfunctions_vars.slugs[5]);
-    val7 =  get_custom_value (mapfunctions_vars.slugs[6]);
-    val8 =  get_custom_value (mapfunctions_vars.slugs[7]);
+    val1 = get_custom_value(mapfunctions_vars.slugs[0]);
+    val2 = get_custom_value(mapfunctions_vars.slugs[1]);
+    val3 = get_custom_value(mapfunctions_vars.slugs[2]);
+    val4 = get_custom_value(mapfunctions_vars.slugs[3]);
+    val5 = get_custom_value(mapfunctions_vars.slugs[4]);
+    val6 = get_custom_value(mapfunctions_vars.slugs[5]);
+    val7 = get_custom_value(mapfunctions_vars.slugs[6]);
+    val8 = get_custom_value(mapfunctions_vars.slugs[7]);
 
-   
-    val1= typeof_value(val1);
-    val2= typeof_value(val2);
-    
-    val3= typeof_value(val3);
-    val4= typeof_value(val4);
-    
-    val5= typeof_value(val5);
-    val6= typeof_value(val6);
-    
-    val7= typeof_value(val7);
-    val8= typeof_value(val8);
-    
-    
 
-            
+    val1 = typeof_value(val1);
+    val2 = typeof_value(val2);
+
+    val3 = typeof_value(val3);
+    val4 = typeof_value(val4);
+
+    val5 = typeof_value(val5);
+    val6 = typeof_value(val6);
+
+    val7 = typeof_value(val7);
+    val8 = typeof_value(val8);
+
+
+
+
     //console.log("val1:"+val1+" val2:"+val2+" val3:"+val3+" val4:"+val4+" val5:"+val5);
     //console.log("val6:"+val6+" val7:"+val7+" val8:"+val8);
-   
-    
-    slider_min  = parseFloat ( jQuery('#price_low').val() );
-    slider_max  = parseFloat ( jQuery('#price_max').val() );
-     
+
+
+    slider_min = parseFloat(jQuery('#price_low').val());
+    slider_max = parseFloat(jQuery('#price_max').val());
+
     all_checkers = '';
     jQuery('.halfsearch  input[type="checkbox"]').each(function () {
         if (jQuery(this).is(":checked")) {
             all_checkers = all_checkers + "," + jQuery(this).attr("name");
         }
     });
-    
- 
-    halfmap    = 0;
-    
-    if( jQuery('#google_map_prop_list_sidebar').length ){
-        halfmap    = 1;
-    }   
-    postid=1;
-    if(  document.getElementById('search_wrapper') ){
-        postid      =   parseInt(jQuery('#search_wrapper').attr('data-postid'), 10);
+
+
+    halfmap = 0;
+
+    if (jQuery('#google_map_prop_list_sidebar').length) {
+        halfmap = 1;
     }
-    ajaxurl     =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
- 
- 
+    postid = 1;
+    if (document.getElementById('search_wrapper')) {
+        postid = parseInt(jQuery('#search_wrapper').attr('data-postid'), 10);
+    }
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
+
+
     //console.log("val1:"+val1+" val2:"+val2+" val3:"+val3+" val4:"+val4+" val5:"+val5);
     //console.log("val6:"+val6+" val7:"+val7+" val8:"+val8);
-   
- 
+
+
     jQuery('#listing_ajax_container').empty();
     jQuery('#listing_loader').show();
-    
-    
+
+
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'            :   'wpestate_custom_adv_ajax_filter_listings_search',
-            'val1'              :   val1,
-            'val2'              :   val2,
-            'val3'              :   val3,
-            'val4'              :   val4,
-            'val5'              :   val5,
-            'val6'              :   val6,
-            'val7'              :   val7,
-            'val8'              :   val8,
-            'newpage'           :   newpage,
-            'postid'            :   postid,
-            'slider_min'        :   slider_min,
-            'slider_max'        :   slider_max,
-            'halfmap'           :   halfmap,
-            'all_checkers'      :   all_checkers
+            'action': 'wpestate_custom_adv_ajax_filter_listings_search',
+            'val1': val1,
+            'val2': val2,
+            'val3': val3,
+            'val4': val4,
+            'val5': val5,
+            'val6': val6,
+            'val7': val7,
+            'val8': val8,
+            'newpage': newpage,
+            'postid': postid,
+            'slider_min': slider_min,
+            'slider_max': slider_max,
+            'halfmap': halfmap,
+            'all_checkers': all_checkers
         },
-        success: function (data) {  
-         //   console.log(data);
+        success: function (data) {
+            //   console.log(data);
             jQuery('#listing_loader').hide();
             jQuery('.listing_loader_title').show();
             jQuery('.entry-title.title_prop').hide();
             jQuery('#listing_ajax_container').empty().append(data);
             restart_js_after_ajax();
-          
+
         },
-        error: function (errorThrown) {}
+        error: function (errorThrown) {
+        }
     });//end ajax     
-    
+
 }
 
 
@@ -475,14 +461,14 @@ function restart_js_after_ajax() {
     "use strict";
     wpestate_lazy_load_carousel_property_unit();
     // enable_half_map_pin_action();
-    if (typeof enable_half_map_pin_action == 'function'){
+    if (typeof enable_half_map_pin_action == 'function') {
         enable_half_map_pin_action();
     }
     var newpage, post_id, post_image, to_add, icon;
-    
+
     jQuery('.prop-compare:first-of-type').remove();
-    
-    
+
+
     jQuery('.pagination_ajax_search a').click(function (event) {
         event.preventDefault();
         newpage = parseInt(jQuery(this).attr('data-future'), 10);
@@ -496,34 +482,34 @@ function restart_js_after_ajax() {
         document.getElementById('scrollhere').scrollIntoView();
         start_filtering(newpage);
     });
-    
-    jQuery('.property_listing').click(function(){
+
+    jQuery('.property_listing').click(function () {
         var link;
-        link = jQuery(this).attr('data-link'); 
+        link = jQuery(this).attr('data-link');
         window.open(link, '_self');
     });
-   
-    jQuery('.share_unit').click(function(event){
+
+    jQuery('.share_unit').click(function (event) {
         event.stopPropagation();
     });
-   
-    var already_in=[];
+
+    var already_in = [];
     jQuery('.compare-action').click(function (e) {
-        
+
         e.preventDefault();
         e.stopPropagation();
         jQuery('.prop-compare').show();
 
         post_id = jQuery(this).attr('data-pid');
-        
-     
-         for(var i = 0; i < already_in.length; i++) {
-            if(already_in[i] === post_id) {
+
+
+        for (var i = 0; i < already_in.length; i++) {
+            if (already_in[i] === post_id) {
                 return;
             }
         }
-        
-        already_in.push(post_id); 
+
+        already_in.push(post_id);
         post_image = jQuery(this).attr('data-pimage');
 
         to_add = '<div class="items_compare ajax_compare" style="display:none;"><img src="' + post_image + '" alt="compare_thumb" class="img-responsive"><input type="hidden" value="' + post_id + '" name="selected_id[]" /></div>';
@@ -538,29 +524,29 @@ function restart_js_after_ajax() {
     jQuery('#submit_compare').click(function () {
         jQuery('#form_compare').trigger('submit');
     });
-    
+
     jQuery('.icon-fav').click(function (event) {
         event.stopPropagation();
         icon = jQuery(this);
         add_remove_favorite(icon);
     });
-   
+
     jQuery(".share_list, .icon-fav, .compare-action").hover(
-        function () {
-            jQuery(this).tooltip('show');
-        },
-        function () {
-            jQuery(this).tooltip('hide');
-    });
-       
+            function () {
+                jQuery(this).tooltip('show');
+            },
+            function () {
+                jQuery(this).tooltip('hide');
+            });
+
     jQuery('.share_list').click(function (event) {
         event.stopPropagation();
         var sharediv = jQuery(this).parent().find('.share_unit');
         sharediv.toggle();
         jQuery(this).toggleClass('share_on');
     });
-    
-  
+
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -569,11 +555,11 @@ function restart_js_after_ajax() {
 function add_remove_favorite(icon) {
     "use strict";
     var post_id, securitypass, ajaxurl;
-    post_id         =  icon.attr('data-postid');
-    securitypass    =  jQuery('#security-pass').val();
-    ajaxurl         =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
-  
-    if (parseInt(ajaxcalls_vars.userid, 10) === 0 ) {
+    post_id = icon.attr('data-postid');
+    securitypass = jQuery('#security-pass').val();
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
+
+    if (parseInt(ajaxcalls_vars.userid, 10) === 0) {
         show_login_form();
     } else {
         icon.toggleClass('icon-fav-off');
@@ -583,23 +569,23 @@ function add_remove_favorite(icon) {
             type: 'POST',
             url: ajaxurl,
             dataType: 'json',
-              data: {
-                  'action'            :   'wpestate_ajax_add_fav',
-                  'post_id'           :   post_id
-                  },
-           success: function (data) {          
-               if (data.added) {
+            data: {
+                'action': 'wpestate_ajax_add_fav',
+                'post_id': post_id
+            },
+            success: function (data) {
+                if (data.added) {
                     icon.removeClass('icon-fav-off').addClass('icon-fav-on');
-               } else {
+                } else {
                     icon.removeClass('icon-fav-on').addClass('icon-fav-off');
-               }
-           },
-           error: function (errorThrown) {
+                }
+            },
+            error: function (errorThrown) {
 
-           }
-         });//end ajax
+            }
+        });//end ajax
     }// end login use
-} 
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 /// resend listing for approval-jslint checked
@@ -607,19 +593,19 @@ function add_remove_favorite(icon) {
 function resend_for_approval(prop_id, selected_div) {
     "use strict";
     var ajaxurl, normal_list_no;
-    ajaxurl   =   control_vars.admin_url + 'admin-ajax.php';
+    ajaxurl = control_vars.admin_url + 'admin-ajax.php';
 
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'        :   'wpestate_ajax_resend_for_approval',
-            'propid'        :   prop_id
+            'action': 'wpestate_ajax_resend_for_approval',
+            'propid': prop_id
         },
         success: function (data) {
             if (data === 'pending') {
                 selected_div.parent().empty().append('<span class="featured_prop">Sent for approval</span>');
-                normal_list_no    =  parseInt(jQuery('#normal_list_no').text(), 10);
+                normal_list_no = parseInt(jQuery('#normal_list_no').text(), 10);
                 jQuery('#normal_list_no').text(normal_list_no - 1);
             } else {
                 selected_div.parent().empty().append(data);
@@ -636,19 +622,19 @@ function resend_for_approval(prop_id, selected_div) {
 //////////////////////////////////////////////////////////////////////////////////////////// 
 function make_prop_featured(prop_id, selectedspan) {
     "use strict";
-    var ajaxurl      =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    var ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'        :   'wpestate_ajax_make_prop_featured',
-            'propid'        :   prop_id
+            'action': 'wpestate_ajax_make_prop_featured',
+            'propid': prop_id
         },
         success: function (data) {
-            
-           
+
+
             if (data.trim() === 'done') {
-                selectedspan.empty().html('<span class="label label-success">'+ajaxcalls_vars.prop_featured+'</span>');
+                selectedspan.empty().html('<span class="label label-success">' + ajaxcalls_vars.prop_featured + '</span>');
                 var featured_list_no = parseInt(jQuery('#featured_list_no').text(), 10);
                 jQuery('#featured_list_no').text(featured_list_no - 1);
             } else {
@@ -668,19 +654,19 @@ function make_prop_featured(prop_id, selectedspan) {
 function recuring_pay_pack_via_paypal() {
     "use strict";
     var ajaxurl, packName, packId;
-    ajaxurl      =   control_vars.admin_url + 'admin-ajax.php';
-    packName     =   jQuery('#pack_select :selected').text();
-    packId       =   jQuery('#pack_select :selected').val();
+    ajaxurl = control_vars.admin_url + 'admin-ajax.php';
+    packName = jQuery('#pack_select :selected').text();
+    packId = jQuery('#pack_select :selected').val();
 
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'        :   'wpestate_ajax_paypal_pack_recuring_generation',
-            'packName'      :   packName,
-            'packId'        :   packId
+            'action': 'wpestate_ajax_paypal_pack_recuring_generation',
+            'packName': packName,
+            'packId': packId
         },
-        success: function (data) {      
+        success: function (data) {
             window.location.href = data;
         },
         error: function (errorThrown) {
@@ -693,17 +679,17 @@ function recuring_pay_pack_via_paypal() {
 ////////////////////////////////////////////////////////////////////////////////////////////   
 function pay_pack_via_paypal() {
     "use strict";
-    var  ajaxurl, packName, packId;
-    ajaxurl     =   control_vars.admin_url + 'admin-ajax.php';
-    packName    =   jQuery('#pack_select :selected').text();
-    packId      =   jQuery('#pack_select :selected').val();
+    var ajaxurl, packName, packId;
+    ajaxurl = control_vars.admin_url + 'admin-ajax.php';
+    packName = jQuery('#pack_select :selected').text();
+    packId = jQuery('#pack_select :selected').val();
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'        :   'wpestate_ajax_paypal_pack_generation',
-            'packName'      :   packName,
-            'packId'        :   packId
+            'action': 'wpestate_ajax_paypal_pack_generation',
+            'packName': packName,
+            'packId': packId
         },
         success: function (data) {
             window.location.href = data;
@@ -718,15 +704,15 @@ function pay_pack_via_paypal() {
 ////////////////////////////////////////////////////////////////////////////////////////////
 function listing_pay(prop_id, selected_div, is_featured, is_upgrade) {
     "use strict";
-    var ajaxurl      =   control_vars.admin_url + 'admin-ajax.php';
+    var ajaxurl = control_vars.admin_url + 'admin-ajax.php';
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'        :   'wpestate_ajax_listing_pay',
-            'propid'        :   prop_id,
-            'is_featured'   :   is_featured,
-            'is_upgrade'    :   is_upgrade
+            'action': 'wpestate_ajax_listing_pay',
+            'propid': prop_id,
+            'is_featured': is_featured,
+            'is_upgrade': is_upgrade
         },
         success: function (data) {
             window.location.href = data;
@@ -743,7 +729,7 @@ function start_filtering(newpage) {
     "use strict";
     jQuery('#grid_view').addClass('icon_selected');
     jQuery('#list_view').removeClass('icon_selected');
-    var action, category, city, area, order, ajaxurl,page_id;
+    var action, category, city, area, order, ajaxurl, page_id;
     // get action vars
     action = jQuery('#a_filter_action').attr('data-value');
     // get category
@@ -754,26 +740,26 @@ function start_filtering(newpage) {
     area = jQuery('#a_filter_areas').attr('data-value');
     // get order
     order = jQuery('#a_filter_order').attr('data-value');
-    ajaxurl =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
-    page_id =   jQuery('#page_idx').val();
-    
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    page_id = jQuery('#page_idx').val();
+
     jQuery('#listing_ajax_container').empty();
     jQuery('#listing_loader').show();
- 
- 
+
+
 
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'            :   'ajax_filter_listings',
-            'action_values'     :   action,
-            'category_values'   :   category,
-            'city'              :   city,
-            'area'              :   area,
-            'order'             :   order,
-            'newpage'           :   newpage,
-            'page_id'           :   page_id
+            'action': 'ajax_filter_listings',
+            'action_values': action,
+            'category_values': category,
+            'city': city,
+            'area': area,
+            'order': order,
+            'newpage': newpage,
+            'page_id': page_id
         },
         success: function (data) {
             jQuery('#listing_loader').hide();
@@ -793,12 +779,12 @@ function start_filtering(newpage) {
 ////////////////////////////////////////////////////////////////////////////////////////////
 function show_login_form() {
     "use strict";
-    var  ajaxurl    =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    var ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'    :   'wpestate_ajax_show_login_form'
+            'action': 'wpestate_ajax_show_login_form'
         },
         success: function (data) {
             jQuery('body').append(data);
@@ -817,21 +803,21 @@ function show_login_form() {
 function wpestate_change_pass_profile() {
     "use strict";
     var oldpass, newpass, renewpass, securitypass, ajaxurl;
-    oldpass         =  jQuery('#oldpass').val();
-    newpass         =  jQuery('#newpass').val();
-    renewpass       =  jQuery('#renewpass').val();
-    securitypass    =  jQuery('#security-pass').val();
-    ajaxurl         =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    oldpass = jQuery('#oldpass').val();
+    newpass = jQuery('#newpass').val();
+    renewpass = jQuery('#renewpass').val();
+    securitypass = jQuery('#security-pass').val();
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
 
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'            :   'wpestate_ajax_update_pass',
-            'oldpass'           :   oldpass,
-            'newpass'           :   newpass,
-            'renewpass'         :   renewpass,
-            'security-pass'     :   securitypass
+            'action': 'wpestate_ajax_update_pass',
+            'oldpass': oldpass,
+            'newpass': newpass,
+            'renewpass': renewpass,
+            'security-pass': securitypass
         },
         success: function (data) {
             jQuery('#profile_pass').empty().append('<div class="login-alert">' + data + '<div>');
@@ -856,105 +842,104 @@ function wpestate_register_user(type) {
      * 4- modal !?
      * 5 -mobile
      */
-    
-    ajaxurl             =  ajaxcalls_vars.admin_url + 'admin-ajax.php'; 
-    jQuery('#register_message_area_topbar').empty().append('<div class="login-alert">'+control_vars.procesing+'</div>');
-    
-    if(type===1){
-        user_login_register =  jQuery('#user_login_register_topbar').val();
-        user_email_register =  jQuery('#user_email_register_topbar').val();
-        nonce               =  jQuery('#security-register-topbar').val(); 
-        if(ajaxcalls_vars.userpass === 'yes'){
-            user_pass           =  jQuery('#user_password_topbar').val();
-            user_pass_retype    =  jQuery('#user_password_topbar_retype').val();
+
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    jQuery('#register_message_area_topbar').empty().append('<div class="login-alert">' + control_vars.procesing + '</div>');
+
+    if (type === 1) {
+        user_login_register = jQuery('#user_login_register_topbar').val();
+        user_email_register = jQuery('#user_email_register_topbar').val();
+        nonce = jQuery('#security-register-topbar').val();
+        if (ajaxcalls_vars.userpass === 'yes') {
+            user_pass = jQuery('#user_password_topbar').val();
+            user_pass_retype = jQuery('#user_password_topbar_retype').val();
         }
-        
-        if ( !jQuery('#user_terms_register_topbar').is(":checked") ) {
-            jQuery('#register_message_area_topbar').empty().append('<div class="login-alert">'+control_vars.terms_cond+'</div>');
+
+        if (!jQuery('#user_terms_register_topbar').is(":checked")) {
+            jQuery('#register_message_area_topbar').empty().append('<div class="login-alert">' + control_vars.terms_cond + '</div>');
             return;
         }
-    }else if(type===2){
-        user_login_register =  jQuery('#user_login_register_wd').val();
-        user_email_register =  jQuery('#user_email_register_wd').val();
-        nonce               =  jQuery('#security-register').val(); 
-        if(ajaxcalls_vars.userpass === 'yes'){
-            user_pass           =  jQuery('#user_password_wd').val();
-            user_pass_retype    =  jQuery('#user_password_wd_retype').val();
+    } else if (type === 2) {
+        user_login_register = jQuery('#user_login_register_wd').val();
+        user_email_register = jQuery('#user_email_register_wd').val();
+        nonce = jQuery('#security-register').val();
+        if (ajaxcalls_vars.userpass === 'yes') {
+            user_pass = jQuery('#user_password_wd').val();
+            user_pass_retype = jQuery('#user_password_wd_retype').val();
         }
-        
-        if ( !jQuery('#user_terms_register_wd').is(":checked") ) {
-            jQuery('#register_message_area_wd').empty().append('<div class="login-alert">'+control_vars.terms_cond+'</div>');
+
+        if (!jQuery('#user_terms_register_wd').is(":checked")) {
+            jQuery('#register_message_area_wd').empty().append('<div class="login-alert">' + control_vars.terms_cond + '</div>');
             return;
         }
-    }else if(type===3){
-        user_login_register =  jQuery('#user_login_register').val();
-        user_email_register =  jQuery('#user_email_register').val();
-        nonce               =  jQuery('#security-register').val(); 
-        if(ajaxcalls_vars.userpass === 'yes'){
-            user_pass           =  jQuery('#user_password').val();
-            user_pass_retype    =  jQuery('#user_password_retype').val();
+    } else if (type === 3) {
+        user_login_register = jQuery('#user_login_register').val();
+        user_email_register = jQuery('#user_email_register').val();
+        nonce = jQuery('#security-register').val();
+        if (ajaxcalls_vars.userpass === 'yes') {
+            user_pass = jQuery('#user_password').val();
+            user_pass_retype = jQuery('#user_password_retype').val();
         }
-       
-        if ( !jQuery('#user_terms_register_sh').is(":checked") ) {
-            jQuery('#register_message_area').empty().append('<div class="login-alert">'+control_vars.terms_cond+'</div>');
+
+        if (!jQuery('#user_terms_register_sh').is(":checked")) {
+            jQuery('#register_message_area').empty().append('<div class="login-alert">' + control_vars.terms_cond + '</div>');
             return;
         }
-    }else if(type===5){
-       
-        user_login_register =  jQuery('#user_login_register_mobile').val();
-        user_email_register =  jQuery('#user_email_register_mobile').val();
-        nonce               =  jQuery('#security-register-mobile').val(); 
-        if(ajaxcalls_vars.userpass === 'yes'){
-            user_pass           =  jQuery('#user_password_mobile').val();
-            user_pass_retype    =  jQuery('#user_password_mobile_retype').val();
+    } else if (type === 5) {
+
+        user_login_register = jQuery('#user_login_register_mobile').val();
+        user_email_register = jQuery('#user_email_register_mobile').val();
+        nonce = jQuery('#security-register-mobile').val();
+        if (ajaxcalls_vars.userpass === 'yes') {
+            user_pass = jQuery('#user_password_mobile').val();
+            user_pass_retype = jQuery('#user_password_mobile_retype').val();
         }
-        
-        if ( !jQuery('#user_terms_register_mobile').is(":checked") ) {
-            jQuery('#register_message_area_mobile').empty().append('<div class="login-alert">'+control_vars.terms_cond+'</div>');
+
+        if (!jQuery('#user_terms_register_mobile').is(":checked")) {
+            jQuery('#register_message_area_mobile').empty().append('<div class="login-alert">' + control_vars.terms_cond + '</div>');
             return;
         }
     }
-    
- 
-  
 
-     
-    
+
+
+
+
+
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'                    :   'wpestate_ajax_register_user',
-            'user_login_register'       :   user_login_register,
-            'user_email_register'       :   user_email_register,
-            'user_pass'                 :   user_pass,
-            'user_pass_retype'          :   user_pass_retype,
-            'type'                      :   type,
-            'security-register'         :   nonce
+            'action': 'wpestate_ajax_register_user',
+            'user_login_register': user_login_register,
+            'user_email_register': user_email_register,
+            'user_pass': user_pass,
+            'user_pass_retype': user_pass_retype,
+            'type': type,
+            'security-register': nonce
         },
-
         success: function (data) {
-           // This outputs the result of the ajax request
-         
-            if(type===1){
+            // This outputs the result of the ajax request
+
+            if (type === 1) {
                 jQuery('#register_message_area_topbar').empty().append('<div class="login-alert">' + data + '</div>');
                 jQuery('#user_login_register_topbar').val('');
                 jQuery('#user_email_register_topbar').val('');
                 jQuery('#user_password_topbar').val('');
                 jQuery('#user_password_topbar_retype').val('');
-            }else  if(type===2){
+            } else if (type === 2) {
                 jQuery('#register_message_area_wd').empty().append('<div class="login-alert">' + data + '</div>');
                 jQuery('#user_login_register_wd').val('');
                 jQuery('#user_email_register_wd').val('');
                 jQuery('#user_password_wd').val('');
                 jQuery('#user_password_wd_retype').val('');
-            }else  if(type===3){
+            } else if (type === 3) {
                 jQuery('#register_message_area').empty().append('<div class="login-alert">' + data + '</div>');
                 jQuery('#user_login_register').val('');
                 jQuery('#user_email_register').val('');
                 jQuery('#user_password').val('');
                 jQuery('#user_password_retype').val('');
-            }else  if(type===5){
+            } else if (type === 5) {
                 jQuery('#register_message_area_mobile').empty().append('<div class="login-alert">' + data + '</div>');
                 jQuery('#user_login_register_mobile').val('');
                 jQuery('#user_email_register_mobile').val('');
@@ -976,56 +961,55 @@ function wpestate_register_user(type) {
 ////////////////////////////////////////////////////////////////////////////////////////////
 function wpestate_forgot(type) {
     "use strict";
-   
-    var  forgot_email, securityforgot, postid, ajaxurl;
-    if(type===1){
-        forgot_email          =  jQuery('#forgot_email').val();
-        securityforgot        =  jQuery('#security-forgot').val();
+
+    var forgot_email, securityforgot, postid, ajaxurl;
+    if (type === 1) {
+        forgot_email = jQuery('#forgot_email').val();
+        securityforgot = jQuery('#security-forgot').val();
     }
-    if(type===2){
-        forgot_email          =  jQuery('#forgot_email_topbar').val();
-        securityforgot        =  jQuery('#security-forgot-topbar').val();
+    if (type === 2) {
+        forgot_email = jQuery('#forgot_email_topbar').val();
+        securityforgot = jQuery('#security-forgot-topbar').val();
     }
-    if(type===3){
-        forgot_email          =  jQuery('#forgot_email_shortcode').val();
-        securityforgot        =  jQuery('#security-login-forgot_wd').val();
+    if (type === 3) {
+        forgot_email = jQuery('#forgot_email_shortcode').val();
+        securityforgot = jQuery('#security-login-forgot_wd').val();
     }
-    if(type===5){
-        forgot_email          =  jQuery('#forgot_email_mobile').val();
-        securityforgot        =  jQuery('#security-forgot-mobile').val();
+    if (type === 5) {
+        forgot_email = jQuery('#forgot_email_mobile').val();
+        securityforgot = jQuery('#security-forgot-mobile').val();
     }
-    
-    postid                =  jQuery('#postid').val();
-    ajaxurl               =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
+
+    postid = jQuery('#postid').val();
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
 
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'            :   'wpestate_ajax_forgot_pass',
-            'forgot_email'      :   forgot_email,
-            'security-forgot'    :   securityforgot,
-            'postid'            :   postid,
-            'type'              :   type
+            'action': 'wpestate_ajax_forgot_pass',
+            'forgot_email': forgot_email,
+            'security-forgot': securityforgot,
+            'postid': postid,
+            'type': type
         },
-
         success: function (data) {
-        
-            if(type===1){
+
+            if (type === 1) {
                 jQuery('#forgot_email').val('');
-                jQuery('#forgot_pass_area').empty().append('<div class="login-alert">' + data + '<div>');        
+                jQuery('#forgot_pass_area').empty().append('<div class="login-alert">' + data + '<div>');
             }
-            if(type===2){
+            if (type === 2) {
                 jQuery('#forgot_email_topbar').val('');
-                jQuery('#forgot_pass_area_topbar').empty().append('<div class="login-alert">' + data + '<div>');        
+                jQuery('#forgot_pass_area_topbar').empty().append('<div class="login-alert">' + data + '<div>');
             }
-            if(type===3){
+            if (type === 3) {
                 jQuery('#forgot_email_shortcode').val('');
-                jQuery('#forgot_pass_area_shortcode').empty().append('<div class="login-alert">' + data + '<div>');        
+                jQuery('#forgot_pass_area_shortcode').empty().append('<div class="login-alert">' + data + '<div>');
             }
-            if(type===5){
+            if (type === 5) {
                 jQuery('#forgot_email_mobile').val('');
-                jQuery('#forgot_pass_area_mobile').empty().append('<div class="login-alert">' + data + '<div>');        
+                jQuery('#forgot_pass_area_mobile').empty().append('<div class="login-alert">' + data + '<div>');
             }
         },
         error: function (errorThrown) {
@@ -1040,11 +1024,11 @@ function wpestate_login_wd() {
     "use strict";
     var login_user, login_pwd, ispop, ajaxurl, security;
 
-    login_user          =  jQuery('#login_user_wd').val();
-    login_pwd           =  jQuery('#login_pwd_wd').val();
-    security            =  jQuery('#security-login').val();
-    ispop               =  jQuery('#loginpop_wd').val();
-    ajaxurl             =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    login_user = jQuery('#login_user_wd').val();
+    login_pwd = jQuery('#login_pwd_wd').val();
+    security = jQuery('#security-login').val();
+    ispop = jQuery('#loginpop_wd').val();
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
 
     jQuery('#login_message_area_wd').empty().append('<div class="login-alert">' + ajaxcalls_vars.login_loading + '</div>');
     jQuery.ajax({
@@ -1052,13 +1036,12 @@ function wpestate_login_wd() {
         dataType: 'json',
         url: ajaxurl,
         data: {
-            'action'            :   'ajax_loginx_form',
-            'login_user'        :   login_user,
-            'login_pwd'         :   login_pwd,
-            'ispop'             :   ispop,
-            'security-login'    :   security
+            'action': 'ajax_loginx_form',
+            'login_user': login_user,
+            'login_pwd': login_pwd,
+            'ispop': ispop,
+            'security-login': security
         },
-
         success: function (data) {
             jQuery('#login_message_area_wd').empty().append('<div class="login-alert">' + data.message + '<div>');
             if (data.loggedin === true) {
@@ -1089,10 +1072,10 @@ function wpestate_login_topbar() {
     "use strict";
     var login_user, login_pwd, ispop, ajaxurl, security;
 
-    login_user          =  jQuery('#login_user_topbar').val();
-    login_pwd           =  jQuery('#login_pwd_topbar').val();
-    security            =  jQuery('#security-login-topbar').val();
-    ajaxurl             =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    login_user = jQuery('#login_user_topbar').val();
+    login_pwd = jQuery('#login_pwd_topbar').val();
+    security = jQuery('#security-login-topbar').val();
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
 
     jQuery('#login_message_area_topbar').empty().append('<div class="login-alert">' + ajaxcalls_vars.login_loading + '</div>');
     jQuery.ajax({
@@ -1100,24 +1083,23 @@ function wpestate_login_topbar() {
         dataType: 'json',
         url: ajaxurl,
         data: {
-            'action'            :   'ajax_loginx_form_topbar',
-            'login_user'        :   login_user,
-            'login_pwd'         :   login_pwd,
-            'security'          :   security
+            'action': 'ajax_loginx_form_topbar',
+            'login_user': login_user,
+            'login_pwd': login_pwd,
+            'security': security
         },
-
         success: function (data) {
-     
+
             jQuery('#login_message_area_topbar').empty().append('<div class="login-alert">' + data.message + '<div>');
             if (data.loggedin === true) {
-              document.location.href = ajaxcalls_vars.login_redirect;
+                document.location.href = ajaxcalls_vars.login_redirect;
             } else {
                 jQuery('#login_user').val('');
                 jQuery('#login_pwd').val('');
             }
         },
         error: function (errorThrown) {
-           
+
         }
     });
 }
@@ -1127,10 +1109,10 @@ function wpestate_login_mobile() {
     "use strict";
     var login_user, login_pwd, ispop, ajaxurl, security;
 
-    login_user          =  jQuery('#login_user_mobile').val();
-    login_pwd           =  jQuery('#login_pwd_mobile').val();
-    security            =  jQuery('#security-login-mobile').val();
-    ajaxurl             =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    login_user = jQuery('#login_user_mobile').val();
+    login_pwd = jQuery('#login_pwd_mobile').val();
+    security = jQuery('#security-login-mobile').val();
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
 
     jQuery('#login_message_area_mobile').empty().append('<div class="login-alert">' + ajaxcalls_vars.login_loading + '</div>');
     jQuery.ajax({
@@ -1138,24 +1120,23 @@ function wpestate_login_mobile() {
         dataType: 'json',
         url: ajaxurl,
         data: {
-            'action'            :   'wpestate_ajax_loginx_form_mobile',
-            'login_user'        :   login_user,
-            'login_pwd'         :   login_pwd,
-            'security'          :   security
+            'action': 'wpestate_ajax_loginx_form_mobile',
+            'login_user': login_user,
+            'login_pwd': login_pwd,
+            'security': security
         },
-
         success: function (data) {
-     
+
             jQuery('#login_message_area_mobile').empty().append('<div class="login-alert">' + data.message + '<div>');
             if (data.loggedin === true) {
-              document.location.href = ajaxcalls_vars.login_redirect;
+                document.location.href = ajaxcalls_vars.login_redirect;
             } else {
                 jQuery('#login_user_mobile').val('');
                 jQuery('#login_pwd_mobile').val('');
             }
         },
         error: function (errorThrown) {
-           
+
         }
     });
 }
@@ -1224,11 +1205,11 @@ function enable_actions_modal() {
 function wpestate_login() {
     "use strict";
     var login_user, login_pwd, security, ispop, ajaxurl;
-    login_user          =  jQuery('#login_user').val();
-    login_pwd           =  jQuery('#login_pwd').val();
-    security            =  jQuery('#security-login').val();
-    ispop               =  jQuery('#loginpop').val();
-    ajaxurl             =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
+    login_user = jQuery('#login_user').val();
+    login_pwd = jQuery('#login_pwd').val();
+    security = jQuery('#security-login').val();
+    ispop = jQuery('#loginpop').val();
+    ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
 
     jQuery('#login_message_area').empty().append('<div class="login-alert">' + ajaxcalls_vars.login_loading + '</div>');
     jQuery.ajax({
@@ -1236,11 +1217,11 @@ function wpestate_login() {
         dataType: 'json',
         url: ajaxurl,
         data: {
-            'action'            :   'ajax_loginx_form',
-            'login_user'        :   login_user,
-            'login_pwd'         :   login_pwd,
-            'ispop'             :   ispop,
-            'security-login'    :   security
+            'action': 'ajax_loginx_form',
+            'login_user': login_user,
+            'login_pwd': login_pwd,
+            'ispop': ispop,
+            'security-login': security
         },
         success: function (data) {
             jQuery('#login_message_area').empty().append('<div class="login-alert">' + data.message + '<div>');
@@ -1270,15 +1251,15 @@ function wpestate_login() {
 function login_via_facebook(button) {
     "use strict";
     var login_type, ajaxurl;
-    ajaxurl     =   control_vars.admin_url + 'admin-ajax.php';
-    login_type  =   'facebook';
+    ajaxurl = control_vars.admin_url + 'admin-ajax.php';
+    login_type = 'facebook';
 
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'            :   'wpestate_ajax_facebook_login',
-            'login_type'        :   login_type
+            'action': 'wpestate_ajax_facebook_login',
+            'login_type': login_type
         },
         success: function (data) {
             window.location.href = data;
@@ -1294,15 +1275,15 @@ function login_via_facebook(button) {
 function login_via_google(button) {
     "use strict";
     var ajaxurl, login_type;
-    ajaxurl         =  control_vars.admin_url + 'admin-ajax.php';
-    login_type      =  button.attr('data-social');
+    ajaxurl = control_vars.admin_url + 'admin-ajax.php';
+    login_type = button.attr('data-social');
 
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'            :   'wpestate_ajax_google_login',
-            'login_type'        :   login_type
+            'action': 'wpestate_ajax_google_login',
+            'login_type': login_type
         },
         success: function (data) {
             window.location.href = data;
@@ -1318,13 +1299,13 @@ function login_via_google(button) {
 function login_via_google_oauth() {
     "use strict";
     var ajaxurl, login_type;
-    ajaxurl         =  control_vars.admin_url + 'admin-ajax.php';
+    ajaxurl = control_vars.admin_url + 'admin-ajax.php';
 
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         data: {
-            'action'            :   'wpestate_ajax_google_login_oauth'
+            'action': 'wpestate_ajax_google_login_oauth'
         },
         success: function (data) {
             window.location.href = data;
@@ -1340,22 +1321,22 @@ function login_via_google_oauth() {
 function update_menu_bar(newuser) {
     "use strict";
     var usericon, ajaxurl;
-    ajaxurl =   control_vars.admin_url + 'admin-ajax.php';
+    ajaxurl = control_vars.admin_url + 'admin-ajax.php';
 
     jQuery.ajax({
         type: 'POST',
         dataType: 'json',
         url: ajaxurl,
         data: {
-            'action'            :   "wpestate_update_menu_bar",
-            'newuser'           :    newuser
+            'action': "wpestate_update_menu_bar",
+            'newuser': newuser
         },
         success: function (data) {
             jQuery('#user_menu_open').empty().append(data.menu).addClass('menulist');
             usericon = '<div class="menu_user_picture" style="background-image: url(' + data.picture + ')"></div>';
             jQuery('#user_menu_u').append(usericon).addClass('user_loged');
             jQuery('.submit_action').remove();
-            
+
         },
         error: function (errorThrown) {
         }
@@ -1372,18 +1353,17 @@ jQuery(document).ready(function ($) {
     ///////////////////////////////////////////////////////////////////////////////////////////
     //// stripe cancel
     ///////////////////////////////////////////////////////////////////////////////////////////
-    $('#stripe_cancel').click(function(){
+    $('#stripe_cancel').click(function () {
         var stripe_user_id, ajaxurl;
-        stripe_user_id    =   $(this).attr('data-stripeid');
-        ajaxurl         =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
+        stripe_user_id = $(this).attr('data-stripeid');
+        ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
         $('#stripe_cancel').text(ajaxcalls_vars.saving);
         $.ajax({
             type: 'POST',
             url: ajaxurl,
             data: {
-                'action'                  :   'wpestate_cancel_stripe',
-                'stripe_customer_id'      :   stripe_user_id,
-               
+                'action': 'wpestate_cancel_stripe',
+                'stripe_customer_id': stripe_user_id,
             },
             success: function (data) {
                 $('#stripe_cancel').text(ajaxcalls_vars.stripecancel);
@@ -1408,7 +1388,7 @@ jQuery(document).ready(function ($) {
     $('.make_featured').click(function () {
         var prop_id = $(this).attr('data-postid');
         make_prop_featured(prop_id, $(this));
-        $(this).unbind( "click" );
+        $(this).unbind("click");
     });
 
 
@@ -1417,11 +1397,11 @@ jQuery(document).ready(function ($) {
     ///////////////////////////////////////////////////////////////////////////////////////////  
     $('#pick_pack').click(function () {
         var pay_paypal;
-        pay_paypal='<div class="modal fade" id="paypal_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-body listing-submit">'+ajaxcalls_vars.paypal+'</div></div></div></div></div>';
+        pay_paypal = '<div class="modal fade" id="paypal_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-body listing-submit">' + ajaxcalls_vars.paypal + '</div></div></div></div></div>';
         jQuery('body').append(pay_paypal);
         jQuery('#paypal_modal').modal();
-            
-            
+
+
         if ($('#pack_recuring').is(':checked')) {
             recuring_pay_pack_via_paypal();
         } else {
@@ -1433,12 +1413,12 @@ jQuery(document).ready(function ($) {
     //////// listing pay via paypal
     ///////////////////////////////////////////////////////////////////////////////////////////  
     $('.listing_submit_normal').click(function () {
-        var prop_id, featured_checker, is_featured, is_upgrade,pay_paypal;
-        pay_paypal='<div class="modal fade" id="paypal_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-body listing-submit">'+ajaxcalls_vars.paypal+'</div></div></div></div></div>';
+        var prop_id, featured_checker, is_featured, is_upgrade, pay_paypal;
+        pay_paypal = '<div class="modal fade" id="paypal_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-body listing-submit">' + ajaxcalls_vars.paypal + '</div></div></div></div></div>';
         jQuery('body').append(pay_paypal);
         jQuery('#paypal_modal').modal();
-        
-        
+
+
         prop_id = $(this).attr('data-listingid');
         featured_checker = $(this).parent().find('input');
         is_featured = 0;
@@ -1478,7 +1458,7 @@ jQuery(document).ready(function ($) {
         login_via_google($(this));
     });
 
-  $('#googlelogin, #googleloginsidebar, #googleloginsidebar_topbar,#googleloginsidebar_mobile').click(function () {
+    $('#googlelogin, #googleloginsidebar, #googleloginsidebar_topbar,#googleloginsidebar_mobile').click(function () {
         login_via_google_oauth();
     });
 
@@ -1487,15 +1467,15 @@ jQuery(document).ready(function ($) {
     ///////////////////////////////////////////////////////////////////////////////////////////
     $('#agent_submit').click(function () {
         var contact_name, contact_email, contact_phone, contact_coment, agent_email, property_id, nonce, ajaxurl;
-        contact_name    =   $('#agent_contact_name').val();
-        contact_email   =   $('#agent_user_email').val();
-        contact_phone   =   $('#agent_phone').val();
-        contact_coment  =   $('#agent_comment').val();
-        agent_email     =   $('#agent_email').val();
-        property_id     =   $('#agent_property_id').val();
-        nonce           =   $('#agent_property_ajax_nonce').val();
-        ajaxurl         =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
-        
+        contact_name = $('#agent_contact_name').val();
+        contact_email = $('#agent_user_email').val();
+        contact_phone = $('#agent_phone').val();
+        contact_coment = $('#agent_comment').val();
+        agent_email = $('#agent_email').val();
+        property_id = $('#agent_property_id').val();
+        nonce = $('#agent_property_ajax_nonce').val();
+        ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
+
         $('#alert-agent-contact').empty().append(ajaxcalls_vars.sending);
 
         $.ajax({
@@ -1503,18 +1483,18 @@ jQuery(document).ready(function ($) {
             dataType: 'json',
             url: ajaxurl,
             data: {
-                'action'    :   'wpestate_ajax_agent_contact_form',
-                'name'      :   contact_name,
-                'email'     :   contact_email,
-                'phone'     :   contact_phone,
-                'comment'   :   contact_coment,
-                'agentemail':   agent_email,
-                'propid'    :   property_id,
-                'nonce'     :   nonce
+                'action': 'wpestate_ajax_agent_contact_form',
+                'name': contact_name,
+                'email': contact_email,
+                'phone': contact_phone,
+                'comment': contact_coment,
+                'agentemail': agent_email,
+                'propid': property_id,
+                'nonce': nonce
             },
             success: function (data) {
-               // This outputs the result of the ajax request
-         
+                // This outputs the result of the ajax request
+
                 if (data.sent) {
                     $('#agent_contact_name').val('');
                     $('#agent_user_email').val('');
@@ -1528,70 +1508,69 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////  
     ////////  property listing listing
     ////////////////////////////////////////////////////////////////////////////////////////////       
 
     $('.listing_filters_head li').click(function () {
-        
+
         //console.log('xx');
-        
+
         var pick, value, parent;
         pick = $(this).text();
         value = $(this).attr('data-value');
         parent = $(this).parent().parent();
-        parent.find('.filter_menu_trigger').text(pick).append('<span class="caret caret_filter"></span>').attr('data-value',value);
-        parent.find('input:hidden'). val(value);
-       
+        parent.find('.filter_menu_trigger').text(pick).append('<span class="caret caret_filter"></span>').attr('data-value', value);
+        parent.find('input:hidden').val(value);
+
         start_filtering(1);
-        
-       
-        show_pins_filters_from_file();       
+
+
+        show_pins_filters_from_file();
     });
-    
-    
-    
-    
+
+
+
+
     ///////////////////////////////////////////////////////////////////////////////////////////  
     //////// advanced search filtering
     ////////////////////////////////////////////////////////////////////////////////////////////       
 
     $('.adv_listing_filters_head li').click(function () {
-        
+
         //console.log('xx');
 
-        var pick, value, parent, args,page_id,ajaxurl;
-        ajaxurl         =   ajaxcalls_vars.admin_url + 'admin-ajax.php';
+        var pick, value, parent, args, page_id, ajaxurl;
+        ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
         pick = $(this).text();
         value = $(this).attr('data-value');
         parent = $(this).parent().parent();
-        parent.find('.filter_menu_trigger').text(pick).append('<span class="caret caret_filter"></span>').attr('data-value',value);
+        parent.find('.filter_menu_trigger').text(pick).append('<span class="caret caret_filter"></span>').attr('data-value', value);
         args = $('#searcharg').val();
         page_id = $('#page_idx').val();
         $('#listing_ajax_container').empty();
         $('#listing_loader').show();
-        
+
         $.ajax({
-                type: 'POST',
-                url: ajaxurl,
-              
-                data: {
-                    'action'    :   'wpestate_advanced_search_filters',
-                    'args'      :   args,
-                    'value'     :   value,
-                    'page_id'   :   page_id
-                },
-                success: function (data) {
-               
-                    $('#listing_loader').hide();
-                    $('#listing_ajax_container').append(data);
-                     restart_js_after_ajax();
-                },
-                error: function (errorThrown) {
-                }
-            }); //end ajax
+            type: 'POST',
+            url: ajaxurl,
+            data: {
+                'action': 'wpestate_advanced_search_filters',
+                'args': args,
+                'value': value,
+                'page_id': page_id
+            },
+            success: function (data) {
+
+                $('#listing_loader').hide();
+                $('#listing_ajax_container').append(data);
+                restart_js_after_ajax();
+            },
+            error: function (errorThrown) {
+            }
+        }); //end ajax
     });
 
 
@@ -1609,7 +1588,7 @@ jQuery(document).ready(function ($) {
     $('.icon-fav-on-remove').click(function (event) {
         event.stopPropagation();
         $(this).parent().parent().remove();
-        
+
     });
 
     ///////////////////////////////////////////////////////////////////////////////////////////  
@@ -1617,11 +1596,11 @@ jQuery(document).ready(function ($) {
     ////////////////////////////////////////////////////////////////////////////////////////////        
     $('#add_favorites').click(function () {
         var post_id, securitypass, ajaxurl;
-        post_id         =  $('#add_favorites').attr('data-postid');
-        securitypass    =  $('#security-pass').val();
-        ajaxurl         =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
+        post_id = $('#add_favorites').attr('data-postid');
+        securitypass = $('#security-pass').val();
+        ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
 
-        if (parseInt(ajaxcalls_vars.userid, 10)  === 0) {
+        if (parseInt(ajaxcalls_vars.userid, 10) === 0) {
             show_login_form();
         } else {
             $('#add_favorites').text(ajaxcalls_vars.saving);
@@ -1630,8 +1609,8 @@ jQuery(document).ready(function ($) {
                 url: ajaxurl,
                 dataType: 'json',
                 data: {
-                    'action'            :   'wpestate_ajax_add_fav',
-                    'post_id'           :    post_id
+                    'action': 'wpestate_ajax_add_fav',
+                    'post_id': post_id
                 },
                 success: function (data) {
                     if (data.added) {
@@ -1674,7 +1653,7 @@ jQuery(document).ready(function ($) {
             wpestate_register_user(2);
         }
     });
-   
+
     ///////////////////////////////////////////////////////////////////////////////////////////  
     ////////  TOPBAR Register ajax
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -1688,8 +1667,8 @@ jQuery(document).ready(function ($) {
             wpestate_register_user(1);
         }
     });
-    
-     $('#wp-submit-register_mobile').click(function () {
+
+    $('#wp-submit-register_mobile').click(function () {
         wpestate_register_user(5);
     });
 
@@ -1699,8 +1678,8 @@ jQuery(document).ready(function ($) {
             wpestate_register_user(5);
         }
     });
-    
-    
+
+
     ///////////////////////////////////////////////////////////////////////////////////////////  
     ////////  login/forgot password  actions
     ////////////////////////////////////////////////////////////////////////////////////////////  
@@ -1761,20 +1740,20 @@ jQuery(document).ready(function ($) {
     $('#wp-forgot-but').click(function () {
         wpestate_forgot(1);
     });
-    
+
     $('#wp-forgot-but-topbar').click(function () {
         wpestate_forgot(2);
     });
-     
+
     $('#wp-forgot-but-mobile').click(function () {
         wpestate_forgot(5);
     });
-    
-    
+
+
     $('#wp-forgot-but_shortcode').click(function () {
         wpestate_forgot(3);
     });
-    
+
 
     $('#forgot_email').keydown(function (e) {
         if (e.keyCode === 13) {
@@ -1789,15 +1768,15 @@ jQuery(document).ready(function ($) {
             wpestate_forgot(2);
         }
     });
-    
+
     $('#forgot_email_topbar').keydown(function (e) {
         if (e.keyCode === 13) {
             e.preventDefault();
             wpestate_forgot(3);
         }
     });
-    
-    
+
+
     ///////////////////////////////////////////////////////////////////////////////////////////  
     //////// TOPBAR  login/forgot password  actions
     ////////////////////////////////////////////////////////////////////////////////////////////     
@@ -1816,7 +1795,7 @@ jQuery(document).ready(function ($) {
         $('#login-div-title-topbar').show();
         $('#register-div-title-topbar').hide();
     });
-    
+
     $('#widget_register_mobile').click(function (event) {
         event.preventDefault();
         $('#login-div_mobile').hide();
@@ -1832,10 +1811,10 @@ jQuery(document).ready(function ($) {
         $('#login-div-title-mobile').show();
         $('#register-div-title-mobile').hide();
     });
-    
-    
-    
-    
+
+
+
+
     ///////////////////////////////////////////////////////////////////////////////////////////  
     //////// WIDGET  login/forgot password  actions
     ////////////////////////////////////////////////////////////////////////////////////////////     
@@ -1909,7 +1888,7 @@ jQuery(document).ready(function ($) {
             wpestate_login_mobile();
         }
     });
-    
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////  
     ////////  Ajax update password
@@ -1924,76 +1903,84 @@ jQuery(document).ready(function ($) {
     $('#change_pass').click(function () {
         wpestate_change_pass_profile();
     });
-  
+
     ///////////////////////////////////////////////////////////////////////////////////////////  
     ////////  update profile
     ////////////////////////////////////////////////////////////////////////////////////////////   
 
     $('#update_profile').click(function () {
-         
-        var  userurl, usermobile, userpinterest, userlinkedin, usertwitter, userfacebook, profile_image_url, profile_image_url_small, firstname, secondname, useremail, userphone, userskype, usertitle, description, ajaxurl, securityprofile, upload_picture, how_long, looking_for, sexual_preference, sleeping_span, party, user_age;
-        firstname           = $('#firstname').val();
-        secondname          =  $('#secondname').val();
-        useremail           =  $('#useremail').val();
-        userphone           =  $('#userphone').val();
-        usermobile          =  $('#usermobile').val();
-        userskype           =  $('#userskype').val();
-        usertitle           =  $('#usertitle').val();
-        description         =  $('#about_me').val();
-        userfacebook        =  $('#userfacebook').val();
-        usertwitter         =  $('#usertwitter').val();
-        userlinkedin        =  $('#userlinkedin').val();
-        userpinterest       =  $('#userpinterest').val();
-        userurl             =  $('#website').val();
+
+        var userurl, usermobile, userpinterest, userlinkedin, usertwitter, userfacebook, profile_image_url, profile_image_url_small, firstname, secondname, useremail, userphone, userskype, usertitle, description, ajaxurl, securityprofile, upload_picture, how_long, looking_for, sexual_preference, sleeping_span, party, user_age;
+        firstname = $('#firstname').val();
+        secondname = $('#secondname').val();
+        useremail = $('#useremail').val();
+        userphone = $('#userphone').val();
+        usermobile = $('#usermobile').val();
+        userskype = $('#userskype').val();
+        usertitle = $('#usertitle').val();
+        description = $('#about_me').val();
+        userfacebook = $('#userfacebook').val();
+        usertwitter = $('#usertwitter').val();
+        userlinkedin = $('#userlinkedin').val();
+        userpinterest = $('#userpinterest').val();
+        userurl = $('#website').val();
         //
-        how_long            =  $('#how_long').val();
-        looking_for         =  $('#looking_for').val();
-        sexual_preference   =  $('#sexual_preference').val();
-        sleeping_span       =  $('#sleeping_span').val();
-        party               =  $('#party').val();
-        user_age            =  $('#user_age').val();
-        
-        ajaxurl         =  ajaxcalls_vars.admin_url + 'admin-ajax.php';
-        securityprofile =  $('#security-profile').val();
-        upload_picture  =  $('#upload_picture').val();
-        profile_image_url  = $('#profile-image').attr('data-profileurl');
-        profile_image_url_small  = $('#profile-image').attr('data-smallprofileurl');
-       
+        how_long = $('#how_long').val();
+        looking_for = $('#looking_for').val();
+        sexual_preference = $('#sexual_preference').val();
+        sleeping_span = $('#sleeping_span').val();
+        party = $('#party').val();
+        user_age = $('#user_age').val();
+
+        ajaxurl = ajaxcalls_vars.admin_url + 'admin-ajax.php';
+        securityprofile = $('#security-profile').val();
+        upload_picture = $('#upload_picture').val();
+        profile_image_url = $('#profile-image').attr('data-profileurl');
+        profile_image_url_small = $('#profile-image').attr('data-smallprofileurl');
+
 
         $.ajax({
             type: 'POST',
             url: ajaxurl,
+            beforeSend: function( xhr ) {
+                $('#profile_message').html("");
+            },            
             data: {
-                'action'            :   'wpestate_ajax_update_profile',
-                'firstname'         :   firstname,
-                'secondname'        :   secondname,
-                'useremail'         :   useremail,
-                'userphone'         :   userphone,
-                'usermobile'        :   usermobile,
-                'userskype'         :   userskype,
-                'usertitle'         :   usertitle,
-                'description'       :   description,
-                'upload_picture'    :   upload_picture,
-                'security-profile'  :   securityprofile,
-                'profile_image_url' :   profile_image_url,
-                'profile_image_url_small':profile_image_url_small,
-                'userfacebook'      :   userfacebook,
-                'usertwitter'       :   usertwitter,
-                'userlinkedin'      :   userlinkedin,
-                'userpinterest'     :   userpinterest,
-                'userurl'           :   userurl,
-                'how_long'          :   how_long,
-                'looking_for'       :   looking_for,
-                'sexual_preference' :   sexual_preference,
-                'sleeping_span'     :   sleeping_span,
-                'party'             :   party,
-                'user_age'          :   user_age,
-                'data'              :   $('#user_profile_div').find('input, select').serialize()
+                'action': 'wpestate_ajax_update_profile',
+                'firstname': firstname,
+                'secondname': secondname,
+                'useremail': useremail,
+                'userphone': userphone,
+                'usermobile': usermobile,
+                'userskype': userskype,
+                'usertitle': usertitle,
+                'description': description,
+                'upload_picture': upload_picture,
+                'security-profile': securityprofile,
+                'profile_image_url': profile_image_url,
+                'profile_image_url_small': profile_image_url_small,
+                'userfacebook': userfacebook,
+                'usertwitter': usertwitter,
+                'userlinkedin': userlinkedin,
+                'userpinterest': userpinterest,
+                'userurl': userurl,
+                'how_long': how_long,
+                'looking_for': looking_for,
+                'sexual_preference': sexual_preference,
+                'sleeping_span': sleeping_span,
+                'party': party,
+                'user_age': user_age,
+                'data': $('#user_profile_div').find('input, select').serialize()
             },
             success: function (data) {
                 $('#profile_message').append('<div class="login-alert">' + data + '<div>');
+                $('html,body').scrollTop(0);
+                //console.log('success');
+
             },
-            error: function (errorThrown) {
+            error: function (errorThrown) {                
+                $('#profile_message').append('<div class="login-alert">' + errorThrown.responseText + '<div>');
+                $('html,body').scrollTop(0);
             }
         });
     });
