@@ -1973,7 +1973,7 @@ jQuery(document).ready(function ($) {
                 'data': $('#user_profile_div').find('input, select').serialize()
             },
             success: function (data) {
-                $('#profile_message').append('<div class="login-alert">' + data + '<div>');
+                $('#profile_message').append('<div class="login-alert success-alert">' + data + '<div>');
                 $('html,body').scrollTop(0);
                 //console.log('success');
 

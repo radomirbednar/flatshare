@@ -9353,11 +9353,11 @@ table tbody tr td {
 
 .alert-message,
 .login-alert{
-    color: #fff;
+    color: #a94442;
     font-size: 13px;
     line-height: 22px;
     max-width: 227px;
-    background-color: #ED5565;
+    background-color: #f2dede;
     margin-bottom: 13px;
     padding: 1px 5px;
     border-radius: 4px;
@@ -13177,4 +13177,8 @@ span.sub{
 }
 .birthdate-row {
     margin-top: 15px;
+}
+.success-alert {
+    background-color: #dff0d8;
+    color: #3c763d;
 }

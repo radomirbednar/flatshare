@@ -10,6 +10,10 @@
 
 
 @media only screen and (max-width: 1200px) and (min-width: 992px){
+    
+    .form-control-skills .inline-checkboxes .flcheckbox {
+        margin-right: 20px;
+    }    
 
     #access {
         margin-right: -7px;
@@ -158,8 +162,8 @@
         right:450px;
     }
 
-    .agentpic-wrapper .listing-cover,
-    .agent_unit_social_single{
+    .agentpic-wrapper .listing-cover /*,
+    .agent_unit_social_single*/ {
         max-width: 320px;
     }
 
@@ -1505,7 +1509,12 @@
 
 }
 
+
+
 @media only screen and (max-width: 768px){
+    
+
+    
     #tab_prpg li{
         width:100%;
     }
@@ -2259,6 +2268,7 @@
         max-width: 398px;
     }*/
 
+
 }
 
 
@@ -2427,3 +2437,10 @@
 .language-skill {
     margin-top: 10px;
 }*/
+
+
+@media only screen and (min-width: 768px){
+    .member-image-wrap {
+        float: left;
+    }
+}
