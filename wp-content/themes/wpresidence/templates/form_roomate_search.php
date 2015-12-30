@@ -9,7 +9,7 @@ if (!isset($prefix)) {
 
     <div class="form-in">
 
-        <div class="adv1-holder triple-switch" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : '' ?>>
+        <div class="adv1-holder triple-switch" <?php /*echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : '' */ ?>>
 
             <div class="form-control-half">
 
