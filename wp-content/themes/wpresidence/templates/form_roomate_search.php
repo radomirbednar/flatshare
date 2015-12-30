@@ -357,6 +357,7 @@ if (!isset($prefix)) {
 
                 <!--<div class="clearfix"></div>-->
                 <div class="form-control-full clearfix language-skill">
+                    <div class="clearfix"></div>
                     <div class="form-control-in">
                         <label><?php _e('Language skills', 'wpestate'); ?></label>
                         <p class="inline-checkboxes">
