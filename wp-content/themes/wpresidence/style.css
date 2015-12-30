@@ -3175,6 +3175,11 @@ input.form-control::-moz-placeholder {
     color: #3D89B2;
     font-size: 1.2em;
 }
+.listing_detail i.fa-times{
+    color: #ccc;
+    font-size: 1em;
+}
+
 .listing_unit_price_wrapper{
     position: absolute;
     bottom: 0px;
