@@ -3182,14 +3182,16 @@ input.form-control::-moz-placeholder {
     right: 15px;
     height: auto;
     border-top: 1px solid #f0f0f0;
-    color: #3C90BE;
-    font-size: 16px;
+    color: #3C90BE;    
     padding-top: 10px;
     padding-bottom: 10px;
     line-height: 20px;
     min-height: 41px;
 }
-
+.listing_unit_price_wrapper, 
+.listing_unit_price_wrapper .price_label {
+    font-size: 14px;
+}
 
 
 
