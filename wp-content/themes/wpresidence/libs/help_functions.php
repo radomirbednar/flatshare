@@ -177,9 +177,9 @@ function wpestate_show_price($post_id,$currency,$where_currency,$return=0){
            $price = number_format($price,0,'.',$th_separator);
 
             if ($where_currency == 'before') {
-                $price = $currency . ' ' . $price;
+                $price = $currency . $price;
             } else {
-                $price = $price . ' ' . $currency;
+                $price = $price .  $currency;
             }
             
         }else{
@@ -190,9 +190,9 @@ function wpestate_show_price($post_id,$currency,$where_currency,$return=0){
   
     
     if($return==0){
-        print $price_label_before.' '.$price.' '.$price_label;
+        print $price_label_before.' '.$price.'/'.$price_label;
     }else{
-        return $price_label_before.' '.$price.' '.$price_label;
+        return $price_label_before.' '.$price.'/'.$price_label;
     }
 }
 endif;

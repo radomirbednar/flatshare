@@ -3175,13 +3175,6 @@ input.form-control::-moz-placeholder {
     color: #3D89B2;
     font-size: 1.2em;
 }
-
-.listing_detail i.fa-times{
-    color: #ccc;
-    font-size: 1em;
-}
-
- 
 .listing_unit_price_wrapper{
     position: absolute;
     bottom: 0px;
@@ -3195,6 +3188,10 @@ input.form-control::-moz-placeholder {
     padding-bottom: 10px;
     line-height: 20px;
     min-height: 41px;
+}
+.listing_unit_price_wrapper, 
+.listing_unit_price_wrapper .price_label {
+    font-size: 14px;
 }
 
 
@@ -4657,7 +4654,10 @@ iframe .player .video-wrapper{
     float: right;
     margin-right: 14px
 }
-  
+
+
+
+
 .property-panel h4 a:hover{
     text-decoration: none;
 }
@@ -7191,7 +7191,8 @@ table tbody tr td {
     float: left;
     margin-bottom: 13px;
 }
- 
+
+
 #results,
 #results_no{
     display: none;
@@ -7225,7 +7226,7 @@ table tbody tr td {
     /*background-color: #fdfdfd;*/
     /*height: 120px;*/
     border-bottom-left-radius: 4px;
-   /* border-left: 1px solid #f0f0f0;*/
+    /*border-left: 1px solid #f0f0f0;*/
 }
 
 .header_media .adv1-holder {
@@ -12025,7 +12026,6 @@ select.dsidx-resp-select {
     float: none;
     padding: 0px 5px !important;
 }
-
 #adv-search-mobile #mobile-rental .adv_search_slider{    
     padding: 0px 25px !important;
 }
@@ -12035,6 +12035,7 @@ select.dsidx-resp-select {
 #mobile-rental .adv_search_slider p {    
     margin-left: -9px;
 }
+
 
 #advanced_search_shortcode .adv_search_slider{
     display: inline-block;
@@ -13164,3 +13165,4 @@ span.sub{
     margin-left: 0;
     
 }
+
