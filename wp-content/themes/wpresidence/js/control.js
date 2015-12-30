@@ -886,10 +886,9 @@ jQuery(document).ready(function ($) {
     $('#roommate_extended_close_adv').click(function (e){ 
         e.preventDefault();  
         $('#adv-search-1').removeClass('opened'); 
-    });
+    }); 
     
-    
-    /*otevrena u druheho */
+    /*otevrena u druheho */ 
     
     $('#adv_extended_options_text_adv').click(function (e) {
         e.preventDefault();   
@@ -900,9 +899,7 @@ jQuery(document).ready(function ($) {
         e.preventDefault();   
         $('#adv-search-1').removeClass('opened-special');        
     });
-      
-      
-      
+       
     /*aktivni tab */
     $('.rental-tab').click(function() {  
         $('#adv-search-1').removeClass('flatmate-active');  
