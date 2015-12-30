@@ -528,13 +528,8 @@ jQuery(document).ready(function ($) {
                 },
                 error: function (errorThrown) {
                 }
-            });//end ajax
-
-
-
-
-        });
-
+            });//end ajax 
+        }); 
     }
 
 
@@ -586,17 +581,7 @@ jQuery(document).ready(function ($) {
     })
     // on submit
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
     ////////////////////////////////////////////////////////////////////////////
     /// slider price
@@ -869,7 +854,7 @@ jQuery(document).ready(function ($) {
         e.preventDefault(); 
         $('.adv-search-1.adv_extended_class').css('height', 'auto'); 
         $('.adv_extended_class .adv1-holder').css('height', 'auto'); 
-        $('#adv-search-1').addClass('opened');
+       
     
         $(this).parent().find('.adv_extended_options_text').hide();
         $(this).parent().find('.extended_search_check_wrapper').slideDown();
@@ -880,7 +865,7 @@ jQuery(document).ready(function ($) {
 
     $('#adv_extended_close_adv, #roommate_extended_close_adv, #mo_roommate_extended_close_adv').click(function () { 
         $(this).parents('#adv-search-1').find('.extended_search_check_wrapper').slideUp(); 
-        $('#adv-search-1').removeClass('opened'); 
+    
         //$(this).hide();
         $('#adv_extended_close_adv, #roommate_extended_close_adv, #mo_roommate_extended_close_adv').hide();
         $(this).parents('#adv-search-1').find('.adv_extended_options_text').show();
@@ -889,23 +874,47 @@ jQuery(document).ready(function ($) {
         $(this).parent().find('.ra').val(0);
     });
      
-    $('#adv_extended_options_text_adv').click(function (e) { 
+      
+      
+    /*otevrena u prvniho*/
+    
+    
+    $('#roommate-advance').click(function (e) { 
         e.preventDefault(); 
-        $('#adv-search-1').addClass('opened-extra'); 
-    });
-    
-    
-    $('#adv_extended_close_adv').click(function (e){ 
-        e.preventDefault(); 
-        $('#adv-search-1').removeClass('opened-extra'); 
-    });
-    
-     
-    $('#what-lookup li a').click(function(){      
+        $('#adv-search-1').addClass('opened'); 
+    });    
+    $('#roommate_extended_close_adv').click(function (e){ 
+        e.preventDefault();  
         $('#adv-search-1').removeClass('opened'); 
     });
     
-     
+    
+    /*otevrena u druheho */
+    
+    $('#adv_extended_options_text_adv').click(function (e) {
+        e.preventDefault();   
+        $('#adv-search-1').addClass('opened-special');      
+    });
+  
+    $('#adv_extended_close_adv').click(function (e){ 
+        e.preventDefault();   
+        $('#adv-search-1').removeClass('opened-special');        
+    });
+      
+      
+      
+    /*aktivni tab */
+    $('.rental-tab').click(function() {  
+        $('#adv-search-1').removeClass('flatmate-active');  
+    });
+   
+    $('.flatmate-tab').click(function(){  
+       $('#adv-search-1').addClass('flatmate-active');  
+    });
+    
+    
+    
+
 
     //////////////////////////////////////////////////////////////
 
@@ -1186,16 +1195,12 @@ jQuery(document).ready(function ($) {
         jQuery(this).parent().append('<i class="fa thumber fa-star"></i>')
         jQuery('#attachthumb').val(jQuery(this).parent().attr('data-imageid'));
     });
-
-
-
-
-
+ 
+ 
     $('#switch').click(function () {
         $('.main_wrapper').toggleClass('wide');
-    });
-
-
+    }); 
+    
     $('#accordion_prop_addr, #accordion_prop_details, #accordion_prop_features').on('shown.bs.collapse', function () {
         $(this).find('h4').removeClass('carusel_closed');
     })
@@ -1333,14 +1338,9 @@ jQuery(document).ready(function ($) {
         } else {
 
             $('#google_map_prop_list_wrapper').addClass('fullscreen');
-            $('#google_map_prop_list_sidebar').addClass('fullscreen');
-
-
-
-
+            $('#google_map_prop_list_sidebar').addClass('fullscreen'); 
             $('#google_map_prop_list_wrapper').addClass('fullhalf');
-
-
+ 
             wrap_h = $('#gmap_wrapper').outerHeight();
             map_h = $('#googleMap').outerHeight();
             $('#gmap_wrapper,#googleMap').css('height', '100%').addClass('fullmap');
@@ -1354,8 +1354,7 @@ jQuery(document).ready(function ($) {
             }
 
             $('#openmap').hide();
-            $(this).empty().append('<i class="fa fa-square-o"></i>' + control_vars.default).addClass('spanselected');
-
+            $(this).empty().append('<i class="fa fa-square-o"></i>' + control_vars.default).addClass('spanselected'); 
         }
 
 
@@ -1467,9 +1466,7 @@ jQuery(document).ready(function ($) {
         if (document.getElementById("adv_extended_options_text_adv") !== null) {
             $("#adv-search-1").toggleClass('adv-search-1-close-extended');
         } else {
-            $("#adv-search-1").toggleClass('adv-search-1-close');
-
-
+            $("#adv-search-1").toggleClass('adv-search-1-close'); 
         }
     });
 
