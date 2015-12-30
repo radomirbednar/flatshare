@@ -54,13 +54,17 @@ global $property_label_before;
  
         <select class="form-control" id="property_label_before" name="property_label_before" >  
             <?php
-            $property_before_array = array('All include', '+ Charges');
-            foreach ($property_before_array as $property_before) {
+            $property_before_array = array(
+                __('All Inc.', 'wpestate') => __('All include', 'wpestate'), 
+                __('+ Charges', 'wpestate') => __('+ Charges', 'wpestate')
+                );
+            
+            foreach ($property_before_array as $key => $property_before) {
                 $selected = "";
                 if ($property_before == $property_label_before) {
                     $selected = "selected";
                 }
-                echo '<option ' . $selected . ' value="' . $property_before . '">' . $property_before . '</option>';
+                echo '<option ' . $selected . ' value="' . esc_attr($key) . '">' . $property_before . '</option>';
             }
             ?> 
         </select>  
