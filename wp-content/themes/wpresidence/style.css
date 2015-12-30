@@ -4645,61 +4645,45 @@ iframe .player .video-wrapper{
 }
 .property-panel h4:hover :after{
     color:#3C90BE;
-}
-
+} 
 .property-panel  .carusel_closed:after{
     font-family: "fontawesome";
     content: "\f107";
     position: relative;
     float: right;
     margin-right: 14px
-}
-
-
-
-
+} 
 .property-panel h4 a:hover{
     text-decoration: none;
-}
-
+} 
 .property-panel .panel-body{
     padding: 15px 15px;
-}
-
+} 
 .listing_detail {
     padding: 3px 0px;
-}
-
+} 
 .property-panel i{
     margin-right: 10px;
-}
-
+} 
 .listing-content .agent_contanct_form{
     margin-left: 0px;
     float:left;
     width:100%;
     margin-top:30px;
-}
-
+} 
 .listing-content .agent_picture{
     padding-left: 0px;
-}
-
+} 
 .listing-content .mylistings{
     padding: 0px;
     margin: 0px -15px 26px -15px;
     width:100%;
-}
-
+} 
 .listing-content .agent_content,
 .listing-content .agentpic-wrapper{
     padding-left: 0px;
     max-width:270px;
-}
-
-
-
-
+} 
 .notice_area{
     width: 100%;
     border-top: 1px solid #f0f0f0;
