@@ -144,108 +144,13 @@ if ($user_custom_picture == '') {
                             <?php endforeach; ?>
                         </select>    
                     </div> 
-                    
+
                 </div>
-                
+
 
                 <div class="row">
                     <div class="col-md-6"> 
-                        <div class="switcher fl-row"> 
-                            <label><?php _e('For how long', 'wpestate'); ?></label> 
-                            <div class="value-row">
-                                <input id="how_long-1" name="how_long" type="radio" value="1" class="hidden" <?php echo empty($how_long) || 1 == $how_long ? ' checked="checked" ' : '' ?>>
-                                <input id="how_long-2" name="how_long" type="radio" value="2" class="hidden" <?php echo isset($how_long) && 2 == $how_long ? ' checked="checked" ' : '' ?>>
-                                <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo empty($how_long) || 1 == $how_long ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Short term', 'wpestate'); ?></label>
-                                <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($how_long) && 2 == $how_long ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Long term', 'wpestate'); ?></label>
-                            </div>                 
-                        </div> 
-                        <div class="switcher fl-row">                            
-                            <label><?php _e('Looking for', 'wpestate'); ?></label>
 
-                            <div class="value-row">
-                                <input id="looking_for-1" name="looking_for" type="radio" value="1" class="hidden" <?php echo empty($looking_for) || 1 == $looking_for ? ' checked="checked" ' : '' ?>>
-                                <input id="looking_for-2" name="looking_for" type="radio" value="2" class="hidden" <?php echo isset($looking_for) && 2 == $looking_for ? ' checked="checked" ' : '' ?>>
-                                <label for="looking_for-1" class="wpb_button wpb_btn-large <?php echo empty($looking_for) || 1 == $looking_for ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Room', 'wpestate'); ?></label>
-                                <label for="looking_for-2" class="wpb_button wpb_btn-large <?php echo isset($looking_for) && 2 == $looking_for ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Flat', 'wpestate'); ?></label>
-                            </div>
-                        </div>
-
-                        <div class="switcher fl-row">                            
-                            <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
-
-                            <div class="value-row">
-                                <input id="sexual_preference-1" name="sexual_preference" type="radio" value="1" class="hidden" <?php echo empty($sexual_preference) || 1 == $sexual_preference ? ' checked="checked" ' : '' ?>>
-                                <input id="sexual_preference-2" name="sexual_preference" type="radio" value="2" class="hidden" <?php echo isset($sexual_preference) && 2 == $sexual_preference ? ' checked="checked" ' : '' ?>>
-                                <label for="sexual_preference-1" class="wpb_button wpb_btn-large <?php echo empty($sexual_preference) || 1 == $sexual_preference ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Straight', 'wpestate'); ?></label>
-                                <label for="sexual_preference-2" class="wpb_button wpb_btn-large <?php echo isset($sexual_preference) && 2 == $sexual_preference ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Bi / Gay', 'wpestate'); ?></label>
-                            </div>
-                        </div>
-
-                        <div class="switcher fl-row">                            
-                            <label><?php _e('Gender', 'wpestate'); ?></label>
-                            <div class="value-row">
-                                <input id="user_gender-1" name="user_gender" type="radio" value="1" class="hidden" <?php echo isset($user_gender) && 1 == $user_gender ? ' checked="checked" ' : '' ?>>
-                                <input id="user_gender-2" name="user_gender" type="radio" value="2" class="hidden" <?php echo empty($user_gender) || 2 == $user_gender ? ' checked="checked" ' : '' ?>>
-                                <label for="user_gender-2" class="wpb_button wpb_btn-large <?php echo empty($user_gender) || 2 == $user_gender ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Female', 'wpestate'); ?></label>
-                                <label for="user_gender-1" class="wpb_button wpb_btn-large <?php echo isset($user_gender) && 1 == $user_gender ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Male', 'wpestate'); ?></label>                    
-                            </div>
-                        </div>
-
-                        <div class="switcher fl-row">                            
-                            <label><?php _e('Sleep during week', 'wpestate'); ?></label>
-
-                            <div class="value-row">
-                                <input id="sleeping_span-1" name="sleeping_span" type="radio" value="1" class="hidden" <?php echo empty($sleeping_span) || 1 == $sleeping_span ? ' checked="checked" ' : '' ?>>
-                                <input id="sleeping_span-2" name="sleeping_span" type="radio" value="2" class="hidden" <?php echo isset($sleeping_span) && 2 == $sleeping_span ? ' checked="checked" ' : '' ?>>
-                                <label for="sleeping_span-1" class="wpb_button wpb_btn-large <?php echo empty($sleeping_span) || 1 == $sleeping_span ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Before 11PM', 'wpestate'); ?></label>
-                                <label for="sleeping_span-2" class="wpb_button wpb_btn-large <?php echo isset($sleeping_span) && 2 == $sleeping_span ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('After 11PM', 'wpestate'); ?></label>
-                            </div>
-                        </div>
-
-                        <div class="switcher fl-row">                            
-                            <label><?php _e('Couple', 'wpestate'); ?></label>
-
-                            <div class="value-row">
-                                <input id="couple-1" name="couple" type="radio" value="1" class="hidden" <?php echo empty($couple) || 1 == $couple ? ' checked="checked" ' : '' ?>>
-                                <input id="couple-2" name="couple" type="radio" value="2" class="hidden" <?php echo isset($couple) && 2 == $couple ? ' checked="checked" ' : '' ?>>
-                                <label for="couple-1" class="wpb_button wpb_btn-large <?php echo empty($couple) || 1 == $couple ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Single', 'wpestate'); ?></label>
-                                <label for="couple-2" class="wpb_button wpb_btn-large <?php echo isset($couple) && 2 == $couple ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('In couple', 'wpestate'); ?></label>
-                            </div>
-                        </div>
-
-                        <div class="switcher fl-row">                            
-                            <label><?php _e('Pets', 'wpestate'); ?></label>
-
-                            <div class="value-row">
-                                <input id="pets-1" name="pets" type="radio" value="1" class="hidden" <?php echo empty($pets) || 1 == $pets ? ' checked="checked" ' : '' ?>>
-                                <input id="pets-2" name="pets" type="radio" value="2" class="hidden" <?php echo isset($pets) && 2 == $pets ? ' checked="checked" ' : '' ?>>
-                                <label for="pets-1" class="wpb_button wpb_btn-large <?php echo empty($pets) || 1 == $pets ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('No pets', 'wpestate'); ?></label>
-                                <label for="pets-2" class="wpb_button wpb_btn-large <?php echo isset($pets) && 2 == $pets ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Pets', 'wpestate'); ?></label>
-                            </div>
-                        </div>
-
-                        <div class="switcher fl-row">                            
-                            <label><?php _e('Smoker', 'wpestate'); ?></label>
-
-                            <div class="value-row">
-                                <input id="smoker-1" name="smoker" type="radio" value="1" class="hidden" <?php echo empty($smoker) || 1 == $smoker ? ' checked="checked" ' : '' ?>>
-                                <input id="smoker-2" name="smoker" type="radio" value="2" class="hidden" <?php echo isset($smoker) && 2 == $smoker ? ' checked="checked" ' : '' ?>>
-                                <label for="smoker-1" class="wpb_button wpb_btn-large <?php echo empty($smoker) || 1 == $smoker ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Non-smoker', 'wpestate'); ?></label>
-                                <label for="smoker-2" class="wpb_button wpb_btn-large <?php echo isset($smoker) && 2 == $smoker ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Smoker', 'wpestate'); ?></label>
-                            </div>
-                        </div> 
-                        <div class="switcher fl-row">                            
-                            <label><?php _e('Party', 'wpestate'); ?></label> 
-                            <div class="value-row">
-                                <input id="party-1" name="party" type="radio" value="1" class="hidden" <?php echo empty($party) || 1 == $party ? ' checked="checked" ' : '' ?>>
-                                <input id="party-2" name="party" type="radio" value="2" class="hidden" <?php echo isset($party) && 2 == $party ? ' checked="checked" ' : '' ?>>
-                                <label for="party-1" class="wpb_button wpb_btn-large <?php echo empty($party) || 1 == $party ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Often', 'wpestate'); ?></label>
-                                <label for="party-2" class="wpb_button wpb_btn-large <?php echo isset($party) && 2 == $party ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Not often', 'wpestate'); ?></label>
-                            </div>
-                        </div> 
-                    </div>
-
-                    <div class="col-md-6">  
                         <div class="fl-row">
                             <label><?php _e('Where would you like to live', 'wpestate'); ?></label>
                             <div class="value-row">
@@ -279,7 +184,99 @@ if ($user_custom_picture == '') {
                                 });
                             }
                             //ONLY CITY - RESTRICT TO THE LANGUAGE  
-                        </script> 
+                        </script>     
+
+
+                        <div class="fl-row">
+                            <label><?php _e('Available from', 'wpestate'); ?></label>
+                            <div class="value-row">
+                                <input type="text" id="when_move" class="form-control" value="<?php echo empty($when_move) ? '' : $when_move->format(PHP_DATEPICKER_FORMAT); ?>"  name="when_move">
+                            </div>
+                        </div>
+
+
+
+                        <div class="switcher fl-row">                            
+                            <label><?php _e('Looking for', 'wpestate'); ?></label>
+
+                            <div class="value-row">
+                                <input id="looking_for-1" name="looking_for" type="radio" value="1" class="hidden" <?php echo empty($looking_for) || 1 == $looking_for ? ' checked="checked" ' : '' ?>>
+                                <input id="looking_for-2" name="looking_for" type="radio" value="2" class="hidden" <?php echo isset($looking_for) && 2 == $looking_for ? ' checked="checked" ' : '' ?>>
+                                <label for="looking_for-1" class="wpb_button wpb_btn-large <?php echo empty($looking_for) || 1 == $looking_for ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Room', 'wpestate'); ?></label>
+                                <label for="looking_for-2" class="wpb_button wpb_btn-large <?php echo isset($looking_for) && 2 == $looking_for ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Flat', 'wpestate'); ?></label>
+                            </div>
+                        </div>
+
+                        <div class="switcher fl-row">                            
+                            <label><?php _e('Sexual preferences', 'wpestate'); ?></label>
+
+                            <div class="value-row">
+                                <input id="sexual_preference-1" name="sexual_preference" type="radio" value="1" class="hidden" <?php echo empty($sexual_preference) || 1 == $sexual_preference ? ' checked="checked" ' : '' ?>>
+                                <input id="sexual_preference-2" name="sexual_preference" type="radio" value="2" class="hidden" <?php echo isset($sexual_preference) && 2 == $sexual_preference ? ' checked="checked" ' : '' ?>>
+                                <label for="sexual_preference-1" class="wpb_button wpb_btn-large <?php echo empty($sexual_preference) || 1 == $sexual_preference ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Straight', 'wpestate'); ?></label>
+                                <label for="sexual_preference-2" class="wpb_button wpb_btn-large <?php echo isset($sexual_preference) && 2 == $sexual_preference ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Bi / Gay', 'wpestate'); ?></label>
+                            </div>
+                        </div>
+
+                        <div class="switcher fl-row">                            
+                            <label><?php _e('Gender', 'wpestate'); ?></label>
+                            <div class="value-row">
+                                <input id="user_gender-1" name="user_gender" type="radio" value="1" class="hidden" <?php echo isset($user_gender) && 1 == $user_gender ? ' checked="checked" ' : '' ?>>
+                                <input id="user_gender-2" name="user_gender" type="radio" value="2" class="hidden" <?php echo empty($user_gender) || 2 == $user_gender ? ' checked="checked" ' : '' ?>>
+                                <label for="user_gender-2" class="wpb_button wpb_btn-large <?php echo empty($user_gender) || 2 == $user_gender ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Female', 'wpestate'); ?></label>
+                                <label for="user_gender-1" class="wpb_button wpb_btn-large <?php echo isset($user_gender) && 1 == $user_gender ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Male', 'wpestate'); ?></label>                    
+                            </div>
+                        </div>
+
+
+
+                        <div class="switcher fl-row">                            
+                            <label><?php _e('Couple', 'wpestate'); ?></label>
+
+                            <div class="value-row">
+                                <input id="couple-1" name="couple" type="radio" value="1" class="hidden" <?php echo empty($couple) || 1 == $couple ? ' checked="checked" ' : '' ?>>
+                                <input id="couple-2" name="couple" type="radio" value="2" class="hidden" <?php echo isset($couple) && 2 == $couple ? ' checked="checked" ' : '' ?>>
+                                <label for="couple-1" class="wpb_button wpb_btn-large <?php echo empty($couple) || 1 == $couple ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Single', 'wpestate'); ?></label>
+                                <label for="couple-2" class="wpb_button wpb_btn-large <?php echo isset($couple) && 2 == $couple ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('In couple', 'wpestate'); ?></label>
+                            </div>
+                        </div>
+
+                        <div class="switcher fl-row">                            
+                            <label><?php _e('Pets', 'wpestate'); ?></label>
+
+                            <div class="value-row">
+                                <input id="pets-1" name="pets" type="radio" value="1" class="hidden" <?php echo empty($pets) || 1 == $pets ? ' checked="checked" ' : '' ?>>
+                                <input id="pets-2" name="pets" type="radio" value="2" class="hidden" <?php echo isset($pets) && 2 == $pets ? ' checked="checked" ' : '' ?>>
+                                <label for="pets-1" class="wpb_button wpb_btn-large <?php echo empty($pets) || 1 == $pets ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('No pets', 'wpestate'); ?></label>
+                                <label for="pets-2" class="wpb_button wpb_btn-large <?php echo isset($pets) && 2 == $pets ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Pets', 'wpestate'); ?></label>
+                            </div>
+                        </div>
+
+
+                        <div class="fl-row">
+                            <?php
+                            $coutnries = fl_get_countries();
+                            ?>
+                            <label for="user_origin"><?php _e('Country of origin', 'wpestate'); ?></label>
+                            <div class="value-row">
+                                <select id="user_origin" name="user_origin" class="form-control">
+                                    <option value=""><?php _e('Select country', 'wpestate'); ?></option>
+                                    <?php
+                                    if (!empty($coutnries)):
+                                        foreach ($coutnries as $iso => $country):
+                                            ?>
+                                            <option value="<?php echo $iso ?>" <?php echo $user_origin == $iso ? ' selected="selected" ' : ''; ?>><?php esc_attr_e($country); ?></option>
+                                            <?php
+                                        endforeach;
+                                    endif;
+                                    ?>
+                                </select>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <div class="col-md-6">  
+
                         <div class="fl-row adv_search_slider"> 
                             <script>
 
@@ -309,6 +306,7 @@ if ($user_custom_picture == '') {
                             <div id="slider_rent" class="fl-slider"></div>
                             <input type="hidden" id="rent_amount"  name="rent_amount"  value="<?php echo (int) $user_rent; ?>">
                         </div> 
+
                         <script>
 
                             jQuery(document).ready(function ($) {
@@ -325,39 +323,46 @@ if ($user_custom_picture == '') {
                                         });
 
                         </script>
-
-                        <div class="fl-row">
-                            <label><?php _e('Available from', 'wpestate'); ?></label>
-                            <div class="value-row">
-                                <input type="text" id="when_move" class="form-control" value="<?php echo empty($when_move) ? '' : $when_move->format(PHP_DATEPICKER_FORMAT); ?>"  name="when_move">
-                            </div>
-                        </div> 
-                        <div class="fl-row">
-                            <?php
-                            $coutnries = fl_get_countries();
-                            ?>
-                            <label for="user_origin"><?php _e('Country of origin', 'wpestate'); ?></label>
-                            <div class="value-row">
-                                <select id="user_origin" name="user_origin" class="form-control">
-                                    <option value=""><?php _e('Select country', 'wpestate'); ?></option>
-                                    <?php
-                                    if (!empty($coutnries)):
-                                        foreach ($coutnries as $iso => $country):
-                                            ?>
-                                            <option value="<?php echo $iso ?>" <?php echo $user_origin == $iso ? ' selected="selected" ' : ''; ?>><?php esc_attr_e($country); ?></option>
-                                            <?php
-                                        endforeach;
-                                    endif;
-                                    ?>
-                                </select>
-                            </div>
-                        </div> 
-                        <div class="fl-row">
+                        <div class="clearfix"></div>
+                        <div class="fl-row birthdate-row">
                             <label for="user_age"><?php _e('* Birthdate (mandatory)', 'wpestate'); ?></label>
                             <div class="value-row">
                                 <input type="text" id="birthdate" class="form-control" value="<?php echo empty($birthdate) ? '' : $birthdate->format(PHP_DATEPICKER_FORMAT); ?>"  name="birthdate">
                             </div>
+                        </div>            
+                        
+                        <div class="switcher fl-row"> 
+                            <label><?php _e('For how long', 'wpestate'); ?></label> 
+                            <div class="value-row">
+                                <input id="how_long-1" name="how_long" type="radio" value="1" class="hidden" <?php echo empty($how_long) || 1 == $how_long ? ' checked="checked" ' : '' ?>>
+                                <input id="how_long-2" name="how_long" type="radio" value="2" class="hidden" <?php echo isset($how_long) && 2 == $how_long ? ' checked="checked" ' : '' ?>>
+                                <label for="how_long-1" class="wpb_button wpb_btn-large <?php echo empty($how_long) || 1 == $how_long ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Short term', 'wpestate'); ?></label>
+                                <label for="how_long-2" class="wpb_button wpb_btn-large <?php echo isset($how_long) && 2 == $how_long ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Long term', 'wpestate'); ?></label>
+                            </div>                 
+                        </div>                         
+
+                        <div class="switcher fl-row">                            
+                            <label><?php _e('Sleep during week', 'wpestate'); ?></label>
+
+                            <div class="value-row">
+                                <input id="sleeping_span-1" name="sleeping_span" type="radio" value="1" class="hidden" <?php echo empty($sleeping_span) || 1 == $sleeping_span ? ' checked="checked" ' : '' ?>>
+                                <input id="sleeping_span-2" name="sleeping_span" type="radio" value="2" class="hidden" <?php echo isset($sleeping_span) && 2 == $sleeping_span ? ' checked="checked" ' : '' ?>>
+                                <label for="sleeping_span-1" class="wpb_button wpb_btn-large <?php echo empty($sleeping_span) || 1 == $sleeping_span ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Before 11PM', 'wpestate'); ?></label>
+                                <label for="sleeping_span-2" class="wpb_button wpb_btn-large <?php echo isset($sleeping_span) && 2 == $sleeping_span ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('After 11PM', 'wpestate'); ?></label>
+                            </div>
+                        </div>                        
+
+                        <div class="switcher fl-row">                            
+                            <label><?php _e('Smoker', 'wpestate'); ?></label>
+
+                            <div class="value-row">
+                                <input id="smoker-1" name="smoker" type="radio" value="1" class="hidden" <?php echo empty($smoker) || 1 == $smoker ? ' checked="checked" ' : '' ?>>
+                                <input id="smoker-2" name="smoker" type="radio" value="2" class="hidden" <?php echo isset($smoker) && 2 == $smoker ? ' checked="checked" ' : '' ?>>
+                                <label for="smoker-1" class="wpb_button wpb_btn-large <?php echo empty($smoker) || 1 == $smoker ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Non-smoker', 'wpestate'); ?></label>
+                                <label for="smoker-2" class="wpb_button wpb_btn-large <?php echo isset($smoker) && 2 == $smoker ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Smoker', 'wpestate'); ?></label>
+                            </div>
                         </div> 
+
                         <div class="switcher fl-row">
                             <!--<input type="hidden" id="activity" name="activity" value="<?php echo (int) $activity ?>">--> 
                             <label><?php _e('Activity', 'wpestate'); ?></label> 
@@ -372,6 +377,19 @@ if ($user_custom_picture == '') {
                             <button class="wpb_button wpb_btn-large <?php echo $activity == 2 ? " wpb_btn-on" : " wpb_btn-off" ?>" data-target="#activity" data-value="2"><?php _e('Professional', 'wpestate'); ?></button>
                             -->
                         </div> 
+                        
+                        <div class="switcher fl-row">                            
+                            <label><?php _e('Party', 'wpestate'); ?></label> 
+                            <div class="value-row">
+                                <input id="party-1" name="party" type="radio" value="1" class="hidden" <?php echo empty($party) || 1 == $party ? ' checked="checked" ' : '' ?>>
+                                <input id="party-2" name="party" type="radio" value="2" class="hidden" <?php echo isset($party) && 2 == $party ? ' checked="checked" ' : '' ?>>
+                                <label for="party-1" class="wpb_button wpb_btn-large <?php echo empty($party) || 1 == $party ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Often', 'wpestate'); ?></label>
+                                <label for="party-2" class="wpb_button wpb_btn-large <?php echo isset($party) && 2 == $party ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Not often', 'wpestate'); ?></label>
+                            </div>
+                        </div> 
+                        
+                        
+                        
                         <div class="fl-row">
                             <label><?php _e('House skills', 'wpestate'); ?></label>
                             <p class="inline-checkboxes">                
