@@ -102,7 +102,7 @@ if ($user_custom_picture == '') {
             </p> 
         </div>
 
-        <div class="col-md-4"> 
+        <div id="hide-mobile" class="col-md-4 hidden-xs"> 
             <p>
                 <label for="userphone"><?php _e('Phone', 'wpestate'); ?></label>
                 <input type="text" id="userphone" class="form-control" value="<?php echo $user_phone; ?>"  name="userphone">

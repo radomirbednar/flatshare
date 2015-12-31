@@ -1388,6 +1388,9 @@ if (!function_exists('wpestate_ajax_update_profile')):
         $looking_where = esc_attr(trim($data['looking_where']));
         $user_origin = esc_attr($data['user_origin']);
 
+        $is_mobile = 1 == $_POST['is_mobile'] ? true : false;
+
+
 
 
         if ($firstname == '') {
@@ -1405,7 +1408,7 @@ if (!function_exists('wpestate_ajax_update_profile')):
             $errors[] = __('Please submit a email', 'wpestate');
         }
 
-        if ($usermobile == '') {
+        if ($usermobile == '' && !$is_mobile) {
             $has_errors = true;
             $errors[] = __('Please submit a mobile phone', 'wpestate');
         }
@@ -1427,12 +1430,9 @@ if (!function_exists('wpestate_ajax_update_profile')):
 
         update_user_meta($userID, 'first_name', $firstname);
         update_user_meta($userID, 'last_name', $secondname);
-        update_user_meta($userID, 'phone', $userphone);
-        update_user_meta($userID, 'skype', $userskype);
         update_user_meta($userID, 'title', $usertitle);
         update_user_meta($userID, 'custom_picture', $profile_image_url);
         update_user_meta($userID, 'small_custom_picture', $profile_image_url_small);
-        update_user_meta($userID, 'mobile', $usermobile);
         update_user_meta($userID, 'facebook', $userfacebook);
         update_user_meta($userID, 'twitter', $usertwitter);
         update_user_meta($userID, 'linkedin', $userlinkedin);
@@ -1441,6 +1441,12 @@ if (!function_exists('wpestate_ajax_update_profile')):
         update_user_meta($userID, 'website', $userurl);
         update_user_meta($userID, 'user_origin', $user_origin);
         update_user_meta($userID, 'looking_where', $looking_where);
+
+        if (!$is_mobile) {
+            update_user_meta($userID, 'mobile', $usermobile);
+            update_user_meta($userID, 'phone', $userphone);
+            update_user_meta($userID, 'skype', $userskype);
+        }
 
         /**
          * Update user integer values
@@ -3076,6 +3082,8 @@ if (!function_exists('wpestate_ajax_paypal_pack_recuring_generation')):
             $obj->setExpressCheckout();
         }
     }
+
+
 
 
 

@@ -1937,6 +1937,9 @@ jQuery(document).ready(function ($) {
         upload_picture = $('#upload_picture').val();
         profile_image_url = $('#profile-image').attr('data-profileurl');
         profile_image_url_small = $('#profile-image').attr('data-smallprofileurl');
+        
+        var is_mobile = $('#hide-mobile').is(":visible") ? 0 : 1;
+        //console.log('is_mobile: ' + is_mobile);
 
 
         $.ajax({
@@ -1970,7 +1973,8 @@ jQuery(document).ready(function ($) {
                 'sleeping_span': sleeping_span,
                 'party': party,
                 'user_age': user_age,
-                'data': $('#user_profile_div').find('input, select').serialize()
+                'data': $('#user_profile_div').find('input, select').serialize(),
+                'is_mobile' : is_mobile
             },
             success: function (data) {
                 $('#profile_message').append('<div class="login-alert success-alert">' + data + '<div>');
