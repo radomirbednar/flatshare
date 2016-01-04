@@ -323,6 +323,7 @@ if (!isset($_GET['listing_edit']) && $paid_submission_status == 'membership' && 
             </div>   
             <!--<div class="col-xs-12">-->
                 <div class="fl-row">
+                    <div class="clearfix"></div>
                     <label><?php _e('Language skills', 'wpestate'); ?></label>
                     <p class="inline-checkboxes">                 
                         <?php

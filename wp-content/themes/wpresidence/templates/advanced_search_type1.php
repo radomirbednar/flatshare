@@ -46,7 +46,7 @@ if(17745 == $p_id):
 </script>    
 <?php endif; ?>
 
-<div class="adv-search-1 <?php echo $close_class . ' ' . $extended_class; ?>" id="adv-search-1" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : '' ?>>
+<div class="adv-search-1 <?php echo $close_class . ' ' . $extended_class; ?>" id="adv-search-1" <?php /* echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="height: auto;"' : '' */ ?>>
 <div class="scroll-to-wrap"><div id="scroll-to"></div></div>
 
     <?php
