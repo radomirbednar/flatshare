@@ -61,9 +61,7 @@ if ($user_custom_picture == '') {
     $user_custom_picture = get_template_directory_uri() . '/img/default_user.png';
 }
 ?>
-
-
-
+ 
 <div id="user_profile_div" class="user_profile_div">
     <h3><?php
         _e('Welcome back, ', 'wpestate');
@@ -96,25 +94,36 @@ if ($user_custom_picture == '') {
                 <label for="secondname"><?php _e('* Last Name (mandatory)', 'wpestate'); ?></label>
                 <input type="text" id="secondname" class="form-control" value="<?php echo $last_name; ?>"  name="firstname" required>
             </p> 
-            <p>
-                <label for="useremail"><?php _e('* Email (mandatory)', 'wpestate'); ?></label>
-                <input type="email" id="useremail"  class="form-control" value="<?php echo $user_email; ?>"  name="useremail" required>
-            </p> 
+           
         </div>
 
         <div class="col-md-4"> 
+            
+            <p>
+                <label for="useremail"><?php _e('* Email (mandatory)', 'wpestate'); ?></label>
+                <input type="email" id="useremail"  class="form-control" value="<?php echo $user_email; ?>"  name="useremail" required>
+            </p>
+           
+    
             <p>
                 <label for="userphone"><?php _e('Phone', 'wpestate'); ?></label>
                 <input type="text" id="userphone" class="form-control" value="<?php echo $user_phone; ?>"  name="userphone">
             </p>
+     
+            
+            <!--
             <p>
                 <label for="usermobile"><?php _e('* Mobile (mandatory)', 'wpestate'); ?></label>
                 <input type="text" id="usermobile" class="form-control" value="<?php echo $user_mobile; ?>"  name="usermobile" required>
-            </p> 
+            </p>
+            -->
+            
+            <!--
             <p>
                 <label for="userskype"><?php _e('Skype', 'wpestate'); ?></label>
                 <input type="text" id="userskype" class="form-control" value="<?php echo $user_skype; ?>"  name="userskype">
             </p> 
+            -->
             <?php wp_nonce_field('profile_ajax_nonce', 'security-profile'); ?> 
         </div> 
     </div>

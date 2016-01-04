@@ -70,8 +70,8 @@ function fl_user_statuses() {
 
     $arr = array(
         3 => __('inactive', 'wpestate'),
-        1 => __('Looking for a flat', 'wpestate'),
-        2 => __('Looking for a roommate', 'wpestate'),
+        1 => __('Posting a property', 'wpestate'),
+        2 => __('Looking for property', 'wpestate'),
             //   4 => __('Landlord', 'wpestate'),
     );
 

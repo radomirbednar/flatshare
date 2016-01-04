@@ -1384,8 +1384,8 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         $secondname     =   wp_kses( $_POST['secondname'] ,$allowed_html) ;
         $useremail      =   wp_kses( $_POST['useremail'] ,$allowed_html) ;
         $userphone      =   wp_kses( $_POST['userphone'] ,$allowed_html) ;
-        $usermobile     =   wp_kses( $_POST['usermobile'] ,$allowed_html) ;
-        $userskype      =   wp_kses( $_POST['userskype'] ,$allowed_html) ;
+        //$usermobile     =   wp_kses( $_POST['usermobile'] ,$allowed_html) ;
+        //$userskype      =   wp_kses( $_POST['userskype'] ,$allowed_html) ;
         $usertitle      =   wp_kses( $_POST['usertitle'] ,$allowed_html) ;
         $about_me       =   wp_kses( $_POST['description'],$allowed_html);
         $profile_image_url_small   = wp_kses($_POST['profile_image_url_small'],$allowed_html);
@@ -1416,11 +1416,13 @@ if( !function_exists('wpestate_ajax_update_profile') ):
             $errors[]=__('Please submit a email','wpestate');
         }
         
+        /*
         if($usermobile==''){
             $has_errors=true;
             $errors[]=__('Please submit a mobile phone','wpestate');
         }
-                
+        */
+        
         if($data['birthdate']==''){
             $has_errors=true;
             $errors[]=__('Please submit a birthdate','wpestate');      
@@ -1436,11 +1438,11 @@ if( !function_exists('wpestate_ajax_update_profile') ):
         update_user_meta( $userID, 'first_name', $firstname ) ;
         update_user_meta( $userID, 'last_name',  $secondname) ;
         update_user_meta( $userID, 'phone' , $userphone) ;
-        update_user_meta( $userID, 'skype' , $userskype) ;
+        //update_user_meta( $userID, 'skype' , $userskype) ;
         update_user_meta( $userID, 'title', $usertitle) ;
         update_user_meta( $userID, 'custom_picture',$profile_image_url);
         update_user_meta( $userID, 'small_custom_picture',$profile_image_url_small);
-        update_user_meta( $userID, 'mobile' , $usermobile) ;
+        //update_user_meta( $userID, 'mobile' , $usermobile) ;
         update_user_meta( $userID, 'facebook' , $userfacebook) ;
         update_user_meta( $userID, 'twitter' , $usertwitter) ;
         update_user_meta( $userID, 'linkedin' , $userlinkedin) ;

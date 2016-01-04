@@ -1936,8 +1936,8 @@ jQuery(document).ready(function ($) {
         secondname          =  $('#secondname').val();
         useremail           =  $('#useremail').val();
         userphone           =  $('#userphone').val();
-        usermobile          =  $('#usermobile').val();
-        userskype           =  $('#userskype').val();
+       // usermobile          =  $('#usermobile').val();
+       // userskype           =  $('#userskype').val();
         usertitle           =  $('#usertitle').val();
         description         =  $('#about_me').val();
         userfacebook        =  $('#userfacebook').val();

@@ -4679,6 +4679,31 @@ iframe .player .video-wrapper{
     margin-right: 10px;
 }
 
+.property-panel i.fa-check{
+    font-weight: bold; 
+}
+
+.property-panel i.fa-times{
+}
+
+
+
+.listing_detail{
+    color: #3D89B2;
+    font-weight: bold;    
+} 
+.listing_detail.overline{     
+ text-decoration: line-through;   
+ color: #ccc;
+ font-weight: normal;
+}
+
+
+
+
+
+
+
 .listing-content .agent_contanct_form{
     margin-left: 0px;
     float:left;
