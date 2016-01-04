@@ -140,28 +140,23 @@ if (!isset($prefix)) {
 
             <div id="<?php echo $prefix ?>more-search-options" class="extended_search_check_wrapper" <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'style="display: block;"' : '' ?>><!-- advance search block -->
 
-                <div class="form-control-half">
+                 
+               <div class="form-control-half switcher">
                     <div class="form-control-in">
-                        <?php
-                        $arr = array(
-                            1 => __('Posting a property', 'wpestate'),
-                            2 => __('Looking for a property', 'wpestate'),
-                                //3 => __('Real estate', 'wpestate'),
-                                //4 => __('Landlord', 'wpestate'),
-                        );
-                        ?>
-                        <label for="<?php echo $prefix ?>status"><?php _e('Someone :', 'wpestate'); ?></label>
-                        <div class="value-row clearfix">
-                            <select id="<?php echo $prefix ?>status" class="form-control w100" name="status" class="w100">
-                                <option value=""><?php _e('Never mind', 'wpestate'); ?></option>
-                                <?php foreach ($arr as $key => $val): ?>
-                                    <option value="<?php echo $key ?>" <?php echo isset($_GET['status']) && $_GET['status'] == $key ? ' selected="selected" ' : '' ?>><?php echo $val ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                        <label for="<?php echo $prefix ?>status"><?php _e('Someone who:', 'wpestate'); ?></label>
+                        
+                        <div class="value-row clearfix"> 
+                            <input id="<?php echo $prefix ?>status-0" name="status" type="radio" value="" class="hidden">
+                            <input id="<?php echo $prefix ?>status-1" name="status" type="radio" value="1" class="hidden">
+                            <input id="<?php echo $prefix ?>status-2" name="status" type="radio" value="2" class="hidden">
+                             
+                            <label for="<?php echo $prefix ?>status-0" class="wpb_button wpb_btn-large <?php echo empty($_GET['status']) ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('Nevermind', 'wpestate'); ?></label> 
+                            <label for="<?php echo $prefix ?>status-1" class="wpb_button wpb_btn-large <?php echo isset($_GET['status']) && 1 == $_GET['status'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('HAS A FLAT', 'wpestate'); ?></label>
+                            <label for="<?php echo $prefix ?>status-2" class="wpb_button wpb_btn-large <?php echo isset($_GET['status']) && 2 == $_GET['status'] ? 'wpb_btn-on' : 'wpb_btn-off' ?>"><?php _e('NEEDS A FLAT', 'wpestate'); ?></label>
                         </div>
                     </div>
                 </div>
-
+                 
                 <div class="form-control-half switcher">
                     <div class="form-control-in">
                         <label><?php _e('For how long', 'wpestate'); ?></label>
@@ -175,6 +170,7 @@ if (!isset($prefix)) {
                         </div>
                     </div>
                 </div>
+                 
                 <div class="clearfix"></div>
                 <div class="form-control-half">
                     <div class="form-control-in">
