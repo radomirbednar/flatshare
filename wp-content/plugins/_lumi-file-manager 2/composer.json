@@ -1,0 +1,12 @@
+{
+    "name": "lumiart/be-mediamanager",
+    "require": {
+        "tgmpa/tgm-plugin-activation": "~2.4"
+    },
+    "authors": [
+        {
+            "name": "Jakub Klapka",
+            "email": "klapka@lumiart.cz"
+        }
+    ]
+}

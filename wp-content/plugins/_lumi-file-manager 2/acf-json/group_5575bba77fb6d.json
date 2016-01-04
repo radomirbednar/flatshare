@@ -1,0 +1,348 @@
+{
+    "key": "group_5575bba77fb6d",
+    "title": "\u010c\u00edseln\u00edky",
+    "fields": [
+        {
+            "key": "field_5575be7937597",
+            "label": "Info",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Dbejte zv\u00fd\u0161en\u00e9 opatrnosti p\u0159i odstra\u0148ov\u00e1n\u00ed polo\u017eek z \u010d\u00edseln\u00edk\u016f. Neodstra\u0148ujte polo\u017eky, kter\u00e9 mohou m\u00edt p\u0159i\u0159azeny n\u011bkter\u00e9 cen\u00edky i pokud jsou cen\u00edky jen nahr\u00e1ny v syst\u00e9mu a nejsou viditeln\u00e9 na str\u00e1nk\u00e1ch.\r\nPokud chcete na str\u00e1nk\u00e1ch skr\u00fdt produktovou \u0159adu, nebo jin\u00fd atribut, toto nastaven\u00ed prove\u010fte v editaci str\u00e1nky, ne zde!",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5577331386bb1",
+            "label": "Entita",
+            "name": "lumi_be_files_vars_entita",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "P\u0159idat entitu",
+            "sub_fields": [
+                {
+                    "key": "field_5577331386bb2",
+                    "label": "Zna\u010dka",
+                    "name": "tag",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_5577331386bb3",
+                    "label": "N\u00e1zev",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5575bbccea16e",
+            "label": "Komodita",
+            "name": "lumi_be_files_vars_komodita",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "P\u0159idat komoditu",
+            "sub_fields": [
+                {
+                    "key": "field_5575bc07ea16f",
+                    "label": "Zna\u010dka",
+                    "name": "tag",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_5575bc0fea170",
+                    "label": "N\u00e1zev",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5575bc2bea171",
+            "label": "Z\u00e1kazn\u00edk",
+            "name": "lumi_be_files_vars_zakaznik",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "P\u0159idat z\u00e1kazn\u00edka",
+            "sub_fields": [
+                {
+                    "key": "field_5575bc2bea172",
+                    "label": "Zna\u010dka",
+                    "name": "tag",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_5575bc2bea173",
+                    "label": "N\u00e1zev",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5575bc41ea174",
+            "label": "Produktov\u00e1 \u0159ada",
+            "name": "lumi_be_files_vars_produktova_rada",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "P\u0159idat produktovou \u0159adu",
+            "sub_fields": [
+                {
+                    "key": "field_5575bc41ea175",
+                    "label": "Zna\u010dka",
+                    "name": "tag",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_5575bc41ea176",
+                    "label": "N\u00e1zev",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5575bc5fea177",
+            "label": "Distribu\u010dn\u00ed oblast",
+            "name": "lumi_be_files_vars_distribucni_oblast",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "P\u0159idat distribu\u010dn\u00ed oblast",
+            "sub_fields": [
+                {
+                    "key": "field_5575bc5fea178",
+                    "label": "Zna\u010dka",
+                    "name": "tag",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_5575bc5fea179",
+                    "label": "N\u00e1zev",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "lumi-be-ceniky-ciselniky"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "modified": 1433876776
+}

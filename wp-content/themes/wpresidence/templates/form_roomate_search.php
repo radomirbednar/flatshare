@@ -382,7 +382,7 @@ if (!isset($prefix)) {
                 <span id="<?php echo $prefix ?>roommate_extended_close_adv" class="adv_extended_close_adv" style="display: <?php echo isset($_GET['ra']) && 1 == $_GET['ra'] ? 'inline' : 'none' ?>;">
                     <i class="fa fa-times"> </i> <?php _e('Less search options', 'wpestate'); ?>
                 </span>
-                <input class="ra" name="ra" type="hidden" value="<?php echo isset($_GET['ra']) ? (int) $_GET['ra'] : 0 ?>">
+                <!--<input class="ra" name="ra" type="hidden" value="<?php // echo isset($_GET['ra']) ? (int) $_GET['ra'] : 0 ?>">-->
             </div><!-- /advance search block -->
 
             <?php

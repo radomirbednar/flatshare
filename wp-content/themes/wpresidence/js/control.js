@@ -80,20 +80,19 @@ function wpestate_lazy_load_carousel_property_unit() {
 jQuery(document).ready(function ($) {
     "use strict";
     var screen_width, screen_height;
-
-
-
+ 
+ 
     $('.slider_container').each(function (index) {
         var autoscroll_slider = parseInt($(this).find('.shortcode_slider_wrapper').attr('data-auto'));
-        var element;
-
+        var element; 
+        
         element = $(this).find(".slider_control_right");
 
         if (autoscroll_slider !== 0) {
             setInterval(function () {
                 slider_control_right_function(element);
             }, autoscroll_slider
-                    );
+            );
         }
     });
 

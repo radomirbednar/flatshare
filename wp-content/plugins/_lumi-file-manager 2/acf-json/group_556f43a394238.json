@@ -1,0 +1,78 @@
+{
+    "key": "group_556f43a394238",
+    "title": "Nastaven\u00ed Filemanagementu",
+    "fields": [
+        {
+            "key": "field_556f43b513760",
+            "label": "Custom Post Types, u kter\u00fdch pou\u017e\u00edt filemanagement",
+            "name": "lumi_be_files_config_cpts",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "post": "P\u0159\u00edsp\u011bvky",
+                "page": "Str\u00e1nky",
+                "attachment": "Medi\u00e1ln\u00ed soubory"
+            },
+            "default_value": {
+                "": ""
+            },
+            "allow_null": 1,
+            "multiple": 1,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_556f45d09f8fb",
+            "label": "\u0160ablony, u kter\u00fdch pou\u017e\u00edt filemanagement",
+            "name": "lumi_be_files_config_templates",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "template_text.php": "Test"
+            },
+            "default_value": {
+                "": ""
+            },
+            "allow_null": 1,
+            "multiple": 1,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "lumi-be-files-config"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "modified": 1433876774
+}

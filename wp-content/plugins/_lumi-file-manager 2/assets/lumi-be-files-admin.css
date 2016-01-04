@@ -1,0 +1,31 @@
+.lumi-be-files-secured + .acf-file-uploader {
+	border: 1px solid red;
+}
+
+.lumi-be-files-unsecured + .acf-file-uploader {
+	border: 1px solid green;
+}
+
+.lumi_be_files .file-info p:nth-child(3),
+.lumi_be_files .file-info p:nth-child(1),
+.lumi_be_files .acf-soh-target {
+	display: none;
+}
+
+.lumi_be_files .acf-hl {
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.lumi_be_files .acf-hl > li.acf-fr {
+	float: none;
+}
+
+.lumi_be_files .file-icon,
+.lumi_be_files .file-icon img {
+	width: 20px;
+}
+
+.lumi_be_files .file-info {
+	margin-left: 40px;
+}
