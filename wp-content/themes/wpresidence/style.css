@@ -12756,51 +12756,63 @@ i {
 .icon-icon_gender-male:before {
     content: "\e904";
 }
-.icon-icon_no-pets:before {
+.icon-icon_longterm:before {
     content: "\e905";
 }
-.icon-icon_no-smoking:before {
+.icon-icon_no-pets:before {
     content: "\e906";
 }
-.icon-icon_party-less:before {
+.icon-icon_no-smoking:before {
     content: "\e907";
 }
-.icon-icon_party-often:before {
+.icon-icon_party-less:before {
     content: "\e908";
 }
-.icon-icon_pets:before {
+.icon-icon_party-often:before {
     content: "\e909";
 }
-.icon-icon_price:before {
+.icon-icon_pets:before {
     content: "\e90a";
 }
-.icon-icon_professional:before {
+.icon-icon_price:before {
     content: "\e90b";
 }
-.icon-icon_roommate:before {
+.icon-icon_professional:before {
     content: "\e90c";
 }
-.icon-icon_sex-gay:before {
+.icon-icon_roommate:before {
     content: "\e90d";
 }
-.icon-icon_sex-straight:before {
+.icon-icon_sex-gay:before {
     content: "\e90e";
 }
-.icon-icon_single:before {
+.icon-icon_sex-straight:before {
     content: "\e90f";
 }
-.icon-icon_sleep:before {
+.icon-icon_shortterm:before {
     content: "\e910";
 }
-.icon-icon_smoking:before {
+.icon-icon_single:before {
     content: "\e911";
 }
-.icon-icon_student:before {
+.icon-icon_sleep:before {
     content: "\e912";
 }
-.icon-icon_time:before {
+.icon-icon_sleep2:before {
     content: "\e913";
 }
+.icon-icon_smoking:before {
+    content: "\e914";
+}
+.icon-icon_student:before {
+    content: "\e915";
+}
+.icon-icon_time:before {
+    content: "\e916";
+}
+
+
+
 .submit_action {
     background: #fb6a5c;
     color: #fff;

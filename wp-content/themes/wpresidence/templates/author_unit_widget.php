@@ -43,26 +43,26 @@ $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
 $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
 
 $sexual_preference_array = array(
-    '1' => array(
-        '<i class="icon-icon_sex-straight" data-toggle="tooltip" data-placement="top" title="' . __('straight', 'wpestate') . '"></i>',
-        __('straight', 'wpestate'))
-    ,
-    '2' => array(
-        '<i class="icon-icon_sex-gay" data-toggle="tooltip" data-placement="top" title="' . __('BI/GAY', 'wpestate') . '"> </i>',
-        __('BI/GAY', 'wpestate')
-    )
-);
+                '1' => array(
+                    '<i class="icon-icon_sex-straight" data-toggle="tooltip" data-placement="top" title="straight"></i>',
+                    __('straight', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_sex-gay" data-toggle="tooltip" data-placement="top" title="LGBT"> </i>',
+                    __('LGBT', 'wpestate')
+                )
+            );
 
-$sleeping_span_array = array(
-    '1' => array(
-        '<i class="icon-icon_sleep" data-toggle="tooltip" data-placement="top" title="' . __('Before 11PM', 'wpestate') . '" ></i>',
-        __('Before 11PM', 'wpestate'))
-    ,
-    '2' => array(
-        '<i class="icon-icon_sleep" data-toggle="tooltip" data-placement="top" title="' . __('After 11PM', 'wpestate') . '" ></i>',
-        __('After 11PM', 'wpestate')
-    )
-);
+ $sleeping_span_array = array(
+                '1' => array(
+                    '<i class="icon-icon_sleep2" data-toggle="tooltip" data-placement="top" title="Night owl"></i>',
+                    __('Night owl', 'wpestate'))
+                ,
+                '2' => array(
+                    '<i class="icon-icon_sleep" data-toggle="tooltip" data-placement="top" title="Rooster"></i>',
+                    __('Rooster', 'wpestate')
+                )
+            );
 
 $couple_array = array(
     '1' => array(
@@ -87,7 +87,7 @@ $pets_array = array(
 );
 $smoker_array = array(
     '1' => array(
-        '<i class="icon-icon_smoking" data-toggle="tooltip" data-placement="top" title="' . __('Non-smoker', 'wpestate') . '"> </i>',
+        '<i class="icon-icon_no-smoking" data-toggle="tooltip" data-placement="top" title="' . __('Non-smoker', 'wpestate') . '"> </i>',
         __('Non-smoker', 'wpestate'))
     ,
     '2' => array(

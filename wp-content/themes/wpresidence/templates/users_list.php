@@ -227,26 +227,26 @@ if ($options['content_class'] == 'col-md-12') {
                 $party = !empty($fl_user_data->party) ? $fl_user_data->party : '';
                 $looking_when = !empty($fl_user_data->looking_when) ? $fl_user_data->looking_when : '';
     
-         $sexual_preference_array = array( 
+         $sexual_preference_array = array(
                 '1' => array(
-                      '<i class="icon-icon_sex-straight" data-toggle="tooltip" data-placement="top" title="straight"></i>',
+                    '<i class="icon-icon_sex-straight" data-toggle="tooltip" data-placement="top" title="straight"></i>',
                     __('straight', 'wpestate'))
                 ,
                 '2' => array(
-                    '<i class="icon-icon_sex-gay" data-toggle="tooltip" data-placement="top" title="BI/GAY"> </i>',
-                    __('BI/GAY', 'wpestate')  
-                ) 
+                    '<i class="icon-icon_sex-gay" data-toggle="tooltip" data-placement="top" title="LGBT"> </i>',
+                    __('LGBT', 'wpestate')
+                )
             );
             
-            $sleeping_span_array = array(              
+             $sleeping_span_array = array(
                 '1' => array(
-                      '<i class="icon-icon_sleep" data-toggle="tooltip" data-placement="top" title="Before 11PM"></i>',
-                    __('Before 11PM', 'wpestate'))
+                    '<i class="icon-icon_sleep2" data-toggle="tooltip" data-placement="top" title="Night owl"></i>',
+                    __('Night owl', 'wpestate'))
                 ,
                 '2' => array(
-                    '<i class="icon-icon_sleep" data-toggle="tooltip" data-placement="top" title="After 11PM"></i>',
-                    __('After 11PM', 'wpestate')  
-                ) 
+                    '<i class="icon-icon_sleep" data-toggle="tooltip" data-placement="top" title="Rooster"></i>',
+                    __('Rooster', 'wpestate')
+                )
             );
              
             $couple_array = array(              
@@ -270,15 +270,15 @@ if ($options['content_class'] == 'col-md-12') {
                     __('Pets', 'wpestate')  
                 ) 
             );       
-            $smoker_array = array( 
+            $smoker_array = array(
                 '1' => array(
-                      '<i class="icon-icon_smoking" data-toggle="tooltip" data-placement="top" title="Non-smoker"> </i>',
+                    '<i class="icon-icon_no-smoking" data-toggle="tooltip" data-placement="top" title="Non-smoker"> </i>',
                     __('Non-smoker', 'wpestate'))
                 ,
                 '2' => array(
                     '<i class="icon-icon_smoking" data-toggle="tooltip" data-placement="top" title="Smoker"> </i>',
-                    __('Smoker', 'wpestate')  
-                )   
+                    __('Smoker', 'wpestate')
+                )
             );
             
             $party_array = array (  
